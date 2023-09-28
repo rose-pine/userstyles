@@ -2,11 +2,11 @@
 @name           Rosé Pine for Github 
 @description    Soho vibes for Github
 @version        1.0.2
-@license 		MIT
+@license 		    MIT
 @author         Joris Mertz https://github.com/jorismertz/
 @namespace      https://github.com/rose-pine/
-@homepageURL 	https://github.com/rose-pine/userstyles
-@updateURL      https://raw.githubusercontent.com/rose-pine/userstyles/main/github/rose-pine.user.css
+@homepageURL 	  https://github.com/rose-pine/userstyles
+@updateURL      https://github.com/rose-pine/userstyles/raw/main/github/rose-pine.user.css
 
 @preprocessor less
 @var select lightFlavor "Light Flavor" ["default:Rosé Pine", "moon:Rosé Pine Moon", "dawn:Rosé Pine Dawn*"]
