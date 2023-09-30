@@ -19,4 +19,4 @@
 
 # Userstyles
 **Productivity**
-- [GitHub](https://github.com/jorismertz/userstyles/tree/main/github)
+- [GitHub](https://github.com/rose-pine/userstyles/tree/main/github)
