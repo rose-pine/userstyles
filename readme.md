@@ -20,3 +20,4 @@
 # Userstyles
 **Productivity**
 - [GitHub](https://github.com/rose-pine/userstyles/tree/main/github)
+- [Proton](https://github.com/rose-pine/userstyles/tree/main/proton)
