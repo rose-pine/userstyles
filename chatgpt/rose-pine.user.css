@@ -102,14 +102,21 @@
             background: @base !important;
         }
 
+        .dark body,
+        .dark html,
+        body,
+        html {
+            background-color: @base;
+        }
+
         /* Sidebar */
-        [class*=' bg-gray-900 '],
-        [class*=' dark:bg-gray-900 '] {
+        [class*=' bg-gray-900'],
+        [class*=' dark:bg-gray-900'] {
             background-color: @overlay !important;
         }
 
-        [class*=' bg-gray-800 '],
-        [class*=' dark:bg-gray-800 '] {
+        [class*=' bg-gray-800'],
+        [class*=' dark:bg-gray-800'] {
             background-color: @highlightMed !important;
         }
 
