@@ -20,9 +20,9 @@
 
 ## Gallery
 
-![Rosé Pine](https://i.imgur.com/aQEI3nl.png)
-![Rosé Pine Moon](https://i.imgur.com/LnG40xk.png)
-![Rosé Pine Dawn](https://i.imgur.com/POfHEVx.png)
+![Rosé Pine](assets/deafult.webp)
+![Rosé Pine Moon](assets/moon.webp)
+![Rosé Pine Dawn](assets/dawn.webp)
 
 ## Thanks to
 
