@@ -1,0 +1,1789 @@
+/* ==UserStyle==
+@name           Rosé Pine for Jira 
+@description    Soho vibes for Jira
+@version        0.0.1
+@license 		MIT
+@author         Adrian Karlén (https://github.com/adriankarlen/)
+@namespace      https://github.com/rose-pine/
+@homepageURL 	  https://github.com/rose-pine/userstyles
+@updateURL      https://github.com/rose-pine/userstyles/raw/main/jira/rose-pine.user.css
+
+@preprocessor   less
+@var select flavor "Flavor" ["default:Rosé Pine*", "moon:Rosé Pine Moon", "dawn:Rosé Pine Dawn"]
+@var select accentColor "Accent" ["love:Love*", "gold:Gold", "rose:Rose", "pine:Pine", "foam:Foam", "iris:Iris"]
+@var checkbox usefont "Use custom fonts font" 0
+==/UserStyle== */
+
+@-moz-document url-prefix("https://jira")
+{
+    @rosepine: {
+        @default: {
+            @base: #191724;
+            @surface: #1f1d2e;
+            @overlay: #26233a;
+            @muted: #6e6a86;
+            @subtle: #908caa;
+            @text: #e0def4;
+            @love: #eb6f92;
+            @gold: #f6c177;
+            @rose: #ebbcba;
+            @pine: #31748f;
+            @foam: #9ccfd8;
+            @iris: #c4a7e7;
+            @highlightLow: #21202e;
+            @highlightMed: #403d52;
+            @highlightHigh: #524f67;
+        };
+        @moon: {
+            @base: #232136;
+            @surface: #2a273f;
+            @overlay: #393552;
+            @muted: #6e6a86;
+            @subtle: #908caa;
+            @text: #e0def4;
+            @love: #eb6f92;
+            @gold: #f6c177;
+            @rose: #ea9a97;
+            @pine: #3e8fb0;
+            @foam: #9ccfd8;
+            @iris: #c4a7e7;
+            @highlightLow: #2a283e;
+            @highlightMed: #44415a;
+            @highlightHigh: #56526e;
+        };
+        @dawn: {
+            @base: #faf4ed;
+            @surface: #fffaf3;
+            @overlay: #f2e9e1;
+            @muted: #9893a5;
+            @subtle: #797593;
+            @text: #575279;
+            @love: #b4637a;
+            @gold: #ea9d34;
+            @rose: #d7827e;
+            @pine: #286983;
+            @foam: #56949f;
+            @iris: #907aa9;
+            @highlightLow: #f4ede8;
+            @highlightMed: #dfdad9;
+            @highlightHigh: #cecacd;
+        };
+    };
+
+    #rosepine(@flavor, @accentColor);
+
+    #rosepine(@lookup, @accent) {
+        @base: @rosepine[@@lookup][@base];
+        @surface: @rosepine[@@lookup][@surface];
+        @overlay: @rosepine[@@lookup][@overlay];
+        @muted: @rosepine[@@lookup][@muted];
+        @subtle: @rosepine[@@lookup][@subtle];
+        @text: @rosepine[@@lookup][@text];
+        @love: @rosepine[@@lookup][@love];
+        @gold: @rosepine[@@lookup][@gold];
+        @rose: @rosepine[@@lookup][@rose];
+        @pine: @rosepine[@@lookup][@pine];
+        @foam: @rosepine[@@lookup][@foam];
+        @iris: @rosepine[@@lookup][@iris];
+        @highlightLow: @rosepine[@@lookup][@highlightLow];
+        @highlightMed: @rosepine[@@lookup][@highlightMed];
+        @highlightHigh: @rosepine[@@lookup][@highlightHigh];
+        @accent-color: @rosepine[@@lookup][@@accent];
+    }
+
+    html,
+    body {
+        background-color: @base !important;
+
+        & when (@usefont=1) {
+            font-family: Inter, sans-serif;
+        }
+
+        --jira-issue-status-defailt-color: @text;
+        --jira-issue-status-default-bgcolor: @highlightMed;
+        --jira-issue-status-inprogress-color: @surface;
+        --jira-issue-status-inprogress-bgcolor: @accent-color;
+        --jira-issue-status-hover-inprogress-bgcolor: @accent-color;
+        --jira-issue-status-success-color: @text;
+        --jira-issue-status-success-bgcolor: @pine;
+        --jira-issue-status-hover-success-bgcolor: @pine;
+        --aui-button-default-bg-color: @highlightMed;
+        --aui-button-default-hover-bg-color: @highlightHigh;
+        --aui-button-default-text-color: @text;
+        --aui-button-default-selected-bg-color: @highlightHigh;
+        --aui-button-default-selected-text-color: @text;
+        --aui-button-subtle-text-color: @muted;
+        --aui-btn-default-border-color: @surface;
+        --aui-btn-primary-bg-color: @accent-color;
+        --aui-btn-primary-text-color: @surface;
+        --aui-button-primary-bg-color: @accent-color;
+        --aui-button-primary-text-color: @surface;
+        --aui-button-primary-hover-bg-color: @accent-color;
+        --aui-button-primary-active-text-color: @surface;
+        --aui-appheader-quicksearch-bg-color: @highlightLow;
+        --aui-appheader-quicksearch-border-color: @surface;
+        --aui-appheader-quicksearch-text-color: @text;
+        --aui-appheader-quicksearch-placeholder-text-color: @muted;
+        --aui-appheader-quicksearch-focus-bg-color: @base;
+        --aui-appheader-item-focus-text-color: @subtle;
+        --aui-focus: @accent-color;
+        --aui-itemheading-text: @muted;
+        --aui-table-row-text-color: @muted;
+        --aui-table-row-bg-color: @base;
+        --aui-lozenge-current-bg-color: @accent-color;
+        --aui-lozenge-current-text-color: @surface;
+        --aui-lozenge-success-bg-color: @pine;
+        --aui-lozenge-success-text-color: @text;
+        --aui-lozenge-bg-color: @highlightMed;
+        --aui-lozenge-current-subtle-text-color: @gold;
+        --aui-lozenge-new-subtle-text-color: @pine;
+        --aui-sidebar-bg-color: @overlay;
+        --aui-tooltip-bg-color: @surface;
+        --aui-tooltip-content-text-color: @text;
+        --aui-tabs-tab-text-color: @subtle;
+        --aui-tabs-tab-active-text-color: @accent-color;
+        --aui-tabs-tab-active-border-color: @accent-color;
+        --aui-tabs-tab-hover-text-color: @accent-color;
+        --aui-body-text: @muted;
+        --aui-body-background: @base;
+        --aui-page-background: @base;
+        --aui-page-border: @surface;
+        --aui-border: @surface;
+        --aui-border-strong: @highlightMed;
+        --aui-form-error-text-color: @love;
+        --aui-blanket: fade(@surface, 45%);
+        --ds-link: @foam;
+        --ds-background-input: @highlightMed;
+        --ds-border-input: @surface;
+        --ds-border: @surface;
+        --ds-text: @text;
+        --ds-surface: @highlightHigh;
+    }
+
+    #header > .aui-header.aui-dropdown2-trigger-group {
+        --aui-appheader-bg-color: @overlay;
+        --aui-appheader-text-color: @text;
+        --aui-button-primary-text-color: @surface;
+        --aui-button-primary-bg-color: @accent-color;
+        --aui-button-primary-hover-bg-color: @accent-color;
+        --aui-button-primary-active-bg-color: @accent-color;
+        --aui-button-primary-active-text-color: @surface;
+
+        border-color: @surface;
+
+        & .aui-nav > li > a {
+            --aui-item-focus-bg: @highlightMed;
+            --aui-item-active-bg: @highlightMed;
+            --aui-item-focus-text: @text;
+            --aui-item-active-text: @text;
+            --aui-appheader-item-focus-bg-color: @highlightMed;
+            --aui-appheader-item-focus-text-color: @text;
+            --aui-appheader-item-active-bg-color: @highlightMed;
+            --aui-appheader-item-active-text-color: @text;
+        }
+    }
+
+    a:not(.type-gh-epic-link > a) {
+        color: @accent-color;
+    }
+
+    em {
+        color: @muted !important;
+    }
+
+    textarea {
+        background: @highlightMed !important;
+        color: @text !important;
+    }
+
+    /* Track */
+    ::-webkit-scrollbar-track {
+        background: @muted !important;
+    }
+
+    /* Handle */
+    ::-webkit-scrollbar-thumb {
+        background: @surface !important;
+    }
+
+    /* Handle on hover */
+    ::-webkit-scrollbar-thumb:hover {
+        background: @surface !important;
+    }
+
+    ::selection {
+        background: @highlightHigh !important;
+    }
+
+    ::-moz-selection {
+        background: @highlightHigh !important;
+    }
+
+    .navigator-container {
+        background: @surface !important;
+    }
+
+    .aui-sidebar[aria-expanded='false'] .aui-sidebar-group:focus,
+    .aui-sidebar-submenu[aria-expanded='false'] .aui-sidebar-group:focus,
+    .aui-sidebar[aria-expanded='false'] .aui-sidebar-group:hover,
+    .aui-sidebar-submenu[aria-expanded='false'] .aui-sidebar-group:hover,
+    .aui-sidebar[aria-expanded='false'] .aui-sidebar-group.active,
+    .aui-sidebar-submenu[aria-expanded='false'] .aui-sidebar-group.active {
+        background: transparent !important;
+    }
+
+    .action-description {
+        color: @muted !important;
+    }
+
+    .issue-drop-zone__button {
+        color: @accent-color !important;
+    }
+
+    form.aui div.description {
+        color: @muted !important;
+    }
+
+    .jira-dialog .dialog-menu-group .dialog-menu-item.selected {
+        color: @highlightHigh !important;
+    }
+
+    .jira-dialog .dialog-menu-group .dialog-menu-item {
+        color: @accent-color !important;
+    }
+
+    .aui-select2-container.select2-container .select2-choice,
+    .aui-select2-container.select2-container a.select2-choice,
+    .aui-select2-container.select2-container .select2-choice:visited {
+        background: @base !important;
+        color: @text !important;
+        text-shadow: none !important;
+        border-color: @surface !important;
+    }
+
+    .ct-toolbar {
+        background: @base !important;
+    }
+
+    .jira-multi-select > .representation .value-item {
+        -moz-border-radius: 0 !important;
+        border-radius: 0 !important;
+        background: @base !important;
+        color: @accent-color !important;
+    }
+
+    .editable-field .overlay-icon {
+        background: @highlightMed !important;
+    }
+
+    .ghx-column-headers .ghx-release.ghx-disabled {
+        color: @highlightHigh !important;
+    }
+
+    .ghx-controls-filters dd a {
+        color: @text !important;
+    }
+
+    .ghx-controls-filters dd a.ghx-active,
+    .ghx-controls-filters dd .js-quickfilter-button.ghx-active {
+        background: @accent-color !important;
+        color: @surface !important;
+    }
+
+    .ghx-controls-filters dd a.ghx-active {
+        color: @text !important;
+        background: @highlightMed !important;
+    }
+
+    .ghx-controls-filters dd a:focus {
+        box-shadow: 0 0 0 2px @accent-color;
+    }
+
+    .ghx-controls-list dt {
+        color: @muted !important;
+    }
+
+    .ghx-sprint-info {
+        color: @muted !important;
+    }
+
+    .ghx-classification-item {
+        background-color: @base !important;
+    }
+
+    .ghx-classification-item:hover,
+    .ghx-classification-item.ghx-selected {
+        background-color: @highlightHigh;
+        border-color: transparent;
+    }
+
+    .ghx-classification-item > .ghx-inner {
+        border: none;
+    }
+
+    .ghx-ide-menu > li:hover {
+        background-color: @highlightHigh !important;
+    }
+
+    .ghx-classification-column,
+    #ghx-backlog-column {
+        border-color: @surface !important;
+    }
+
+    #dashboard,
+    .gadget .dashboard-item-content {
+        background-color: @base !important;
+        border-color: @base !important;
+    }
+
+    #dashboard > .vertical.tabs,
+    #dashboard > .dashboard-content {
+        background: @base;
+        border-right: 1px solid @surface;
+    }
+
+    .dashboard-content {
+        background-color: @surface !important;
+    }
+
+    .aui-page-header {
+        background-color: inherit !important;
+    }
+
+    #footer-logo {
+        background-color: @base !important;
+    }
+
+    #issue-content {
+        background-color: @base !important;
+    }
+
+    #issuetable,
+    .issue-table,
+    #issuetable > thead .active,
+    .issue-table > thead .active,
+    #issuetable > tbody > tr,
+    .issue-table > tbody > tr,
+    #issuetable > tfoot > tr,
+    .issue-table > tfoot > tr,
+    .issuerow {
+        background-color: @base !important;
+    }
+
+    .issue-table > thead > tr > th,
+    .issue-table > tbody > tr > td {
+        border-bottom: none !important;
+    }
+
+    .results-panel.navigator-item {
+        background: @base !important;
+    }
+
+    .rowHeader th {
+        border-top: 1px solid @surface;
+    }
+
+    .rowHeader th:hover {
+        background: @highlightMed !important;
+    }
+
+    .activity-item-description .user-content {
+        color: @muted !important;
+    }
+
+    .activity-item-description blockquote {
+        background-color: @highlightMed !important;
+        color: @highlightHigh !important;
+    }
+
+    .aui-item {
+        color: @text !important;
+    }
+
+    .ajs-layer {
+        background-color: @highlightMed !important;
+    }
+
+    .applinks-auth-request {
+        background-color: @highlightMed !important;
+    }
+
+    .ghx-sprint-info .ghx-linked-pages-trigger {
+        padding: 4px 10px !important;
+    }
+
+    .aui-button.ghx-dropdown-trigger:after,
+    .aui-buttons .aui-button.aui-button-primary.ghx-dropdown-trigger:after {
+        border-top-color: @text !important;
+    }
+
+    .aui-dropdown2.aui-style-default {
+        background: @base !important;
+    }
+
+    .aui-dropdown2.aui-style-default:hover .aui-dropdown2-checkbox,
+    .aui-dropdown2.aui-style-default:hover .aui-dropdown2-radio,
+    .aui-dropdown2.aui-style-default:hover a {
+        background: @base;
+    }
+
+    .aui-header .aui-quicksearch input[type] {
+        border-radius: 6px;
+    }
+
+    .aui-dropdown2.aui-style-default > strong,
+    .aui-dropdown2.aui-style-default .aui-dropdown2-section > strong,
+    .aui-dropdown2-heading {
+        color: @text !important;
+    }
+
+    .aui-sidebar[aria-expanded='false']
+        .aui-sidebar-group.aui-sidebar-group-actions:hover:after,
+    .aui-sidebar-submenu[aria-expanded='false']
+        .aui-sidebar-group.aui-sidebar-group-actions:hover:after,
+    .aui-sidebar[aria-expanded='false']
+        .aui-sidebar-group.aui-sidebar-group-actions:focus:after,
+    .aui-sidebar-submenu[aria-expanded='false']
+        .aui-sidebar-group.aui-sidebar-group-actions:focus:after,
+    .aui-sidebar[aria-expanded='false']
+        .aui-sidebar-group.aui-sidebar-group-actions.active:after,
+    .aui-sidebar-submenu[aria-expanded='false']
+        .aui-sidebar-group.aui-sidebar-group-actions.active:after {
+        background-color: @base !important;
+        border-color: @text !important;
+    }
+
+    .aui-label {
+        border: none !important;
+    }
+
+    .aui-dropdown2.aui-style-default [role='menuitem'],
+    .aui-dropdown2.aui-style-default [role='menuitemcheckbox'],
+    .aui-dropdown2.aui-style-default [role='menuitemradio'],
+    .aui-dropdown2.aui-style-default [role='radio'],
+    .aui-dropdown2.aui-style-default [role='checkbox'],
+    .aui-dropdown2.aui-style-default a {
+        color: @text !important;
+    }
+
+    .aui-dropdown2.aui-style-default:hover
+        .aui-dropdown2-checkbox:not(.aui-dropdown2-disabled):hover,
+    .aui-dropdown2.aui-style-default:hover
+        .aui-dropdown2-radio:not(.aui-dropdown2-disabled):hover,
+    .aui-dropdown2.aui-style-default:hover
+        a:not(.aui-dropdown2-disabled):hover {
+        text-decoration: underline !important;
+        color: @text !important;
+    }
+
+    .aui-lozenge.aui-lozenge-subtle {
+        background-color: @highlightHigh !important;
+    }
+
+    .aui-lozenge.aui-lozenge-subtle.jira-issue-status-lozenge-medium-gray,
+    .aui-lozenge.aui-lozenge-subtle.jira-issue-status-lozenge-foam-gray,
+    .aui-lozenge.aui-lozenge-subtle.jira-issue-status-lozenge-default,
+    .aui-lozenge.jira-issue-status-lozenge-foam-gray {
+        background-color: transparent !important;
+        border-color: @foam !important;
+        color: @foam !important;
+    }
+
+    .aui-lozenge.aui-lozenge-subtle.jira-issue-status-lozenge-pine,
+    .aui-lozenge.aui-lozenge-subtle.jira-issue-status-lozenge-success,
+    .aui-lozenge.jira-issue-status-lozenge-pine {
+        background-color: transparent !important;
+        border-color: @pine !important;
+        color: @pine !important;
+    }
+
+    .aui-lozenge.aui-lozenge-subtle.jira-issue-status-lozenge-gold,
+    .aui-lozenge.jira-issue-status-lozenge-gold {
+        background-color: transparent !important;
+        border-color: @gold !important;
+        color: @gold !important;
+    }
+
+    .aui-message.error,
+    .aui-message-error {
+        --aui-message-icolor: @love;
+        background: @highlightMed !important;
+        background-color: @highlightMed !important;
+        color: @muted !important;
+    }
+
+    .aui-message.hint,
+    .aui-message-hint,
+    .aui-message.info,
+    .aui-message-info {
+        --aui-message-icolor: @foam;
+        background-color: @highlightMed !important;
+        color: @muted !important;
+    }
+
+    .aui-message.warning,
+    .aui-message-warning {
+        --aui-message-icolor: @gold;
+        background: @highlightMed !important;
+        background-color: @highlightMed !important;
+        color: @muted !important;
+    }
+
+    .aui-sidebar-submenu .aui-navgroup-horizontal .aui-nav > li a:focus,
+    .aui-sidebar-submenu .aui-navgroup-vertical .aui-nav > li > a:focus,
+    .aui-sidebar-submenu .aui-nav-vertical > li > a:focus,
+    .aui-sidebar-submenu .aui-navgroup-horizontal .aui-nav > li a:hover,
+    .aui-sidebar-submenu .aui-navgroup-vertical .aui-nav > li > a:hover,
+    .aui-sidebar-submenu .aui-nav-vertical > li > a:hover {
+        background: transparent !important;
+    }
+
+    .aui-navgroup-horizontal .aui-nav > li a:focus,
+    .aui-navgroup-vertical .aui-nav > li > a:focus,
+    .aui-nav-vertical > li > a:focus,
+    .aui-navgroup-horizontal .aui-nav > li a:hover,
+    .aui-navgroup-vertical .aui-nav > li > a:hover,
+    .aui-nav-vertical > li > a:hover {
+        background: @base !important;
+    }
+
+    .aui-page-panel {
+        background-color: @base !important;
+    }
+
+    .aui-sidebar[aria-expanded='false']
+        .aui-sidebar-group.aui-sidebar-group-actions:after,
+    .aui-sidebar-submenu[aria-expanded='false']
+        .aui-sidebar-group.aui-sidebar-group-actions:after {
+        background-color: @base !important;
+        border: 1px solid @surface !important;
+    }
+
+    .aui-sidebar[aria-expanded='false']
+        .aui-navgroup-vertical
+        .aui-nav
+        .aui-nav-child-selected
+        a,
+    .aui-sidebar-submenu[aria-expanded='false']
+        .aui-navgroup-vertical
+        .aui-nav
+        .aui-nav-child-selected
+        a,
+    .aui-sidebar .aui-navgroup-vertical .aui-nav .aui-nav-selected a,
+    .aui-sidebar-submenu .aui-navgroup-vertical .aui-nav .aui-nav-selected a {
+        background-color: @base !important;
+    }
+
+    .aui-theme-default .gf-button-cell a.gf-button,
+    .gf-button {
+        background-color: @highlightMed !important;
+        background-image: none !important;
+    }
+
+    .aui-toolbar .toolbar-group .toolbar-trigger,
+    .aui-toolbar .aui-dd-parent a.aui-dd-trigger {
+        background-color: @highlightMed !important;
+        text-shadow: none !important;
+    }
+
+    .blender {
+        background-image: none !important;
+    }
+
+    .details-layout
+        .split-view
+        .list-results-panel
+        .list-panel
+        .issue-list
+        > li {
+        border-color: @surface;
+        &.focused {
+            background-color: @highlightMed;
+        }
+    }
+
+    .issue-search-header {
+        background-color: @base !important;
+    }
+
+    .editable-field .save-options {
+        background-color: @highlightMed !important;
+    }
+
+    .editable-field form.aui .text,
+    .editable-field form.aui .password,
+    .editable-field form.aui .textarea,
+    .editable-field form.aui .select,
+    .editable-field form.aui .multi-select {
+        box-shadow: none !important;
+    }
+
+    .editable-field:hover,
+    .editable-field.active {
+        background-color: @highlightMed !important;
+    }
+
+    .editable-field:hover,
+    .editable-field:focus-within,
+    .editable-field.saving {
+        box-shadow: 0 0 0 1px @surface !important;
+    }
+
+    .editable-field .overlay-icon {
+        border-color: @surface !important;
+    }
+
+    .gadget.color1 .dashboard-item-header,
+    .gadget-colors .color1 > a {
+        background-color: @highlightMed !important;
+    }
+
+    .ghx-backlog {
+        background-color: @base !important;
+    }
+
+    .ghx-backlog-container .ghx-backlog-header {
+        border: none !important;
+    }
+
+    .ghx-backlog-container,
+    .stuck {
+        background-color: @base !important;
+    }
+
+    .ghx-backlog-header .ghx-name {
+        color: @muted !important;
+    }
+
+    #gh:not(.ghx-sticky-sprint-headers-disabled)
+        .ghx-backlog-container
+        .ghx-backlog-header {
+        background: @base !important;
+    }
+
+    .ghx-column-headers .ghx-column {
+        border-bottom: 5px solid @highlightMed !important;
+    }
+
+    .ghx-columns .ghx-column {
+        background: @highlightLow !important;
+        border-radius: 4px !important;
+    }
+
+    .ghx-column-headers .ghx-column {
+        background: @base !important;
+    }
+
+    .ghx-detail-contents {
+        background: @base !important;
+    }
+
+    .ghx-detail-contents .ghx-detail-view-blanket {
+        background: @base !important;
+    }
+
+    .ghx-detail-issue {
+        color: @text !important;
+    }
+
+    .ghx-detail-nav-item b {
+        background: none !important;
+        color: inherit !important;
+    }
+
+    .ghx-detail-nav-item.ghx-selected {
+        background-color: @highlightMed !important;
+    }
+
+    .ghx-detail-nav-item.ghx-selected b {
+        background: none !important;
+    }
+
+    .ghx-detail-view.gh-editable-detail-view
+        #commentmodule
+        .tabwrap
+        .sortwrap
+        .issue-activity-sort-link {
+        background-color: @highlightMed !important;
+    }
+
+    .ghx-detail-view.gh-editable-detail-view .ghx-detail-issue .ghx-fa {
+        color: @muted !important;
+    }
+
+    .ghx-drag-in-progress
+        .ghx-backlog-container.ghx-open
+        .ghx-no-issues
+        .ghx-helper,
+    .ghx-drag-in-progress
+        .ghx-backlog-container.ghx-kanban-backlog
+        .ghx-no-issues
+        .ghx-helper {
+        background: @base !important;
+    }
+
+    .ghx-drag-in-progress
+        .ghx-backlog-container.ghx-open.ghx-target-hover
+        .ghx-no-issues
+        .ghx-helper,
+    .ghx-drag-in-progress
+        .ghx-backlog-container.ghx-kanban-backlog.ghx-target-hover
+        .ghx-no-issues
+        .ghx-helper,
+    .ghx-drag-in-progress
+        .ghx-backlog-container.ghx-open.ghx-target-hover
+        .ghx-plan-dropzone.ghx-dropzone-active,
+    .ghx-drag-in-progress
+        .ghx-backlog-container.ghx-kanban-backlog.ghx-target-hover
+        .ghx-plan-dropzone.ghx-dropzone-active {
+        background: @base !important;
+    }
+
+    .ghx-extra-field {
+        color: @subtle;
+    }
+
+    .ghx-inner {
+        color: @subtle;
+    }
+
+    .ghx-issue {
+        background-color: @base !important;
+        border-radius: 4px !important;
+    }
+
+    .ghx-issue.ghx-selected {
+        background-color: @surface !important;
+    }
+
+    .ghx-issue-compact {
+        background: @highlightLow;
+        color: @muted;
+        border-radius: 4px;
+        margin-top: unset;
+
+        &.ghx-selected {
+            background: @highlightMed;
+
+            .ghx-statistic-badge {
+                background: @highlightLow;
+            }
+        }
+
+        .ghx-end {
+            background: inherit !important;
+        }
+
+        &:hover {
+            background: @highlightHigh;
+
+            &.ghx-selected {
+                background: @highlightHigh;
+            }
+        }
+    }
+
+    .ghx-marker {
+        background-color: @base !important;
+    }
+
+    .ghx-plan-dropzone.ghx-dropzone-active {
+        background: repeating-linear-gradient(
+            45deg,
+            @base,
+            @base 10px,
+            @highlightMed 10px,
+            @highlightMed 20px
+        ) !important;
+    }
+
+    .ghx-swimlane-header .ghx-bandaid {
+        background-color: @highlightMed !important;
+        box-shadow: none !important;
+    }
+
+    .ghx-swimlane-header.ghx-selected {
+        background-color: @highlightMed !important;
+    }
+
+    .ghx-swimlane-header:after {
+        background-color: @highlightMed !important;
+        box-shadow: none !important;
+    }
+
+    .ghx-zone-cell {
+        border-color: @foam !important;
+        background: repeating-linear-gradient(
+            45deg,
+            @base,
+            @base 10px,
+            @highlightMed 10px,
+            @highlightMed 20px
+        ) !important;
+    }
+
+    .ghx-zone-row.ghx-target-hover .ghx-zone-cell {
+        border-color: @pine !important;
+    }
+
+    .ghx-zone-row.ghx-target-hover:first-child .ghx-zone-cell {
+        border-top-color: @pine !important;
+    }
+
+    .ghx-grabber {
+        background-color: @pine !important;
+        width: 4px !important;
+        border-top-left-radius: 4px !important;
+        border-bottom-left-radius: 4px !important;
+    }
+
+    .ghx-classification-progress .ghx-implemented {
+        background-color: @accent-color !important;
+    }
+
+    #ghx-backlog-search .aui-icon,
+    .ghx-classification-header .ghx-actions .ghx-add-button,
+    .ghx-classification-header .ghx-actions .ghx-close {
+        color: @subtle !important;
+    }
+
+    .ghx-classification-item .ghx-name .epic-more-button:hover {
+        color: @muted !important;
+    }
+
+    .ghx-sprint-meta .time {
+        color: @muted;
+    }
+
+    .iic-widget,
+    .iic-widget__form {
+        background-color: @base !important;
+    }
+
+    .iic-widget__summary {
+        color: @text !important;
+    }
+
+    .issue-body-content .module > .mod-header .ops {
+        background-color: @highlightMed !important;
+    }
+
+    .issue-body-content .module > .mod-header > h1,
+    .issue-body-content .module > .mod-header > h2,
+    .issue-body-content .module > .mod-header > h3,
+    .issue-body-content .module > .mod-header > h4,
+    .issue-body-content .module > .mod-header > h5,
+    .issue-body-content .module > .mod-header > h6 {
+        background-color: @base !important;
+    }
+
+    .issue-data-block {
+        background-color: @highlightMed !important;
+        border-radius: 8px !important;
+        border-bottom: none !important;
+        margin-bottom: 8px !important;
+    }
+
+    .issue-header .issue-header-content > .command-bar {
+        background-color: @base !important;
+    }
+
+    .issue-view > .issue-container .issue-header {
+        background-color: @base !important;
+    }
+
+    .item-attachments .attachment-content {
+        background-color: @highlightMed !important;
+    }
+
+    .item-attachments .attachment-content .attachment-thumb {
+        border-color: @surface !important;
+    }
+
+    .jira-dialog {
+        background: @base;
+        border-color: @surface;
+    }
+
+    .jira-dialog .buttons-container {
+        background: @base;
+        border-color: @surface;
+
+        & .hint-container {
+            color: @highlightHigh;
+        }
+    }
+
+    .jira-dialog .jira-dialog-content {
+        background: @base;
+    }
+
+    .jira-dialog .jira-dialog-heading {
+        background: @base;
+        border-color: @surface;
+        & h2 {
+            color: @text;
+        }
+    }
+
+    .jira-multi-select > .icon.drop-menu {
+        background: @highlightMed !important;
+    }
+
+    .jira-multi-select > .icon.drop-menu:after {
+        color: @text !important;
+    }
+
+    .links-list dt {
+        border: none !important;
+    }
+
+    .links-list dd {
+        background-color: @highlightMed !important;
+        border: 1px solid @surface !important;
+    }
+
+    .loading {
+        background-color: @base !important;
+    }
+
+    .navigator-search {
+        background-color: @base !important;
+    }
+
+    .no-results {
+        background: @highlightMed !important;
+        background-color: @highlightMed !important;
+        color: @muted !important;
+    }
+
+    .ops li a.drop-menu.active,
+    .ops li a.drop-menu.active:hover,
+    .ops li a.drop-menu:hover {
+        background-color: @highlightMed !important;
+    }
+
+    .page-type-split .navigator-body {
+        background-color: @base !important;
+    }
+
+    .page-type-split .navigator-group {
+        background-color: @base !important;
+    }
+
+    .preformatted,
+    .code {
+        background: @highlightMed !important;
+    }
+
+    .aui-list li.disabled a:link,
+    .aui-list li.disabled a:visited,
+    .aui-list li.disabled a:focus,
+    .aui-list li.disabled a:hover,
+    .aui-list li.disabled.active a:link,
+    .aui-list li.disabled.active a:visited,
+    .aui-list li.disabled.active a:focus,
+    .aui-list li.disabled.active a:hover,
+    .aui-list li a.disabled:link,
+    .aui-list li a.disabled:visited,
+    .aui-list li a.disabled:focus,
+    .aui-list li a.disabled:hover,
+    .aui-list li.active a.disabled:link,
+    .aui-list li.active a.disabled:visited,
+    .aui-list li.active a.disabled:focus,
+    .aui-list li.active a.disabled:hover {
+        background-color: transparent !important;
+    }
+
+    .property-list .item .name,
+    .item-details dl > dt {
+        color: @text !important;
+    }
+
+    .saved-search-selector {
+        background-color: @base !important;
+    }
+
+    .gf-testing-label {
+        color: @highlightHigh !important;
+    }
+
+    .split-view #stalker,
+    .split-view .issue-header {
+        background-color: @base !important;
+    }
+
+    .tabwrap > .tabs.horizontal > li {
+        background-color: @base !important;
+    }
+
+    .tabwrap > .tabs.horizontal > li.active > a,
+    .tabwrap > .tabs.horizontal > li.active > strong {
+        background-color: @base !important;
+    }
+
+    .trigger-label {
+        color: @text !important;
+    }
+
+    .tabwrap > ul.tabs > li a,
+    .tabwrap > ul.tabs > li a:link,
+    .tabwrap > ul.tabs > li a:visited {
+        background-color: @base !important;
+    }
+
+    .wiki-edit-toolbar,
+    .rte-container .tox .tox-statusbar {
+        border: 1px solid @surface !important;
+        background-color: @highlightMed !important;
+    }
+
+    .rte-container {
+        background: @highlightMed !important;
+    }
+
+    .aui-nav-heading,
+    .aui-navgroup-vertical .aui-nav-heading {
+        color: @text !important;
+    }
+
+    aui-inline-dialog .aui-inline-dialog-contents,
+    .aui-inline-dialog .aui-inline-dialog-contents,
+    aui-inline-dialog .contents,
+    .aui-inline-dialog .contents {
+        background-color: @highlightMed !important;
+    }
+
+    body,
+    html {
+        color: @text !important;
+    }
+
+    button.aui-button {
+        color: @text !important;
+    }
+
+    form.aui .text,
+    form.aui .password,
+    form.aui .upfile,
+    form.aui .textarea,
+    form.aui .select,
+    form.aui .multi-select,
+    form.aui .aui-select2-container,
+    form.aui:not(.aui-legacy-forms) .password,
+    form.aui:not(.aui-legacy-forms) .select,
+    form.aui:not(.aui-legacy-forms) .text,
+    form.aui:not(.aui-legacy-forms) .textarea {
+        background-color: @highlightMed !important;
+        border: 1px solid @surface !important;
+        color: @text !important;
+    }
+
+    .richeditor-cover ~ .rte-container:not(:empty) {
+        border: 1px solid @surface !important;
+    }
+
+    .wiki-edit-toolbar .aui-buttons + .aui-buttons {
+        border-left: 1px solid @surface !important;
+    }
+
+    .wiki-edit-toolbar .aui-buttons .aui-button {
+        border: none;
+    }
+
+    .aui-dialog .dialog-page-body {
+        background: @base !important;
+    }
+
+    .aui-dialog2-header,
+    .aui-dialog2-footer {
+        background: @surface !important;
+    }
+
+    .aui-dialog2-content {
+        background: @surface !important;
+    }
+
+    form.aui:not(.aui-legacy-forms) > input {
+        border: 2px solid @surface !important;
+    }
+
+    .aui-popup {
+        background: @base !important;
+    }
+
+    .aui-dialog {
+        background: @highlightMed !important;
+    }
+
+    form.aui legend,
+    form.aui label {
+        color: @text !important;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5 {
+        color: @text;
+        & when (@usefont=1) {
+            font-family: Poppins, Inter, sans-serif;
+        }
+    }
+
+    .ghx-pool-column,
+    .ghx-pool,
+    .ghx-swimlane,
+    .ghx-column,
+    #ghx-header,
+    .ghx-content-main,
+    #ghx-column-header-group.ghx-fixed,
+    #ghx-pool {
+        background-color: @base;
+        & h1,
+        & h2,
+        & h3,
+        & h4,
+        & h5 {
+            color: @text;
+        }
+    }
+
+    span.subnav-page-header {
+        color: @highlightHigh;
+        font-weight: 600;
+    }
+
+    .subnavigator-title {
+        font-weight: 600;
+    }
+
+    table.aui > thead {
+        border-color: @surface;
+    }
+
+    table.aui > tbody > tr > th {
+        background-color: @highlightMed !important;
+        color: @text !important;
+    }
+    table.aui:not(.aui-table-list) > tbody > tr > td,
+    table.aui:not(.aui-table-list) > tbody > tr > th,
+    table.aui:not(.aui-table-list) > tfoot > tr > td,
+    table.aui:not(.aui-table-list) > tfoot > tr > th {
+        border-color: @surface;
+    }
+
+    .aui-list a.active,
+    .aui-list .aui-list-item.active,
+    .aui-list a.active,
+    .aui-list .aui-list-item.active > a {
+        background: @highlightHigh !important;
+    }
+
+    .aui-navgroup-vertical .aui-nav > li > a,
+    .aui-nav-vertical > li > a,
+    .aui-list a:link {
+        color: @text !important;
+    }
+
+    .aui-navgroup-vertical .aui-nav > li > a:hover,
+    .aui-nav-vertical > li > a:hover,
+    .aui-list a:hover {
+        text-decoration: underline !important;
+    }
+
+    .aui-button.aui-dropdown2-trigger:not(
+            .aui-dropdown2-trigger-arrowless
+        )::after,
+    .aui-buttons
+        .aui-button.aui-button-primary.aui-dropdown2-trigger:not(
+            .aui-dropdown2-trigger-arrowless
+        )::after {
+        border-top-color: @text !important;
+    }
+
+    .ghx-parent-stub {
+        background: @highlightHigh !important;
+    }
+
+    .ghx-parent-stub .ghx-summary,
+    .ghx-parent-stub .ghx-key {
+        color: @muted !important;
+    }
+
+    span.pc.highlightChanges {
+        background-color: transparent !important;
+    }
+
+    span.highlightChanges {
+        background-color: transparent !important;
+    }
+
+    .code-quote,
+    .code-quote .code-keyword,
+    .code-quote .code-object {
+        color: @pine !important;
+    }
+
+    .code-keyword {
+        color: @accent-color !important;
+    }
+
+    .wiki-button-bar,
+    .sd-rte-bar {
+        background: @base !important;
+        color: @text !important;
+        border-color: @surface !important;
+    }
+
+    .panel,
+    body#tinymce .plain.panel,
+    body#tinymce .code.panel,
+    body#tinymce .noformat.panel,
+    .preformatted,
+    .code,
+    body#tinymce pre,
+    body#tinymce pre {
+        background: @highlightMed !important;
+        color: @text !important;
+        border-color: @surface !important;
+    }
+
+    td.confluenceTd,
+    th.confluenceTh {
+        background: @highlightMed !important;
+        color: @text !important;
+        border-color: @surface !important;
+    }
+
+    body#tinymce table td,
+    body#tinymce table th {
+        color: @muted !important;
+        border-color: @surface !important;
+        background: @base !important;
+    }
+
+    #ghx-update-message,
+    .ghx-tv-message {
+        background: @highlightHigh !important;
+        color: @text !important;
+        border-color: @surface !important;
+    }
+
+    .upload-progress-bar .upload-progress-bar__file-name {
+        color: @text !important;
+    }
+
+    .upload-progress-bar .upload-progress-bar__file-size {
+        color: @text !important;
+        box-shadow: none !important;
+    }
+
+    #ghx-backlog .ghx-parent-group .ghx-subtask-group {
+        background: @base !important;
+    }
+
+    .ghx-issue-content .ghx-end {
+        box-shadow: none !important;
+    }
+
+    .contained-content,
+    .navigator-body {
+        background: @base !important;
+    }
+
+    .aui-button::after,
+    .aui-dropdown-trigger::after {
+        border-top-color: @text !important;
+    }
+
+    .issuenav-share,
+    .header-operations * {
+        color: @text !important;
+        font-weight: normal !important;
+    }
+
+    pre,
+    code {
+        background: @highlightMed !important;
+        color: @text !important;
+    }
+
+    #ghx-column-header-group,
+    .ghx-swimlane-header {
+        background: @base !important;
+    }
+
+    #ghx-operations,
+    .issue-search > .aui-page-header {
+        border-bottom: 2px solid @surface !important;
+    }
+
+    .aui-sidebar-footer {
+        border-top: 1px solid @surface !important;
+    }
+
+    .aui-page-panel {
+        border-bottom: 1px solid @surface;
+    }
+
+    .ui-sidebar {
+        background-color: @surface !important;
+    }
+
+    .ui-sidebar:hover {
+        background-color: @accent-color !important;
+    }
+
+    .inline-issue-create-container {
+        border-top: 2px solid @surface !important;
+        background-color: @base !important;
+    }
+
+    .issue-link-summary {
+        color: @text !important;
+    }
+
+    .count-pagination {
+        background-color: @base !important;
+    }
+
+    .aui-tabs.horizontal-tabs > .tabs-menu::before {
+        background: @base !important;
+    }
+
+    #announcement-banner {
+        background-color: @overlay !important;
+        border-bottom: 1px solid @surface !important;
+        & when (@usefont=1) {
+            font-family: Poppins, Inter, sans-serif;
+        }
+
+        & > div {
+            color: @muted !important;
+            border-color: @surface !important;
+            background-color: @highlightMed !important;
+        }
+    }
+    .ghx-label-1 {
+        background-color: @highlightMed !important;
+        color: @text !important;
+    }
+
+    #jira .ghx-label-1-border {
+        border-right: 4px solid @highlightMed !important;
+    }
+
+    .ghx-label-2,
+    .ghx-label-3 {
+        background-color: @gold !important;
+        color: @base !important;
+    }
+
+    #jira .ghx-label-2-border,
+    #jira .ghx-label-3-border {
+        border-right: 4px solid @gold !important;
+    }
+
+    .ghx-label-4,
+    .ghx-label-10 {
+        background-color: @foam !important;
+        color: @base !important;
+    }
+
+    #jira .ghx-label-4-border,
+    #jira .ghx-label-10-border {
+        border-right: 4px solid @foam !important;
+    }
+
+    .ghx-label-5,
+    .ghx-label-11 {
+        background-color: @rose !important;
+        color: @base !important;
+    }
+
+    #jira .ghx-label-5-border,
+    #jira .ghx-label-11-border {
+        border-right: 4px solid @rose !important;
+    }
+
+    .ghx-label-6,
+    .ghx-label-13 {
+        background-color: @pine !important;
+        color: @text !important;
+
+        & when (@flavor=dawn) {
+            color: @base !important;
+        }
+    }
+
+    #jira .ghx-label-6-border,
+    #jira .ghx-label-13-border {
+        border-right: 4px solid @pine !important;
+    }
+
+    .ghx-label-7,
+    .ghx-label-8 {
+        background-color: @iris !important;
+        color: @base !important;
+    }
+
+    #jira .ghx-label-7-border,
+    #jira .ghx-label-8-border {
+        border-right: 4px solid @iris !important;
+    }
+
+    .ghx-label-9,
+    .ghx-label-14 {
+        background-color: @love !important;
+        color: @base !important;
+    }
+
+    #jira .ghx-label-9-border,
+    #jira .ghx-label-14-border {
+        border-right: 4px solid @love !important;
+    }
+
+    .ghx-label-12 {
+        background-color: @muted !important;
+        color: @text !important;
+
+        & when (@flavor=dawn) {
+            color: @base !important;
+        }
+    }
+
+    #jira .ghx-label-12-border {
+        border-right: 4px solid @muted !important;
+    }
+
+    form#issue-filter .check-list-item.active,
+    form.aui .check-list-item.active,
+    .check-list-item.active,
+    .check-list-group-footer.active {
+        background-color: @surface !important;
+        color: @text !important;
+    }
+
+    check-list-select .aui-list-scroll .aui-list-section-footer {
+        background-color: @surface !important;
+        color: @text !important;
+    }
+
+    .panelContent {
+        background-color: inherit !important;
+    }
+
+    #addcomment.sticky {
+        background-color: @base !important;
+        border-top: 2px solid @surface !important;
+    }
+
+    #addcomment.sticky #footer-comment-button {
+        border-color: @surface !important;
+        background: @highlightMed !important;
+        color: @text !important;
+    }
+
+    .rlabs-panel-box-empty {
+        border-radius: 8px !important;
+        border-color: @surface !important;
+    }
+
+    kbd {
+        background-color: @highlightMed !important;
+        color: @text !important;
+        border-color: @surface !important;
+        text-shadow: none !important;
+        box-shadow: none !important;
+        -webkit-box-shadow: none !important;
+        -moz-box-shadow: none !important;
+    }
+
+    .jac-intro-container {
+        tbody {
+            tr:hover {
+                background-color: @highlightMed !important;
+            }
+
+            td {
+                border-color: @surface !important;
+            }
+        }
+
+        .jac-status {
+            background-color: @highlightMed !important;
+            color: @text !important;
+        }
+    }
+
+    .aui-dropdown2.aui-style-default:hover
+        .aui-dropdown2-checkbox:not(.aui-dropdown2-disabled):hover,
+    .aui-dropdown2.aui-style-default:hover
+        .aui-dropdown2-radio:not(.aui-dropdown2-disabled):hover,
+    .aui-dropdown2.aui-style-default:hover
+        a:not(.aui-dropdown2-disabled):hover {
+        background-color: @highlightMed !important;
+    }
+
+    .aui-dropdown2 {
+        padding: 0px !important;
+    }
+
+    .ghx-detail-nav-item .aui-icon {
+        color: @highlightHigh !important;
+    }
+
+    .ghx-issue .ghx-key-link {
+        color: @accent-color;
+    }
+
+    .quicksearch-dropdown {
+        background-color: @highlightMed !important;
+        border-radius: 6px;
+        border: 1px @surface solid;
+
+        & .icon-container {
+            color: @accent-color !important;
+        }
+
+        & .icon-container.quick-search-active {
+            background-color: @highlightHigh !important;
+        }
+    }
+
+    .quick-search-subtitle-container {
+        color: @subtle !important;
+    }
+
+    .dynamic-table tr:hover {
+        background-color: @highlightMed !important;
+    }
+
+    .whats-new-container,
+    table.top-container {
+        border-color: @surface;
+    }
+
+    .versions-table .progressbar-container {
+        & .progressbar__entry_complete {
+            background: @pine;
+        }
+        .progressbar__entry_in-progress {
+            background: @foam;
+        }
+        & .versions-table .progressbar-container .progressbar__entry_to-do {
+            background: @highlightHigh;
+        }
+        & .progressbar__entry + .progressbar__entry {
+            border-color: @surface;
+        }
+    }
+
+    .progress-statuses__table__badge_complete {
+        background: @pine;
+        color: @surface;
+    }
+
+    .progress-statuses__table__badge_in-progress {
+        background: @foam;
+        color: @surface;
+    }
+
+    .progress-statuses__table__badge_to-do {
+        background: @highlightHigh;
+        color: @text;
+    }
+
+    .aui-button.aui-button-link {
+        padding: 4px 10px;
+        color: @foam;
+        &:active,
+        &:focus,
+        &:hover,
+        &:visited {
+            color: @foam;
+        }
+    }
+
+    .aui-theme-default .list-ordering a.order-by {
+        color: @text;
+        &:link,
+        &:visited {
+            color: @text;
+        }
+    }
+
+    .aui-sidebar .aui-page-header-main .aui-item.project-title a {
+        color: @text;
+    }
+
+    aui-badge,
+    .aui-badge {
+        background-color: @highlightHigh;
+        color: @text;
+
+        &.ghx-not-started {
+            background: @highlightHigh;
+            color: @text;
+        }
+
+        &.ghx-in-progress {
+            background: @foam;
+            color: @surface;
+        }
+
+        &.ghx-done {
+            background: @pine;
+            color: @surface;
+        }
+    }
+
+    .aui-list a:visited {
+        color: @foam;
+    }
+
+    #structure {
+        & .tableHeader .th-ctl .th-ctl-hi {
+            background-color: @highlightMed;
+        }
+        & .st-focused .tr.s-focused,
+        & .st-details-focused .tr.s-focused {
+            background-color: @overlay;
+        }
+        & .tr,
+        & .sechead,
+        & .foot {
+            border-color: @surface;
+        }
+    }
+
+    #st-edit-column .grad,
+    #structure .grad {
+        display: none;
+    }
+
+    .s-th-handle {
+        background-color: @base;
+        color: @text;
+    }
+
+    .rlabs-customfield-viewdialog-object {
+        background-color: @highlightMed;
+        color: @text;
+        border-color: @surface;
+
+        &:hover {
+            background-color: @highlightMed;
+        }
+    }
+
+    .rlabs-jira-overview-item div.rlabs-jira-title {
+        color: @subtle;
+    }
+
+    ._30jD7Sgf0G._14lnIkFvBq._3RyvKZTaDQ {
+        background-color: @love;
+        color: @surface;
+    }
+
+    .W6hSfDV_mv {
+        color: @text;
+    }
+
+    ._3et9awa3jh {
+        color: @subtle;
+    }
+
+    /* Gadget colors */
+    .gadget .gadget-menu .aui-icon {
+        color: @surface;
+    }
+
+    .gadget.color1 .dashboard-item-header {
+        background-color: @highlightMed;
+    }
+
+    .gadget.color2 .dashboard-item-header {
+        background-color: @love;
+        & > * {
+            color: @surface;
+        }
+    }
+
+    .gadget.color3 .dashboard-item-header {
+        background-color: @gold;
+        & > * {
+            color: @surface;
+        }
+    }
+
+    .gadget.color4 .dashboard-item-header {
+        background-color: @pine;
+        & > * {
+            color: @surface;
+        }
+    }
+
+    .ghx-backlog-container .ghx-issues .ghx-helper,
+    .ghx-backlog-container .ghx-helper {
+        border-color: @highlightHigh;
+    }
+
+    .ghx-description {
+        color: @highlightHigh;
+    }
+
+    #content-wrapper {
+        background-color: @base;
+    }
+
+    #kb-results {
+        background-color: @base;
+    }
+
+    .cv-custom-help-center-branding .cp-header .cv-header-nav-button {
+        background: @highlightMed;
+        color: @love;
+
+        &:hover {
+            background: @highlightHigh;
+        }
+    }
+
+    .cp-header-secondary .cv-header-nav-button {
+        border-color: @surface;
+    }
+
+    .cv-custom-help-center-branding .cp-header .cp-badge,
+    .cv-custom-help-center-branding .cv-portal-announcement {
+        background-image: unset !important;
+        background-color: @love;
+        color: @surface;
+    }
+
+    .iFMuiI:hover {
+        background-color: @highlightMed;
+    }
+
+    .cp-header-secondary .cp-user-profile .cp-avatar {
+        background-color: @surface;
+        border: 1px solid @surface;
+    }
+
+    #cp-request-share-root > div > div > div {
+        background-color: @base;
+    }
+
+    .ghx-detail-view.gh-editable-detail-view
+        .ghx-detail-issue
+        .module.toggle-wrap
+        .toggle-title {
+        color: @muted;
+    }
+
+    .aui-button > svg > g > path {
+        fill: @muted;
+    }
+}
