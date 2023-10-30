@@ -1260,12 +1260,12 @@
     }
 
     .ghx-parent-stub {
-        background: @highlightHigh !important;
+        background: @overlay !important;
     }
 
     .ghx-parent-stub .ghx-summary,
     .ghx-parent-stub .ghx-key {
-        color: @muted !important;
+        color: @text !important;
     }
 
     span.pc.highlightChanges {
@@ -1337,7 +1337,10 @@
     }
 
     #ghx-backlog .ghx-parent-group .ghx-subtask-group {
-        background: @base !important;
+        background: @base;
+    }
+    .ghx-parent-group.ghx-away {
+        background: @overlay;
     }
 
     .ghx-issue-content .ghx-end {
