@@ -99,7 +99,11 @@
             font-family: Inter, sans-serif;
         }
 
-        --jira-issue-status-defailt-color: @text;
+        & when not(@flavor=dawn) {
+            color-scheme: dark;
+        }
+
+        --jira-issue-status-default-color: @text;
         --jira-issue-status-default-bgcolor: @highlightMed;
         --jira-issue-status-inprogress-color: @surface;
         --jira-issue-status-inprogress-bgcolor: @accent-color;
@@ -112,6 +116,8 @@
         --aui-button-default-text-color: @text;
         --aui-button-default-selected-bg-color: @highlightHigh;
         --aui-button-default-selected-text-color: @text;
+        --aui-button-subtle-bg-color: transparent;
+        --aui-button-subtle-border-color: transparent;
         --aui-button-subtle-text-color: @muted;
         --aui-btn-default-border-color: @surface;
         --aui-btn-primary-bg-color: @accent-color;
@@ -120,7 +126,7 @@
         --aui-button-primary-text-color: @surface;
         --aui-button-primary-hover-bg-color: @accent-color;
         --aui-button-primary-active-text-color: @surface;
-        --aui-appheader-quicksearch-bg-color: @highlightLow;
+        --aui-appheader-quicksearch-bg-color: @highlightMed;
         --aui-appheader-quicksearch-border-color: @surface;
         --aui-appheader-quicksearch-text-color: @text;
         --aui-appheader-quicksearch-placeholder-text-color: @muted;
@@ -137,7 +143,7 @@
         --aui-lozenge-bg-color: @highlightMed;
         --aui-lozenge-current-subtle-text-color: @gold;
         --aui-lozenge-new-subtle-text-color: @pine;
-        --aui-sidebar-bg-color: @overlay;
+        --aui-sidebar-bg-color: @surface;
         --aui-tooltip-bg-color: @surface;
         --aui-tooltip-content-text-color: @text;
         --aui-tabs-tab-text-color: @subtle;
@@ -152,6 +158,32 @@
         --aui-border-strong: @highlightMed;
         --aui-form-error-text-color: @love;
         --aui-blanket: fade(@surface, 45%);
+        --aui-flag-bg-color: @surface;
+        --aui-flag-success-color: @pine;
+        --aui-flag-error-color: @love;
+        --aui-flag-info-color: @foam;
+        --aui-dropdown-bg-color: @overlay;
+        --aui-dropdown-border-color: @highlightLow;
+        --aui-dialog-border-color: @highlightMed;
+        --aui-tail-w: @highlightMed;
+        --aui-inline-dialog-bg-color: @highlightMed;
+        --aui-inline-dialog-border-color: @highlightMed;
+        --aui-form-field-border-color: @highlightMed;
+        --aui-form-field-hover-border-color: @highlightMed;
+        --aui-form-field-default-text-color: @text;
+        --aui-form-field-default-bg-color: @surface;
+        --aui-form-field-hover-bg-color: @highlightMed;
+        --aui-form-field-focus-bg-color: @highlightHigh;
+        --aui-form-select-bg-color: @surface;
+        --aui-form-select-border-color: @surface;
+        --aui-form-select-hover-bg-color: @highlightMed;
+        --aui-form-checkbox-radio-hover-bg-color: @accent-color;
+        --aui-form-checkbox-radio-active-bg-color: @surface;
+        --aui-form-optgroup-text-color: @subtle;
+        --aui-form-optgroup-bg-color: @base;
+        --aui-form-option-bg-color: @surface;
+        --aui-form-pre-bg-color: @surface;
+        --aui-form-field-autofilled-bg-color: @highlightHigh;
         --ds-link: @foam;
         --ds-background-input: @highlightMed;
         --ds-border-input: @surface;
@@ -161,7 +193,7 @@
     }
 
     #header > .aui-header.aui-dropdown2-trigger-group {
-        --aui-appheader-bg-color: @overlay;
+        --aui-appheader-bg-color: @surface;
         --aui-appheader-text-color: @text;
         --aui-button-primary-text-color: @surface;
         --aui-button-primary-bg-color: @accent-color;
@@ -198,17 +230,17 @@
 
     /* Track */
     ::-webkit-scrollbar-track {
-        background: @muted !important;
+        background: @base !important;
     }
 
     /* Handle */
     ::-webkit-scrollbar-thumb {
-        background: @surface !important;
+        background: @highlightHigh !important;
     }
 
     /* Handle on hover */
     ::-webkit-scrollbar-thumb:hover {
-        background: @surface !important;
+        background: @highlightHigh !important;
     }
 
     ::selection {
@@ -396,6 +428,10 @@
         color: @highlightHigh !important;
     }
 
+    .sortwrap .activity-tab-sort-label {
+        color: @text !important;
+    }
+
     .aui-item {
         color: @text !important;
     }
@@ -450,7 +486,7 @@
     .aui-sidebar-submenu[aria-expanded='false']
         .aui-sidebar-group.aui-sidebar-group-actions.active:after {
         background-color: @base !important;
-        border-color: @text !important;
+        border-color: @surface !important;
     }
 
     .aui-label {
@@ -607,7 +643,8 @@
     }
 
     .editable-field .save-options {
-        background-color: @highlightMed !important;
+        background-color: @base;
+        border-color: @surface;
     }
 
     .editable-field form.aui .text,
@@ -798,7 +835,7 @@
         }
     }
 
-    .ghx-issue.ghx-selected.ghx-flagged .ghx-issue-compact {
+    .ghx-issue-compact {
         background: @highlightLow;
         color: @muted;
         border-radius: 4px;
@@ -887,7 +924,7 @@
     }
 
     .ghx-grabber {
-        background-color: @pine !important;
+        background-color: @accent-color !important;
         width: 4px !important;
         border-top-left-radius: 4px !important;
         border-bottom-left-radius: 4px !important;
@@ -921,7 +958,7 @@
     }
 
     .issue-body-content .module > .mod-header .ops {
-        background-color: @highlightMed !important;
+        background-color: transparent;
     }
 
     .issue-body-content .module > .mod-header > h1,
@@ -934,7 +971,7 @@
     }
 
     .issue-data-block {
-        background-color: @highlightMed !important;
+        background-color: @overlay !important;
         border-radius: 8px !important;
         border-bottom: none !important;
         margin-bottom: 8px !important;
@@ -1091,7 +1128,11 @@
     .wiki-edit-toolbar,
     .rte-container .tox .tox-statusbar {
         border: 1px solid @surface !important;
-        background-color: @highlightMed !important;
+        background-color: @base;
+    }
+
+    .wiki-edit-separate-section {
+        border-color: @highlightHigh;
     }
 
     .rte-container {
@@ -1535,14 +1576,19 @@
     }
 
     #addcomment.sticky {
-        background-color: @base !important;
-        border-top: 2px solid @surface !important;
+        background-color: @base;
+        border-top: 2px solid @surface;
     }
 
     #addcomment.sticky #footer-comment-button {
         border-color: @surface !important;
         background: @highlightMed !important;
         color: @text !important;
+    }
+
+    #addcomment.sticky.ghx-detail-section {
+        right: 32px;
+        // left: 20px;
     }
 
     .rlabs-panel-box-empty {
@@ -1716,13 +1762,15 @@
         & .foot {
             border-color: @surface;
         }
+        & .th-ctls > div.s-resizer a.handle {
+            background-color: @highlightHigh;
+        }
+        & .grad {
+            display: none;
+        }
     }
 
     #st-edit-column .grad,
-    #structure .grad {
-        display: none;
-    }
-
     .s-th-handle {
         background-color: @base;
         color: @text;
@@ -1844,5 +1892,24 @@
 
     .aui-button > svg > g > path {
         fill: @muted;
+    }
+
+    .s-ph-container .st-query-input .error-status.s-success {
+        color: @pine;
+    }
+
+    #structure .s-ph-primary-input {
+        border-color: @highlightMed;
+        &::placeholder {
+            color: @muted;
+        }
+    }
+
+    #structure .aui-button.th-ccnf-action:not(.active) {
+        background: transparent;
+    }
+
+    .issue-drop-zone {
+        border-color: @highlightHigh;
     }
 }
