@@ -13,8 +13,8 @@
 
 1. Install the [Stylus](https://github.com/openstyles/stylus) extension for [Chrome](https://chrome.google.com/webstore/detail/stylus/clngdbkpkpeebahjckkjfobafhncgmne) or [Firefox](https://addons.mozilla.org/en-GB/firefox/addon/styl-us/).
 2. Downloading Userstyles:
-    - Open the folder of the userstyle you want to install.
-    - Then, click on the "Stylus Install" button or open `rose-pine.user.css` and click on "Raw."
+   - Open the folder of the userstyle you want to install.
+   - Then, click on the "Stylus Install" button or open `rose-pine.user.css` and click on "Raw."
 3. Optionally, you can configure any available options that you want to change. Then, click on the "Install Style" button.
 4. Some might require extra steps to work correctly, so make sure to check its readme page for additional information.
 
@@ -22,6 +22,6 @@
 
 **Productivity**
 
--   [ChatGPT](https://github.com/rose-pine/userstyles/tree/main/chatgpt)
--   [GitHub](https://github.com/rose-pine/userstyles/tree/main/github)
--   [Proton](https://github.com/rose-pine/userstyles/tree/main/proton)
+- [ChatGPT](https://github.com/rose-pine/userstyles/tree/main/chatgpt)
+- [GitHub](https://github.com/rose-pine/userstyles/tree/main/github)
+- [Proton](https://github.com/rose-pine/userstyles/tree/main/proton)
