@@ -340,7 +340,7 @@
     }
 
     .ghx-classification-item {
-        background-color: @base !important;
+        background-color: @base;
     }
 
     .ghx-classification-item:hover,
