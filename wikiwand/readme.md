@@ -26,5 +26,5 @@
 
 ## Thanks to
 
-- [rubyowo](https://github.com/rubyowo) Creating the original github theme for catppuccin
-- [adriankarlen](https://github.com/adriankarlen) Adapt color palette for Rosé Pine
+-   [Tnixc](https://github.com/tnixco) Maintainer of the original wikiwand theme for catppuccin
+-   [adriankarlen](https://github.com/adriankarlen) Adapt color palette for Rosé Pine
