@@ -14,7 +14,7 @@
 
 ## Usage
 
-1. Make sure you have the [Stylus](https://github.com/openstyles/stylus) browser extension installed, then visit [this link](https://github.com/rose-pine/userstyles/raw/main/github/rose-pine.user.css)
+1. Make sure you have the [Stylus](https://github.com/openstyles/stylus) browser extension installed, then visit [this link](https://github.com/rose-pine/userstyles/raw/main/brave-search/rose-pine.user.css)
 2. Configure your preferred accent color and theme variant
 3. Click install on the top left
 
