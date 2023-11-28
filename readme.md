@@ -20,6 +20,10 @@
 
 # Userstyles
 
+**Search Engines**
+
+- [Brave search](https://github.com/rose-pine/userstyles/tree/main/brave-search)
+
 **Productivity**
 
 - [ChatGPT](https://github.com/rose-pine/userstyles/tree/main/chatgpt)

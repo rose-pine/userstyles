@@ -14,7 +14,6 @@
 
 ## Usage
 
-1. Make sure you have the [Stylus](https://github.com/openstyles/stylus) browser extension installed, then visit [this link](https://github.com/rose-pine/userstyles/raw/main/github/rose-pine.user.css)
 2. Configure your preferred accent color and theme variant
 3. Click install on the top left
 
@@ -26,5 +25,5 @@
 
 ## Thanks to
 
-- [rubyowo](https://github.com/rubyowo) Creating the original github theme for catppuccin
-- [adriankarlen](https://github.com/adriankarlen) Adapt color palette for Rosé Pine
+-   [Tnixc](https://github.com/tnixco) Maintainer of the original wikiwand theme for catppuccin
+-   [adriankarlen](https://github.com/adriankarlen) Adapt color palette for Rosé Pine
