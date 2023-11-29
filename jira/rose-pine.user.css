@@ -11,7 +11,8 @@
 @preprocessor   less
 @var select flavor "Flavor" ["default:Rosé Pine*", "moon:Rosé Pine Moon", "dawn:Rosé Pine Dawn"]
 @var select accentColor "Accent" ["love:Love*", "gold:Gold", "rose:Rose", "pine:Pine", "foam:Foam", "iris:Iris"]
-@var checkbox usefont "Use custom fonts font" 0
+@var checkbox useInterFont "Use Inter font" 0
+@var checkbox usePoppinsHeaderFont "Use Poppins font for headers" 0
 ==/UserStyle== */
 
 @-moz-document url-prefix("https://jira")
@@ -95,7 +96,7 @@
     body {
         background-color: @base !important;
 
-        & when (@usefont=1) {
+        & when (@useInterFont=1) {
             font-family: Inter, sans-serif;
         }
 
@@ -1224,7 +1225,7 @@
     h4,
     h5 {
         color: @text;
-        & when (@usefont=1) {
+        & when (@usePoppinsHeaderFont=1) {
             font-family: Poppins, Inter, sans-serif;
         }
     }
@@ -1456,7 +1457,7 @@
     #announcement-banner {
         background-color: @overlay !important;
         border-bottom: 1px solid @surface !important;
-        & when (@usefont=1) {
+        & when (@usePoppinsHeaderFont=1) {
             font-family: Poppins, Inter, sans-serif;
         }
 
