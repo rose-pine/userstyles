@@ -1811,6 +1811,32 @@
     .cTufcM span {
       color: @accent-color;
     }
+
+    /* Pull request prompt */  
+    .Flash__StyledFlash-sc-hzrzfc-0.kUDiXM {
+      background-color: fadeout(@gold, 90%);
+      border-color: @gold;
+    }
+
+    .kUDiXM svg {
+      fill: @gold;
+    }
+
+    .jWTzpl {
+      background-color: @pine;
+      border-color: @pine;
+
+      & * {
+        fill: @base;
+        color: @base;
+      }
+
+      &:hover:not([disabled]):not([data-inactive]),
+      &:active:not([disabled]):not([data-inactive]) {
+        background-color: darken(@pine, 15%);
+      }
+    }
+
   }
 }
 @-moz-document regexp("https:\/\/notebooks\.githubusercontent\.com\/view\/ipynb.*") {
