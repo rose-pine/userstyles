@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name           Rosé Pine for Github 
 @description    Soho vibes for Github
-@version        1.0.2
+@version        1.0.3
 @license 		    MIT
 @author         Joris Mertz (https://github.com/jorismertz/)
 @namespace      https://github.com/rose-pine/
@@ -749,6 +749,19 @@
       --color-accent-subtle: fadeout(@pine, 85%);
     }
 
+    /* Slug */
+    .dYxKVs,
+    .eVjWum {
+      color: @accent-color;
+    }
+
+    /* Links */
+    .fIqerb,
+    .bJroUH,
+    .GCHqa {
+      color: @accent-color;
+    }
+
     /* Misc */
     .col-md-8 {
       background-color: @base;
@@ -759,7 +772,7 @@
       color: @accent-color;
     }
 
-    .kSmUFR[data-size="small"][data-no-visuals="true"] svg {
+    .kSmUFR[data-size="small"][data-no-visuals="true"] svg, .gaMHBv[data-size="small"][data-no-visuals] svg {
       color: @foam;
     }
     .starred .starred-button-icon {
@@ -768,8 +781,9 @@
 
     /* Large notification */
     .flash {
-      background: @overlay;
-      border-color: transparent;
+      --color-attention-muted: @accent-color;
+      --bgColor-attention-muted: fadeout(@accent-color, 60%);
+      --color-attention-subtle: fadeout(@accent-color, 85%);
     }
 
     /* Button Fix */
@@ -981,6 +995,14 @@
       }
     }
 
+    .feVXyu,
+    .ecdhqS,
+    .iwGxyT,
+    .kLxXov,
+    .flDsrw {
+      border-color: @highlightHigh;
+    }
+
     .juEfKr {
       border-color: @highlightLow;
     }
@@ -1000,6 +1022,7 @@
     }
 
     .hLwWNO .PRIVATE_TreeView-item-container,
+    .dycbWg,
     .hYaoHV,
     .rLhXz,
     .gtXnmh,
@@ -1353,7 +1376,7 @@
       }
     }
 
-    .cBssZb {
+    .cBssZb, .caTTzX {
       color: @text;
     }
 
@@ -1635,7 +1658,8 @@
       }
     }
 
-    .wLDmP {
+    .wLDmP, 
+    .rDvrp {
       background-color: @overlay;
       border: 1px solid @highlightMed;
     }
