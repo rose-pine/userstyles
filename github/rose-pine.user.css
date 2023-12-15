@@ -1690,6 +1690,127 @@
     .turbo-progress-bar {
       background-color: @accent-color;
     }
+
+    /* Search results page */
+    .search-results-page {
+      background-color: @base;
+    }
+
+    /* New repo layout button, pr button on repo, tick */
+    .dvJnjZ,
+    .types__StyledButton-sc-ws60qy-0.gHIvvy,
+    .ldavJa {
+      background-color: @pine;
+      color: @base;
+      &:hover {
+        background-color: darken(@pine, 15%);
+      }
+    }
+
+    /* <> code button */
+    .hBMKRG {
+      background-color: @pine;
+      border-color: @pine;
+      & * {
+        fill: @base;
+        color: @base;
+      }
+      &:hover:not([disabled]):not([data-inactive]),
+      &:active:not([disabled]):not([data-inactive]) {
+        background-color: darken(@pine, 15%);
+      }
+    }
+
+    .ezbPok * {
+      fill: @text;
+    }
+
+    .jMEWXM > * > *,
+    .vhlgx, .vhlgx:hover:not([disabled], [data-inactive]),
+    .QqKiN, .QqKiN:hover:not([disabled], [data-inactive]),
+    .wxyGP, .wxyGP:hover:not([disabled], [data-inactive]),
+    .bTTPJZ, .bTTPJZ:hover:not([disabled], [data-inactive]),
+    .eYCGbj, .eYCGbj:hover:not([disabled], [data-inactive]),
+    #branch-picker-repos-header-ref-selector,
+    .gtXnmh .Box-sc-g0xbh4-0.jGfYmh > * {
+      background-color: @highlightHigh;
+      border-color: @highlightMed;
+      &:hover {
+        background-color: @highlightMed;
+        border-color: @highlightLow;
+      }
+      & * {
+        fill: @text;
+        color: @text;
+      }
+    }
+
+    .cPEOjV {
+      background-color: @overlay;
+    }
+
+    .Box-sc-g0xbh4-0.bUCzHg,
+    .ehcSsh > * {
+      border-color: @highlightMed!important;
+    }
+
+    .eYedVD .Box-sc-g0xbh4-0.jGfYmh *,
+    .Text-sc-17v1xeu-0.foaUgQ {
+      color: @subtle;
+    }
+
+    .hRMLtq,
+    .ilcYjX *,
+    .lcModf,
+    button.types__StyledButton-sc-ws60qy-0.kRuNkv {
+      color: @text;
+    }
+
+    .Flash__StyledFlash-sc-hzrzfc-0.cqKnpy {
+      background-color: fadeout(@accent-color, 90%);
+      border-color: @accent-color;
+    }
+
+    .cqKnpy svg {
+      fill: @accent-color;
+    }
+
+    /* Some popup */
+    .iGzDhH,
+    .hBobmI,
+    #__primerPortalRoot__ > div > div > div {
+      background-color: @overlay;
+    }
+
+    .Text-sc-17v1xeu-0.gPDEWA {
+      color: @subtle;
+    }
+
+    .TabNav__TabNavTabList-sc-pwdi4r-1.gFzOft {
+      & * {
+        border-color: @highlightMed;
+      }
+      &:hover {
+        & * {
+          background: @overlay;
+        }
+      }
+    }
+
+    /* tags */
+    .cEefpP {
+      color: @accent-color;
+
+      &:hover {
+        color: @text;
+        background-color: @accent-color;
+      }
+    }
+
+    // Advanced search
+    .cTufcM span {
+      color: @accent-color;
+    }
   }
 }
 @-moz-document regexp("https:\/\/notebooks\.githubusercontent\.com\/view\/ipynb.*") {
