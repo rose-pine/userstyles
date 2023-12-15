@@ -1811,6 +1811,13 @@
     .cTufcM span {
       color: @accent-color;
     }
+
+    /* Pull request prompt */  
+    .Flash__StyledFlash-sc-hzrzfc-0.kUDiXM {
+      background-color: fadeout(@gold, 90%);
+      border-color: @gold;
+      color: @gold;
+    }
   }
 }
 @-moz-document regexp("https:\/\/notebooks\.githubusercontent\.com\/view\/ipynb.*") {
