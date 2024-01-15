@@ -1,6 +1,6 @@
 <p align="center">
     <img src="https://github.com/rose-pine/rose-pine-theme/raw/main/assets/icon.png" width="80" />
-    <h2 align="center">Rosé Pine for Proton</h2></p>
+    <h2 align="center">Rosé Pine for Jira</h2></p>
     <p align="center">All natural pine, faux fur and a bit of soho vibes for the classy minimalist</p>
     <p align="center">
     <a href="https://github.com/rose-pine/rose-pine-theme">
@@ -13,16 +13,15 @@
 
 ## Usage
 
-1. Make sure you have the [Stylus](https://github.com/openstyles/stylus) browser extension installed, then visit [this link](https://github.com/rose-pine/userstyles/raw/main/proton/rose-pine.user.css).
+1. Make sure you have the [Stylus](https://github.com/openstyles/stylus) browser extension installed, then visit [this link](https://github.com/rose-pine/userstyles/raw/main/jira/rose-pine.user.css).
 2. Configure your preferred accent color and theme variant.
 3. Click install on the top left.
-4. Go to proton mail settings and under "Theme" select Carbon. This should be the middle one.
 
 ## Gallery
 
-![Rosé Pine](https://i.imgur.com/hBK4uWd.png)
-![Rosé Pine Moon](https://i.imgur.com/9EjGWoy.png)
-![Rosé Pine Dawn](https://i.imgur.com/XbCo4Kv.png)
+![Rosé Pine](https://i.imgur.com/mgYlKVI.png)
+![Rosé Pine Moon](https://i.imgur.com/vHvYGxX.png)
+![Rosé Pine Dawn](https://i.imgur.com/qyjK3cC.png)
 
 ## Thanks to
 
