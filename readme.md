@@ -32,5 +32,6 @@
 
 - [ChatGPT](https://github.com/rose-pine/userstyles/tree/main/chatgpt)
 - [GitHub](https://github.com/rose-pine/userstyles/tree/main/github)
+- [Jira](https://github.com/rose-pine/userstyles/tree/main/jira)
 - [Proton](https://github.com/rose-pine/userstyles/tree/main/proton)
 - [Wikiwand](https://github.com/rose-pine/userstyles/tree/main/wikiwand)
