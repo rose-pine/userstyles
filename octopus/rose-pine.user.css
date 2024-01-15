@@ -10,13 +10,13 @@
 
 @preprocessor less
 @var select flavor "Flavor" ["default:Rosé Pine*", "moon:Rosé Pine Moon", "dawn:Rosé Pine Dawn"]
-@var select accentColor "Accent" ["love:Love*", "gold:Gold", "rose:Rose", "pine:Pine", "foam:Foam", "iris:Iris"]
+@var checkbox usefont "Use Inter font" 0
 ==/UserStyle== */
 
 @-moz-document url-prefix("https://octopus") 
 {
     :root {
-        #rose-pine(@flavor, @accentColor);
+        #rose-pine(@flavor);
     }
     
     @rose-pine: {
@@ -73,7 +73,7 @@
         }
     };
 
-    #rose-pine(@lookup, @accent) {
+    #rose-pine(@lookup) {
         @base: @rose-pine[@@lookup][@base];
         @surface: @rose-pine[@@lookup][@surface];
         @overlay: @rose-pine[@@lookup][@overlay];
@@ -89,7 +89,6 @@
         @highlightLow: @rose-pine[@@lookup][@highlightLow];
         @highlightMed: @rose-pine[@@lookup][@highlightMed];
         @highlightHigh: @rose-pine[@@lookup][@highlightHigh];
-        @accent-color: @rose-pine[@@lookup][@@accent];
 
         * {
             --blackConstant: @base;
@@ -583,7 +582,9 @@
         }
 
         body {
-            font-family: Inter !important;
+            & when (@usefont=1) {
+                font-family: Inter !important;
+            }
         }
 
         .css-pmjizz {
