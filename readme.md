@@ -27,6 +27,7 @@
 **Search Engines**
 
 - [Brave search](https://github.com/rose-pine/userstyles/tree/main/brave-search)
+- [4get]()
 
 **Productivity**
 
@@ -34,4 +35,14 @@
 - [GitHub](https://github.com/rose-pine/userstyles/tree/main/github)
 - [Jira](https://github.com/rose-pine/userstyles/tree/main/jira)
 - [Proton](https://github.com/rose-pine/userstyles/tree/main/proton)
+- [Scribe](https://github.com/rose-pine/userstyles/tree/main/scribe)
 - [Wikiwand](https://github.com/rose-pine/userstyles/tree/main/wikiwand)
+
+**Webmail**
+
+- [Skiff](https://github.com/rose-pine/skiff)
+- [Zimbra](https://github.com/rose-pine/zimbra)
+
+**Finance**
+
+- [Phemex](https://github.com/rose-pine/phemex)
