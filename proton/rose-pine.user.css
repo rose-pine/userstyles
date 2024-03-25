@@ -267,5 +267,11 @@
       background-color: var(--navigation-current-item-background-color);
       color: var(--email-item-unread-text-color);
     }
+    
+    /* makes text readable on accented backgrounds */
+    .item-is-selected,
+    .button-solid-norm {
+      color: @base;
+    }
   }
 }
