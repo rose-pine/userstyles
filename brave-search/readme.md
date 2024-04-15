@@ -26,5 +26,6 @@
 
 ## Thanks to
 
--   [ndsboy](https://github.com/ndsboyo) Maintainer of the original brave search theme for catppuccin
--   [adriankarlen](https://github.com/adriankarlen) Adapt color palette for Rosé Pine
+- [Catppuccin Org](https://github.com/catppuccin)
+- [ndsboy](https://github.com/ndsboyo)
+- [adriankarlen](https://github.com/adriankarlen)
