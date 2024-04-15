@@ -26,5 +26,6 @@
 
 ## Thanks to
 
--   [rubyowo](https://github.com/rubyowo) Creating the original ChatGPT theme for catppuccin
--   [adriankarlen](https://github.com/adriankarlen) Adapt color palette for Rosé Pine
+- [Catppuccin Org](https://github.com/catppuccin)
+- [rubyowo](https://github.com/rubyowo)
+- [adriankarlen](https://github.com/adriankarlen)
