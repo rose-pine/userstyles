@@ -26,5 +26,7 @@
 
 ## Thanks to
 
-- [soradotwav](https://github.com/soradotwav) Creating the original github theme for catppuccin
-- [jorismertz](https://github.com/jorismertz) Adapt color palette for Rosé Pine
+- [Catppuccin Org](https://github.com/catppuccin)
+- [soradotwav](https://github.com/soradotwav)
+- [jorismertz](https://github.com/jorismertz)
+

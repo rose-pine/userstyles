@@ -17,6 +17,7 @@
 2. Configure your preferred accent color and theme variant.
 3. Click install on the top left.
 4. Go to proton mail settings and under "Theme" select Carbon. This should be the middle one.
+
 ## Gallery
 
 ![Rosé Pine](https://i.imgur.com/hBK4uWd.png)
@@ -25,5 +26,7 @@
 
 ## Thanks to
 
-- [soya-daizu](https://github.com/soya-daizu) Creating the original Proton theme for catppuccin
-- [jorismertz](https://github.com/jorismertz) Adapting color palette for Rosé Pine
+- [Catppuccin Org](https://github.com/catppuccin)
+- [soya-daizu](https://github.com/soya-daizu)
+- [jorismertz](https://github.com/jorismertz)
+
