@@ -216,6 +216,13 @@
     outline: none !important;
   }
 
+  .yt-spec-button-shape-next--disabled {
+    color: var(--main-text) !important;
+    background-color: var(--main-background) !important;
+    outline: dashed;
+    outline-color: var(--hover-background);
+  }
+
   /*Placeholder image on pages that need an account - such as Subscriptions*/
   ytd-background-promo-renderer .image.ytd-background-promo-renderer,
   ytd-message-renderer yt-icon.ytd-message-renderer {
