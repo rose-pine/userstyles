@@ -9,7 +9,7 @@
     </a>
 </p>
 
-# Getting Started
+# Getting started
 
 1. Install the [Stylus](https://github.com/openstyles/stylus) extension for [Chrome](https://chrome.google.com/webstore/detail/stylus/clngdbkpkpeebahjckkjfobafhncgmne) or [Firefox](https://addons.mozilla.org/en-GB/firefox/addon/styl-us/).
 2. Downloading Userstyles:
@@ -18,7 +18,7 @@
 3. Optionally, you can configure any available options that you want to change. Then, click on the "Install Style" button.
 4. Some might require extra steps to work correctly, so make sure to check its readme page for additional information.
 
-# Userstyles
+## Userstyles
 
 **Development tools**
 
@@ -50,3 +50,7 @@
 **Misc**
 
 - [YouTube](https://github.com/rose-pine/userstyles/tree/main/youtube)
+
+## Contributing
+
+Contributions are welcome and appreciated! Please run `sh build.sh` to format the repository before submitting a pull request.

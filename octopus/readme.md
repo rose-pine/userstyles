@@ -26,4 +26,4 @@
 
 ## Thanks to
 
--   [adriankarlen](https://github.com/adriankarlen) Creator of the theme
+- [adriankarlen](https://github.com/adriankarlen)
