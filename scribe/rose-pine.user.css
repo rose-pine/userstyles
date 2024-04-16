@@ -1,18 +1,20 @@
 body {
-    background-color: #191724;
-    color: #e0def4;
-    font-family: "Cartograph CF";
+	background-color: #191724;
+	color: #e0def4;
+	font-family: "Cartograph CF";
 }
 
-a, a:link {
-    color: #9ccfd8 !important;
+a,
+a:link {
+	color: #9ccfd8 !important;
 }
 
 a:visited {
-    color: #c4a7e7 !important;
+	color: #c4a7e7 !important;
 }
 
-pre, img {
-    border-radius: 20px;
-    background-color: #26233a;
+pre,
+img {
+	border-radius: 20px;
+	background-color: #26233a;
 }

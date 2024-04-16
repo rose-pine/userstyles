@@ -25,4 +25,4 @@
 
 ## Thanks to
 
--   [adriankarlen](https://github.com/adriankarlen) Creating the theme
+- [adriankarlen](https://github.com/adriankarlen)
