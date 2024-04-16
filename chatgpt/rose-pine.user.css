@@ -2,10 +2,10 @@
   @name Rosé Pine for ChatGPT 
   @description    Soho vibes for ChatGPT
   @version        1.0.0
-  @license 		    MIT
+  @license          MIT
   @author         Adrian Karlén (https://github.com/adriankarlen/)
   @namespace      https://github.com/rose-pine/
-  @homepageURL 	  https://github.com/rose-pine/userstyles
+  @homepageURL    https://github.com/rose-pine/userstyles
   @updateURL      https://github.com/rose-pine/userstyles/raw/main/chatgpt/rose-pine.user.css
 
   @preprocessor   less
@@ -14,13 +14,38 @@
 @-moz-document domain("chat.openai.com") {
     .light body,
     .light html {
-        #rose-pine(@flavor);
+        #rose-pine(moon);
     }
 
-    :root,
-    .dark body,
-    .dark html {
-        #rose-pine(@flavor);
+    * {
+        
+            --main-background: #191724;
+            --second-background: #191724;
+            --hover-background: #26233a;
+            --main-text: #e0def4;
+            --dimmer-text: #908caa;
+            --shadow: 0 1px 0.5px rgb(0, 0, 0, .13)
+    }
+    
+    :root {
+        #rose-pine(moon);
+        --gray-600: #3C3A52;
+        --gray-700: #26233a;
+        --gray-800: #26233a;
+        --gray-900: #191724;
+        
+        --gray-100: #e0def4;
+        --gray-300: #e0def4;
+        --gray-400: #908caa;
+        --gray-500: #e0def4;
+    }
+    
+    a {
+        color: --gray-100;
+    }
+    
+    .bg-token-main-surface-primary {
+        background-color: var(--gray-900) !important;
     }
 
     @rose-pine: {
@@ -100,6 +125,18 @@
             ):not(.bg-black .bg-gray-800),
         div[class*='bg-vert-dark-gradient'] {
             background: @base !important;
+        }
+        
+        .dark {
+            
+            --main-background: #191724;
+            --second-background: #191724;
+            --hover-background: #26233a;
+            --main-text: #e0def4;
+            --dimmer-text: #908caa;
+            --shadow: 0 1px 0.5px rgb(0, 0, 0, .13)
+            
+            --main-surface-primary: #fff;
         }
 
         .dark body,
