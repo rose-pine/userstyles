@@ -27,8 +27,8 @@ For more information or troubleshooting, check out the Stylus [documentation](ht
 
 ## Gallery
 
-| Rosé Pine                                      | Rosé Pine Moon                                      | Rosé Pine Dawn                                      |
-| ---------------------------------------------- | --------------------------------------------------- | --------------------------------------------------- |
+| Rosé Pine                                                                                                              | Rosé Pine Moon                                                                                                              | Rosé Pine Dawn                                                                                                              |
+| ---------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------- |
 | ![Rosé Pine with YouTube](https://github.com/rose-pine/userstyles/assets/1474821/dba68ce6-c926-4bee-a314-ec0efc82182d) | ![Rosé Pine Moon with YouTube](https://github.com/rose-pine/userstyles/assets/1474821/e5881cbb-df47-4af4-998b-775df6a16cce) | ![Rosé Pine Dawn with YouTube](https://github.com/rose-pine/userstyles/assets/1474821/d54e9182-8af4-47e2-8799-8918fcea4fc4) |
 
 ## Thanks to
