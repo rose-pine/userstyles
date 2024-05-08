@@ -763,7 +763,7 @@
 		}
 
 		/* Misc */
-		.col-md-8 {
+		.col-md-8, .input-contrast {
 			background-color: @base;
 		}
 
@@ -789,7 +789,11 @@
 
 		/* Button Fix */
 		.color-bg-subtle {
-			background-color: transparent !important;
+			background-color: @surface !important;
+		}
+        
+		.hYFiXx, .elltiT {
+			color: @accent-color;
 		}
 
 		.command-palette-details-dialog .color-bg-subtle {
@@ -1766,6 +1770,38 @@
 		.eYedVD .Box-sc-g0xbh4-0.jGfYmh *,
 		.Text-sc-17v1xeu-0.foaUgQ {
 			color: @subtle;
+		}
+
+		.etbdbe, .hjyGFR, .Button--secondary,  {
+			background-color: @overlay;
+		}
+
+		.kHdfWW {
+			background-color: @foam;
+			color: @base;
+		}
+
+		.kHdfWW:hover:not([disabled]):not([data-inactive]) {
+			background-color: @pine;
+		}
+
+		a {
+			color: @accent-color;
+		}
+		
+		.UnderlineNav-body a {
+			color: @text;
+		}
+		
+		.dMUxwi, .btn {
+			background-color: @overlay;
+			border-color: @highlightMed;
+			color: @text;
+		}
+
+		
+		.js-snippet-clipboard-copy-unpositioned .markdown-body .snippet-clipboard-content, .js-snippet-clipboard-copy-unpositioned .markdown-body .highlight, .markdown-body .highlight pre, .markdown-body pre, .markdown-body table tr:nth-child(2n), .Overlay-closeButton.close-button {
+			background-color: @surface;
 		}
 
 		.hRMLtq,
