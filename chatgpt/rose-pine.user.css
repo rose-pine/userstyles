@@ -11,7 +11,7 @@
   @preprocessor   less
   @var select variant "Variant" ["default:Rosé Pine*", "moon:Rosé Pine Moon", "dawn:Rosé Pine Dawn"]
   ==/UserStyle== */
-@-moz-document domain("chat.openai.com") {
+@-moz-document domain("chatgpt.com") {
 	.light body,
 	.light html {
 		#rose-pine(@variant);
