@@ -1,0 +1,619 @@
+/* ==UserStyle==
+@name           Rosé Pine for Twitch
+@description    Soho vibes for Twitch
+@version        0.0.1
+@license 		    MIT
+@author         Adrian Karlén (https://github.com/adriankarlen/)
+@namespace      https://github.com/rose-pine/
+@homepageURL 	  https://github.com/rose-pine/userstyles
+@updateURL      https://github.com/rose-pine/userstyles/raw/main/twitch/rose-pine.user.css
+
+@preprocessor   less
+@var select lightFlavor "Light flavor" ["default:Rosé Pine", "moon:Rosé Pine Moon", "dawn:Rosé Pine Dawn*"]
+@var select darkFlavor "Dark flavor" ["default:Rosé Pine*", "moon:Rosé Pine Moon", "dawn:Rosé Pine Dawn"]
+@var select accentColor "Accent" ["love:Love", "gold:Gold", "rose:Rose", "pine:Pine", "foam:Foam", "iris:Iris*"]
+==/UserStyle== */
+
+@-moz-document domain("twitch.tv") {
+  .tw-root--theme-dark {
+    #rosepine(@darkFlavor, @accentColor);
+  }
+  .tw-root--theme-light {
+    #rosepine(@lightFlavor, @accentColor);
+  }
+
+  #rosepine(@lookup, @accent) {
+    @base: @rosepine[@@lookup][@base];
+    @surface: @rosepine[@@lookup][@surface];
+    @overlay: @rosepine[@@lookup][@overlay];
+    @muted: @rosepine[@@lookup][@muted];
+    @subtle: @rosepine[@@lookup][@subtle];
+    @text: @rosepine[@@lookup][@text];
+    @love: @rosepine[@@lookup][@love];
+    @gold: @rosepine[@@lookup][@gold];
+    @rose: @rosepine[@@lookup][@rose];
+    @pine: @rosepine[@@lookup][@pine];
+    @foam: @rosepine[@@lookup][@foam];
+    @iris: @rosepine[@@lookup][@iris];
+    @highlightLow: @rosepine[@@lookup][@highlightLow];
+    @highlightMed: @rosepine[@@lookup][@highlightMed];
+    @highlightHigh: @rosepine[@@lookup][@highlightHigh];
+    @accent-color: @rosepine[@@lookup][@@accent];
+
+    & body {
+      background-color: @base;
+    }
+
+    /* Stream title */
+
+    p[data-test-selector="stream-info-card-component__subtitle"],
+    p[data-test-selector="stream-info-card-component__description"] {
+      color: @text !important;
+    }
+
+    a[data-a-target="player-info-game-name"] {
+      color: @accent-color;
+    }
+
+    /* `Pinned message` popup */
+
+    div.pinned-chat__pinned-by svg {
+      color: @text;
+    }
+
+    p.pinned-chat__message span {
+      color: @text !important;
+    }
+
+    p.pinned-chat__message a {
+      color: @accent-color;
+    }
+
+    /* `Intended for certain audiences` label */
+
+    div[data-a-target="content-classification-warning-disclosure-overlay"] p {
+      color: @text;
+    }
+
+    /* `Hype Train` popup */
+
+    div.hype-train-progress-bar-info-view__level-container p,
+    div.hype-train-approaching-view__leftSide p,
+    div.hype-train-expanded-layout p,
+    div.hype-train-expanded-layout svg {
+      color: @text;
+    }
+
+    div.hype-train-progress-bar-info-view__progress-value span {
+      color: @accent-color;
+    }
+
+    path[d="m18 17 4-4V2H6v15h4v4l4-4h4zM12 6h2v6h-2V6zm7 0h-2v6h2V6z"] {
+      fill: @surface;
+    }
+
+    /* `Is video buffering?` warning */
+
+    div.low-latency-notification p {
+      color: @text;
+    }
+
+    /* `Includes paid promotion` label */
+
+    div.disclosure-card p,
+    div.disclosure-card svg {
+      color: @text;
+    }
+
+    /* Raiding popup */
+
+    div[data-test-selector="raid-banner"] {
+      color: @text;
+    }
+
+    /* `Predict with Channel Points` popup */
+
+    div[data-test-selector="expanded-content"] p,
+    p[data-test-selector="community-prediction-highlight-header__top-predictors"],
+    p[data-test-selector="community-prediction-highlight-body__outcome-title"] {
+      color: @text;
+    }
+
+    /* TODO: ensure that the poll does not default to this */
+    div[data-test-selector="header-content"] p {
+      color: @text !important;
+    }
+
+    div.channel-points-icon svg,
+    div[data-test-selector="header-content"] span,
+    div[data-test-selector="community-prediction-highlight-body__outcome-points"]
+      span {
+      color: @accent-color;
+    }
+
+    button[data-test-selector="community-prediction-highlight-header__how-to-play"],
+    button[data-test-selector="community-prediction-highlight-header__terms-and-conditions"],
+    button[data-test-selector="community-prediction-highlight-header__send-feedback"],
+    button[data-test-selector="community-prediction-highlight-header__dismiss-message"] {
+      color: @text;
+    }
+
+    /* Poll popup */
+
+    div[data-test-selector="header-content"]
+      p:not(
+        [data-test-selector="community-prediction-highlight-header__title"],
+        [data-test-selector="header"]
+      ) {
+      color: @text !important;
+    }
+
+    /* `Report Poll` button */
+
+    button.gaoCTJ {
+      color: @text;
+    }
+
+    /* ??? */
+
+    div.happening-now-disable-prompt p {
+      color: @text !important;
+    }
+
+    /* Gifting sub popup */
+
+    div.mystery-gift-chat-banner span {
+      color: @accent-color;
+    }
+
+    div.mystery-gift-chat-banner p {
+      color: @text;
+    }
+
+    /* VOD metadata */
+
+    div.tw-media-card-stat {
+      color: @text;
+    }
+
+    /* DMCA warning */
+
+    div.muted-segments-alert__content p {
+      color: @text;
+    }
+
+    /* VOD time labels */
+
+    div.vod-seekbar-time-labels p {
+      color: @text !important;
+    }
+
+    /* VOD timestamp */
+
+    div.vod-seekbar-preview-overlay__wrapper p {
+      color: @text !important;
+    }
+
+    /* Seekbar segment */
+
+    div[data-test-selector="seekbar-interaction-area__interactionArea"]
+      span[data-test-selector="seekbar-segment__segment"] {
+      background: @accent-color !important;
+    }
+
+    /* Seekbar DMCA muted segment */
+
+    div[data-test-selector="seekbar-interaction-area__interactionArea"]
+      span[data-test-selector="seekbar-segment__segment"][style*="background-color: rgba(212, 73, 73, 0.5);"] {
+      background: @love !important;
+    }
+
+    /* Seekbar buffered segment */
+
+    div[data-test-selector="seekbar-interaction-area__interactionArea"]
+      span[data-test-selector="seekbar-segment__segment"][style*="background-color: rgba(255, 255, 255, 0.85);"] {
+      background: @highlightHigh !important;
+    }
+
+    /* Recent VOD title */
+
+    div.player-overlay-background h4 {
+      color: @muted !important;
+    }
+
+    a.offline-recommendations-video-card p {
+      color: @text;
+    }
+
+    /* Offline screen follow panel */
+
+    div[data-test-selector="follow-panel-overlay"] p {
+      color: @text !important;
+    }
+
+    div[data-test-selector="follow-panel-overlay"] button div {
+      color: @highlightMed !important;
+    }
+
+    /* Front page warning sign */
+
+    div.content-overlay-gate__content[data-a-target="player-overlay-content-gate"]
+      div.content-overlay-icon
+      svg {
+      color: @love;
+    }
+
+    /* Front page age warning */
+
+    div.content-overlay-gate__content[data-a-target="player-overlay-content-gate"]
+      p.content-overlay-gate__allow-pointers {
+      color: @love !important;
+    }
+
+    /* Front page age selector */
+
+    div[data-a-target="player-overlay-age-gate-form"] select {
+      color: @text;
+    }
+
+    /* Following usercard */
+
+    div[data-a-target="user-card-modal"] p {
+      color: @text !important;
+    }
+
+    /* PiP username */
+
+    div.mini-overlay__title span {
+      color: @text;
+    }
+
+    /* Viewercard username */
+
+    div.viewer-card-header__display-name h4 {
+      color: @accent-color !important;
+    }
+
+    /* Viewercard metadata */
+
+    div.viewer-card-header__display-name svg:not(button svg) {
+      color: @subtle;
+    }
+
+    div.viewer-card-header__display-name p {
+      color: @text !important;
+    }
+
+    /* Extension name */
+
+    div[aria-describedby="popover-extensions-body"] h6 {
+      color: @text;
+    }
+
+    /* Extension description */
+
+    div.extensions-popover-view-layout__body p {
+      color: @text;
+    }
+
+    /* Extension service buttons */
+
+    div.extensions-popover-view-layout__body svg {
+      color: @muted;
+    }
+
+    div.extensions-popover-view-layout__body div {
+      color: @text;
+    }
+
+    & .carousel-metadata {
+      background: @highlightMed;
+    }
+    & .carousel-metadata--fadeout {
+      background: @highlightMed;
+    }
+    .chat-line__message-body--highlighted {
+      background-color: @accent-color;
+      color: @highlightMed;
+      border-color: @accent-color;
+    }
+    .chat-scrollable-area__message-container {
+      background-color: @surface;
+    }
+    .jmUA-dj {
+      background-color: @surface;
+    }
+    .bBpiku {
+      fill: @surface;
+    }
+    .ivjxmt {
+      color: @highlightMed;
+    }
+    .gzYMLv {
+      color: @text;
+    }
+    .gZxBHd {
+      color: @muted;
+      &:hover {
+        color: @accent-color;
+      }
+    }
+    .eBmJxH {
+      color: @text;
+    }
+    .ffZeRf {
+      color: #fff !important;
+    }
+    .igzOaC {
+      color: @text;
+    }
+    .bEHknf {
+      color: #fff;
+    }
+    .side-nav-card__link:hover {
+      background: @overlay !important;
+    }
+    .dDyYOA {
+      color: #fff !important;
+    }
+    .reward-icon__cost {
+      color: #fff !important;
+    }
+    .kLILeB {
+      color: #fff !important;
+    }
+    .navigation-link__active-indicator {
+      background-color: @accent-color !important;
+    }
+    .footer {
+      background: @highlightMed;
+    }
+    & .whispers-list-item--selected,
+    & .whispers-list-item:hover {
+      background-color: @overlay;
+    }
+    & .thread-header__title-bar-container--focused {
+      background-color: @surface;
+    }
+    & .thread-header__title-bar-container {
+      background: @surface;
+    }
+    & .thread-header__click-area:focus .thread-header__title-bar-container {
+      background-color: @surface;
+    }
+    .navigation-link {
+      color: @text;
+      &:hover {
+        color: @accent-color;
+      }
+    }
+    .chat-room {
+      background: @surface;
+    }
+    div.pinned-chat__highlight-card div.highlight {
+      background: @surface;
+    }
+
+    h4,
+    h5 {
+      color: @text;
+    }
+
+    .cOJBQO {
+      color: @text;
+    }
+
+    .dBlttx {
+      color: @subtle;
+    }
+
+    .fiCviy {
+      color: @text;
+    }
+
+    .server-message-alert {
+      border-color: @love !important;
+      border-left-color: @love !important;
+    }
+
+    .server-message-alert__icon {
+      color: @love !important;
+    }
+
+    &,
+    .side-nav-card__link:hover {
+      --color-background-input-focus: @highlightMed;
+      --color-background-interactable-hover: @overlay;
+      --color-background-button-text-default: null !important;
+      --color-text-input-placeholder: @text;
+      --color-border-input: @base;
+      --color-text-button-primary: @highlightMed;
+      --color-text-overlay: @base;
+      --color-text-base: @subtle;
+      --color-text-alt: @subtle;
+      --color-text-alt-2: @text;
+      --color-text-interactable-selected: @highlightMed;
+      --color-background-alt-2: @highlightMed;
+      --color-text-tag: @text;
+      --color-background-button-secondary-default: @highlightMed;
+      --color-background-tag-default: @surface;
+      --color-background-tag-hover: @highlightMed;
+      --color-background-float: @surface;
+      --color-background-body: @base;
+      --color-background-base: @surface;
+      --color-background-alt: @surface;
+      --color-background-input: @highlightMed;
+      --color-brand-muted-cupcake: @rose;
+      --color-brand-muted-mint: @pine;
+      --color-brand-muted-sky: @foam;
+      --color-brand-muted-blush: @gold;
+      --color-brand-muted-canary: @gold;
+      --color-brand-muted-lavender: @iris;
+      --color-brand-muted-mustard: @gold;
+      --color-brand-muted-emerald: @pine;
+      --color-brand-muted-coral: @gold;
+      --color-brand-muted-ocean: @foam;
+      --color-brand-accent-grape: @iris;
+      --color-brand-accent-dragonfruit: @rose;
+      --color-brand-accent-carrot: @gold;
+      --color-brand-accent-sun: @gold;
+      --color-brand-accent-lime: @pine;
+      --color-brand-accent-turquoise: @foam;
+      --color-brand-accent-eggplant: @iris;
+      --color-brand-accent-wine: @rose;
+      --color-brand-accent-slime: @pine;
+      --color-brand-accent-seafoam: @pine;
+      --color-brand-accent-cherry: @love;
+      --color-brand-accent-marine: @foam;
+      --color-brand-accent-seaweed: @pine;
+      --color-brand-accent-fiji: @pine;
+      --color-brand-accent-blueberry: @foam;
+      --color-brand-accent-arctic: @foam;
+      --color-brand-accent-highlighter: @gold;
+      --color-brand-accent-rose: @rose;
+      --color-brand-accent-ruby: @love;
+      --color-brand-accent-punch: @rose;
+      --color-brand-accent-creamsicle: @gold;
+      --color-red: @love;
+      --color-red-darker: @love;
+      --color-orange: @gold;
+      --color-yellow: @gold;
+      --color-green: @pine;
+      --color-green-darker: @pine;
+      --color-blue: @foam;
+      --color-prime-blue: @foam;
+      --color-magenta: @rose;
+      --color-error: @love;
+      --color-warn: @gold;
+      --color-success: @pine;
+      --color-white: @surface;
+      --color-info: @foam;
+      --color-accent: @accent-color;
+      --color-twitch-purple: @accent-color;
+      --color-twitch-purple-4: @accent-color;
+      --color-twitch-purple-5: @accent-color;
+      --color-twitch-purple-6: @accent-color;
+      --color-twitch-purple-7: @accent-color;
+      --color-twitch-purple-8: @accent-color;
+      --color-twitch-purple-9: @accent-color;
+      --color-twitch-purple-10: @accent-color;
+      --color-twitch-purple-11: @accent-color;
+      --color-twitch-purple-12: @accent-color;
+      --color-orange-7: @gold;
+      --color-orange-8: @gold;
+      --color-orange-9: @gold;
+      --color-orange-10: @gold;
+      --color-orange-11: @gold;
+      --color-orange-12: @gold;
+      --color-orange-13: @gold;
+      --color-yellow-6: @gold;
+      --color-yellow-7: @gold;
+      --color-yellow-8: @gold;
+      --color-yellow-9: @gold;
+      --color-yellow-10: @gold;
+      --color-yellow-11: @gold;
+      --color-yellow-12: @gold;
+      --color-yellow-13: @gold;
+      --color-yellow-14: @gold;
+      --color-yellow-15: @gold;
+      --color-green-5: @pine;
+      --color-green-6: @pine;
+      --color-green-7: @pine;
+      --color-green-8: @pine;
+      --color-green-9: @pine;
+      --color-green-10: @pine;
+      --color-green-11: @pine;
+      --color-green-12: @pine;
+      --color-green-13: @pine;
+      --color-green-14: @pine;
+      --color-green-15: @pine;
+      --color-cyan-9: @foam;
+      --color-cyan-10: @foam;
+      --color-cyan-11: @foam;
+      --color-cyan-12: @foam;
+      --color-cyan-13: @foam;
+      --color-cyan-14: @foam;
+      --color-cyan-15: @foam;
+      --color-blue-4: @foam;
+      --color-blue-5: @foam;
+      --color-blue-6: @foam;
+      --color-blue-7: @foam;
+      --color-blue-8: @foam;
+      --color-blue-9: @foam;
+      --color-blue-10: @foam;
+      --color-blue-11: @foam;
+      --color-magenta-5: @rose;
+      --color-magenta-6: @rose;
+      --color-magenta-7: @rose;
+      --color-magenta-8: @rose;
+      --color-magenta-9: @rose;
+      --color-magenta-10: @rose;
+      --color-magenta-11: @rose;
+      --color-magenta-12: @rose;
+      --color-red-4: @love;
+      --color-red-5: @love;
+      --color-red-6: @love;
+      --color-red-7: @love;
+      --color-red-8: @love;
+      --color-red-9: @love;
+      --color-red-10: @love;
+      --color-red-11: @gold;
+      --color-red-12: @gold;
+      --color-twitter: @foam;
+      --color-facebook: @foam;
+      --color-reddit: @gold;
+      --color-snapchat: @gold;
+      --color-instagram: @foam;
+      --color-youtube: @love;
+      --color-paypal: @foam;
+      --color-paypal-blue: @foam;
+      --color-paypal-yellow: @gold;
+      --color-venmo: @foam;
+      --color-vk: @foam;
+      --color-amazon: @gold; //background: @overlay;
+      --color-background-button-text-hover: @overlay;
+      --color-text-accessible-red: @love;
+      --color-border-input-checkbox: @muted;
+      --color-border-input-checkbox-hover: @text;
+      --color-text-label: @text;
+      --color-border-input-hover: @overlay;
+      --color-opac-b-14: @highlightMed;
+      --color-text-button-overlay: @text !important;
+      --color-background-range-overlay-fill: @text !important;
+      --color-text-button-overlay-hover: @text !important;
+      --color-text-tooltip: @base !important;
+      --color-background-tooltip: @text !important;
+    }
+  }
+}
+@-moz-document domain("dashboard.twitch.tv") {
+  .tw-root--theme-dark {
+    #rosepine(@darkFlavor);
+  }
+  .tw-root--theme-light {
+    #rosepine(@lightFlavor);
+  }
+
+  #rosepine(@lookup) {
+    @base: @rosepine[@@lookup][@base];
+    @surface: @rosepine[@@lookup][@surface];
+    .simplebar-content {
+      background-color: @surface;
+    }
+    .scrollable-area--suppress-scroll-x > .simplebar-scroll-content,
+    .scrollable-area--suppress-scroll-x
+      > .simplebar-scroll-content
+      > .simplebar-content {
+      background-color: @base;
+    }
+  }
+}
+
+/* prettier-ignore */
+@rosepine: {
+  @default: { @base: #191724; @surface: #1f1d2e; @overlay: #26233a; @muted: #6e6a86; @subtle: #908caa; @text: #e0def4; @love: #eb6f92; @gold: #f6c177; @rose: #ebbcba; @pine: #31748f; @foam: #9ccfd8; @iris: #c4a7e7; @highlightLow: #21202e; @highlightMed: #403d52; @highlightHigh: #524f67; };
+  @moon: { @base: #232136; @surface: #2a273f; @overlay: #393552; @muted: #6e6a86; @subtle: #908caa; @text: #e0def4; @love: #eb6f92; @gold: #f6c177; @rose: #ea9a97; @pine: #3e8fb0; @foam: #9ccfd8; @iris: #c4a7e7; @highlightLow: #2a283e; @highlightMed: #44415a; @highlightHigh: #56526e; };
+  @dawn: { @base: #faf4ed; @surface: #fffaf3; @overlay: #f2e9e1; @muted: #9893a5; @subtle: #797593; @text: #575279; @love: #b4637a; @gold: #ea9d34; @rose: #d7827e; @pine: #286983; @foam: #56949f; @iris: #907aa9; @highlightLow: #f4ede8; @highlightMed: #dfdad9; @highlightHigh: #cecacd; };
+}
+
+/* vim:ft=less */
