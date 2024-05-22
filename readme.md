@@ -49,6 +49,7 @@
 
 **Misc**
 
+- [Twitch](https://github.com/rose-pine/userstyles/tree/main/twitch)
 - [YouTube](https://github.com/rose-pine/userstyles/tree/main/youtube)
 
 ## Contributing
