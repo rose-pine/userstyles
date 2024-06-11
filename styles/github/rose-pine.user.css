@@ -52,7 +52,7 @@
 		max-width: 40ch;
 		background-color: var(--color-danger-fg);
 		color: var(--color-header-bg);
-		content: "Unsupported GitHub theme detected! Please switch to the default light/dark theme via the GitHub Appearance settings to get the best experience for the Catppuccin GitHub userstyle.";
+		content: "Unsupported GitHub theme detected! Please switch to the default light/dark theme via the GitHub Appearance settings to get the best experience for the Rosé Pine GitHub userstyle.";
 		z-index: 9999;
 	}
 	#rose-pine(@lookup, @accent) {
@@ -72,7 +72,7 @@
 		@highlightMed: @rose-pine[@@lookup][@highlightMed];
 		@highlightHigh: @rose-pine[@@lookup][@highlightHigh];
 		@accent-color: @rose-pine[@@lookup][@@accent];
-		color-scheme: if(@lookup = latte, light, dark);
+		color-scheme: if(@lookup = dawn, light, dark);
 		::selection {
 			background-color: fade(@accent-color, 30%);
 		}
@@ -119,10 +119,10 @@
 		--color-calendar-winter-graph-day-L4-bg: @accent-color !important;
 		--color-calendar-graph-day-bg: @overlay !important;
 		--color-calendar-graph-day-border: transparent !important;
-		--color-calendar-graph-day-L1-bg: fadeout(@accent-color, 60%) !important;
-		--color-calendar-graph-day-L2-bg: fadeout(@accent-color, 40%) !important;
-		--color-calendar-graph-day-L3-bg: fadeout(@accent-color, 20%) !important;
-		--color-calendar-graph-day-L4-bg: @accent-color !important;
+		--color-calendar-graph-day-L1-bg: fadeout(@pine, 60%) !important;
+		--color-calendar-graph-day-L2-bg: fadeout(@pine, 40%) !important;
+		--color-calendar-graph-day-L3-bg: fadeout(@pine, 20%) !important;
+		--color-calendar-graph-day-L4-bg: @pine !important;
 		--color-calendar-graph-day-L2-border: transparent !important;
 		--color-calendar-graph-day-L3-border: transparent !important;
 		--color-calendar-graph-day-L4-border: transparent !important;
@@ -334,7 +334,7 @@
 		--fgColor-default: @text;
 		--fgColor-muted: @subtle;
 		--fgColor-onEmphasis: @surface;
-		--fgColor-white: if(@lookup = latte, @base, @text);
+		--fgColor-white: if(@lookup = dawn, @base, @text);
 		--fgColor-disabled: @overlay;
 		--fgColor-link: @accent-color;
 		--fgColor-neutral: #6e7681;
@@ -348,7 +348,7 @@
 		--fgColor-done: @iris;
 		--fgColor-sponsors: @iris;
 		--bgColor-default: @surface;
-		--bgColor-muted: @surface;
+		--bgColor-muted: @overlay;
 		--bgColor-inset: @base;
 		--bgColor-emphasis: @muted;
 		--bgColor-inverse: @text;
@@ -399,14 +399,14 @@
 		--borderColor-done-emphasis: @iris;
 		--borderColor-sponsors-muted: #db61a266;
 		--borderColor-sponsors-emphasis: @iris;
-		& when (@lookup =latte) {
+		& when (@lookup =dawn) {
 			--color-ansi-black: @subtle;
 			--color-ansi-black-bright: @subtle;
 			--color-ansi-gray: @subtle;
 			--color-ansi-white: @overlay;
 			--color-ansi-white-bright: @overlay;
 		}
-		& when not (@lookup =latte) {
+		& when not (@lookup =dawn) {
 			--color-ansi-black: @overlay;
 			--color-ansi-black-bright: @overlay;
 			--color-ansi-gray: @overlay;
@@ -642,7 +642,7 @@
 		@highlightMed: @rose-pine[@@lookup][@highlightMed];
 		@highlightHigh: @rose-pine[@@lookup][@highlightHigh];
 		@accent-color: @rose-pine[@@lookup][@@accent];
-		color-scheme: if(@lookup = latte, light, dark);
+		color-scheme: if(@lookup = dawn, light, dark);
 		::selection {
 			background-color: fade(@accent-color, 30%);
 		}
