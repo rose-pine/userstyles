@@ -1,0 +1,28 @@
+name: Update release
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'styles/**/rose-pine.user.css'
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    name: Update release
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Build
+        run: |
+          bash ./build.sh
+          cd ./scripts && npm install && cd ..
+          node ./scripts/generate-imports.js
+      - name: Release
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: gh release upload userstyle-imports import.json --clobber
