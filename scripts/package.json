@@ -1,0 +1,7 @@
+{
+  "name": "scripts",
+  "type": "module",
+  "dependencies": {
+    "usercss-meta": "^0.12.0"
+  }
+}

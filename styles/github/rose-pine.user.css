@@ -6,7 +6,7 @@
 @author         Joris Mertz (https://github.com/jorismertz/)
 @namespace      https://github.com/rose-pine/
 @homepageURL 	  https://github.com/rose-pine/userstyles
-@updateURL      https://github.com/rose-pine/userstyles/raw/main/github/rose-pine.user.css
+@updateURL      https://github.com/rose-pine/userstyles/raw/main/styles/github/rose-pine.user.css
 @preprocessor less
 @var select lightFlavor "Light Flavor" ["main:Rosé Pine", "moon:Rosé Pine Moon", "dawn:Rosé Pine Dawn*"]
 @var select darkFlavor "Dark Flavor" ["main:Rosé Pine*", "moon:Rosé Pine Moon", "dawn:Rosé Pine Dawn"]
