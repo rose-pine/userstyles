@@ -18,7 +18,10 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
       - name: Build
-        run: bash ./build.sh
+        run: |
+          bash ./build.sh
+          cd ./scripts && npm install && cd ..
+          node ./scripts/generate-imports.js
       - name: Update release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
