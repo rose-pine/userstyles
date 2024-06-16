@@ -23,21 +23,21 @@
 
 **Development tools**
 
-- [Octopus](https://github.com/rose-pine/userstyles/tree/main/octopus)
+- [Octopus](https://github.com/rose-pine/userstyles/tree/main/styles/octopus)
 
 **Search Engines**
 
-- [Brave search](https://github.com/rose-pine/userstyles/tree/main/brave-search)
-- [4get](https://github.com/rose-pine/userstyles/tree/main/4get)
+- [Brave search](https://github.com/rose-pine/userstyles/tree/main/styles/brave-search)
+- [4get](https://github.com/rose-pine/userstyles/tree/main/styles/4get)
 
 **Productivity**
 
-- [ChatGPT](https://github.com/rose-pine/userstyles/tree/main/chatgpt)
-- [GitHub](https://github.com/rose-pine/userstyles/tree/main/github)
-- [Jira](https://github.com/rose-pine/userstyles/tree/main/jira)
-- [Proton](https://github.com/rose-pine/userstyles/tree/main/proton)
-- [Scribe](https://github.com/rose-pine/userstyles/tree/main/scribe)
-- [Wikiwand](https://github.com/rose-pine/userstyles/tree/main/wikiwand)
+- [ChatGPT](https://github.com/rose-pine/userstyles/tree/main/styles/chatgpt)
+- [GitHub](https://github.com/rose-pine/userstyles/tree/main/styles/github)
+- [Jira](https://github.com/rose-pine/userstyles/tree/main/styles/jira)
+- [Proton](https://github.com/rose-pine/userstyles/tree/main/styles/proton)
+- [Scribe](https://github.com/rose-pine/userstyles/tree/main/styles/scribe)
+- [Wikiwand](https://github.com/rose-pine/userstyles/tree/main/styles/wikiwand)
 
 **Webmail**
 
@@ -50,8 +50,8 @@
 
 **Misc**
 
-- [Twitch](https://github.com/rose-pine/userstyles/tree/main/twitch)
-- [YouTube](https://github.com/rose-pine/userstyles/tree/main/youtube)
+- [Twitch](https://github.com/rose-pine/userstyles/tree/main/styles/twitch)
+- [YouTube](https://github.com/rose-pine/userstyles/tree/main/styles/youtube)
 
 ## Contributing
 

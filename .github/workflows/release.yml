@@ -1,4 +1,4 @@
-name: Create release
+name: Update release
 
 on:
   push:
@@ -12,7 +12,7 @@ permissions:
 
 jobs:
   release:
-    name: Release userstyle import list
+    name: Update release
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -22,7 +22,7 @@ jobs:
           bash ./build.sh
           cd ./scripts && npm install && cd ..
           node ./scripts/generate-imports.js
-      - name: Update release
+      - name: Release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: gh release upload userstyle-imports import.json --clobber
