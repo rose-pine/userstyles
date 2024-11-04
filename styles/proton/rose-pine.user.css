@@ -3,7 +3,7 @@
 @description    Soho vibes for Proton
 @version        1.0.0
 @license 		    MIT
-@author         Joris Mertz (https://github.com/jorismertz/)
+@author         Julia Mertz (https://github.com/juliamertz/)
 @namespace      https://github.com/rose-pine/
 @homepageURL 	  https://github.com/rose-pine/userstyles
 @updateURL      https://github.com/rose-pine/userstyles/raw/main/styles/proton/rose-pine.user.css
@@ -229,7 +229,7 @@
 			--optional-link-norm: var(--interaction-norm-major-1);
 			--optional-link-hover: var(--interaction-norm-major-2);
 			--optional-link-active: var(--interaction-norm-major-3);
-			--optional-email-item-unread-background-color: var(--background-weak);
+			--optional-email-item-unread-background-color: @surface;
 			--optional-email-item-read-background-color: var(--background-norm);
 			--optional-email-item-read-text-color: var(--text-weak);
 			--optional-mini-calendar-today-color: @text;
