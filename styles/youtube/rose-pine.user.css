@@ -253,8 +253,10 @@
     color: var(--main-color) !important;
   }
 
+
+
   /* top bar icon fix */
-  yt-icon#logo-icon .external-icon > svg > g:nth-child(1) path:nth-child(1) {
+  yt-icon#logo-icon path[fill="#FF0033"] {
     fill: var(--main-color) !important;
   }
 
