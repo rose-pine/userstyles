@@ -1,0 +1,527 @@
+/* ==UserStyle==
+@name           Rosé Pine for Bluesky 
+@description    Soho vibes for Bluesky
+@version        1.0.0
+@license 		    MIT
+@author         Julia Mertz (https://github.com/juliamertz/)
+@namespace      https://github.com/rose-pine/
+@homepageURL 	  https://github.com/rose-pine/userstyles
+@updateURL      https://github.com/rose-pine/userstyles/raw/main/styles/bluesky/rose-pine.user.css
+@preprocessor less
+@var select lightFlavor "Light Flavor" ["main:Rosé Pine", "moon:Rosé Pine Moon", "dawn:Rosé Pine Dawn*"]
+@var select darkFlavor "Dark Flavor" ["main:Rosé Pine*", "moon:Rosé Pine Moon", "dawn:Rosé Pine Dawn"]
+@var select accentColor "Accent" ["love:Love*", "gold:Gold", "rose:Rose", "pine:Pine", "foam:Foam", "iris:Iris"]
+==/UserStyle== */
+@-moz-document domain('bsky.app') {
+	@media (prefers-color-scheme: light) {
+		html.colorMode--system {
+			#rose-pine(@lightFlavor, @accentColor);
+		}
+	}
+	@media (prefers-color-scheme: dark) {
+		html.colorMode--system {
+			#rose-pine(@darkFlavor, @accentColor);
+		}
+	}
+	html.theme--light {
+		#rose-pine(@lightFlavor, @accentColor);
+	}
+	html.theme--dim,
+	html.theme--dark {
+		#rose-pine(@darkFlavor, @accentColor);
+	}
+	#rose-pine(@lookup, @accent) {
+		@base: @rose-pine[@@lookup][@base];
+		@surface: @rose-pine[@@lookup][@surface];
+		@overlay: @rose-pine[@@lookup][@overlay];
+		@muted: @rose-pine[@@lookup][@muted];
+		@subtle: @rose-pine[@@lookup][@subtle];
+		@text: @rose-pine[@@lookup][@text];
+		@love: @rose-pine[@@lookup][@love];
+		@gold: @rose-pine[@@lookup][@gold];
+		@rose: @rose-pine[@@lookup][@rose];
+		@pine: @rose-pine[@@lookup][@pine];
+		@foam: @rose-pine[@@lookup][@foam];
+		@iris: @rose-pine[@@lookup][@iris];
+		@highlightLow: @rose-pine[@@lookup][@highlightLow];
+		@highlightMed: @rose-pine[@@lookup][@highlightMed];
+		@highlightHigh: @rose-pine[@@lookup][@highlightHigh];
+		@accent-color: @rose-pine[@@lookup][@@accent];
+		color-scheme: if(@lookup = dawn, light, dark);
+		// fix general site background - this applies to the <html> element
+		background-color: @surface;
+		::selection {
+			background-color: fade(@accent-color, 30%);
+		}
+		input,
+		textarea {
+			&::placeholder {
+				color: @subtle !important;
+			}
+		}
+		--text: @text;
+		--background: @surface;
+		--backgroundLight: @surface;
+		/* generic text */
+		[style*="color: rgb(255, 255, 255)"],
+    [style*="color: rgb(241, 243, 245)"]//,
+    /* [style*="color: rgb(11, 15, 20)"] this breas on dark */ {
+			color: @text !important;
+		}
+		/* some background color of follow button */
+		[style*="background-color: rgb(241, 243, 245)"] {
+			background-color: @text !important;
+		}
+		[style*="color: rgb(11, 15, 20)"] {
+			color: if(@lookup = dawn, @text, @base) !important;
+		}
+		/* secondary text */
+		[style*="rgb(169, 183, 197)"],
+		[style*="rgb(140, 158, 178)"],
+		[style*="rgb(84, 110, 138)"],
+		[style*="rgb(66, 87, 108)"] {
+			color: @subtle !important;
+		}
+		// white bottons on the theme/color mode selection in settings
+		div[style*="background-color: rgb(197, 207, 217)"], // dark
+    div[style*="background-color: rgb(201, 210, 219)"], // dim
+    div[style*="background-color: rgb(46, 63, 81)"] // light
+		{
+			background-color: @text !important;
+			> div {
+				color: @base !important;
+			}
+		}
+		/* generic blue inline (e.g. link text, etc) */
+		[style*="color: rgb(16, 131, 254)"], // dark
+    [style*="color: rgb(32, 139, 254)"] // dim
+		{
+			color: @accent-color !important;
+		}
+		/* generic blue inline underline (links) */
+		[style*="text-decoration-color: rgb(16, 131, 254)"], // dark
+    [style*="text-decoration-color: rgb(32, 139, 254)"] // dim
+		{
+			text-decoration-color: @accent-color !important;
+		}
+		/* generic blue inline bg color (e.g. notification count) */
+		[style*="background-color: rgb(16, 131, 254)"], // dark
+    [style*="background-color: rgb(32, 139, 254)"] // dim
+		{
+			background-color: @accent-color !important;
+			/* notification count contrast fix, also chat message contrast fix (> div) */
+			&[style*="color: rgb(241, 243, 245)"],
+			> div {
+				color: @base !important;
+			}
+		}
+		/* sending/pending/failed direct message */
+		[style*="background-color: rgb(1, 64, 132)"] {
+			background-color: fadeout(@accent-color, 70%) !important;
+		}
+		/* blue svg inline */
+		[stroke="hsl(211, 99%, 53%)"],
+		[stroke="#0085ff"] {
+			stroke: @accent-color;
+		}
+		[fill="hsl(211, 99%, 53%)"],
+		[fill="hsl(211, 99%, 56%)"],
+		[fill="#0085ff"] {
+			fill: @accent-color;
+		}
+		/* a lot of blue things (buttons etc) */
+		.r-wzwllv,
+		div[style*="background-color: rgb(0, 133, 255)"] {
+			background-color: @accent-color !important;
+		}
+		/* subscribe to labeler button */
+		button[data-testid="toggleSubscribeBtn"] {
+			> div {
+				background-color: @iris !important;
+				> div {
+					color: @base !important;
+				}
+			}
+		}
+		/* direct message "failed to send" text */
+		span[style*="color: rgb(205, 10, 55)"] {
+			color: @love !important;
+		}
+		/* red button text (delete my account) */
+		[style*="color: rgb(251, 162, 178)"] {
+			color: @love !important;
+		}
+		/* red button (delete, etc) */
+		button[style*="background-color: rgb(244, 11, 66)"], // dark, light (same color)
+    button[style*="background-color: rgb(246, 60, 103)"], // dark (hover)
+    button[style*="background-color: rgb(245, 41, 88)"], // dim
+    button[style*="background-color: rgb(247, 84, 122)"], // dim (hover)
+    button[style*="background-color: rgb(205, 10, 55)"] // light (hover)
+		{
+			background-color: @love !important;
+			&:hover {
+				background-color: fade(@love, 70%) !important;
+			}
+			// text color
+			> div {
+				color: @base !important;
+			}
+		}
+		/* delete account button */
+		[style^="background-color: rgb(79, 3, 20)"] {
+			background-color: @love !important;
+		}
+		path[fill="#fba2b2"] {
+			fill: @base;
+		}
+		/* generic background color */
+		[style*="background-color: rgb(255, 255, 255)"],
+		[style*="background-color: rgb(0, 0, 0)"],
+		[style*="background-color: rgb(22, 30, 39)"] {
+			background-color: @surface !important;
+			& when (@lookup = dawn) {
+				/* fix button colors in dawn */
+				[style*="background-color: rgb(0, 0, 0)"] {
+					background-color: @text !important;
+				}
+			}
+		}
+		/* secondary background color */
+		[style*="background-color: rgb(20, 25, 31)"], /* dark? */
+    [style*="background-color: rgb(20, 27, 35)"], /* dark */
+    [style*="background-color: rgb(30, 41, 54)"] /* dim */ {
+			background-color: @surface !important;
+		}
+		/* secondary background color when active (e.g. search bar, hovering some buttons like cancel) */
+		[style*="background-color: rgb(28, 39, 50)"], // dark
+    [style*="background-color: rgb(38, 53, 68)"] // dim
+		{
+			background-color: @base !important;
+		}
+		/* some sort of tertiary background color with a slight accent */
+		[style*="background-color: rgb(0, 25, 51)"] {
+			background-color: fadeout(@accent-color, 70%) !important;
+		}
+		/* loading circle */
+		circle[style^="stroke: rgb(25, 118, 210)"] {
+			stroke: @accent-color !important;
+		}
+		/* wide site: new post button (w text) */
+		button[style*="background-color: rgb(16, 131, 254)"], // dark
+    button[style*="background-color: rgb(52, 150, 254)"], // dark (hover)
+    button[style*="background-color: rgb(32, 139, 254)"], // dim
+    button[style*="background-color: rgb(76, 162, 254)"] // dim (hover)
+		{
+			background-color: @accent-color !important;
+			&:hover {
+				background-color: fade(@accent-color, 70%) !important;
+			}
+			> div {
+				color: @base !important;
+			}
+			svg > path {
+				fill: @base !important;
+			}
+		}
+		/* borders */
+		.css-175oi2r {
+			border-color: @overlay !important;
+		}
+		/* fix selected tab bottom border issue caused by selector above */
+		.css-175oi2r[style*="border-bottom-color: rgb(16, 131, 254)"] {
+			border-bottom-color: @accent-color !important;
+		}
+		/* fixes the bottom border on tabs (timeline) having a darker color */
+		.r-oucylx {
+			border-bottom-color: @surface !important;
+		}
+		/* current selected tab (acc page) !! KEEP THIS BELOW ABOVE DEFINITION !! */
+		[style*="border-color: rgb(255, 255, 255)"] {
+			border-color: @accent-color !important;
+		}
+		/* settings highlight thing */
+		[style="background-color: rgb(38, 39, 45)"] {
+			background-color: @base !important;
+		}
+		/* thin site: bluesky text */
+		.r-yovm8p {
+			color: @pine;
+		}
+		/* empty profile banner */
+		.r-wuyfte {
+			background-color: @pine;
+		}
+		/* "invalid handle" warning */
+		[style*="color: rgb(236, 72, 104); border-color: rgb(209, 16, 67)"] {
+			color: @love !important;
+			border-color: @love !important;
+		}
+		/* end of feed text */
+		.r-1521r3q {
+			color: @muted;
+		}
+		/* mobile side drawer */
+		[data-testid="drawer"] {
+			background-color: @surface;
+		}
+		/* feedback */
+		.r-m7buhn {
+			background-color: @pine;
+		}
+		/* save, report, post modal button */
+		[data-testid="sendReportBtn"],
+		[data-testid="composerPublishBtn"],
+		[data-testid="editProfileSaveBtn"] {
+			background: unset !important;
+			background-color: @accent-color !important;
+			/* fix contrast issues */
+			> div {
+				color: @base !important;
+			}
+		}
+		[data-testid="saveBtn"] {
+			> div[style*="background-image: linear-gradient"] {
+				background: unset !important;
+				background-color: @accent-color !important;
+				> div {
+					color: @base !important;
+				}
+			}
+		}
+		// toast notifications (e.g. "copied to clipboard")
+		.r-17c3jg3:has(> div[dir="auto"]) {
+			background-color: @base !important;
+			.r-jwli3a {
+				color: @text !important;
+			}
+			> svg > path {
+				fill: @text !important;
+			}
+		}
+		/* draft "Discard" button */
+		[style^="background-color: rgb(209, 16, 67)"] {
+			background-color: @love !important;
+		}
+		/* the round gradient post button in the bottom right when the page is thinner than usual */
+		[data-testid="composeFAB"] > div {
+			background: unset !important;
+			background-color: @accent-color !important;
+			// fix contrast (inner symbol)
+			.r-jwli3a {
+				color: @base !important;
+			}
+		}
+		/* blue text only button (e.g. cancel post button) */
+		div[style*="color: rgb(52, 150, 254)"],
+		div[style*="color: rgb(76, 162, 254)"] {
+			color: @accent-color !important;
+		}
+		/* text color when writing a post */
+		.ProseMirror,
+		.ProseMirror-dark {
+			color: @text;
+		}
+		/* some button background color (when hovering) */
+		[style*="background-color: rgb(0, 44, 91)"],
+		[style*="background-color: rgb(19, 63, 109)"] {
+			background-color: fade(@accent-color, 30%) !important;
+		}
+		/* several white buttons */
+		button[style*="background-color: rgb(255, 255, 255)"]
+			when
+			not
+			(@lookup = dawn) {
+			background-color: @text !important;
+		}
+		/* the white buttons text */
+		[style*="color: rgb(0, 0, 0)"] {
+			color: @base !important;
+		}
+		/* replace dark fill icons with crust ones */
+		path[fill="#000000"] {
+			fill: @base;
+		}
+		/* fixes a contrast issue when the suggested follows button is enabled (very ugly selector) */
+		button[data-testid="suggestedFollowsBtn"][style*="background-color: rgb(255, 255, 255)"]
+			> svg
+			> path {
+			fill: @surface !important;
+		}
+		/* text inside most buttons */
+		button > div > div[style~="color: rgb(0, 0, 0)"] {
+			color: @surface !important;
+		}
+		/* search bar text */
+		[role="search"],
+		[data-testid="confirmCodeInput"] {
+			--placeholderTextColor: @subtle !important;
+		}
+		/* search bar icon */
+		svg[style^="color: rgb(141, 142, 150)"] {
+			color: @subtle !important;
+		}
+		/* small icons */
+		path[fill="#ffffff"],
+		path[fill="hsl(211, 20%, 95.3%)"] {
+			fill: @text;
+			& when (@lookup = dawn) {
+				fill: @surface;
+			}
+		}
+		/* more gray small icons (seems to only be the trash can/delete icon) */
+		path[fill="#8D8E96"] {
+			fill: @subtle;
+		}
+		/* settings button at the top of the timeline, hashtag button/icon at top of timeline */
+		path[fill="hsl(211, 24%, 70%)"],
+		path[fill="hsl(211, 20%, 62.4%)"] {
+			fill: @subtle;
+		}
+		/* x invite codes available icon */
+		div[style*="background-color: rgb(191, 225, 255)"],
+		div[style*="background-color: rgb(1, 37, 97)"] {
+			background-color: fadeout(@accent-color, 70%) !important;
+			> svg > path[fill="#52acfe"] {
+				fill: @accent-color;
+			}
+		}
+		/* likes, reposts and comment counts/buttons under posts, maybe more */
+		path[fill="hsl(211, 20%, 53%)"],
+		[style*="color: rgb(111, 134, 159)"] {
+			color: @subtle !important;
+			fill: @subtle !important;
+		}
+		/* heart/like */
+		.r-84gixx,
+    .r-1i89l9k,
+    div[style*="color: rgb(236, 72, 153)"],
+    button[data-testid="toggleLikeBtn"] > svg:has(path[fill^="hsl(346,"]) // feed like button
+		{
+			color: @love !important;
+			> path {
+				fill: @love !important;
+			}
+		}
+		/* repost */
+		.r-5ld2xk,
+		[style*="color: rgb(69, 237, 159)"] {
+			color: @foam !important;
+			> path {
+				fill: @foam !important;
+			}
+		}
+		/* tiny people icon on post view ("Everybody can reply") */
+		path[fill="hsl(211, 24%, 43.6%)"],
+    /* icon above "you have no lists" */
+    path[fill="hsl(211, 24%, 34.2%)"] {
+			fill: @subtle;
+		}
+		/* onboarding: continue/next button */
+		[data-testid="continueBtn"] {
+			background-color: @accent-color !important;
+		}
+		[data-testid="continueBtn"] > div > div {
+			color: @surface !important;
+		}
+		[data-testid="continueBtn"] > div > svg > path {
+			fill: @surface !important;
+		}
+		/* pretty self explanatory, user mentions in the post create modal */
+		.mention {
+			color: @accent-color;
+		}
+		/* mentions in the notification tab (highlighted notifications) */
+		div[style*="background-color: rgb(0, 17, 36)"], // dark
+    div[style*="background-color: rgb(21, 41, 63)"], // dim
+    div[style*="background-color: rgb(240, 247, 255)"] // light
+		{
+			background-color: fadeout(@accent-color, 70%) !important;
+			.css-175oi2r:not([role="checkbox"] *) {
+				background-color: transparent !important;
+			}
+		}
+		/* generic blue background color inline (used for buttons in notifications tab) */
+		button[style*="background-color: rgb(0, 133, 255)"] {
+			background-color: @accent-color !important;
+		}
+		/* contrast fix for above */
+		button[style*="background-color: rgb(0, 133, 255)"] > div > div {
+			color: @surface !important;
+		}
+		/* other button in notifications tab, inner text */
+		div[style*="color: rgb(82, 172, 254)"] {
+			color: @accent-color !important;
+		}
+		/* "No notifications yet!" text in the notifications tab */
+		div[style*="color: rgb(141, 142, 150)"] {
+			color: @subtle !important;
+		}
+		/* login: wrong password highlight */
+		.r-w7hjet {
+			background-color: @love;
+		}
+		/* please verify your email popup (green checkmark) */
+		circle[fill="#20BC07"] {
+			fill: @foam;
+		}
+		/* toggle circle */
+		[style*="background-color: rgb(185, 185, 193)"] {
+			background-color: @muted !important;
+		}
+	}
+}
+/* prettier-ignore */
+@rose-pine: {
+  @main: {
+    @base: #191724;
+    @surface: #1f1d2e;
+    @overlay: #26233a;
+    @muted: #6e6a86;
+    @subtle: #908caa;
+    @text: #e0def4;
+    @love: #eb6f92;
+    @gold: #f6c177;
+    @rose: #ebbcba;
+    @pine: #31748f;
+    @foam: #9ccfd8;
+    @iris: #c4a7e7;
+    @highlightLow: #21202e;
+    @highlightMed: #403d52;
+    @highlightHigh: #524f67;
+  };
+  @moon: {
+    @base: #232136;
+    @surface: #2a273f;
+    @overlay: #393552;
+    @muted: #6e6a86;
+    @subtle: #908caa;
+    @text: #e0def4;
+    @love: #eb6f92;
+    @gold: #f6c177;
+    @rose: #ea9a97;
+    @pine: #3e8fb0;
+    @foam: #9ccfd8;
+    @iris: #c4a7e7;
+    @highlightLow: #2a283e;
+    @highlightMed: #44415a;
+    @highlightHigh: #56526e;
+  };
+  @dawn: {
+    @base: #faf4ed;
+    @surface: #fffaf3;
+    @overlay: #f2e9e1;
+    @muted: #9893a5;
+    @subtle: #797593;
+    @text: #575279;
+    @love: #b4637a;
+    @gold: #ea9d34;
+    @rose: #d7827e;
+    @pine: #286983;
+    @foam: #56949f;
+    @iris: #907aa9;
+    @highlightLow: #f4ede8;
+    @highlightMed: #dfdad9;
+    @highlightHigh: #cecacd;
+  };
+}
+// vim:ft=less
