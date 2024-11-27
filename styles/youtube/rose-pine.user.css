@@ -1819,6 +1819,7 @@ Settings > Advanced settings > Copy button*/
   ytd-searchbox[mode="material-centered"] #container.ytd-searchbox,
   ytd-searchbox[mode="legacy"] #container.ytd-searchbox,
   ytd-searchbox[mode="legacy-centered"] #container.ytd-searchbox,
+  .YtSearchboxComponentInputBox,
   #container.ytd-searchbox,
   #masthead-search-terms/*account settings page*/
   {
