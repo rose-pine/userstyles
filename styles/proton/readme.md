@@ -28,4 +28,4 @@
 
 - [Catppuccin Org](https://github.com/catppuccin)
 - [soya-daizu](https://github.com/soya-daizu)
-- [jorismertz](https://github.com/jorismertz)
+- [juliamertz](https://github.com/juliamertz)

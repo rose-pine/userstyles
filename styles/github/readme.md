@@ -28,4 +28,4 @@
 
 - [Catppuccin Org](https://github.com/catppuccin)
 - [soradotwav](https://github.com/soradotwav)
-- [jorismertz](https://github.com/jorismertz)
+- [juliamertz](https://github.com/juliamertz)
