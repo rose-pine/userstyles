@@ -19,10 +19,10 @@
 3. Click install on the top left
 
 ## Gallery
+
 ![image](https://github.com/user-attachments/assets/4cdd776e-58da-4d34-b834-a1ded2434d24)
 ![image](https://github.com/user-attachments/assets/ed44ec8b-7475-44d9-b884-20c0f0fdb87e)
 ![image](https://github.com/user-attachments/assets/d354325d-2dcf-473b-a93a-8f04da441afb)
-
 
 ## Thanks to
 
