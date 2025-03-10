@@ -52,6 +52,7 @@
 
 - [Twitch](https://github.com/rose-pine/userstyles/tree/main/styles/twitch)
 - [YouTube](https://github.com/rose-pine/userstyles/tree/main/styles/youtube)
+- [NixOS-Search](https://github.com/rose-pine/userstyles/tree/main/styles/nixos-search)
 
 ## Contributing
 
