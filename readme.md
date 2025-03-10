@@ -15,7 +15,7 @@
 2. Downloading Userstyles:
    - Open the folder of the userstyle you want to install.
    - Then, click on the "Stylus Install" button or open `rose-pine.user.css` and click on "Raw."
-	> To download all userstyles at once, go to the [releases](https://github.com/rose-pine/userstyles/releases/tag/userstyle-imports) page and follow the instructions listed there.
+     > To download all userstyles at once, go to the [releases](https://github.com/rose-pine/userstyles/releases/tag/userstyle-imports) page and follow the instructions listed there.
 3. Optionally, you can configure any available options that you want to change. Then, click on the "Install Style" button.
 4. Some might require extra steps to work correctly, so make sure to check its readme page for additional information.
 
