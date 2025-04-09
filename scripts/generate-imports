@@ -1,0 +1,58 @@
+#!/usr/bin/env -S deno --allow-read --allow-write
+// vim:ft=javascript
+
+import usercssMeta from "npm:usercss-meta@0.12.0";
+
+async function readTheme(name) {
+  const path = `./styles/${name}/rose-pine.user.less`;
+  const text = await Deno.readTextFile(path);
+  const metadata = usercssMeta.parse(text).metadata;
+  return {
+    enabled: true,
+    name: metadata.name ?? "",
+    description: metadata.description ?? "",
+    author: "Rose Piné",
+    updateUrl: metadata.updateURL ?? "",
+    usercssData: metadata,
+    sourceCode: text.toString(),
+  };
+}
+
+function patchMetadata(theme, defaultVariant) {
+  if (!theme.usercssData?.vars) return theme;
+  const keys = Object.keys(theme.usercssData.vars);
+  if (keys.includes("lightVariant") && keys.includes("darkVariant")) {
+    theme.usercssData.vars.lightVariant.default = "dawn";
+    theme.usercssData.vars.darkVariant.default = defaultVariant;
+  } else if (keys.includes("variant")) {
+    theme.usercssData.vars.variant.default = defaultVariant;
+  } else {
+    console.warn(`Theme ${theme.name} has no variant variable`);
+  }
+  return theme;
+}
+
+let result = [];
+for await (const entry of Deno.readDir(`./styles`)) {
+  try {
+    const theme = await readTheme(entry.name);
+    result.push(theme);
+  } catch (err) {
+    console.error(`ignoring ${entry.name}: ${err}`);
+  }
+}
+
+const settings = {
+  settings: {
+    updateInterval: 24,
+    updateOnlyEnabled: true,
+    patchCsp: true,
+  },
+};
+
+for (const variant of ["main", "moon", "dawn"]) {
+  const patched = result.map((theme) => patchMetadata(theme, variant));
+  const serialized = JSON.stringify([settings, ...patched], null, 2);
+  const filename = `rose-pine${variant == "main" ? "" : `-${variant}`}-import.json`;
+  await Deno.writeTextFile(filename, serialized);
+}

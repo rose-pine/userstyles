@@ -1,0 +1,102 @@
+/* ==UserStyle==
+@name         Rosé Pine for NixOS Search
+@description  Soho vibes for NixOS Search
+@author       JTrenerry
+@license      MIT
+@version      1.0.0
+@namespace    github.com/rose-pine/userstyles/styles/nixos-search
+@homepageURL  https://github.com/rose-pine/userstyles/tree/main/styles/nixos-search
+@updateURL    https://github.com/rose-pine/userstyles/raw/main/styles/nixos-search/rose-pine.user.less
+@supportURL   https://github.com/rose-pine/userstyles/issues?q=is%3Aopen+is%3Aissue+label%3Anixos-search
+
+@preprocessor less
+@var select lightVariant "Light Variant" ["dawn:Rosé Pine Dawn*", "moon:Rosé Pine Moon", "main:Rosé Pine"]
+@var select darkVariant "Dark Variant" ["dawn:Rosé Pine Dawn", "moon:Rosé Pine Moon", "main:Rosé Pine"]
+@var select accentColor "Accent" ["rose:Rose", "iris:Iris", "pine:Pine", "foam:Foam", "love:Love", "gold:Gold"]
+==/UserStyle== */
+
+@-moz-document domain("search.nixos.org") {
+  #rosepine(@lookup, @accent) {
+    @base: @rosepine[@@lookup][@base];
+    @surface: @rosepine[@@lookup][@surface];
+    @overlay: @rosepine[@@lookup][@overlay];
+    @muted: @rosepine[@@lookup][@muted];
+    @subtle: @rosepine[@@lookup][@subtle];
+    @text: @rosepine[@@lookup][@text];
+    @love: @rosepine[@@lookup][@love];
+    @gold: @rosepine[@@lookup][@gold];
+    @rose: @rosepine[@@lookup][@rose];
+    @pine: @rosepine[@@lookup][@pine];
+    @foam: @rosepine[@@lookup][@foam];
+    @iris: @rosepine[@@lookup][@iris];
+    @highlightLow: @rosepine[@@lookup][@highlightLow];
+    @highlightMed: @rosepine[@@lookup][@highlightMed];
+    @highlightHigh: @rosepine[@@lookup][@highlightHigh];
+    @accent-color: @rosepine[@@lookup][@@accent];
+
+    ::selection {
+      background-color: fade(@accent-color, 30%);
+    }
+
+    input,
+    textarea {
+      &::placeholder {
+        color: @muted !important;
+      }
+    }
+
+    --background-color: @base;
+    --badge-background: @overlay;
+    --button-active-background: @overlay;
+    --button-active-hover-background: @overlay;
+    --button-background: @surface;
+    --button-hover-background: @overlay;
+    --color-active-hover-tab: @surface;
+    --color-active-tab: @base;
+    --color-hover-tab: @surface;
+    --headerbar-background-color: @overlay; //change
+    --hover-background: @base;
+    --link-color: @accent;
+    --info-label-background: @overlay;
+    --dark-blue: @accent;
+    --light-blue: @accent;
+    --line-color: @base;
+    --search-result-short-details-color: @muted;
+    --search-result-divider-line-color: @overlay;
+    --search-result-title-color: @accent;
+    --search-sidebar-link-color: @text;
+    --search-sidebar-selected-link-background: @overlay;
+    --search-sidebar-selected-link-color: @accent;
+    --terminal-background: @overlay;
+    --terminal-color: @accent;
+    --text-color: @text;
+    --text-color-light: @text;
+    --text-color-warning: @love;
+
+    .label,
+    .badge {
+      color: @text;
+    }
+
+    a:hover,
+    a:focus {
+      color: @text;
+    }
+  }
+
+  :root {
+    @media (prefers-color-scheme: light) {
+      #rosepine(@lightVariant, @accentColor);
+    }
+    @media (prefers-color-scheme: dark) {
+      #rosepine(@darkVariant, @accentColor);
+    }
+  }
+}
+
+/* deno-fmt-ignore */
+@rosepine: {
+  @main: { @base: #191724; @surface: #1f1d2e; @overlay: #26233a; @muted: #6e6a86; @subtle: #908caa; @text: #e0def4; @love: #eb6f92; @gold: #f6c177; @rose: #ebbcba; @pine: #31748f; @foam: #9ccfd8; @iris: #c4a7e7; @highlightLow: #21202e; @highlightMed: #403d52; @highlightHigh: #524f67; };
+  @moon: { @base: #232136; @surface: #2a273f; @overlay: #393552; @muted: #6e6a86; @subtle: #908caa; @text: #e0def4; @love: #eb6f92; @gold: #f6c177; @rose: #ea9a97; @pine: #3e8fb0; @foam: #9ccfd8; @iris: #c4a7e7; @highlightLow: #2a283e; @highlightMed: #44415a; @highlightHigh: #56526e; };
+  @dawn: { @base: #faf4ed; @surface: #fffaf3; @overlay: #f2e9e1; @muted: #9893a5; @subtle: #797593; @text: #575279; @love: #b4637a; @gold: #ea9d34; @rose: #d7827e; @pine: #286983; @foam: #56949f; @iris: #907aa9; @highlightLow: #f4ede8; @highlightMed: #dfdad9; @highlightHigh: #cecacd; };
+};

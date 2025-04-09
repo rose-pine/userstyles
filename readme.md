@@ -11,13 +11,20 @@
 
 # Getting started
 
-1. Install the [Stylus](https://github.com/openstyles/stylus) extension for [Chrome](https://chrome.google.com/webstore/detail/stylus/clngdbkpkpeebahjckkjfobafhncgmne) or [Firefox](https://addons.mozilla.org/en-GB/firefox/addon/styl-us/).
+1. Install the [Stylus](https://github.com/openstyles/stylus) extension for
+   [Chrome](https://chrome.google.com/webstore/detail/stylus/clngdbkpkpeebahjckkjfobafhncgmne)
+   or [Firefox](https://addons.mozilla.org/en-GB/firefox/addon/styl-us/).
 2. Downloading Userstyles:
    - Open the folder of the userstyle you want to install.
-   - Then, click on the "Stylus Install" button or open `rose-pine.user.css` and click on "Raw."
-     > To download all userstyles at once, go to the [releases](https://github.com/rose-pine/userstyles/releases/tag/userstyle-imports) page and follow the instructions listed there.
-3. Optionally, you can configure any available options that you want to change. Then, click on the "Install Style" button.
-4. Some might require extra steps to work correctly, so make sure to check its readme page for additional information.
+   - Then, click on the "Stylus Install" button or open `rose-pine.user.less`
+     and click on "Raw."
+   > To download all userstyles at once, go to the
+   > [releases](https://github.com/rose-pine/userstyles/releases/tag/userstyle-imports)
+   > page and follow the instructions listed there.
+3. Optionally, you can configure any available options that you want to change.
+   Then, click on the "Install Style" button.
+4. Some might require extra steps to work correctly, so make sure to check its
+   readme page for additional information.
 
 ## Userstyles
 
@@ -56,4 +63,9 @@
 
 ## Contributing
 
-Contributions are welcome and appreciated! Please run `sh build.sh` to format the repository before submitting a pull request.
+We use [deno](https://docs.deno.com/runtime/getting_started/installation/) to
+format this repo and for automation, make sure you have it installed.
+
+Contributions are welcome and appreciated! You can create a new userstyle from
+the template by running `./scripts/init Website` Please run `deno fmt` to format
+the repository before submitting a pull request.
