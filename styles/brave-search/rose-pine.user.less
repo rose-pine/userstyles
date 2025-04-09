@@ -1,0 +1,203 @@
+/* ==UserStyle==
+@name 					Rosé Pine for Brave Search 
+@description    Soho vibes for Brave Search
+@version        1.0.0
+@license 		    MIT
+@author         Adrian Karlén (https://github.com/adriankarlen/)
+@namespace      https://github.com/rose-pine/
+@homepageURL 	  https://github.com/rose-pine/userstyles
+@updateURL      https://github.com/rose-pine/userstyles/raw/main/styles/brave-search/rose-pine.user.less
+@preprocessor   less
+
+@var select lightVariant "Light variant" ["main:Rosé Pine*", "moon:Rosé Pine Moon", "dawn:Rosé Pine Dawn"]
+@var select darkVariant "Dark variant" ["main:Rosé Pine*", "moon:Rosé Pine Moon", "dawn:Rosé Pine Dawn"]
+==/UserStyle== */
+
+@-moz-document domain("search.brave.com") {
+  :root.light {
+    #rose-pine(@lightVariant);
+  }
+  :root.dark {
+    #rose-pine(@darkVariant);
+  }
+  :root:not(.light, .dark) {
+    @media (prefers-color-scheme: light) {
+      #rose-pine(@lightVariant);
+    }
+    @media (prefers-color-scheme: dark) {
+      #rose-pine(@darkVariant);
+    }
+  }
+
+  #rose-pine(@variant) {
+    @base: @rose-pine[@@variant][@base];
+    @surface: @rose-pine[@@variant][@surface];
+    @overlay: @rose-pine[@@variant][@overlay];
+    @muted: @rose-pine[@@variant][@muted];
+    @subtle: @rose-pine[@@variant][@subtle];
+    @text: @rose-pine[@@variant][@text];
+    @love: @rose-pine[@@variant][@love];
+    @gold: @rose-pine[@@variant][@gold];
+    @rose: @rose-pine[@@variant][@rose];
+    @pine: @rose-pine[@@variant][@pine];
+    @foam: @rose-pine[@@variant][@foam];
+    @iris: @rose-pine[@@variant][@iris];
+    @highlightLow: @rose-pine[@@variant][@highlightLow];
+    @highlightMed: @rose-pine[@@variant][@highlightMed];
+    @highlightHigh: @rose-pine[@@variant][@highlightHigh];
+    color-scheme: if(@variant = dawn, light, dark);
+
+    --color-container-highlight: @surface;
+    --search-serp-container-background: @overlay;
+    --search-serp-breadcrumbs: @muted;
+    --body-bg: @base;
+    --bg-glassy: @overlay;
+    --bg-1: @highlightMed;
+    --bg-2: @highlightLow;
+    --bg-02: @surface;
+    --bg-04: @surface;
+    --bg-green: @pine;
+    --bg-blue: @foam;
+    --bg-red: @love;
+    --bg-favicon: @highlightMed;
+    --bg-form-control-selected: @highlightHigh;
+    --bg-form-control-unselected: @highlightLow;
+    --form-control-selected: @foam;
+    --form-control-hover: @iris;
+    --form-control-focus: @text;
+    --settings-header-bg: @overlay;
+    --settings-header-text: @text;
+    --settings-header-icon: @foam;
+    --settings-widget-text: @muted;
+    --settings-item-text: @text;
+    --settings-item-icon: @foam;
+    --settings-item-border: @highlightLow;
+    --settings-item-border-2: @highlightHigh;
+    --settings-btn-bg: @highlightLow;
+    --settings-btn-text: @text;
+    --settings-widget-outline: @highlightLow;
+    --settings-independent-score: @foam;
+    --settings-global-score: @gold;
+    --brave-supporter-bg: @base;
+    --brave-supporter-text: @text;
+    --context-menu-header-border: @highlightLow;
+    --color-primary: @text;
+    --color-primary-2: @subtle;
+    --color-primary-3: @muted;
+    --color-white: @text;
+    --color-gray-2: @subtle;
+    --color-gray-3: @muted;
+    --color-gray-4: @highlightHigh;
+    --color-gray-5: @highlightMed;
+    --color-gray-6: @highlightLow;
+    --color-green: @pine;
+    --color-red: @love;
+    --color-blue: @foam;
+    --info-color: @foam;
+    --link-default: @pine;
+    --link-primary: @pine;
+    --link-secondary: @pine;
+    --link-visited: @rose;
+    --snippet-url: @muted;
+    --separator-dot: @highlightLow;
+    --theme-purple: @rose;
+    --theme-gold: @gold;
+    --border-color: @highlightLow;
+    --blurple-300: @iris;
+    --text-primary: @text;
+    --text-secondary: @subtle;
+    --text-tertiary: @muted;
+    --text-01: @text;
+    --text-02: @subtle;
+    --text-03: @muted;
+    --text-interactive: @pine;
+    --interactive-04: @pine;
+    --interactive-05: @pine;
+    --interactive-06: @pine;
+    --interactive-07: @pine;
+    --interactive-08: @pine;
+    --focus-border: @highlightHigh;
+    --divider-01: @highlightLow;
+    --disabled: @highlightMed;
+    --btn-filled-bg: @highlightLow;
+    --btn-filled-bg-hover: @highlightMed;
+    --btn-filled-text-active: @text;
+    --btn-filled-bg-active: @highlightHigh;
+    --btn-filled-text-disabled: @highlightMed;
+    --btn-outline-border: @highlightLow;
+    --btn-outline-border-hover: @highlightMed;
+    --btn-outline-text: @text;
+    --btn-outline-text-hover: @subtle;
+    --btn-outline-text-active: @text;
+    --btn-outline-border-active: @highlightHigh;
+    --btn-outline-text-disabled: @highlightMed;
+    --btn-icon-svg-hover: @subtle;
+    --btn-icon-bg-hover: @highlightMed;
+    --btn-icon-svg-active: @text;
+    --code-bg-0: @base;
+    --code-border: @highlightLow;
+    --code-color-1: @highlightLow;
+    --code-color-2: @text;
+    --code-color-3: @pine;
+    --code-color-4: @foam;
+    --code-color-5: @rose;
+    --search-bgd-01: @highlightLow;
+    --search-bgd-02: @base;
+    --search-bgd-03: @surface;
+    --search-bgd-04: @overlay;
+    --search-bgd-05: @base;
+    --search-bgd-06: @base;
+    --search-bgd-07: @overlay;
+    --search-bgd-08: @surface;
+    --search-line-01: @highlightHigh;
+    --search-line-02: @muted;
+    --search-text-01: @text;
+    --search-text-02: @subtle;
+    --search-text-03: @muted;
+    --search-text-04: @muted;
+    --search-text-05: @foam;
+    --search-text-06: @muted;
+    --search-text-09: @gold;
+    --search-text-10: @gold;
+    --search-interactive-01: @foam;
+    --search-interactive-02: @rose;
+    --search-interactive-03: @rose;
+    --search-interactive-04: @foam;
+    --search-interactive-05: @rose;
+    --gray-30: @base;
+    --gray-60: @highlightLow;
+    --gray-90: @highlightLow;
+    --gray-110: @muted;
+    --gray-120: @text;
+    --secondary-90: @iris;
+    --tabs-search-text-default: @love;
+
+    #searchform > .searchbox-wrapper::after {
+      background-image: none;
+    }
+
+    #submit-button:hover,
+    #submit-button:focus {
+      background: none;
+    }
+
+    #submit-button .icon path {
+      fill: @love;
+    }
+
+    #submit-button:hover .icon path {
+      fill: @text;
+    }
+
+    .tab-item.active a:after {
+      background: @love;
+    }
+  }
+}
+
+/* deno-fmt-ignore */
+@rose-pine: {
+  @main: { @base: #191724; @surface: #1f1d2e; @overlay: #26233a; @muted: #6e6a86; @subtle: #908caa; @text: #e0def4; @love: #eb6f92; @gold: #f6c177; @rose: #ebbcba; @pine: #31748f; @foam: #9ccfd8; @iris: #c4a7e7; @highlightLow: #21202e; @highlightMed: #403d52; @highlightHigh: #524f67; };
+  @moon: { @base: #232136; @surface: #2a273f; @overlay: #393552; @muted: #6e6a86; @subtle: #908caa; @text: #e0def4; @love: #eb6f92; @gold: #f6c177; @rose: #ea9a97; @pine: #3e8fb0; @foam: #9ccfd8; @iris: #c4a7e7; @highlightLow: #2a283e; @highlightMed: #44415a; @highlightHigh: #56526e; };
+  @dawn: { @base: #faf4ed; @surface: #fffaf3; @overlay: #f2e9e1; @muted: #9893a5; @subtle: #797593; @text: #575279; @love: #b4637a; @gold: #ea9d34; @rose: #d7827e; @pine: #286983; @foam: #56949f; @iris: #907aa9; @highlightLow: #f4ede8; @highlightMed: #dfdad9; @highlightHigh: #cecacd; };
+};
