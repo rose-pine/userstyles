@@ -573,14 +573,14 @@
 			--colorCarouselIconSelected: @foam;
 			--colorCarouselIconActive: rgba(169, 187, 203, 0.72);
 			--colorCarouselBackgroundPrimary: @base;
-			--shadowExtraSmall: 0 1px 8px 0 rgba(0, 0, 0, 0.12),
-				0 1px 2px 0 rgba(0, 0, 0, 0.06);
-			--shadowSmall: 0 1px 1px 0 rgba(0, 0, 0, 0.16),
-				0 1px 8px 0 rgba(0, 0, 0, 0.16);
-			--shadowMedium: 0 0 4px 0 rgba(0, 0, 0, 0.24),
-				0 6px 12px 0 rgba(0, 0, 0, 0.3);
-			--shadowLarge: 0 2px 6px 0 rgba(0, 0, 0, 0.26),
-				0 24px 32px -4px rgba(0, 0, 0, 0.42);
+			--shadowExtraSmall:
+				0 1px 8px 0 rgba(0, 0, 0, 0.12), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+			--shadowSmall:
+				0 1px 1px 0 rgba(0, 0, 0, 0.16), 0 1px 8px 0 rgba(0, 0, 0, 0.16);
+			--shadowMedium:
+				0 0 4px 0 rgba(0, 0, 0, 0.24), 0 6px 12px 0 rgba(0, 0, 0, 0.3);
+			--shadowLarge:
+				0 2px 6px 0 rgba(0, 0, 0, 0.26), 0 24px 32px -4px rgba(0, 0, 0, 0.42);
 			--shadowFocusDefault: 0 0 0 3px @foam;
 		}
 

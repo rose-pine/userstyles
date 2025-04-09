@@ -462,14 +462,16 @@
 		--shadow-resting-xsmall: 0px 1px 0px 0px @base;
 		--shadow-resting-small: 0px 1px 0px 0px @base, 0px 1px 3px 0px @base;
 		--shadow-resting-medium: 0px 3px 6px 0px @base;
-		--shadow-floating-small: 0px 0px 0px 1px @surface, 0px 6px 12px -3px @base,
-			0px 6px 18px 0px @base;
-		--shadow-floating-medium: 0px 0px 0px 1px @overlay, 0px 8px 16px -4px @base,
+		--shadow-floating-small:
+			0px 0px 0px 1px @surface, 0px 6px 12px -3px @base, 0px 6px 18px 0px @base;
+		--shadow-floating-medium:
+			0px 0px 0px 1px @overlay, 0px 8px 16px -4px @base,
 			0px 4px 32px -4px @base, 0px 24px 48px -12px @base,
 			0px 48px 96px -24px @base;
-		--shadow-floating-large: 0px 0px 0px 1px @overlay, 0px 24px 48px 0px #010409;
-		--shadow-floating-xlarge: 0px 0px 0px 1px @overlay,
-			0px 32px 64px 0px #010409;
+		--shadow-floating-large:
+			0px 0px 0px 1px @overlay, 0px 24px 48px 0px #010409;
+		--shadow-floating-xlarge:
+			0px 0px 0px 1px @overlay, 0px 32px 64px 0px #010409;
 		--shadow-floating-legacy: 0px 6px 12px -3px @base, 0px 6px 18px 0px @base;
 		--outline-focus: @pine solid 2px;
 		.turbo-progress-bar {
