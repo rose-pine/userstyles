@@ -1,0 +1,130 @@
+/* ==UserStyle==
+@name           Rosé Pine for 4Get 
+@description    Soho vibes for 4Get
+@version        1.0.0
+@license 		    MIT
+@author         Rosé Pine (https://github.com/rose-pine)
+@namespace      https://github.com/rose-pine/
+@homepageURL 	  https://github.com/rose-pine/userstyles
+@updateURL      https://github.com/rose-pine/userstyles/raw/main/styles/4get/rose-pine.user.less
+@preprocessor   less
+
+@var select lightVariant "Light Variant" ["main:Rosé Pine", "moon:Rosé Pine Moon", "dawn:Rosé Pine Dawn*"]
+@var select darkVariant "Dark Variant" ["main:Rosé Pine*", "moon:Rosé Pine Moon", "dawn:Rosé Pine Dawn"]
+@var select accentColor "Accent" ["love:Love*", "gold:Gold", "rose:Rose", "pine:Pine", "foam:Foam", "iris:Iris"]
+==/UserStyle== */
+
+@-moz-document domain("4get.ca") {
+  :root {
+    @media (prefers-color-scheme: light) {
+      #rose-pine(@lightVariant);
+    }
+    @media (prefers-color-scheme: dark) {
+      #rose-pine(@darkVariant);
+    }
+  }
+
+  :root[data-theme="dark"] {
+    #rose-pine(@darkVariant);
+  }
+  :root[data-theme="light"] {
+    #rose-pine(@lightVariant);
+  }
+
+  #rose-pine(@variant) {
+    @base: @rose-pine[@@variant][@base];
+    @surface: @rose-pine[@@variant][@surface];
+    @overlay: @rose-pine[@@variant][@overlay];
+    @muted: @rose-pine[@@variant][@muted];
+    @subtle: @rose-pine[@@variant][@subtle];
+    @text: @rose-pine[@@variant][@text];
+    @love: @rose-pine[@@variant][@love];
+    @gold: @rose-pine[@@variant][@gold];
+    @rose: @rose-pine[@@variant][@rose];
+    @pine: @rose-pine[@@variant][@pine];
+    @foam: @rose-pine[@@variant][@foam];
+    @iris: @rose-pine[@@variant][@iris];
+    @highlightLow: @rose-pine[@@variant][@highlightLow];
+    @highlightMed: @rose-pine[@@variant][@highlightMed];
+    @highlightHigh: @rose-pine[@@variant][@highlightHigh];
+    @accent-color: @rose-pine[@@variant][@@accentColor];
+    color-scheme: if(@variant = dawn, light, dark);
+
+    /* background */
+    --1d2021: @base;
+    --282828: @surface;
+    --3c3836: @overlay;
+    --504945: @muted;
+
+    /* font */
+    --928374: @text;
+    --a89984: fade(@text, 20%);
+    --bdae93: @text;
+    --8ec07c: @foam;
+    --ebdbb2: @gold;
+
+    /* code highlighter */
+    --comment: @subtle;
+    --default: @iris;
+    --keyword: @rose;
+    --string: @foam;
+
+    /* code highlighter */
+    --comment: @subtle;
+    --default: @iris;
+    --keyword: @rose;
+    --string: @foam;
+
+    .searchbox {
+      border-radius: 999px;
+    }
+
+    select,
+    input[type="date"] {
+      background-color: @highlightMed !important;
+      border-radius: 12px !important;
+      color: @text !important;
+    }
+
+    input[type="submit"] {
+      background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyOCIgaGVpZ2h0PSIyOCIgZmlsbD0iIzU2OTQ5ZiIgdmlld0JveD0iMCAwIDI1NiAyNTYiPjxwYXRoIGQ9Ik0yMzIuNDksMjE1LjUxLDE4NSwxNjhhOTIuMTIsOTIuMTIsMCwxLDAtMTcsMTdsNDcuNTMsNDcuNTRhMTIsMTIsMCwwLDAsMTctMTdaTTQ0LDExMmE2OCw2OCwwLDEsMSw2OCw2OEE2OC4wNyw2OC4wNywwLDAsMSw0NCwxMTJaIj48L3BhdGg+PC9zdmc+);
+      background-repeat: no-repeat;
+      padding: 0 !important;
+      margin-top: 3px !important;
+      margin-right: -10px !important;
+      color: rgba(0, 0, 0, 0);
+    }
+
+    input[type="submit"]:hover {
+      background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyOCIgaGVpZ2h0PSIyOCIgZmlsbD0iI2M0YTdlNyIgdmlld0JveD0iMCAwIDI1NiAyNTYiPjxwYXRoIGQ9Ik0yMzIuNDksMjE1LjUxLDE4NSwxNjhhOTIuMTIsOTIuMTIsMCwxLDAtMTcsMTdsNDcuNTMsNDcuNTRhMTIsMTIsMCwwLDAsMTctMTdaTTQ0LDExMmE2OCw2OCwwLDEsMSw2OCw2OEE2OC4wNyw2OC4wNywwLDAsMSw0NCwxMTJaIj48L3BhdGg+PC9zdmc+);
+    }
+
+    .filter:nth-child(3) {
+      display: none;
+    }
+
+    img {
+      object-fit: cover;
+      border-radius: 12px;
+    }
+
+    .tab.selected {
+      color: @rose;
+    }
+
+    .tabs .tab.selected {
+      border-bottom: 2px solid @rose;
+    }
+
+    .openimg {
+      border-radius: 0;
+    }
+  }
+}
+
+/* deno-fmt-ignore */
+@rose-pine: {
+  @main: { @base: #191724; @surface: #1f1d2e; @overlay: #26233a; @muted: #6e6a86; @subtle: #908caa; @text: #e0def4; @love: #eb6f92; @gold: #f6c177; @rose: #ebbcba; @pine: #31748f; @foam: #9ccfd8; @iris: #c4a7e7; @highlightLow: #21202e; @highlightMed: #403d52; @highlightHigh: #524f67; };
+  @moon: { @base: #232136; @surface: #2a273f; @overlay: #393552; @muted: #6e6a86; @subtle: #908caa; @text: #e0def4; @love: #eb6f92; @gold: #f6c177; @rose: #ea9a97; @pine: #3e8fb0; @foam: #9ccfd8; @iris: #c4a7e7; @highlightLow: #2a283e; @highlightMed: #44415a; @highlightHigh: #56526e; };
+  @dawn: { @base: #faf4ed; @surface: #fffaf3; @overlay: #f2e9e1; @muted: #9893a5; @subtle: #797593; @text: #575279; @love: #b4637a; @gold: #ea9d34; @rose: #d7827e; @pine: #286983; @foam: #56949f; @iris: #907aa9; @highlightLow: #f4ede8; @highlightMed: #dfdad9; @highlightHigh: #cecacd; };
+};
