@@ -1,28 +1,32 @@
-name: Update release
+name: Release
 
 on:
   push:
     branches:
       - main
     paths:
-      - 'styles/**/rose-pine.user.css'
+      - "styles/**/rose-pine.user.css"
 
 permissions:
   contents: write
 
 jobs:
   release:
-    name: Update release
+    name: Release
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
-      - name: Build
-        run: |
-          bash ./build.sh
-          cd ./scripts && npm install && cd ..
-          node ./scripts/generate-imports.js
+        uses: actions/checkout@v4
+
+      - name: Setup Deno
+        uses: denoland/setup-deno@v2
+        with:
+          deno-version: v2.x
+
+      - name: Build import lists
+        run: ./scripts/generate-imports
+
       - name: Release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: gh release upload userstyle-imports import.json --clobber
+        run: gh release upload userstyle-imports rose-pine*-import.json --clobber
