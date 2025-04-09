@@ -5,7 +5,7 @@ on:
     branches:
       - main
     paths:
-      - "styles/**/rose-pine.user.css"
+      - "styles/**/rose-pine.user.less"
 
 permissions:
   contents: write
