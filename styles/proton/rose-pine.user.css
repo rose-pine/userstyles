@@ -274,9 +274,9 @@
 			color: @base;
 		}
 
-        /* the "Official" badge; setting the background to overlay makes it readable when selected */
-        .label-proton-badge--selected {
-            background-color: @overlay;
-        }
+		/* the "Official" badge; setting the background to overlay makes it readable when selected */
+		.label-proton-badge--selected {
+			background-color: @overlay;
+		}
 	}
 }
