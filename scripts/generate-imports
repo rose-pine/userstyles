@@ -11,7 +11,7 @@ async function readTheme(name) {
     enabled: true,
     name: metadata.name ?? "",
     description: metadata.description ?? "",
-    author: "Rose Piné",
+    author: "Rosé Pine",
     updateUrl: metadata.updateURL ?? "",
     usercssData: metadata,
     sourceCode: text.toString(),
