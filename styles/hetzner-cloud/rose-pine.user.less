@@ -1,0 +1,234 @@
+/* ==UserStyle==
+@name           Rosé Pine for Hetzner Cloud
+@description    Soho vibes for Hetzner Cloud
+@version        1.0.0
+@license 		    MIT
+@author         Rosé Pine (https://github.com/rose-pine)
+@namespace      https://github.com/rose-pine
+@homepageURL 	  https://github.com/rose-pine/userstyles
+@updateURL      https://github.com/rose-pine/userstyles/raw/main/styles/hetzner-cloud/rose-pine.user.less
+@preprocessor   less
+
+@var select lightVariant "Light Variant" ["main:Rosé Pine", "moon:Rosé Pine Moon", "dawn:Rosé Pine Dawn*"]
+@var select darkVariant "Dark Variant" ["main:Rosé Pine*", "moon:Rosé Pine Moon", "dawn:Rosé Pine Dawn"]
+@var select accentColor "Accent" ["love:Love*", "gold:Gold", "rose:Rose", "pine:Pine", "foam:Foam", "iris:Iris"]
+==/UserStyle== */
+
+@-moz-document domain("console.hetzner.cloud") {
+  :root {
+    @media (prefers-color-scheme: light) {
+      #rose-pine(@lightVariant);
+    }
+    @media (prefers-color-scheme: dark) {
+      #rose-pine(@darkVariant);
+    }
+  }
+
+  :root[data-theme="dark"] {
+    #rose-pine(@darkVariant);
+  }
+  :root[data-theme="light"] {
+    #rose-pine(@lightVariant);
+  }
+
+  #rose-pine(@variant) {
+    @base: @rose-pine[@@variant][@base];
+    @surface: @rose-pine[@@variant][@surface];
+    @overlay: @rose-pine[@@variant][@overlay];
+    @muted: @rose-pine[@@variant][@muted];
+    @subtle: @rose-pine[@@variant][@subtle];
+    @text: @rose-pine[@@variant][@text];
+    @love: @rose-pine[@@variant][@love];
+    @gold: @rose-pine[@@variant][@gold];
+    @rose: @rose-pine[@@variant][@rose];
+    @pine: @rose-pine[@@variant][@pine];
+    @foam: @rose-pine[@@variant][@foam];
+    @iris: @rose-pine[@@variant][@iris];
+    @highlightLow: @rose-pine[@@variant][@highlightLow];
+    @highlightMed: @rose-pine[@@variant][@highlightMed];
+    @highlightHigh: @rose-pine[@@variant][@highlightHigh];
+    @accent-color: @rose-pine[@@variant][@@accentColor];
+    color-scheme: if(@variant = dawn, light, dark);
+
+    ::selection {
+      background-color: fade(@accent-color, 30%);
+    }
+
+    input,
+    textarea {
+      &::placeholder {
+        color: @highlightLow !important;
+      }
+    }
+
+    // TODO: find what selectors we need
+    * {
+      --color-primary: @accent-color;
+      --color-primary--link: saturate(@accent-color, -10%);
+      --color-primary--hover: saturate(@accent-color, 10%);
+      --color-green--light: @pine;
+      --color-green--background: saturate(@pine, -30%);
+      --color-red-full--background: saturate(@love, -50%);
+      --color-red-full--text: @love;
+      --color-text: @text;
+      --color-text--disabled: @muted;
+      --color-back-link--hover: @subtle;
+      --color-background--layer-0: @base;
+      --color-background--layer-10: @base;
+      --color-background--layer-20: @surface;
+      --color-background--layer-30: @surface;
+      --color-background--layer-40: @overlay;
+      --color-background--layer-50: @overlay;
+      --color-background--gradient-card-0: @highlightLow;
+      --color-background--gradient-card-15: fade(@highlightLow, 8%);
+      --color-background--overlay: rgba(0, 0, 0, 0.7);
+      --color-background-empty-state: @highlightLow;
+      --color-background-empty-state--side-sheet: darken(@highlightLow, 5%);
+      --color-card-background: @surface;
+      --color-card-background--disabled: darken(@surface, 5%);
+      --color-card-background--hover: lighten(@surface, 3%);
+      --color-card-background--light: lighten(@surface, 1%);
+      --color-card--disabled-text: darken(@muted, 5%);
+      --color-nav-primary-background--hover: darken(@overlay, 2%);
+      --color-nav-primary-background--hover-mobile: @surface;
+      --color-nav-primary-background--active: lighten(@overlay, 2%);
+      --color-nav-primary-background--active-mobile: @highlightLow;
+      --color-nav-primary--icon: lighten(@muted, 20%);
+      --color-nav-secondary--hover: lighten(@muted, 30%);
+      --color-nav-secondary--disabled: lighten(@muted, 10%);
+      --color-nav-secondary--hover-background: lighten(@overlay, 2%);
+      --color-mobile-menu-background: fade(@base, 80%);
+      --color-form-border: lighten(@overlay, 10%);
+      --color-form-border--disabled: lighten(@overlay, 2%);
+      --color-form-addon-wrapper--background: lighten(@overlay, 2%);
+      --color-input--background: darken(@base, 2%);
+      --color-input--background-dropdown: lighten(@base, 3%);
+      --color-input-hover--button: lighten(@overlay, 2%);
+      --color-dropdown-background--hover: lighten(@overlay, 4%);
+      --color-dropdown-background--active: lighten(@overlay, 2%);
+      --color-dropdown-background--header: lighten(@base, 3%);
+      --color-dropdown-background--disabled: lighten(@overlay, 2%);
+      --color-dropdown-label-background: lighten(@overlay, 10%);
+      --color-dropdown-button-grey: lighten(@overlay, 10%);
+      --color-dropdown-button-grey--hover: lighten(@overlay, 13%);
+      --color-dropdown-filter--background: lighten(@overlay, 2%);
+      --color-dropdown-filter--hover: lighten(@overlay, 4%);
+      --color-dropdown-filter--active: lighten(@overlay, 10%);
+      --color-border: lighten(@overlay, 10%);
+      --color-border--dark: lighten(@overlay, 2%);
+      --color-button-secondary-background: lighten(@overlay, 10%);
+      --color-button-secondary-background--hover: lighten(@overlay, 20%);
+      --color-button-secondary-background--disabled: lighten(@overlay, 8%);
+      --color-button-secondary-text--disabled: lighten(@muted, 10%);
+      --color-button-secondary--seperator: lighten(@overlay, 2%);
+      --color-button-vote: lighten(@overlay, 10%);
+      --color-button-vote--hover: lighten(@overlay, 20%);
+      --color-button-vote--voted: lighten(@overlay, 2%);
+      --color-button-switch-background: lighten(@overlay, 2%);
+      --color-button-switch-background--selected: lighten(@overlay, 10%);
+      --color-button-switch-background--hover: lighten(@overlay, 20%);
+      --color-button-switch--text-secondary: @text;
+      --color-button-dashed-background--hover: darken(@base, 2%);
+      --color-button-dashed-content: lighten(@overlay, 10%);
+      --color-table-background--head: lighten(@base, 3%);
+      --color-table-background--highlighted: lighten(@base, 3%);
+      --color-badge--grey: lighten(@overlay, 10%);
+      --color-status-badge-grey--background: lighten(@overlay, 2%);
+      --color-status-badge-grey--color: lighten(@muted, 10%);
+      --color-step-header-background: fade(@base, 60%);
+      --color-stepper-sidenav--item-active: darken(@overlay, 2%);
+      --color-ui-slider-background: lighten(@overlay, 2%);
+      --color-ui-slider-background--limit: lighten(@base, 3%);
+      --color-ui-slider-gradient--limit: darken(@overlay, 2%);
+      --color-ui-slider--handle: lighten(@overlay, 10%);
+      --color-select-box-border--default: lighten(@overlay, 2%);
+      --color-select-box-border--hover: lighten(@overlay, 10%);
+      --color-select-box-border--dropdown: @surface;
+      --color-select-box-border--selected: @love;
+      --color-select-box-background--default: @surface;
+      --color-select-box-background--hover: lighten(@surface, 3%);
+      --color-select-box-dropdown--default: lighten(@surface, 3%);
+      --color-select-box-dropdown--hover: lighten(@overlay, 2%);
+      --color-side-sheet--highlighted-header: darken(@overlay, 2%);
+      --color-ghost-loading--fill: lighten(@base, 3%);
+      --color-ghost-loading-highlight--gradient-0: fade(@highlightLow, 0%);
+      --color-ghost-loading-highlight--gradient-20: fade(@highlightLow, 20%);
+      --color-ghost-loading-highlight--gradient-60: fade(@highlightLow, 50%);
+      --color-modal--background: @surface;
+      --color-modal--overlay-mask: rgba(0, 0, 0, 0.7);
+      --color-modal--footer: lighten(@base, 2%);
+      --color-notification--info: lighten(@overlay, 10%);
+      --color-load-mask-background--table: fade(@surface, 50%);
+      --color-editable--hover: lighten(@muted, 20%);
+      --color-spinner: lighten(@overlay, 2%);
+      --color-click-to-copy-label: lighten(@overlay, 2%);
+      --color-click-to-copy-label--snippet: @base;
+      --color-box-code-background: darken(@overlay, 2%);
+      --color-label-border: lighten(@overlay, 10%);
+      --color-label-border--hover: lighten(@overlay, 13%);
+      --color-label-key-background: lighten(@overlay, 10%);
+      --color-label-key-background--hover: lighten(@overlay, 13%);
+      --color-label-add-label-background--hover: lighten(@base, 3%);
+      --color-tooltip--background: lighten(@overlay, 10%);
+      --color-shadow: rgba(0, 0, 0, 0.35);
+      --color-shadow--hover: rgba(0, 0, 0, 0.4);
+      --color-ui-message-background: darken(@overlay, 2%);
+      --color-ui-message-background--in-card: lighten(@overlay, 2%);
+      --color-global-search-trigger: @base;
+      --color-global-search-trigger--hover: lighten(@base, 2%);
+      --color-search-result-background: @base;
+      --color-search-result-background--hover: lighten(@base, 2%);
+      --color-search-result-background--selected: @love;
+      --color-search-result-background--busy: lighten(@love, 5%);
+      --color-search-result-color: darken(@overlay, 2%);
+      --color-search-result-color--hover: @text;
+      --color-search-result-color--disabled: lighten(@muted, 10%);
+      --color-search-result-color--match: @text;
+      --color-search-result-color--match-disabled: lighten(@muted, 10%);
+      --color-search-result-icon--background: darken(@love, 10%);
+      --color-search-result-icon--background-hover: darken(@love, 10%);
+      --color-search-result-icon--background-selected: fade(@text, 30%);
+      --color-search-result-icon--background-busy: lighten(@love, 10%);
+      --color-search-result-icon--color: @love;
+      --color-search-result-icon--color-hover: @text;
+      --color-dashboard-map: darken(@overlay, 2%);
+      --color-dashboard-map--connection: @text;
+      --color-pie-chart--empty: lighten(@overlay, 2%);
+      --color-project-list-background--default: lighten(@base, 3%);
+      --color-project-list-background--colored: darken(@base, 2%);
+      --color-icon-fill: lighten(@muted, 10%);
+      --color-icon-list-item--background: lighten(@muted, 10%);
+      --color-icon-month-select--fill: lighten(@overlay, 2%);
+      --color-icon-checkbox--fill: darken(@base, 5%);
+      --color-icon-checkbox--fill-on-label: darken(@base, 5%);
+      --color-icon-checkbox--stroke: lighten(@overlay, 10%);
+      --color-icon-checkbox--stroke-on-label: lighten(@overlay, 10%);
+      --color-icon-checkbox--hover: lighten(@overlay, 13%);
+      --color-icon--map: lighten(@overlay, 10%);
+      --color-icon-action--fill-active: lighten(@muted, 20%);
+      --color-icon-action--background: lighten(@overlay, 1%);
+      --color-icon-lock--background: darken(@overlay, 2%);
+      --color-icon-volume-size-block-outline: lighten(@overlay, 10%);
+      --color-icon-search: @text;
+      --color-icon-activity--background: lighten(@overlay, 10%);
+      --color-icon-activity--icon: @text;
+      --color-icon-activity--status: lighten(@overlay, 10%);
+      --color-illustration-snapshot--fill: lighten(@overlay, 10%);
+      --color-illustration-sad-smiley--fill: lighten(@overlay, 10%);
+      --color-logo-text: @text;
+      --color-server-status-indicator-base--fill: @base;
+      --color-server-status-indicator-base--stroke: @base;
+      --color-server-status-indicator-off--fill: lighten(@overlay, 10%);
+      --color-server-status-indicator-off--stroke: lighten(@overlay, 10%);
+      --color-usage-preview-item-odd--background: darken(@overlay, 2%);
+      --color-console--background: @surface;
+    }
+  }
+}
+
+/* deno-fmt-ignore */
+@rose-pine: {
+  @main: { @base: #191724; @surface: #1f1d2e; @overlay: #26233a; @muted: #6e6a86; @subtle: #908caa; @text: #e0def4; @love: #eb6f92; @gold: #f6c177; @rose: #ebbcba; @pine: #31748f; @foam: #9ccfd8; @iris: #c4a7e7; @highlightLow: #21202e; @highlightMed: #403d52; @highlightHigh: #524f67; };
+  @moon: { @base: #232136; @surface: #2a273f; @overlay: #393552; @muted: #6e6a86; @subtle: #908caa; @text: #e0def4; @love: #eb6f92; @gold: #f6c177; @rose: #ea9a97; @pine: #3e8fb0; @foam: #9ccfd8; @iris: #c4a7e7; @highlightLow: #2a283e; @highlightMed: #44415a; @highlightHigh: #56526e; };
+  @dawn: { @base: #faf4ed; @surface: #fffaf3; @overlay: #f2e9e1; @muted: #9893a5; @subtle: #797593; @text: #575279; @love: #b4637a; @gold: #ea9d34; @rose: #d7827e; @pine: #286983; @foam: #56949f; @iris: #907aa9; @highlightLow: #f4ede8; @highlightMed: #dfdad9; @highlightHigh: #cecacd; };
+};
