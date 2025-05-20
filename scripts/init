@@ -23,7 +23,7 @@ function replaceMap(
 
 const substitutions = {
   title: Deno.args[0],
-  directory: Deno.args[0].toLowerCase(),
+  directory: Deno.args[0].toLowerCase().replaceAll(" ", "-"),
 	year: new Date().getUTCFullYear(),
 };
 
