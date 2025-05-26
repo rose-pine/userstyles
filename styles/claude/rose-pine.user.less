@@ -1,0 +1,233 @@
+/* ==UserStyle==
+@name           Rosé Pine for Claude
+@description    Soho vibes for Claude
+@version        1.0.0
+@license 		    MIT
+@author         Rosé Pine (https://github.com/rose-pine)
+@namespace      https://github.com/rose-pine
+@homepageURL 	  https://github.com/rose-pine/userstyles
+@updateURL      https://github.com/rose-pine/userstyles/raw/main/styles/claude/rose-pine.user.less
+@preprocessor   less
+
+@var select lightVariant "Light Variant" ["main:Rosé Pine", "moon:Rosé Pine Moon", "dawn:Rosé Pine Dawn*"]
+@var select darkVariant "Dark Variant" ["main:Rosé Pine*", "moon:Rosé Pine Moon", "dawn:Rosé Pine Dawn"]
+@var select accentColor "Accent" ["love:Love", "gold:Gold", "rose:Rose*", "pine:Pine", "foam:Foam", "iris:Iris"]
+==/UserStyle== */
+@-moz-document domain("claude.ai") {
+  :root[data-mode="dark"] {
+    #rose-pine(@darkVariant);
+  }
+  :root[data-mode="light"],
+  /* Login page */
+  [data-theme="claude"][data-mode="light"] {
+    #rose-pine(@lightVariant);
+  }
+
+  #rose-pine(@variant) {
+    @base: @rose-pine[@@variant][@base];
+    @surface: @rose-pine[@@variant][@surface];
+    @overlay: @rose-pine[@@variant][@overlay];
+    @muted: @rose-pine[@@variant][@muted];
+    @subtle: @rose-pine[@@variant][@subtle];
+    @text: @rose-pine[@@variant][@text];
+    @love: @rose-pine[@@variant][@love];
+    @gold: @rose-pine[@@variant][@gold];
+    @rose: @rose-pine[@@variant][@rose];
+    @pine: @rose-pine[@@variant][@pine];
+    @foam: @rose-pine[@@variant][@foam];
+    @iris: @rose-pine[@@variant][@iris];
+    @highlightLow: @rose-pine[@@variant][@highlightLow];
+    @highlightMed: @rose-pine[@@variant][@highlightMed];
+    @highlightHigh: @rose-pine[@@variant][@highlightHigh];
+    @accent-color: @rose-pine[@@variant][@@accentColor];
+    color-scheme: if(@variant = dawn, light, dark);
+
+    ::selection {
+      background-color: fade(@accent-color, 30%);
+    }
+
+    input,
+    textarea {
+      &::placeholder {
+        color: @subtle !important;
+      }
+    }
+
+    --accent-brand: #hslify(@accent-color)[];
+    --accent-main-000: #hslify(@accent-color)[];
+    --accent-main-100: #hslify(@accent-color)[];
+    --accent-main-200: #hslify(@accent-color)[];
+    --accent-main-900: #hslify(@accent-color)[];
+    --accent-pro-000: #hslify(@accent-color)[];
+    --accent-pro-100: #hslify(@accent-color)[];
+    --accent-pro-200: #hslify(@accent-color)[];
+    --accent-pro-900: #hslify(@accent-color)[];
+    --accent-secondary-000: #hslify(@accent-color)[];
+    --accent-secondary-100: #hslify(@accent-color)[];
+    --accent-secondary-200: #hslify(@accent-color)[];
+    --accent-secondary-900: #hslify(@accent-color)[];
+    --bg-000: #hslify(@base)[];
+    --bg-100: #hslify(@surface)[];
+    --bg-200: #hslify(@surface)[];
+    --bg-300: #hslify(@overlay)[];
+    --bg-400: #hslify(@overlay)[];
+    --bg-500: #hslify(@overlay)[];
+    --border-000: #hslify(@base)[];
+    --border-100: #hslify(@base)[];
+    --border-200: #hslify(@base)[];
+    --border-300: #hslify(@overlay)[];
+    --border-400: #hslify(@overlay)[];
+    --border-500: #hslify(@overlay)[];
+    --danger-000: #hslify(@love)[];
+    --danger-100: #hslify(@love)[];
+    --danger-200: #hslify(@love)[];
+    --danger-900: #hslify(@rose)[];
+    --oncolor-000: #hslify(darken(@base, 5%))[];
+    --oncolor-100: #hslify(@base)[];
+    --oncolor-200: #hslify(@base)[];
+    --oncolor-300: #hslify(lighten(@base, 5%))[];
+    --text-000: #hslify(darken(@text, 5%))[];
+    --text-100: #hslify(@text)[];
+    --text-200: #hslify(@text)[];
+    --text-300: #hslify(@subtle)[];
+    --text-400: #hslify(@subtle)[];
+    --text-500: #hslify(@subtle)[];
+
+    /* Side bar */
+    nav.\!bg-bg-200 {
+      background: @overlay !important;
+    }
+
+    /* Code blocks */
+    pre.code-block__code {
+      background: @base !important;
+
+      code {
+        span {
+          color: @text !important;
+        }
+
+        /* Green */
+        span.token[style="color: rgb(152, 195, 121);"] {
+          color: @pine !important;
+        }
+
+        /* Yellow */
+        span.token[style="color: rgb(209, 154, 102);"] {
+          color: @rose !important;
+        }
+
+        /* Blue */
+        span.token[style="color: rgb(97, 175, 239);"] {
+          color: @foam !important;
+        }
+
+        /* Red */
+        span.token[style="color: rgb(224, 108, 117);"] {
+          color: @love !important;
+        }
+
+        /* Magenta */
+        span.token[style="color: rgb(198, 120, 221);"] {
+          color: @iris !important;
+        }
+      }
+    }
+
+    /* Inline code */
+    code.text-danger-000 {
+      color: @accent-color !important;
+    }
+
+    /* Tooltip */
+    div.bg-black\/80 {
+      background: @base !important;
+    }
+    div.text-white {
+      color: @text !important;
+    }
+
+    /* Logo */
+    svg path[fill="#D97757"] {
+      fill: @accent-color !important;
+    }
+
+    /* "New chat" plus icon */
+    svg.text-always-white {
+      color: @base !important;
+    }
+
+    /* "Subscribe to Pro" and "Create Team Account" buttons */
+    button.bg-accent-pro-100 > span.inline-block {
+      color: @base !important;
+    }
+
+    /* Pay monthly/annually buttons */
+    button.bg-accent-secondary-900 {
+      span.text-text-000 {
+        color: @base !important;
+      }
+      span.text-text-300 {
+        color: @surface !important;
+      }
+      div.bg-accent-secondary-000 {
+        background: darken(@accent-color, 15%) !important;
+      }
+    }
+
+    /* Delete conversation button */
+    div.\!text-danger-000.\[\&\[data-highlighted\]\]\:bg-danger-900[data-highlighted] {
+      background: fade(@love, 20%) !important;
+    }
+
+    /* Checkbox */
+    input[type="checkbox"] + div.bg-bg-000 {
+      background: @text !important;
+    }
+
+    /* "Add writing example" button */
+    button.\!text-accent-secondary-100.bg-accent-secondary-900 {
+      color: @base !important;
+      &:hover {
+        color: @text !important;
+      }
+    }
+
+    /* "Describe your style" list */
+    button.\!bg-accent-secondary-900.text-accent-secondary-000 {
+      color: @base !important;
+    }
+
+    /* "Be as descriptive as possible..." helper text */
+    div.bg-accent-secondary-900.text-text-200 {
+      color: @base !important;
+    }
+
+    /* "Preview with an example..." pills */
+    button.hover\:bg-accent-secondary-900.hover\:text-accent-secondary-000 {
+      color: @accent-color !important;
+      &:hover {
+        color: @base !important;
+      }
+    }
+
+    /* "Previewing with ..." dropdown button */
+    button.\!text-accent-secondary-100.hover\:\!bg-accent-secondary-900 {
+      color: @accent-color !important;
+      &:hover {
+        color: @base !important;
+      }
+    }
+  }
+}
+
+#hslify(@color) {
+  @raw: e(%("%s %s% %s%", hue(@color), saturation(@color), lightness(@color)));
+}
+
+/* deno-fmt-ignore */
+@rose-pine: {
+  @main: { @base: #191724; @surface: #1f1d2e; @overlay: #26233a; @muted: #6e6a86; @subtle: #908caa; @text: #e0def4; @love: #eb6f92; @gold: #f6c177; @rose: #ebbcba; @pine: #31748f; @foam: #9ccfd8; @iris: #c4a7e7; @highlightLow: #21202e; @highlightMed: #403d52; @highlightHigh: #524f67; };
+  @moon: { @base: #232136; @surface: #2a273f; @overlay: #393552; @muted: #6e6a86; @subtle: #908caa; @text: #e0def4; @love: #eb6f92; @gold: #f6c177; @rose: #ea9a97; @pine: #3e8fb0; @foam: #9ccfd8; @iris: #c4a7e7; @highlightLow: #2a283e; @highlightMed: #44415a; @highlightHigh: #56526e; };
+  @dawn: { @base: #faf4ed; @surface: #fffaf3; @overlay: #f2e9e1; @muted: #9893a5; @subtle: #797593; @text: #575279; @love: #b4637a; @gold: #ea9d34; @rose: #d7827e; @pine: #286983; @foam: #56949f; @iris: #907aa9; @highlightLow: #f4ede8; @highlightMed: #dfdad9; @highlightHigh: #cecacd; };
+};
