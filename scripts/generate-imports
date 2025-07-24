@@ -18,11 +18,11 @@ async function readTheme(name) {
   };
 }
 
-function patchMetadata(theme, defaultVariant) {
+function patchMetadata(theme, defaultVariant, forceDefault = false) {
   if (!theme.usercssData?.vars) return theme;
   const keys = Object.keys(theme.usercssData.vars);
   if (keys.includes("lightVariant") && keys.includes("darkVariant")) {
-    theme.usercssData.vars.lightVariant.default = "dawn";
+    theme.usercssData.vars.lightVariant.default = forceDefault ? defaultVariant : "dawn";
     theme.usercssData.vars.darkVariant.default = defaultVariant;
   } else if (keys.includes("variant")) {
     theme.usercssData.vars.variant.default = defaultVariant;
@@ -50,9 +50,14 @@ const settings = {
   },
 };
 
-for (const variant of ["main", "moon", "dawn"]) {
-  const patched = result.map((theme) => patchMetadata(theme, variant));
+async function writeImport(variant, suffix, forceDefault = false ) {
+  const patched = result.map((theme) => patchMetadata(theme, variant, forceDefault));
   const serialized = JSON.stringify([settings, ...patched], null, 2);
-  const filename = `rose-pine${variant == "main" ? "" : `-${variant}`}-import.json`;
+  const filename = `rose-pine${variant == "main" ? "" : `-${variant}`}-${suffix}-import.json`;
   await Deno.writeTextFile(filename, serialized);
+}
+
+for (const variant of ["main", "moon", "dawn"]) {
+	await	writeImport(variant, "dark-light")
+	await	writeImport(variant, "default", true)
 }
