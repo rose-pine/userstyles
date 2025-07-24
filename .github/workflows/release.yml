@@ -6,6 +6,7 @@ on:
       - main
     paths:
       - "styles/**/rose-pine.user.less"
+      - "scripts/generate-imports"
 
 permissions:
   contents: write
