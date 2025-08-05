@@ -114,6 +114,7 @@
       --yt-brand-light-red-alpha-30: fade(@accent, 70%) !important;
       --yt-spec-light-blue-alpha-30: fade(@foam, 70%) !important;
       --yt-spec-dark-blue-alpha-30: fade(@foam, 70%) !important;
+      --yt-frosted-glass-desktop: transparent;
 
       --yt-spec-base-background: @surface !important;
       --yt-spec-raised-background: @surface !important;
@@ -370,6 +371,16 @@
       svg.ytd-consent-bump-v2-lightbox {
         display: none;
       }
+    }
+
+    .ytChipShapeInactive {
+      background-color: @surface !important;
+      color: @text !important;
+    }
+
+    .ytChipShapeActive {
+      background-color: @accent !important;
+      color: @overlay !important;
     }
 
     #channel-name.ytd-video-meta-block {
