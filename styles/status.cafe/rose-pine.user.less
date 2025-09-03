@@ -1,0 +1,153 @@
+/* ==UserStyle==
+@name           Rosé Pine for status.cafe
+@description    Soho vibes for status.cafe
+@version        1.0.0
+@license 		    MIT
+@author         Rosé Pine (https://github.com/rose-pine)
+@namespace      https://github.com/rose-pine
+@homepageURL 	  https://github.com/rose-pine/userstyles
+@updateURL      https://github.com/rose-pine/userstyles/raw/main/styles/status.cafe/rose-pine.user.less
+@preprocessor   less
+
+@var select lightVariant "Light Variant" ["main:Rosé Pine", "moon:Rosé Pine Moon", "dawn:Rosé Pine Dawn*"]
+@var select darkVariant "Dark Variant" ["main:Rosé Pine*", "moon:Rosé Pine Moon", "dawn:Rosé Pine Dawn"]
+@var select accentColor "Accent" ["love:Love*", "gold:Gold", "rose:Rose", "pine:Pine", "foam:Foam", "iris:Iris"]
+==/UserStyle== */
+
+@-moz-document regexp("https://status\\.cafe/(?!users).*"),
+  domain("forum.status.cafe") {
+  :root {
+    @media (prefers-color-scheme: light) {
+      #rose-pine(@lightVariant);
+    }
+    @media (prefers-color-scheme: dark) {
+      #rose-pine(@darkVariant);
+    }
+  }
+
+  :root[data-theme="dark"] {
+    #rose-pine(@darkVariant);
+  }
+  :root[data-theme="light"] {
+    #rose-pine(@lightVariant);
+  }
+
+  #rose-pine(@variant) {
+    @base: @rose-pine[@@variant][@base];
+    @surface: @rose-pine[@@variant][@surface];
+    @overlay: @rose-pine[@@variant][@overlay];
+    @muted: @rose-pine[@@variant][@muted];
+    @subtle: @rose-pine[@@variant][@subtle];
+    @text: @rose-pine[@@variant][@text];
+    @love: @rose-pine[@@variant][@love];
+    @gold: @rose-pine[@@variant][@gold];
+    @rose: @rose-pine[@@variant][@rose];
+    @pine: @rose-pine[@@variant][@pine];
+    @foam: @rose-pine[@@variant][@foam];
+    @iris: @rose-pine[@@variant][@iris];
+    @highlightLow: @rose-pine[@@variant][@highlightLow];
+    @highlightMed: @rose-pine[@@variant][@highlightMed];
+    @highlightHigh: @rose-pine[@@variant][@highlightHigh];
+    @accent-color: @rose-pine[@@variant][@@accentColor];
+    color-scheme: if(@variant = dawn, light, dark);
+
+    ::selection {
+      background-color: fade(@accent-color, 30%);
+    }
+
+    background-color: @base;
+
+    body {
+      background-color: @base;
+      color: @text;
+    }
+
+    textarea {
+      background-color: @overlay;
+      color: @text;
+      border-color: @muted;
+      border-style: solid;
+      border-width: 1px;
+      border-radius: 2px;
+      padding: 3px;
+    }
+
+    textarea:hover, input:hover {
+      border-color: darken(@surface, 5%);
+    }
+
+    input {
+      background-color: @overlay;
+      color: @text;
+      border-color: darken(@highlightLow, 10%);
+      border-style: solid;
+      border-width: 1px;
+      border-radius: 4px;
+      padding: 2px 5px;
+      :hover {
+        background-color: darken(@overlay, 5%);
+      }
+      :active {
+        background-color: @base;
+        border-color: darken(@highlightLow, 15%);
+      }
+    }
+
+    .flash {
+      background-color: @foam;
+    }
+
+    a:not(.flash a) {
+      color: @accent-color;
+    }
+
+    a:visited:not(.flash a) {
+      color: darken(@accent-color, 5%);
+    }
+
+    table, th, td {
+      border-color: darken(@highlightLow, 15%) !important;
+    }
+
+    thead {
+      background-color: @surface;
+      color: @text;
+    }
+
+    .forum {
+      background-color: @gold;
+      a {
+        color: darken(@pine, 10%) !important;
+      }
+    }
+
+    tbody, .topic > tbody > tr:nth-child(2n) {
+      background-color: @overlay;
+    }
+
+    hr {
+      background-color: darken(@highlightLow, 5%);
+    }
+
+    .signature {
+      border-top-color: darken(@highlightLow, 5%);
+    }
+
+    & when (@variant = dawn) {
+      a:visited:not(.flash a) {
+        color: darken(@accent-color, 10%);
+      }
+      input:active {
+        background-color: @surface;
+        border-color: @base;
+      }
+    }
+  }
+}
+
+/* deno-fmt-ignore */
+@rose-pine: {
+  @main: { @base: #191724; @surface: #1f1d2e; @overlay: #26233a; @muted: #6e6a86; @subtle: #908caa; @text: #e0def4; @love: #eb6f92; @gold: #f6c177; @rose: #ebbcba; @pine: #31748f; @foam: #9ccfd8; @iris: #c4a7e7; @highlightLow: #21202e; @highlightMed: #403d52; @highlightHigh: #524f67; };
+  @moon: { @base: #232136; @surface: #2a273f; @overlay: #393552; @muted: #6e6a86; @subtle: #908caa; @text: #e0def4; @love: #eb6f92; @gold: #f6c177; @rose: #ea9a97; @pine: #3e8fb0; @foam: #9ccfd8; @iris: #c4a7e7; @highlightLow: #2a283e; @highlightMed: #44415a; @highlightHigh: #56526e; };
+  @dawn: { @base: #faf4ed; @surface: #fffaf3; @overlay: #f2e9e1; @muted: #9893a5; @subtle: #797593; @text: #575279; @love: #b4637a; @gold: #ea9d34; @rose: #d7827e; @pine: #286983; @foam: #56949f; @iris: #907aa9; @highlightLow: #f4ede8; @highlightMed: #dfdad9; @highlightHigh: #cecacd; };
+};
