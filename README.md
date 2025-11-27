@@ -61,6 +61,7 @@
 - [YouTube](https://github.com/rose-pine/userstyles/tree/main/styles/youtube)
 - [NixOS-Search](https://github.com/rose-pine/userstyles/tree/main/styles/nixos-search)
 - [status.cafe](https://github.com/rose-pine/userstyles/tree/main/styles/status.cafe)
+- [Advent of Code](https://github.com/rose-pine/userstyles/tree/main/styles/advent-of-code)
 
 ## Contributing
 
