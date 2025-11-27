@@ -1,0 +1,283 @@
+/* ==UserStyle==
+@name           Rosé Pine for Advent of Code
+@description    Soho vibes for Advent of Code
+@version        1.0.0
+@license 		    MIT
+@author         Rosé Pine (https://github.com/rose-pine)
+@namespace      https://github.com/rose-pine
+@homepageURL 	  https://github.com/rose-pine/userstyles
+@updateURL      https://github.com/rose-pine/userstyles/raw/main/styles/{{directory}}/rose-pine.user.less
+@preprocessor   less
+
+@var select lightVariant "Light Variant" ["main:Rosé Pine", "moon:Rosé Pine Moon", "dawn:Rosé Pine Dawn*"]
+@var select darkVariant "Dark Variant" ["main:Rosé Pine*", "moon:Rosé Pine Moon", "dawn:Rosé Pine Dawn"]
+==/UserStyle== */
+
+@-moz-document domain("adventofcode.com") {
+	:root {
+		@media (prefers-color-scheme: light) {
+			#rose-pine(@lightVariant);
+		}
+		@media (prefers-color-scheme: dark) {
+			#rose-pine(@darkVariant);
+		}
+	}
+
+	:root[data-theme="dark"] {
+		#rose-pine(@darkVariant);
+	}
+	:root[data-theme="light"] {
+		#rose-pine(@lightVariant);
+	}
+
+	#rose-pine(@variant) {
+		@base: @rose-pine[@@variant][@base];
+		@surface: @rose-pine[@@variant][@surface];
+		@overlay: @rose-pine[@@variant][@overlay];
+		@muted: @rose-pine[@@variant][@muted];
+		@subtle: @rose-pine[@@variant][@subtle];
+		@text: @rose-pine[@@variant][@text];
+		@love: @rose-pine[@@variant][@love];
+		@gold: @rose-pine[@@variant][@gold];
+		@rose: @rose-pine[@@variant][@rose];
+		@pine: @rose-pine[@@variant][@pine];
+		@foam: @rose-pine[@@variant][@foam];
+		@iris: @rose-pine[@@variant][@iris];
+		@highlightLow: @rose-pine[@@variant][@highlightLow];
+		@highlightMed: @rose-pine[@@variant][@highlightMed];
+		@highlightHigh: @rose-pine[@@variant][@highlightHigh];
+		color-scheme: if(@variant = dawn, light, dark);
+
+		body {
+			background: @base;
+			color: @text;
+
+			header h1 a,
+			header h1 span {
+				color: @pine;
+				text-shadow:
+					0 0 2px @pine,
+					0 0 5px @pine;
+			}
+
+			a {
+				color: @pine;
+			}
+
+			.star-count {
+				color: @gold;
+			}
+
+			.quiet {
+				color: @muted;
+				opacity: 1;
+			}
+
+			.share,
+			.share:hover,
+			input[type="submit"] {
+				color: @pine;
+			}
+
+			main {
+				article {
+					em {
+						color: @text;
+						text-shadow: 0 0 5px @text;
+					}
+
+					h2 {
+						color: @text;
+					}
+
+					input[type="radio"]:checked ~ span,
+					input[type="checkbox"]:checked ~ span {
+						color: @text;
+					}
+
+					input[type="radio"] ~ span:hover,
+					input[type="radio"] ~ span:focus,
+					input[type="checkbox"]:hover ~ span,
+					input[type="checkbox"]:focus ~ span {
+						background-color: @crust;
+					}
+				}
+				.supporter-badge {
+					color: @gold;
+				}
+
+				.supporter-badge:hover {
+					color: @gold;
+					text-shadow: 0 0 5px @gold;
+				}
+
+				.sponsor-badge {
+					color: @foam;
+				}
+
+				.sponsor-badge:hover,
+				.sponsor-badge:focus {
+					color: @foam;
+					text-shadow: 0 0 5px @foam;
+				}
+
+				.leaderboard-entry {
+					.leaderboard-position {
+						color: @subtle;
+					}
+					.leaderboard-totalscore {
+						color: @text;
+					}
+				}
+
+				.leaderboard-daylinks-selected {
+					color: @text;
+					text-shadow: 0 0 5px @text;
+				}
+
+				.leaderboard-daylinks-selected:hover {
+					color: @pine;
+				}
+
+				.leaderboard-anon {
+					opacity: 1;
+					color: @muted;
+				}
+				.calendar {
+					.calendar-color-w {
+						color: @text;
+					}
+					.calendar-color-s {
+						color: @gold;
+					}
+					.calendar-color-c {
+						color: @subtle;
+					}
+					.calendar-color-g3 {
+						color: darken(@pine, 3%);
+					}
+					.calendar-color-g2 {
+						color: @pine;
+					}
+					.calendar-color-g4 {
+						color: darken(@pine, 3.5%);
+					}
+					.calendar-color-u {
+						color: @sky;
+					}
+					.calendar-color-a {
+						color: @muted;
+					}
+					.calendar-color-g1 {
+						color: darken(@pine, 2.5%);
+					}
+					.calendar-color-g0 {
+						color: darken(@pine, 2%);
+					}
+					.calendar-color-l {
+						color: @love;
+					}
+					.calendar-mark-complete {
+						color: @gold;
+					}
+					.calendar-mark-verycomplete {
+						color: @gold;
+					}
+					.calendar-day {
+						color: @subtle;
+					}
+					#calendar-countdown {
+						color: @subtle;
+					}
+
+					span {
+						color: @surface0;
+					}
+
+					a {
+						color: @surface2;
+					}
+				}
+
+				.day-success {
+					color: @gold;
+					text-shadow: 0 0 5px @gold;
+				}
+
+				.stats-both {
+					color: @gold;
+				}
+
+				.stats-firstonly {
+					color: @overlay0;
+				}
+
+				a:hover {
+					background-color: @mantle !important;
+				}
+
+				input[type="text"],
+				textarea,
+				code::before {
+					border-color: @surface0;
+					background: @crust;
+				}
+			}
+		}
+	}
+}
+
+/* deno-fmt-ignore */
+@rose-pine: {
+	@main: {
+		@base: #191724;
+		@surface: #1f1d2e;
+		@overlay: #26233a;
+		@muted: #6e6a86;
+		@subtle: #908caa;
+		@text: #e0def4;
+		@love: #eb6f92;
+		@gold: #f6c177;
+		@rose: #ebbcba;
+		@pine: #31748f;
+		@foam: #9ccfd8;
+		@iris: #c4a7e7;
+		@highlightLow: #21202e;
+		@highlightMed: #403d52;
+		@highlightHigh: #524f67;
+	};
+	@moon: {
+		@base: #232136;
+		@surface: #2a273f;
+		@overlay: #393552;
+		@muted: #6e6a86;
+		@subtle: #908caa;
+		@text: #e0def4;
+		@love: #eb6f92;
+		@gold: #f6c177;
+		@rose: #ea9a97;
+		@pine: #3e8fb0;
+		@foam: #9ccfd8;
+		@iris: #c4a7e7;
+		@highlightLow: #2a283e;
+		@highlightMed: #44415a;
+		@highlightHigh: #56526e;
+	};
+	@dawn: {
+		@base: #faf4ed;
+		@surface: #fffaf3;
+		@overlay: #f2e9e1;
+		@muted: #9893a5;
+		@subtle: #797593;
+		@text: #575279;
+		@love: #b4637a;
+		@gold: #ea9d34;
+		@rose: #d7827e;
+		@pine: #286983;
+		@foam: #56949f;
+		@iris: #907aa9;
+		@highlightLow: #f4ede8;
+		@highlightMed: #dfdad9;
+		@highlightHigh: #cecacd;
+	};
+};
