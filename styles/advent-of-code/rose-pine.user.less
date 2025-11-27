@@ -11,6 +11,7 @@
 
 @var select lightVariant "Light Variant" ["main:Rosé Pine", "moon:Rosé Pine Moon", "dawn:Rosé Pine Dawn*"]
 @var select darkVariant "Dark Variant" ["main:Rosé Pine*", "moon:Rosé Pine Moon", "dawn:Rosé Pine Dawn"]
+@var text fontFamily "Font Family" "Source Code Pro";
 ==/UserStyle== */
 
 @-moz-document domain("adventofcode.com") {
@@ -51,6 +52,7 @@
 		body {
 			background: @base;
 			color: @text;
+			font-family: @@fontFamily, monospace;
 
 			header h1 a,
 			header h1 span {
@@ -64,7 +66,8 @@
 				color: @pine;
 			}
 
-			.star-count {
+			.star-count,
+			.privboard-star-both {
 				color: @gold;
 			}
 
@@ -99,7 +102,7 @@
 					input[type="radio"] ~ span:focus,
 					input[type="checkbox"]:hover ~ span,
 					input[type="checkbox"]:focus ~ span {
-						background-color: @crust;
+						background-color: @base;
 					}
 				}
 				.supporter-badge {
@@ -163,7 +166,7 @@
 						color: darken(@pine, 3.5%);
 					}
 					.calendar-color-u {
-						color: @sky;
+						color: @foam;
 					}
 					.calendar-color-a {
 						color: @muted;
@@ -191,11 +194,11 @@
 					}
 
 					span {
-						color: @surface0;
+						color: @surface;
 					}
 
 					a {
-						color: @surface2;
+						color: @surface;
 					}
 				}
 
@@ -209,18 +212,18 @@
 				}
 
 				.stats-firstonly {
-					color: @overlay0;
+					color: @overlay;
 				}
 
 				a:hover {
-					background-color: @mantle !important;
+					background-color: @overlay !important;
 				}
 
 				input[type="text"],
 				textarea,
 				code::before {
-					border-color: @surface0;
-					background: @crust;
+					border-color: @highlightMed;
+					background: @base;
 				}
 			}
 		}
@@ -229,55 +232,7 @@
 
 /* deno-fmt-ignore */
 @rose-pine: {
-	@main: {
-		@base: #191724;
-		@surface: #1f1d2e;
-		@overlay: #26233a;
-		@muted: #6e6a86;
-		@subtle: #908caa;
-		@text: #e0def4;
-		@love: #eb6f92;
-		@gold: #f6c177;
-		@rose: #ebbcba;
-		@pine: #31748f;
-		@foam: #9ccfd8;
-		@iris: #c4a7e7;
-		@highlightLow: #21202e;
-		@highlightMed: #403d52;
-		@highlightHigh: #524f67;
-	};
-	@moon: {
-		@base: #232136;
-		@surface: #2a273f;
-		@overlay: #393552;
-		@muted: #6e6a86;
-		@subtle: #908caa;
-		@text: #e0def4;
-		@love: #eb6f92;
-		@gold: #f6c177;
-		@rose: #ea9a97;
-		@pine: #3e8fb0;
-		@foam: #9ccfd8;
-		@iris: #c4a7e7;
-		@highlightLow: #2a283e;
-		@highlightMed: #44415a;
-		@highlightHigh: #56526e;
-	};
-	@dawn: {
-		@base: #faf4ed;
-		@surface: #fffaf3;
-		@overlay: #f2e9e1;
-		@muted: #9893a5;
-		@subtle: #797593;
-		@text: #575279;
-		@love: #b4637a;
-		@gold: #ea9d34;
-		@rose: #d7827e;
-		@pine: #286983;
-		@foam: #56949f;
-		@iris: #907aa9;
-		@highlightLow: #f4ede8;
-		@highlightMed: #dfdad9;
-		@highlightHigh: #cecacd;
-	};
+  @main: { @base: #191724; @surface: #1f1d2e; @overlay: #26233a; @muted: #6e6a86; @subtle: #908caa; @text: #e0def4; @love: #eb6f92; @gold: #f6c177; @rose: #ebbcba; @pine: #31748f; @foam: #9ccfd8; @iris: #c4a7e7; @highlightLow: #21202e; @highlightMed: #403d52; @highlightHigh: #524f67; };
+  @moon: { @base: #232136; @surface: #2a273f; @overlay: #393552; @muted: #6e6a86; @subtle: #908caa; @text: #e0def4; @love: #eb6f92; @gold: #f6c177; @rose: #ea9a97; @pine: #3e8fb0; @foam: #9ccfd8; @iris: #c4a7e7; @highlightLow: #2a283e; @highlightMed: #44415a; @highlightHigh: #56526e; };
+  @dawn: { @base: #faf4ed; @surface: #fffaf3; @overlay: #f2e9e1; @muted: #9893a5; @subtle: #797593; @text: #575279; @love: #b4637a; @gold: #ea9d34; @rose: #d7827e; @pine: #286983; @foam: #56949f; @iris: #907aa9; @highlightLow: #f4ede8; @highlightMed: #dfdad9; @highlightHigh: #cecacd; };
 };
