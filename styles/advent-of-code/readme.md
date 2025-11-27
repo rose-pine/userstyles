@@ -22,7 +22,8 @@
 
 ## Gallery
 
-![Rosé Pine](https://imgur.com/736foDh.png) ![Rosé Pine Moon](https://imgur.com/sRxZkYl.png)
+![Rosé Pine](https://imgur.com/736foDh.png)
+![Rosé Pine Moon](https://imgur.com/sRxZkYl.png)
 ![Rosé Pine Dawn](https://imgur.com/Ep8MqEM.png)
 
 ## Thanks to
