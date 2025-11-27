@@ -11,7 +11,7 @@
 
 @var select lightVariant "Light Variant" ["main:Rosé Pine", "moon:Rosé Pine Moon", "dawn:Rosé Pine Dawn*"]
 @var select darkVariant "Dark Variant" ["main:Rosé Pine*", "moon:Rosé Pine Moon", "dawn:Rosé Pine Dawn"]
-@var text fontFamily "Font Family" "Source Code Pro";
+@var text fontFamily "Font family" "'Source Code Pro'"
 ==/UserStyle== */
 
 @-moz-document domain("adventofcode.com") {
@@ -52,7 +52,7 @@
 		body {
 			background: @base;
 			color: @text;
-			font-family: @@fontFamily, monospace;
+			font-family: @fontFamily, monospace;
 
 			header h1 a,
 			header h1 span {
