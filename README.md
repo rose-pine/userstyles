@@ -11,20 +11,104 @@
 
 # Getting started
 
-1. Install the [Stylus](https://github.com/openstyles/stylus) extension for
-   [Chrome](https://chrome.google.com/webstore/detail/stylus/clngdbkpkpeebahjckkjfobafhncgmne)
-   or [Firefox](https://addons.mozilla.org/en-GB/firefox/addon/styl-us/).
-2. Downloading Userstyles:
-   - Open the folder of the userstyle you want to install.
-   - Then, click on the "Stylus Install" button or open `rose-pine.user.less`
-     and click on "Raw."
-   > To download all userstyles at once, go to the
-   > [releases](https://github.com/rose-pine/userstyles/releases/tag/userstyle-imports)
-   > page and follow the instructions listed there.
-3. Optionally, you can configure any available options that you want to change.
-   Then, click on the "Install Style" button.
-4. Some might require extra steps to work correctly, so make sure to check its
-   readme page for additional information.
+<details>
+<summary><strong>Installation Guide</strong></summary>
+
+### Step 1: Install the Stylus Extension
+
+First, you need to install the Stylus extension for your browser:
+
+- **Chrome/Chromium**:
+  [Install from Chrome Web Store](https://chrome.google.com/webstore/detail/stylus/clngdbkpkpeebahjckkjfobafhncgmne)
+- **Firefox**:
+  [Install from Firefox Add-ons](https://addons.mozilla.org/en-GB/firefox/addon/styl-us/)
+- **Opera**:
+  [Install from Opera Add-ons](https://addons.opera.com/en-gb/extensions/details/stylus/)
+
+After installation, you should see the Stylus icon in your browser's toolbar.
+
+### Step 2: Choose a Userstyle to Install
+
+Browse the [Userstyles](#userstyles) section below to find the website you want
+to theme. Each userstyle has its own folder with installation instructions.
+
+### Step 3: Install the Userstyle
+
+There are two ways to install a userstyle:
+
+#### Method 1: Using the "Stylus Install" Button (Recommended)
+
+1. Navigate to the userstyle's folder (e.g., `styles/github/` for GitHub).
+2. On the userstyle's readme page, you'll see a purple "stylus install" badge
+   button near the top.
+3. Click this button. It will automatically open the Stylus installation page.
+
+#### Method 2: Using the Raw File Link
+
+1. Navigate to the userstyle's folder (e.g., `styles/github/` for GitHub).
+2. Click on the `rose-pine.user.less` file.
+3. Click the "Raw" button in the top-right corner of the file view.
+4. This will open the raw file URL, which Stylus will automatically detect.
+
+### Step 4: Configure and Install in Stylus
+
+When you click the install button or raw link, Stylus will open a new page
+showing:
+
+- **The style code** (you don't need to edit this)
+- **Configuration options** (if available) - you can customize:
+  - Theme variant (Rosé Pine, Rosé Pine Moon, or Rosé Pine Dawn)
+  - Accent color
+  - Other style-specific options
+- **An "Install style" button** in the top-left corner
+
+1. **Configure your preferences** (optional): Adjust any settings you want to
+   change using the dropdown menus and options at the top of the page.
+2. **Click "Install style"**: This button is located in the top-left corner of
+   the Stylus page. After clicking, the style will be installed and active!
+
+### Step 5: Verify Installation
+
+After installation, visit the website you themed (e.g., github.com if you
+installed the GitHub userstyle). You should see the Rosé Pine theme applied
+automatically.
+
+</details>
+
+<details>
+<summary><strong>Troubleshooting</strong></summary>
+
+- **The style isn't working**: Make sure Stylus is enabled and the style is
+  turned on. Click the Stylus icon in your toolbar and verify the style is
+  listed and enabled.
+- **Stylus didn't open automatically**: Make sure you have the Stylus extension
+  installed and enabled. Try clicking the raw file link again.
+- **Can't find the install button**: The "Install style" button is in the
+  top-left corner of the Stylus editor page. If you don't see it, make sure
+  you're viewing the raw file (the URL should contain `/raw/`).
+- **Need to update a style**: Styles update automatically if you installed from
+  the raw GitHub link. Otherwise, you can manually update by reinstalling the
+  style.
+
+</details>
+
+<details>
+<summary><strong>Installing Multiple Userstyles</strong></summary>
+
+To install all userstyles at once, visit the
+[releases page](https://github.com/rose-pine/userstyles/releases/tag/userstyle-imports)
+and follow the instructions there.
+
+</details>
+
+<details>
+<summary><strong>Additional Notes</strong></summary>
+
+Some userstyles may require extra configuration steps to work correctly. Always
+check the individual userstyle's readme page (in each style's folder) for any
+additional setup instructions or special requirements.
+
+</details>
 
 ## Userstyles
 

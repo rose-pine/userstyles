@@ -12,13 +12,65 @@
     <a href="https://github.com/rose-pine/userstyles/raw/main/{{directory}}/rose-pine.user.less"><img src="https://img.shields.io/badge/stylus-install-cba6f7?colorA=363a4f&style=for-the-badge"></a>
 </p>
 
-## Usage
+## Installation
 
-1. Make sure you have the [Stylus](https://github.com/openstyles/stylus) browser
-   extension installed, then visit
-   [this link](https://github.com/rose-pine/userstyles/raw/main/styles/{{directory}}/rose-pine.user.less)
-2. Configure your preferred accent color and theme variant
-3. Click install on the top left
+<details>
+<summary><strong>Prerequisites</strong></summary>
+
+Make sure you have the [Stylus](https://github.com/openstyles/stylus) browser
+extension installed:
+
+- **Chrome/Chromium**:
+  [Install from Chrome Web Store](https://chrome.google.com/webstore/detail/stylus/clngdbkpkpeebahjckkjfobafhncgmne)
+- **Firefox**:
+  [Install from Firefox Add-ons](https://addons.mozilla.org/en-GB/firefox/addon/styl-us/)
+- **Opera**:
+  [Install from Opera Add-ons](https://addons.opera.com/en-gb/extensions/details/stylus/)
+
+</details>
+
+### Step-by-Step Instructions
+
+1. **Click the "stylus install" button** above (the purple badge), or visit this
+   direct link:
+   [Install {{title}} userstyle](https://github.com/rose-pine/userstyles/raw/main/styles/{{directory}}/rose-pine.user.less)
+
+2. **Stylus will automatically open** a new page showing the style code and
+   configuration options.
+
+3. **Configure your preferences** (optional):
+   - Choose your theme variant: **Rosé Pine**, **Rosé Pine Moon**, or **Rosé
+     Pine Dawn**
+   - Select your preferred accent color
+   - Adjust any other available options
+
+4. **Click "Install style"** in the top-left corner of the Stylus page.
+
+5. **Done!** The theme will now be applied to {{title}} automatically.
+
+<details>
+<summary><strong>What to Expect</strong></summary>
+
+When you click the install link, Stylus will open a page that looks like a code
+editor. Don't worry—you don't need to understand the code! Just:
+
+- Adjust the settings at the top if you want to customize the theme
+- Click the "Install style" button in the top-left corner
+- The style will be active immediately
+
+</details>
+
+<details>
+<summary><strong>Troubleshooting</strong></summary>
+
+- **Stylus didn't open?** Make sure the Stylus extension is installed and
+  enabled in your browser.
+- **Can't find the install button?** Look for the "Install style" button in the
+  top-left corner of the Stylus editor page.
+- **Style not working?** Click the Stylus icon in your browser toolbar and make
+  sure this style is enabled.
+
+</details>
 
 ## Gallery
 
