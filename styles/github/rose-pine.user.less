@@ -190,7 +190,7 @@
     --control-bgColor-selected: #161b22 !important;
     --control-fgColor-rest: @text !important;
     --control-fgColor-placeholder: #484f58 !important;
-    --control-fgColor-disabled: fade(@subtle, 70%) !important;
+    --control-fgColor-disabled: @muted !important;
     --control-borderColor-rest: @overlay !important;
     --control-borderColor-emphasis: #666e79 !important;
     --control-borderColor-disabled: fade(@overlay, 75%) !important;
@@ -240,11 +240,12 @@
     --button-default-bgColor-hover: @overlay !important;
     --button-default-bgColor-active: @overlay !important;
     --button-default-bgColor-selected: @overlay !important;
-    --button-default-bgColor-disabled: fade(@overlay, 70%) !important;
+    --button-default-bgColor-disabled: @surface !important;
     --button-default-borderColor-rest: @overlay !important;
     --button-default-borderColor-hover: @overlay !important;
     --button-default-borderColor-active: @overlay !important;
-    --button-default-borderColor-disabled: fade(@overlay, 70%) !important;
+    --button-default-borderColor-disabled: @highlightMed !important;
+    --button-default-fgColor-disabled: @muted !important;
     --button-default-shadow-resting: 0px 0px 0px 0px #000;
     --button-primary-fgColor-rest: @surface !important;
     --button-primary-fgColor-disabled: fade(@surface, 60%) !important;
@@ -319,6 +320,8 @@
     --overlay-bgColor: @surface !important;
     --overlay-borderColor: @overlay !important;
     --overlay-backdrop-bgColor: #161b2266 !important;
+    --tooltip-bgColor: @overlay !important;
+    --tooltip-fgColor: @text !important;
     --selectMenu-borderColor: #484f58;
     --selectMenu-bgColor-active: #0c2d6b;
     --sideNav-bgColor-selected: #21262d;
@@ -337,7 +340,7 @@
     --fgColor-muted: @subtle !important;
     --fgColor-onEmphasis: @surface !important;
     --fgColor-white: if(@lookup = dawn, @base, @text) !important;
-    --fgColor-disabled: @overlay !important;
+    --fgColor-disabled: @muted !important;
     --fgColor-link: @accent-color !important;
     --fgColor-neutral: #6e7681 !important;
     --fgColor-accent: @accent-color !important;
