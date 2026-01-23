@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name           Rosé Pine for Github 
 @description    Soho vibes for Github
-@version        1.1.0
+@version        1.1.1
 @license 		    MIT
 @author         Julia Mertz (https://github.com/juliamertz/)
 @namespace      https://github.com/rose-pine/
@@ -17,30 +17,28 @@
 @-moz-document regexp(
     "https:\/\/(gist\.)*github\.com(?!((\/.+?\/.+?\/commit\/[A-Fa-f0-9]+\.(patch|diff)$)|\/home$|\/features($|\/.*)|\/marketplace($|\?.*|\/.*)|\/organizations\/plan)).*$"
   ) {
-  [data-color-mode="auto"] {
-    @media (prefers-color-scheme: light) {
-      &[data-light-theme="light"] {
-        #rose-pine(@lightVariant, @accentColor);
-      }
-      &[data-light-theme="dark"] {
-        #rose-pine(@darkVariant, @accentColor);
-      }
+  @media (prefers-color-scheme: light) {
+    html[data-color-mode="auto"][data-light-theme="light"] {
+      #rose-pine(@lightVariant, @accentColor);
     }
-    @media (prefers-color-scheme: dark) {
-      &[data-dark-theme="light"] {
-        #rose-pine(@lightVariant, @accentColor);
-      }
-      &[data-dark-theme="dark"] {
-        #rose-pine(@darkVariant, @accentColor);
-      }
+    html[data-color-mode="auto"][data-light-theme="dark"] {
+      #rose-pine(@darkVariant, @accentColor);
     }
   }
-  [data-color-mode="light"][data-light-theme="dark"],
-  [data-color-mode="dark"][data-dark-theme="dark"] {
+  @media (prefers-color-scheme: dark) {
+    html[data-color-mode="auto"][data-dark-theme="light"] {
+      #rose-pine(@lightVariant, @accentColor);
+    }
+    html[data-color-mode="auto"][data-dark-theme="dark"] {
+      #rose-pine(@darkVariant, @accentColor);
+    }
+  }
+  html[data-color-mode="light"][data-light-theme="dark"],
+  html[data-color-mode="dark"][data-dark-theme="dark"] {
     #rose-pine(@darkVariant, @accentColor);
   }
-  [data-color-mode="light"][data-light-theme="light"],
-  [data-color-mode="dark"][data-dark-theme="light"] {
+  html[data-color-mode="light"][data-light-theme="light"],
+  html[data-color-mode="dark"][data-dark-theme="light"] {
     #rose-pine(@lightVariant, @accentColor);
   }
   html:not([data-light-theme="light"], [data-light-theme="dark"])
@@ -76,9 +74,9 @@
     @highlightMed: @rose-pine[@@lookup][@highlightMed];
     @highlightHigh: @rose-pine[@@lookup][@highlightHigh];
     @accent-color: @rose-pine[@@lookup][@@accent];
-    color-scheme: if(@lookup = dawn, light, dark);
+    color-scheme: if(@lookup = dawn, light, dark) !important;
     ::selection {
-      background-color: fade(@accent-color, 30%);
+      background-color: fade(@accent-color, 30%) !important;
     }
     input,
     textarea {
@@ -87,12 +85,12 @@
       }
     }
     .cm-placeholder {
-      color: @subtle;
+      color: @subtle !important;
     }
-    accent-color: @accent-color;
-    color: @text;
-    --color-social-reaction-bg-reacted-hover: fade(@accent-color, 30%);
-    --color-notifications-button-hover-bg: fade(@accent-color, 60%);
+    accent-color: @accent-color !important;
+    color: @text !important;
+    --color-social-reaction-bg-reacted-hover: fade(@accent-color, 30%) !important;
+    --color-notifications-button-hover-bg: fade(@accent-color, 60%) !important;
     --color-workflow-card-header-shadow: rgba(27, 31, 35, 0.04);
     --color-icon-directory: var(--fgColor-muted, var(--color-fg-muted));
     --color-calendar-halloween-graph-day-L1-bg: fadeout(
@@ -130,8 +128,8 @@
     --color-calendar-graph-day-L2-border: transparent !important;
     --color-calendar-graph-day-L3-border: transparent !important;
     --color-calendar-graph-day-L4-border: transparent !important;
-    --color-user-mention-fg: @accent-color;
-    --color-user-mention-bg: fade(@accent-color, 30%);
+    --color-user-mention-fg: @accent-color !important;
+    --color-user-mention-bg: fade(@accent-color, 30%) !important;
     --color-dashboard-feed-bg: var(--color-scale-gray-9);
     --color-mktg-btn-shadow-outline: rgba(255, 255, 255, 0.25) 0 0 0 1px inset;
     --color-marketing-icon-secondary: var(--color-scale-pine-5);
@@ -142,7 +140,7 @@
     --color-diff-blob-selected-line-highlight-mix-blend-mode: screen;
     --topicTag-borderColor: #0000;
     --highlight-neutral-bgColor: fade(@gold, 30%);
-    --page-header-bgColor: @base;
+    --page-header-bgColor: @base !important;
     --diffBlob-addition-fgColor-text: @text;
     --diffBlob-addition-fgColor-num: @text;
     --diffBlob-addition-bgColor-num: fadeout(@foam, 70%);
@@ -153,7 +151,7 @@
     --diffBlob-deletion-bgColor-num: fadeout(@love, 70%);
     --diffBlob-deletion-bgColor-line: fadeout(@love, 85%);
     --diffBlob-deletion-bgColor-word: fadeout(@love, 70%);
-    --diffBlob-hunk-bgColor-num: fadeout(@accent-color, 60%);
+    --diffBlob-hunk-bgColor-num: fadeout(@accent-color, 60%) !important;
     --diffBlob-expander-iconColor: #848d97;
     --codeMirror-fgColor: @text;
     --codeMirror-bgColor: @surface;
@@ -174,32 +172,32 @@
     --codeMirror-syntax-fgColor-string: @foam;
     --codeMirror-syntax-fgColor-support: #79c0ff;
     --codeMirror-syntax-fgColor-variable: @rose;
-    --header-fgColor-default: @text;
-    --header-fgColor-logo: @text;
-    --header-bgColor: @base;
-    --header-borderColor-divider: #8b949e;
-    --headerSearch-bgColor: @surface;
-    --headerSearch-borderColor: @overlay;
+    --header-fgColor-default: @text !important;
+    --header-fgColor-logo: @text !important;
+    --header-bgColor: @base !important;
+    --header-borderColor-divider: #8b949e !important;
+    --headerSearch-bgColor: @surface !important;
+    --headerSearch-borderColor: @overlay !important;
     --avatar-bgColor: fade(@text, 26%);
     --avatar-borderColor: @overlay;
     --avatar-shadow: 0px 0px 0px 2px #0d1117;
     --avatarStack-fade-bgColor-default: @overlay;
     --avatarStack-fade-bgColor-muted: #21262d;
-    --control-bgColor-rest: @love;
-    --control-bgColor-hover: #292e36;
-    --control-bgColor-active: @overlay;
-    --control-bgColor-disabled: fade(@surface, 60%);
-    --control-bgColor-selected: #161b22;
-    --control-fgColor-rest: @text;
-    --control-fgColor-placeholder: #484f58;
-    --control-fgColor-disabled: fade(@subtle, 70%);
-    --control-borderColor-rest: @overlay;
-    --control-borderColor-emphasis: #666e79;
-    --control-borderColor-disabled: fade(@overlay, 75%);
-    --control-borderColor-selected: #f0f6fc;
-    --control-borderColor-success: @foam;
-    --control-borderColor-danger: @love;
-    --control-borderColor-warning: @gold;
+    --control-bgColor-rest: @love !important;
+    --control-bgColor-hover: #292e36 !important;
+    --control-bgColor-active: @overlay !important;
+    --control-bgColor-disabled: fade(@surface, 60%) !important;
+    --control-bgColor-selected: #161b22 !important;
+    --control-fgColor-rest: @text !important;
+    --control-fgColor-placeholder: #484f58 !important;
+    --control-fgColor-disabled: fade(@subtle, 70%) !important;
+    --control-borderColor-rest: @overlay !important;
+    --control-borderColor-emphasis: #666e79 !important;
+    --control-borderColor-disabled: fade(@overlay, 75%) !important;
+    --control-borderColor-selected: #f0f6fc !important;
+    --control-borderColor-success: @foam !important;
+    --control-borderColor-danger: @love !important;
+    --control-borderColor-warning: @gold !important;
     --control-iconColor-rest: #848d97;
     --control-transparent-bgColor-rest: #0000;
     --control-transparent-bgColor-hover: fade(@overlay, 20%);
@@ -213,15 +211,15 @@
     --control-danger-fgColor-hover: @base;
     --control-danger-bgColor-hover: fade(@love, 80%);
     --control-danger-bgColor-active: @love;
-    --control-checked-bgColor-rest: @accent-color;
-    --control-checked-bgColor-hover: lighten(@accent-color, 5%);
-    --control-checked-bgColor-active: lighten(@accent-color, 5%);
+    --control-checked-bgColor-rest: @accent-color !important;
+    --control-checked-bgColor-hover: lighten(@accent-color, 5%) !important;
+    --control-checked-bgColor-active: lighten(@accent-color, 5%) !important;
     --control-checked-bgColor-disabled: #6e7681;
     --control-checked-fgColor-rest: @base;
     --control-checked-fgColor-disabled: #010409;
-    --control-checked-borderColor-rest: @accent-color;
-    --control-checked-borderColor-hover: @accent-color;
-    --control-checked-borderColor-active: @accent-color;
+    --control-checked-borderColor-rest: @accent-color !important;
+    --control-checked-borderColor-hover: @accent-color !important;
+    --control-checked-borderColor-active: @accent-color !important;
     --control-checked-borderColor-disabled: @overlay;
     --controlTrack-bgColor-rest: @overlay;
     --controlTrack-bgColor-hover: @overlay;
@@ -237,31 +235,31 @@
     --controlKnob-borderColor-rest: @overlay;
     --controlKnob-borderColor-disabled: #21262db3;
     --controlKnob-borderColor-checked: @pine;
-    --button-default-fgColor-rest: @text;
-    --button-default-bgColor-rest: @overlay;
-    --button-default-bgColor-hover: @overlay;
-    --button-default-bgColor-active: @overlay;
-    --button-default-bgColor-selected: @overlay;
-    --button-default-bgColor-disabled: fade(@overlay, 70%);
-    --button-default-borderColor-rest: @overlay;
-    --button-default-borderColor-hover: @overlay;
-    --button-default-borderColor-active: @overlay;
-    --button-default-borderColor-disabled: fade(@overlay, 70%);
+    --button-default-fgColor-rest: @text !important;
+    --button-default-bgColor-rest: @overlay !important;
+    --button-default-bgColor-hover: @overlay !important;
+    --button-default-bgColor-active: @overlay !important;
+    --button-default-bgColor-selected: @overlay !important;
+    --button-default-bgColor-disabled: fade(@overlay, 70%) !important;
+    --button-default-borderColor-rest: @overlay !important;
+    --button-default-borderColor-hover: @overlay !important;
+    --button-default-borderColor-active: @overlay !important;
+    --button-default-borderColor-disabled: fade(@overlay, 70%) !important;
     --button-default-shadow-resting: 0px 0px 0px 0px #000;
-    --button-primary-fgColor-rest: @surface;
-    --button-primary-fgColor-disabled: fade(@surface, 60%);
-    --button-primary-iconColor-rest: @surface;
-    --button-primary-bgColor-rest: @foam;
-    --button-primary-bgColor-hover: lighten(@foam, 5%);
-    --button-primary-bgColor-active: saturate(@foam, 5%);
-    --button-primary-bgColor-disabled: fade(@foam, 70%);
-    --button-primary-borderColor-rest: @foam;
-    --button-primary-borderColor-hover: @foam;
-    --button-primary-borderColor-active: @foam;
-    --button-primary-borderColor-disabled: fade(@foam, 70%);
+    --button-primary-fgColor-rest: @surface !important;
+    --button-primary-fgColor-disabled: fade(@surface, 60%) !important;
+    --button-primary-iconColor-rest: @surface !important;
+    --button-primary-bgColor-rest: @foam !important;
+    --button-primary-bgColor-hover: lighten(@foam, 5%) !important;
+    --button-primary-bgColor-active: saturate(@foam, 5%) !important;
+    --button-primary-bgColor-disabled: fade(@foam, 70%) !important;
+    --button-primary-borderColor-rest: @foam !important;
+    --button-primary-borderColor-hover: @foam !important;
+    --button-primary-borderColor-active: @foam !important;
+    --button-primary-borderColor-disabled: fade(@foam, 70%) !important;
     --button-primary-shadow-selected: 0px 0px 0px 0px #000;
-    --button-invisible-fgColor-rest: @accent-color;
-    --button-invisible-fgColor-hover: lighten(@accent-color, 10%);
+    --button-invisible-fgColor-rest: @accent-color !important;
+    --button-invisible-fgColor-hover: lighten(@accent-color, 10%) !important;
     --button-invisible-fgColor-disabled: #6e7681;
     --button-invisible-iconColor-rest: @muted;
     --button-invisible-iconColor-hover: #e6edf3;
@@ -284,23 +282,23 @@
     --button-outline-borderColor-hover: #f0f6fc1a;
     --button-outline-borderColor-selected: #f0f6fc1a;
     --button-outline-shadow-selected: 0px 0px 0px 0px #000;
-    --button-danger-fgColor-rest: @love;
-    --button-danger-fgColor-hover: @surface;
-    --button-danger-fgColor-active: @surface;
-    --button-danger-fgColor-disabled: fade(@love, 50%);
-    --button-danger-iconColor-rest: @love;
-    --button-danger-iconColor-hover: @base;
-    --button-danger-bgColor-rest: @overlay;
-    --button-danger-bgColor-hover: @love;
-    --button-danger-bgColor-active: darken(@love, 5%);
-    --button-danger-bgColor-disabled: @surface;
-    --button-danger-borderColor-rest: @overlay;
-    --button-danger-borderColor-hover: @love;
-    --button-danger-borderColor-active: darken(@love, 5%);
+    --button-danger-fgColor-rest: @love !important;
+    --button-danger-fgColor-hover: @surface !important;
+    --button-danger-fgColor-active: @surface !important;
+    --button-danger-fgColor-disabled: fade(@love, 50%) !important;
+    --button-danger-iconColor-rest: @love !important;
+    --button-danger-iconColor-hover: @base !important;
+    --button-danger-bgColor-rest: @overlay !important;
+    --button-danger-bgColor-hover: @love !important;
+    --button-danger-bgColor-active: darken(@love, 5%) !important;
+    --button-danger-bgColor-disabled: @surface !important;
+    --button-danger-borderColor-rest: @overlay !important;
+    --button-danger-borderColor-hover: @love !important;
+    --button-danger-borderColor-active: darken(@love, 5%) !important;
     --button-danger-shadow-selected: 0px 0px 0px 0px #000;
     --button-inactive-fgColor: #8b949e;
     --button-inactive-bgColor: #21262d;
-    --button-star-iconColor: @gold;
+    --button-star-iconColor: @gold !important;
     --buttonCounter-default-bgColor-rest: @overlay;
     --buttonCounter-invisible-bgColor-rest: @overlay;
     --buttonCounter-primary-bgColor-rest: #04260f33;
@@ -316,93 +314,93 @@
     --buttonCounter-danger-fgColor-rest: @love;
     --buttonCounter-danger-fgColor-hover: @text;
     --buttonCounter-danger-fgColor-disabled: fade(@love, 50%);
-    --focus-outlineColor: @accent-color;
+    --focus-outlineColor: @accent-color !important;
     --menu-bgColor-active: @surface;
-    --overlay-bgColor: @surface;
-    --overlay-borderColor: @overlay;
-    --overlay-backdrop-bgColor: #161b2266;
+    --overlay-bgColor: @surface !important;
+    --overlay-borderColor: @overlay !important;
+    --overlay-backdrop-bgColor: #161b2266 !important;
     --selectMenu-borderColor: #484f58;
     --selectMenu-bgColor-active: #0c2d6b;
     --sideNav-bgColor-selected: #21262d;
     --skeletonLoader-bgColor: #161b22;
     --timelineBadge-bgColor: @surface;
     --treeViewItem-leadingVisual-iconColor-rest: #848d97;
-    --underlineNav-borderColor-active: @accent-color;
+    --underlineNav-borderColor-active: @accent-color !important;
     --underlineNav-borderColor-hover: #6e768166;
     --underlineNav-iconColor-rest: #848d97;
-    --selection-bgColor: fade(@accent-color, 30%);
-    --reactionButton-selected-bgColor-rest: fade(@accent-color, 20%);
-    --reactionButton-selected-bgColor-hover: fade(@accent-color, 35%);
-    --reactionButton-selected-fgColor-rest: @accent-color;
-    --reactionButton-selected-fgColor-hover: @accent-color;
-    --fgColor-default: @text;
-    --fgColor-muted: @subtle;
-    --fgColor-onEmphasis: @surface;
-    --fgColor-white: if(@lookup = dawn, @base, @text);
-    --fgColor-disabled: @overlay;
-    --fgColor-link: @accent-color;
-    --fgColor-neutral: #6e7681;
-    --fgColor-accent: @accent-color;
-    --fgColor-success: @foam;
-    --fgColor-attention: @gold;
-    --fgColor-severe: @rose;
-    --fgColor-danger: @love;
-    --fgColor-open: @foam;
-    --fgColor-closed: @love;
-    --fgColor-done: @iris;
-    --fgColor-sponsors: @iris;
-    --bgColor-default: @surface;
-    --bgColor-muted: @overlay;
-    --bgColor-inset: @base;
-    --bgColor-emphasis: @muted;
-    --bgColor-inverse: @text;
-    --bgColor-disabled: #21262db3;
-    --bgColor-transparent: #0000;
-    --bgColor-neutral-muted: fade(@overlay, 40%);
-    --bgColor-neutral-emphasis: @subtle;
-    --bgColor-accent-muted: fade(@accent-color, 20%);
-    --bgColor-accent-emphasis: @accent-color;
-    --bgColor-success-muted: #2ea04326;
-    --bgColor-success-emphasis: @foam;
-    --bgColor-attention-muted: fade(@gold, 15%);
-    --bgColor-attention-emphasis: @gold;
-    --bgColor-severe-muted: fade(@rose, 26%);
-    --bgColor-severe-emphasis: @rose;
-    --bgColor-danger-muted: fade(@love, 26%);
-    --bgColor-danger-emphasis: @love;
-    --bgColor-open-muted: #2ea0431a;
-    --bgColor-open-emphasis: @foam;
-    --bgColor-closed-muted: fade(@love, 15%);
-    --bgColor-closed-emphasis: @love;
-    --bgColor-done-muted: #a371f726;
-    --bgColor-done-emphasis: @iris;
-    --bgColor-sponsors-muted: #db61a21a;
-    --bgColor-sponsors-emphasis: @iris;
-    --borderColor-default: @overlay;
-    --borderColor-muted: @overlay;
-    --borderColor-emphasis: #484f58;
-    --borderColor-disabled: #21262db3;
-    --borderColor-transparent: #0000;
-    --borderColor-neutral-muted: #6e768166;
-    --borderColor-neutral-emphasis: #6e7681;
-    --borderColor-accent-muted: fade(@accent-color, 50%);
-    --borderColor-accent-emphasis: @accent-color;
-    --borderColor-success-muted: darken(@foam, 5%);
-    --borderColor-success-emphasis: @foam;
-    --borderColor-attention-muted: fade(@rose, 30%);
-    --borderColor-attention-emphasis: @rose;
-    --borderColor-severe-muted: @rose;
-    --borderColor-severe-emphasis: #bd561d;
-    --borderColor-danger-muted: @love;
-    --borderColor-danger-emphasis: @love;
-    --borderColor-open-muted: darken(@foam, 5%);
-    --borderColor-open-emphasis: @foam;
-    --borderColor-closed-muted: @love;
-    --borderColor-closed-emphasis: @love;
-    --borderColor-done-muted: @iris;
-    --borderColor-done-emphasis: @iris;
-    --borderColor-sponsors-muted: #db61a266;
-    --borderColor-sponsors-emphasis: @iris;
+    --selection-bgColor: fade(@accent-color, 30%) !important;
+    --reactionButton-selected-bgColor-rest: fade(@accent-color, 20%) !important;
+    --reactionButton-selected-bgColor-hover: fade(@accent-color, 35%) !important;
+    --reactionButton-selected-fgColor-rest: @accent-color !important;
+    --reactionButton-selected-fgColor-hover: @accent-color !important;
+    --fgColor-default: @text !important;
+    --fgColor-muted: @subtle !important;
+    --fgColor-onEmphasis: @surface !important;
+    --fgColor-white: if(@lookup = dawn, @base, @text) !important;
+    --fgColor-disabled: @overlay !important;
+    --fgColor-link: @accent-color !important;
+    --fgColor-neutral: #6e7681 !important;
+    --fgColor-accent: @accent-color !important;
+    --fgColor-success: @foam !important;
+    --fgColor-attention: @gold !important;
+    --fgColor-severe: @rose !important;
+    --fgColor-danger: @love !important;
+    --fgColor-open: @foam !important;
+    --fgColor-closed: @love !important;
+    --fgColor-done: @iris !important;
+    --fgColor-sponsors: @iris !important;
+    --bgColor-default: @surface !important;
+    --bgColor-muted: @overlay !important;
+    --bgColor-inset: @base !important;
+    --bgColor-emphasis: @muted !important;
+    --bgColor-inverse: @text !important;
+    --bgColor-disabled: #21262db3 !important;
+    --bgColor-transparent: #0000 !important;
+    --bgColor-neutral-muted: fade(@overlay, 40%) !important;
+    --bgColor-neutral-emphasis: @subtle !important;
+    --bgColor-accent-muted: fade(@accent-color, 20%) !important;
+    --bgColor-accent-emphasis: @accent-color !important;
+    --bgColor-success-muted: #2ea04326 !important;
+    --bgColor-success-emphasis: @foam !important;
+    --bgColor-attention-muted: fade(@gold, 15%) !important;
+    --bgColor-attention-emphasis: @gold !important;
+    --bgColor-severe-muted: fade(@rose, 26%) !important;
+    --bgColor-severe-emphasis: @rose !important;
+    --bgColor-danger-muted: fade(@love, 26%) !important;
+    --bgColor-danger-emphasis: @love !important;
+    --bgColor-open-muted: #2ea0431a !important;
+    --bgColor-open-emphasis: @foam !important;
+    --bgColor-closed-muted: fade(@love, 15%) !important;
+    --bgColor-closed-emphasis: @love !important;
+    --bgColor-done-muted: #a371f726 !important;
+    --bgColor-done-emphasis: @iris !important;
+    --bgColor-sponsors-muted: #db61a21a !important;
+    --bgColor-sponsors-emphasis: @iris !important;
+    --borderColor-default: @overlay !important;
+    --borderColor-muted: @overlay !important;
+    --borderColor-emphasis: #484f58 !important;
+    --borderColor-disabled: #21262db3 !important;
+    --borderColor-transparent: #0000 !important;
+    --borderColor-neutral-muted: #6e768166 !important;
+    --borderColor-neutral-emphasis: #6e7681 !important;
+    --borderColor-accent-muted: fade(@accent-color, 50%) !important;
+    --borderColor-accent-emphasis: @accent-color !important;
+    --borderColor-success-muted: darken(@foam, 5%) !important;
+    --borderColor-success-emphasis: @foam !important;
+    --borderColor-attention-muted: fade(@rose, 30%) !important;
+    --borderColor-attention-emphasis: @rose !important;
+    --borderColor-severe-muted: @rose !important;
+    --borderColor-severe-emphasis: #bd561d !important;
+    --borderColor-danger-muted: @love !important;
+    --borderColor-danger-emphasis: @love !important;
+    --borderColor-open-muted: darken(@foam, 5%) !important;
+    --borderColor-open-emphasis: @foam !important;
+    --borderColor-closed-muted: @love !important;
+    --borderColor-closed-emphasis: @love !important;
+    --borderColor-done-muted: @iris !important;
+    --borderColor-done-emphasis: @iris !important;
+    --borderColor-sponsors-muted: #db61a266 !important;
+    --borderColor-sponsors-emphasis: @iris !important;
     & when (@lookup = dawn) {
       --color-ansi-black: @subtle;
       --color-ansi-black-bright: @subtle;
@@ -540,30 +538,28 @@
 @-moz-document url-prefix(
     "https://viewscreen.githubusercontent.com/markdown/mermaid"
   ) {
-  [data-color-mode="auto"] {
-    @media (prefers-color-scheme: light) {
-      &[data-light-theme="light"] {
-        #rose-pine(@lightVariant, @accentColor);
-      }
-      &[data-light-theme="dark"] {
-        #rose-pine(@darkVariant, @accentColor);
-      }
+  @media (prefers-color-scheme: light) {
+    html[data-color-mode="auto"][data-light-theme="light"] {
+      #rose-pine(@lightVariant, @accentColor);
     }
-    @media (prefers-color-scheme: dark) {
-      &[data-dark-theme="light"] {
-        #rose-pine(@lightVariant, @accentColor);
-      }
-      &[data-dark-theme="dark"] {
-        #rose-pine(@darkVariant, @accentColor);
-      }
+    html[data-color-mode="auto"][data-light-theme="dark"] {
+      #rose-pine(@darkVariant, @accentColor);
     }
   }
-  [data-color-mode="light"][data-light-theme="dark"],
-  [data-color-mode="dark"][data-dark-theme="dark"] {
+  @media (prefers-color-scheme: dark) {
+    html[data-color-mode="auto"][data-dark-theme="light"] {
+      #rose-pine(@lightVariant, @accentColor);
+    }
+    html[data-color-mode="auto"][data-dark-theme="dark"] {
+      #rose-pine(@darkVariant, @accentColor);
+    }
+  }
+  html[data-color-mode="light"][data-light-theme="dark"],
+  html[data-color-mode="dark"][data-dark-theme="dark"] {
     #rose-pine(@darkVariant, @accentColor);
   }
-  [data-color-mode="light"][data-light-theme="light"],
-  [data-color-mode="dark"][data-dark-theme="light"] {
+  html[data-color-mode="light"][data-light-theme="light"],
+  html[data-color-mode="dark"][data-dark-theme="light"] {
     #rose-pine(@lightVariant, @accentColor);
   }
   #rose-pine(@lookup, @accent) {
