@@ -5,7 +5,6 @@
 
 <p align="center">All natural pine, faux fur and a bit of soho vibes for the classy minimalist</p>
 
-
 <p align="center">
     <a href="https://github.com/rose-pine/userstyles/raw/main/styles/youtube/rose-pine.user.less"><img src="https://img.shields.io/badge/stylus-install-31748f?colorA=191724&style=for-the-badge"></a>
 </p>
