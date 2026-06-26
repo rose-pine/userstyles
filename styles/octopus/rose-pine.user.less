@@ -10,7 +10,7 @@
 @preprocessor   less
 
 @var select variant "Variant" ["main:Rosé Pine*", "moon:Rosé Pine Moon", "dawn:Rosé Pine Dawn"]
-@var checkbox usefont "Use Inter font" 0
+@var checkbox useFont "Use Inter font" 0
 ==/UserStyle== */
 
 @-moz-document url-prefix("https://octopus") {
@@ -530,7 +530,7 @@
 		}
 
 		body {
-			& when (@usefont = 1) {
+			& when (@useFont = 1) {
 				font-family: Inter !important;
 			}
 		}
