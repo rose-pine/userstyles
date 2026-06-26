@@ -130,6 +130,10 @@ additional setup instructions or special requirements.
 - [Twitch](https://github.com/rose-pine/userstyles/tree/main/styles/twitch)
 - [YouTube](https://github.com/rose-pine/userstyles/tree/main/styles/youtube)
 
+**Finance**
+
+- [Phemex](https://github.com/rose-pine/userstyles/tree/main/styles/phemex)
+
 **Productivity**
 
 - [Jira](https://github.com/rose-pine/userstyles/tree/main/styles/jira)
