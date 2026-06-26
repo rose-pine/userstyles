@@ -11,6 +11,7 @@
 
 @var select lightVariant "Light Variant" ["main:Rosé Pine", "moon:Rosé Pine Moon", "dawn:Rosé Pine Dawn*"]
 @var select darkVariant "Dark Variant" ["main:Rosé Pine*", "moon:Rosé Pine Moon", "dawn:Rosé Pine Dawn"]
+@var select accentColor "Accent" ["love:Love*", "gold:Gold", "rose:Rose", "pine:Pine", "foam:Foam", "iris:Iris"]
 @var text fontFamily "Font family" "'Source Code Pro'"
 ==/UserStyle== */
 
@@ -48,6 +49,12 @@
 		@highlightMed: @rose-pine[@@variant][@highlightMed];
 		@highlightHigh: @rose-pine[@@variant][@highlightHigh];
 		color-scheme: if(@variant = dawn, light, dark);
+		@accent-color: @rose-pine[@@variant][@@accentColor];
+		accent-color: @accent-color !important;
+
+		::selection {
+			background-color: fade(@accent-color, 30%);
+		}
 
 		body {
 			background: @base;
