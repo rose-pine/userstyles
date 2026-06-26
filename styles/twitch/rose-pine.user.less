@@ -16,29 +16,29 @@
 
 @-moz-document domain("twitch.tv") {
 	.tw-root--theme-dark {
-		#rosepine(@darkVariant, @accentColor);
+		#rose-pine(@darkVariant, @accentColor);
 	}
 	.tw-root--theme-light {
-		#rosepine(@lightVariant, @accentColor);
+		#rose-pine(@lightVariant, @accentColor);
 	}
 
-	#rosepine(@lookup, @accent) {
-		@base: @rosepine[@@lookup][@base];
-		@surface: @rosepine[@@lookup][@surface];
-		@overlay: @rosepine[@@lookup][@overlay];
-		@muted: @rosepine[@@lookup][@muted];
-		@subtle: @rosepine[@@lookup][@subtle];
-		@text: @rosepine[@@lookup][@text];
-		@love: @rosepine[@@lookup][@love];
-		@gold: @rosepine[@@lookup][@gold];
-		@rose: @rosepine[@@lookup][@rose];
-		@pine: @rosepine[@@lookup][@pine];
-		@foam: @rosepine[@@lookup][@foam];
-		@iris: @rosepine[@@lookup][@iris];
-		@highlightLow: @rosepine[@@lookup][@highlightLow];
-		@highlightMed: @rosepine[@@lookup][@highlightMed];
-		@highlightHigh: @rosepine[@@lookup][@highlightHigh];
-		@accent-color: @rosepine[@@lookup][@@accent];
+	#rose-pine(@lookup, @accent) {
+		@base: @rose-pine[@@lookup][@base];
+		@surface: @rose-pine[@@lookup][@surface];
+		@overlay: @rose-pine[@@lookup][@overlay];
+		@muted: @rose-pine[@@lookup][@muted];
+		@subtle: @rose-pine[@@lookup][@subtle];
+		@text: @rose-pine[@@lookup][@text];
+		@love: @rose-pine[@@lookup][@love];
+		@gold: @rose-pine[@@lookup][@gold];
+		@rose: @rose-pine[@@lookup][@rose];
+		@pine: @rose-pine[@@lookup][@pine];
+		@foam: @rose-pine[@@lookup][@foam];
+		@iris: @rose-pine[@@lookup][@iris];
+		@highlightLow: @rose-pine[@@lookup][@highlightLow];
+		@highlightMed: @rose-pine[@@lookup][@highlightMed];
+		@highlightHigh: @rose-pine[@@lookup][@highlightHigh];
+		@accent-color: @rose-pine[@@lookup][@@accent];
 
 		& body {
 			background-color: @base;
@@ -577,15 +577,15 @@
 }
 @-moz-document domain("dashboard.twitch.tv") {
 	.tw-root--theme-dark {
-		#rosepine(@darkVariant);
+		#rose-pine(@darkVariant);
 	}
 	.tw-root--theme-light {
-		#rosepine(@lightVariant);
+		#rose-pine(@lightVariant);
 	}
 
-	#rosepine(@lookup) {
-		@base: @rosepine[@@lookup][@base];
-		@surface: @rosepine[@@lookup][@surface];
+	#rose-pine(@lookup) {
+		@base: @rose-pine[@@lookup][@base];
+		@surface: @rose-pine[@@lookup][@surface];
 		.simplebar-content {
 			background-color: @surface;
 		}
@@ -597,7 +597,7 @@
 }
 
 /* deno-fmt-ignore */
-@rosepine: {
+@rose-pine: {
   @main: { @base: #191724; @surface: #1f1d2e; @overlay: #26233a; @muted: #6e6a86; @subtle: #908caa; @text: #e0def4; @love: #eb6f92; @gold: #f6c177; @rose: #ebbcba; @pine: #31748f; @foam: #9ccfd8; @iris: #c4a7e7; @highlightLow: #21202e; @highlightMed: #403d52; @highlightHigh: #524f67; };
   @moon: { @base: #232136; @surface: #2a273f; @overlay: #393552; @muted: #6e6a86; @subtle: #908caa; @text: #e0def4; @love: #eb6f92; @gold: #f6c177; @rose: #ea9a97; @pine: #3e8fb0; @foam: #9ccfd8; @iris: #c4a7e7; @highlightLow: #2a283e; @highlightMed: #44415a; @highlightHigh: #56526e; };
   @dawn: { @base: #faf4ed; @surface: #fffaf3; @overlay: #f2e9e1; @muted: #9893a5; @subtle: #797593; @text: #464261; @love: #b4637a; @gold: #ea9d34; @rose: #d7827e; @pine: #286983; @foam: #56949f; @iris: #907aa9; @highlightLow: #f4ede8; @highlightMed: #dfdad9; @highlightHigh: #cecacd; };
