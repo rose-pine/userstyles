@@ -147,6 +147,7 @@ additional setup instructions or special requirements.
 **Social**
 
 - [Bluesky](https://github.com/rose-pine/userstyles/tree/main/styles/bluesky)
+- [Discord](https://github.com/rose-pine/userstyles/tree/main/styles/discord)
 - [status.cafe](https://github.com/rose-pine/userstyles/tree/main/styles/status.cafe)
 
 ## Contributing

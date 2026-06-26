@@ -1,0 +1,206 @@
+/* ==UserStyle==
+@name           Rosé Pine for Discord
+@description    Soho vibes for Discord
+@version        1.0.0
+@license        MIT
+@author         Prateesh Prusty (https://github.com/Ace-Extrenof)
+@namespace      https://github.com/rose-pine/
+@homepageURL    https://github.com/rose-pine/userstyles
+@updateURL      https://github.com/rose-pine/userstyles/raw/main/styles/discord/rose-pine.user.less
+@preprocessor   less
+
+@var select lightVariant "Light Variant" ["main:Rosé Pine", "moon:Rosé Pine Moon", "dawn:Rosé Pine Dawn*"]
+@var select darkVariant "Dark Variant" ["main:Rosé Pine*", "moon:Rosé Pine Moon", "dawn:Rosé Pine Dawn"]
+@var select accentColor "Accent" ["love:Love*", "gold:Gold", "rose:Rose", "pine:Pine", "foam:Foam", "iris:Iris"]
+==/UserStyle== */
+
+@-moz-document url-prefix("https://discord.com/channels") {
+	:root.theme-dark {
+		#rose-pine(@darkVariant);
+	}
+
+	:root.theme-light {
+		#rose-pine(@lightVariant);
+	}
+
+	:root:not(.theme-dark, .theme-light) {
+		@media (prefers-color-scheme: light) {
+			#rose-pine(@lightVariant);
+		}
+		@media (prefers-color-scheme: dark) {
+			#rose-pine(@darkVariant);
+		}
+	}
+
+	#rose-pine(@variant) {
+		@base: @rose-pine[@@variant][@base];
+		@surface: @rose-pine[@@variant][@surface];
+		@overlay: @rose-pine[@@variant][@overlay];
+		@muted: @rose-pine[@@variant][@muted];
+		@subtle: @rose-pine[@@variant][@subtle];
+		@text: @rose-pine[@@variant][@text];
+		@love: @rose-pine[@@variant][@love];
+		@gold: @rose-pine[@@variant][@gold];
+		@rose: @rose-pine[@@variant][@rose];
+		@pine: @rose-pine[@@variant][@pine];
+		@foam: @rose-pine[@@variant][@foam];
+		@iris: @rose-pine[@@variant][@iris];
+		@highlightLow: @rose-pine[@@variant][@highlightLow];
+		@highlightMed: @rose-pine[@@variant][@highlightMed];
+		@highlightHigh: @rose-pine[@@variant][@highlightHigh];
+		color-scheme: if(@variant = dawn, light, dark);
+		@accent-color: @rose-pine[@@variant][@@accentColor];
+		accent-color: @accent-color !important;
+
+		::selection {
+			background-color: fade(@accent-color, 30%);
+		}
+
+		--menu-item-default-hover-bg: @base;
+		--menu-item-default-active-bg: @overlay;
+		--button-secondary-background: @surface;
+		--button-secondary-background-hover: @base;
+		--ping: @love;
+		--input-background: @overlay;
+		--home-background: @base;
+		--background-modifier-hover: @highlightMed;
+		--background-modifier-selected: @overlay;
+		--background-modifier-active: @overlay;
+		--bg-mod-faint: @surface;
+		--bg-surface-raised: @surface;
+		--background-message-highlight: fade(@subtle, 20%);
+		--background-message-highlight-hover: fade(@subtle, 13%);
+		--background-mentioned: fade(@subtle, 20%);
+		--background-mentioned-hover: fade(@subtle, 13%);
+		--info-warning-foreground: @subtle;
+		--bg-surface-overlay: @overlay;
+		--background-primary: @base;
+		--background-secondary: @surface;
+		--background-secondary-alt: @overlay;
+		--modal-background: @surface;
+		--modal-footer-background: @overlay;
+		--channeltextarea-background: @surface;
+		--deprecated-card-bg: @surface;
+		--deprecated-card-editable-bg: @surface;
+		--activity-card-background: @overlay;
+		--background-tertiary: @overlay;
+		--background-accent: @rose;
+		--text-normal: @text;
+		--text-spotify: @text;
+		--text-muted: @muted;
+		--text-link: @pine;
+		--background-floating: @surface;
+		--header-primary: @text;
+		--header-secondary: @text;
+		--header-spotify: @foam;
+		--interactive-normal: @text;
+		--interactive-hover: @muted;
+		--interactive-active: @text;
+		--scrollbar-thin-thumb: @overlay;
+		--scrollbar-thin-track: transparent;
+		--scrollbar-auto-thumb: @overlay;
+		--scrollbar-auto-track: transparent;
+
+		.mainCard__0ec2c {
+			background-color: var(--background-secondary) !important;
+		}
+
+		.body-2wLx-E,
+		.headerTop-3GPUSF,
+		.bodyInnerWrapper-2bQs1k,
+		.footer-3naVBw,
+		.panels-3wFtMD {
+			background-color: var(--background-tertiary) !important;
+		}
+
+		.peopleColumn-1wMU14,
+		.panels-j1Uci_,
+		.peopleColumn-29fq28,
+		.peopleList-2VBrVI,
+		.content-2hZxGK,
+		.header-1zd7se,
+		.root-g14mjS .small-23Atuv .fullscreenOnMobile-ixj0e3 {
+			background-color: var(--background-secondary) !important;
+		}
+
+		.textArea-12jD-V,
+		.lookBlank-3eh9lL,
+		.threadSidebar-1o3BTy,
+		.scrollableContainer-2NUZem,
+		.perksModalContentWrapper-3RHugb,
+		.theme-dark .footer-31IekZ,
+		.theme-light .footer-31IekZ {
+			background-color: var(--background-tertiary) !important;
+		}
+
+		.numberBadge-2s8kKX,
+		.base-PmTxvP,
+		.baseShapeRound-1Mm1YW,
+		.bar-30k2ka,
+		.unreadMentionsBar-1Bu1dC,
+		.mention-1f5kbO,
+		.active-1SSsBb,
+		.disableButton-220a9y {
+			background-color: var(--ping) !important;
+		}
+
+		.lookOutlined-3sRXeN.colorRed-1TFJan {
+			color: var(--ping) !important;
+		}
+
+		.header-3OsQeK,
+		.container-ZMc96U {
+			box-shadow: none !important;
+			border: none !important;
+		}
+
+		.content-1gYQeQ,
+		.layout-1qmrhw,
+		.inputDefault-3FGxgL,
+		.input-2g-os5,
+		.input-2z42oC,
+		.role-2TIOKu,
+		.searchBar-jGtisZ {
+			border-radius: 6px !important;
+		}
+
+		.layout-1qmrhw:hover,
+		.content-1gYQeQ:hover,
+		.friendSelected_ebf869 {
+			background-color: var(--background-modifier-selected) !important;
+		}
+
+		.panels_a4d4d9,
+		.container_b2ca13 {
+			background-color: inherit !important;
+		}
+
+		.container_e5a42d {
+			background: unset !important;
+			border: unset !important;
+		}
+
+		.custom-profile-theme .colorPrimary_dd4f85 {
+			color: var(--white) !important;
+		}
+
+		.lookFilled_dd4f85.colorPrimary_dd4f85 {
+			color: var(--text-normal);
+		}
+
+		.colorDefault_d90b3d {
+			color: var(--text-normal) !important;
+		}
+
+		.colorDefault_d90b3d.focused_d90b3d .subtext_d90b3d {
+			color: var(--text-normal) !important;
+		}
+	}
+}
+
+/* deno-fmt-ignore */
+@rose-pine: {
+	@main: { @base: #191724; @surface: #1f1d2e; @overlay: #26233a; @muted: #6e6a86; @subtle: #908caa; @text: #e0def4; @love: #eb6f92; @gold: #f6c177; @rose: #ebbcba; @pine: #31748f; @foam: #9ccfd8; @iris: #c4a7e7; @highlightLow: #21202e; @highlightMed: #403d52; @highlightHigh: #524f67; };
+	@moon: { @base: #232136; @surface: #2a273f; @overlay: #393552; @muted: #6e6a86; @subtle: #908caa; @text: #e0def4; @love: #eb6f92; @gold: #f6c177; @rose: #ea9a97; @pine: #3e8fb0; @foam: #9ccfd8; @iris: #c4a7e7; @highlightLow: #2a283e; @highlightMed: #44415a; @highlightHigh: #56526e; };
+	@dawn: { @base: #faf4ed; @surface: #fffaf3; @overlay: #f2e9e1; @muted: #9893a5; @subtle: #797593; @text: #464261; @love: #b4637a; @gold: #ea9d34; @rose: #d7827e; @pine: #286983; @foam: #56949f; @iris: #907aa9; @highlightLow: #f4ede8; @highlightMed: #dfdad9; @highlightHigh: #cecacd; };
+}
