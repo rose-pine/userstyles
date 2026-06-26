@@ -12,9 +12,9 @@
 
 1. Make sure you have the [Stylus](https://github.com/openstyles/stylus) browser
    extension installed, then visit
-   [this link](https://github.com/rose-pine/userstyles/raw/main/styles/jira/rose-pine.user.less).
-2. Configure your preferred accent color and theme variant.
-3. Click install on the top left.
+   [this link](https://github.com/rose-pine/userstyles/raw/main/styles/jira/rose-pine.user.less)
+2. Configure your preferred accent color and theme variant
+3. Click install on the top left
 
 ## Gallery
 

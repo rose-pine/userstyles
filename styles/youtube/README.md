@@ -12,23 +12,11 @@
 
 ## Usage
 
-1. Install Stylus extension on your browser.
-   [Firefox](https://addons.mozilla.org/en-US/firefox/addon/styl-us),
-   [Chrome](https://chrome.google.com/webstore/detail/stylus/clngdbkpkpeebahjckkjfobafhncgmne)
-   or [Opera](https://addons.opera.com/en-gb/extensions/details/stylus/)
-2. In the main manager interface on the extension, check the box `as Usercss`.
-3. Download the theme
-   [here](https://github.com/rose-pine/userstyles/raw/main/styles/youtube/rose-pine.user.less).
-4. Click install style.
-
-### Changing theme and accent color
-
-1. For changing the theme and accent colors, head to the Stylus manager then
-   click the cogwheel to open the settings panel.
-2. Adjust the settings to your preference.
-
-For more information or troubleshooting, check out the Stylus
-[documentation](https://github.com/openstyles/stylus/wiki/Usercss#how-do-i-install-usercss)
+1. Make sure you have the [Stylus](https://github.com/openstyles/stylus) browser
+   extension installed, then visit
+   [this link](https://github.com/rose-pine/userstyles/raw/main/styles/youtube/rose-pine.user.less)
+2. Configure your preferred accent color and theme variant
+3. Click install on the top left
 
 ## Gallery
 

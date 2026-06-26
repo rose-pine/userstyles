@@ -17,8 +17,6 @@
 2. Configure your preferred accent color and theme variant
 3. Click install on the top left
 
-## Gallery
-
 ## Thanks to
 
 - [Catppuccin Org](https://github.com/catppuccin)

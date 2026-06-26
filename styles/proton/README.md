@@ -12,11 +12,9 @@
 
 1. Make sure you have the [Stylus](https://github.com/openstyles/stylus) browser
    extension installed, then visit
-   [this link](https://github.com/rose-pine/userstyles/raw/main/styles/proton/rose-pine.user.less).
-2. Configure your preferred accent color and theme variant.
-3. Click install on the top left.
-4. Go to proton mail settings and under "Theme" select Carbon. This should be
-   the middle one.
+   [this link](https://github.com/rose-pine/userstyles/raw/main/styles/proton/rose-pine.user.less)
+2. Configure your preferred accent color and theme variant
+3. Click install on the top left
 
 ## Thanks to
 
