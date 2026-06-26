@@ -1,4 +1,5 @@
 {
-  "name": "Hetzner Cloud",
-  "author": "Julia Mertz"
+	"name": "Hetzner Cloud",
+	"author": "Julia Mertz",
+	"category": "Development"
 }

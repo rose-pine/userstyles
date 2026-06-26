@@ -1,4 +1,5 @@
 {
-  "name": "NixOS Search",
-  "author": "JTrenerry"
+	"name": "NixOS Search",
+	"author": "JTrenerry",
+	"category": "Search engines"
 }

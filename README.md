@@ -112,40 +112,42 @@ additional setup instructions or special requirements.
 
 ## Userstyles
 
-**Development tools**
+**AI**
 
+- [ChatGPT](https://github.com/rose-pine/userstyles/tree/main/styles/chatgpt)
+- [Claude](https://github.com/rose-pine/userstyles/tree/main/styles/claude)
+
+**Development**
+
+- [Docs.rs](https://github.com/rose-pine/userstyles/tree/main/styles/docs.rs)
+- [Github](https://github.com/rose-pine/userstyles/tree/main/styles/github)
+- [Hetzner Cloud](https://github.com/rose-pine/userstyles/tree/main/styles/hetzner-cloud)
 - [Octopus](https://github.com/rose-pine/userstyles/tree/main/styles/octopus)
 
-**Search Engines**
+**Entertainment**
 
-- [Brave search](https://github.com/rose-pine/userstyles/tree/main/styles/brave-search)
-- [4get](https://github.com/rose-pine/userstyles/tree/main/styles/4get)
+- [Advent of Code](https://github.com/rose-pine/userstyles/tree/main/styles/advent-of-code)
+- [Twitch](https://github.com/rose-pine/userstyles/tree/main/styles/twitch)
+- [YouTube](https://github.com/rose-pine/userstyles/tree/main/styles/youtube)
 
 **Productivity**
 
-- [ChatGPT](https://github.com/rose-pine/userstyles/tree/main/styles/chatgpt)
-- [GitHub](https://github.com/rose-pine/userstyles/tree/main/styles/github)
 - [Jira](https://github.com/rose-pine/userstyles/tree/main/styles/jira)
 - [Proton](https://github.com/rose-pine/userstyles/tree/main/styles/proton)
 - [Scribe](https://github.com/rose-pine/userstyles/tree/main/styles/scribe)
 - [Wikiwand](https://github.com/rose-pine/userstyles/tree/main/styles/wikiwand)
+- [Zimbra](https://github.com/rose-pine/userstyles/tree/main/styles/zimbra)
 
-**Webmail**
+**Search engines**
 
-- [Skiff](https://github.com/rose-pine/skiff)
-- [Zimbra](https://github.com/rose-pine/zimbra)
+- [4Get](https://github.com/rose-pine/userstyles/tree/main/styles/4get)
+- [Brave Search](https://github.com/rose-pine/userstyles/tree/main/styles/brave-search)
+- [NixOS Search](https://github.com/rose-pine/userstyles/tree/main/styles/nixos-search)
 
-**Finance**
+**Social**
 
-- [Phemex](https://github.com/rose-pine/phemex)
-
-**Misc**
-
-- [Twitch](https://github.com/rose-pine/userstyles/tree/main/styles/twitch)
-- [YouTube](https://github.com/rose-pine/userstyles/tree/main/styles/youtube)
-- [NixOS-Search](https://github.com/rose-pine/userstyles/tree/main/styles/nixos-search)
+- [Bluesky](https://github.com/rose-pine/userstyles/tree/main/styles/bluesky)
 - [status.cafe](https://github.com/rose-pine/userstyles/tree/main/styles/status.cafe)
-- [Advent of Code](https://github.com/rose-pine/userstyles/tree/main/styles/advent-of-code)
 
 ## Contributing
 
@@ -153,5 +155,5 @@ We use [deno](https://docs.deno.com/runtime/getting_started/installation/) to
 format this repo and for automation, make sure you have it installed.
 
 Contributions are welcome and appreciated! You can create a new userstyle from
-the template by running `./scripts/init Website` Please run `deno fmt` to format
-the repository before submitting a pull request.
+the template by running `./scripts/init.ts Website` Please run `deno fmt` to
+format the repository before submitting a pull request.
