@@ -157,3 +157,6 @@ format this repo and for automation, make sure you have it installed.
 Contributions are welcome and appreciated! You can create a new userstyle from
 the template by running `./scripts/init.ts Website` Please run `deno fmt` to
 format the repository before submitting a pull request.
+
+To update the list of styles in the main README, run
+`./scripts/update-readme.ts`.
