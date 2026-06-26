@@ -33,14 +33,9 @@ await Deno.mkdir(themePath);
 const userstyleTemplate = await Deno.readTextFile(
 	"./template/rose-pine.user.less",
 );
-const readmeTemplate = await Deno.readTextFile("./template/readme.md");
-const licenseTemplate = await Deno.readTextFile("./template/license");
-
-const styleJson = {
-	name: substitutions.title,
-	author: "",
-	category: "",
-};
+const readmeTemplate = await Deno.readTextFile("./template/README.md");
+const licenseTemplate = await Deno.readTextFile("./template/LICENSE");
+const styleJsonTemplate = await Deno.readTextFile("./template/style.json");
 
 await Deno.writeTextFile(
 	`${themePath}/rose-pine.user.less`,
@@ -56,5 +51,5 @@ await Deno.writeTextFile(
 );
 await Deno.writeTextFile(
 	`${themePath}/style.json`,
-	JSON.stringify(styleJson, null, 2) + "\n",
+	replaceMap(styleJsonTemplate, substitutions),
 );
