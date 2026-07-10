@@ -127,6 +127,7 @@ additional setup instructions or special requirements.
 **Entertainment**
 
 - [Advent of Code](https://github.com/rose-pine/userstyles/tree/main/styles/advent-of-code)
+- [Emby](https://github.com/rose-pine/userstyles/tree/main/styles/emby)
 - [Twitch](https://github.com/rose-pine/userstyles/tree/main/styles/twitch)
 - [YouTube](https://github.com/rose-pine/userstyles/tree/main/styles/youtube)
 
