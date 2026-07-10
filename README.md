@@ -39,9 +39,9 @@ There are two ways to install a userstyle:
 #### Method 1: Using the "Stylus Install" Button (Recommended)
 
 1. Navigate to the userstyle's folder (e.g., `styles/github/` for GitHub).
-2. On the userstyle's readme page, you'll see a purple "stylus install" badge
-   button near the top.
-3. Click this button. It will automatically open the Stylus installation page.
+2. On the userstyle's README page, click the pine "STYLUS INSTALL" badge button
+   near the top.
+3. Complete the steps on the Stylus installation page.
 
 #### Method 2: Using the Raw File Link
 
@@ -105,7 +105,7 @@ and follow the instructions there.
 <summary><strong>Additional Notes</strong></summary>
 
 Some userstyles may require extra configuration steps to work correctly. Always
-check the individual userstyle's readme page (in each style's folder) for any
+check the individual userstyle's README page (in each style's folder) for any
 additional setup instructions or special requirements.
 
 </details>
@@ -120,7 +120,7 @@ additional setup instructions or special requirements.
 **Development**
 
 - [Docs.rs](https://github.com/rose-pine/userstyles/tree/main/styles/docs.rs)
-- [Github](https://github.com/rose-pine/userstyles/tree/main/styles/github)
+- [GitHub](https://github.com/rose-pine/userstyles/tree/main/styles/github)
 - [Hetzner Cloud](https://github.com/rose-pine/userstyles/tree/main/styles/hetzner-cloud)
 - [Octopus](https://github.com/rose-pine/userstyles/tree/main/styles/octopus)
 
