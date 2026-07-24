@@ -1,0 +1,366 @@
+/* ==UserStyle==
+@name           Rosé Pine for Atlassian Cloud
+@description    Soho vibes for Atlassian Cloud (Jira, Confluence, ...)
+@version        1.0.0
+@license        MIT
+@author         Vidushan Chooriyakumaran (https://github.com/vidjul)
+@namespace      https://github.com/rose-pine/
+@homepageURL    https://github.com/rose-pine/userstyles
+@updateURL      https://github.com/rose-pine/userstyles/raw/main/styles/atlassian-cloud/rose-pine.user.less
+@preprocessor   less
+
+@var select lightVariant "Light Variant" ["main:Rosé Pine", "moon:Rosé Pine Moon", "dawn:Rosé Pine Dawn*"]
+@var select darkVariant "Dark Variant" ["main:Rosé Pine*", "moon:Rosé Pine Moon", "dawn:Rosé Pine Dawn"]
+@var select accentColor "Accent" ["love:Love*", "gold:Gold", "rose:Rose", "pine:Pine", "foam:Foam", "iris:Iris"]
+==/UserStyle== */
+
+/* Recolours the Atlassian Design System (ADS) tokens that modern Atlassian
+   Cloud (Jira, Confluence, ...) is built on. Adapted from the Atlassian
+   Catppuccin userstyle. */
+
+@-moz-document domain("atlassian.net") {
+	html[data-color-mode="light"][data-theme~="light:light"] {
+		#rose-pine(@lightVariant);
+	}
+	html[data-color-mode="dark"][data-theme~="dark:dark"] {
+		#rose-pine(@darkVariant);
+	}
+
+	#rose-pine(@variant) {
+		@base: @rose-pine[@@variant][@base];
+		@surface: @rose-pine[@@variant][@surface];
+		@overlay: @rose-pine[@@variant][@overlay];
+		@muted: @rose-pine[@@variant][@muted];
+		@subtle: @rose-pine[@@variant][@subtle];
+		@text: @rose-pine[@@variant][@text];
+		@love: @rose-pine[@@variant][@love];
+		@gold: @rose-pine[@@variant][@gold];
+		@rose: @rose-pine[@@variant][@rose];
+		@pine: @rose-pine[@@variant][@pine];
+		@foam: @rose-pine[@@variant][@foam];
+		@iris: @rose-pine[@@variant][@iris];
+		@highlightLow: @rose-pine[@@variant][@highlightLow];
+		@highlightMed: @rose-pine[@@variant][@highlightMed];
+		@highlightHigh: @rose-pine[@@variant][@highlightHigh];
+		@accent: @rose-pine[@@variant][@@accentColor];
+
+		color-scheme: if(@variant = dawn, light, dark);
+
+		/* interaction overlay ink: dark ink over light themes, light over dark */
+		@ink: if(@variant = dawn, #000000, #ffffff);
+
+		/* semantic accents */
+		@brand: @accent;
+		@info: @pine;
+		@danger: @love;
+		@warning: @gold;
+		@success: @foam;
+		@discovery: @iris;
+		@magenta: @rose;
+
+		::selection {
+			background-color: fade(@accent, 30%);
+		}
+
+		/* Text */
+		--ds-text: @text;
+		--ds-text-accent-lime: @foam;
+		--ds-text-accent-lime-bolder: @pine;
+		--ds-text-accent-red: @love;
+		--ds-text-accent-red-bolder: @rose;
+		--ds-text-accent-orange: @gold;
+		--ds-text-accent-orange-bolder: @rose;
+		--ds-text-accent-yellow: @gold;
+		--ds-text-accent-yellow-bolder: @rose;
+		--ds-text-accent-green: @foam;
+		--ds-text-accent-green-bolder: @pine;
+		--ds-text-accent-teal: @foam;
+		--ds-text-accent-teal-bolder: @pine;
+		--ds-text-accent-blue: @pine;
+		--ds-text-accent-blue-bolder: @foam;
+		--ds-text-accent-purple: @iris;
+		--ds-text-accent-purple-bolder: @iris;
+		--ds-text-accent-magenta: @rose;
+		--ds-text-accent-magenta-bolder: @love;
+		--ds-text-accent-gray: @muted;
+		--ds-text-accent-gray-bolder: @subtle;
+		--ds-text-disabled: @muted;
+		--ds-text-inverse: @base;
+		--ds-text-selected: @brand;
+		--ds-text-brand: @brand;
+		--ds-text-danger: @danger;
+		--ds-text-warning: @gold;
+		--ds-text-warning-inverse: @base;
+		--ds-text-success: @foam;
+		--ds-text-discovery: @iris;
+		--ds-text-information: @pine;
+		--ds-text-subtlest: @muted;
+		--ds-text-subtle: @subtle;
+
+		/* Links */
+		--ds-link: @brand;
+		--ds-link-pressed: @foam;
+		--ds-link-visited: @iris;
+		--ds-link-visited-pressed: @iris;
+
+		/* Icons */
+		--ds-icon: @subtle;
+		--ds-icon-accent-lime: @foam;
+		--ds-icon-accent-red: @love;
+		--ds-icon-accent-orange: @gold;
+		--ds-icon-accent-yellow: @gold;
+		--ds-icon-accent-green: @foam;
+		--ds-icon-accent-teal: @foam;
+		--ds-icon-accent-blue: @pine;
+		--ds-icon-accent-purple: @iris;
+		--ds-icon-accent-magenta: @rose;
+		--ds-icon-accent-gray: @muted;
+		--ds-icon-disabled: @muted;
+		--ds-icon-inverse: @base;
+		--ds-icon-selected: @brand;
+		--ds-icon-brand: @brand;
+		--ds-icon-danger: @love;
+		--ds-icon-warning: @gold;
+		--ds-icon-warning-inverse: @base;
+		--ds-icon-success: @foam;
+		--ds-icon-discovery: @iris;
+		--ds-icon-information: @pine;
+		--ds-icon-subtlest: @muted;
+		--ds-icon-subtle: @subtle;
+
+		/* Borders */
+		--ds-border: @highlightMed;
+		--ds-border-accent-lime: @foam;
+		--ds-border-accent-red: @love;
+		--ds-border-accent-orange: @gold;
+		--ds-border-accent-yellow: @gold;
+		--ds-border-accent-green: @foam;
+		--ds-border-accent-teal: @foam;
+		--ds-border-accent-blue: @pine;
+		--ds-border-accent-purple: @iris;
+		--ds-border-accent-magenta: @rose;
+		--ds-border-accent-gray: @muted;
+		--ds-border-disabled: fade(@muted, 20%);
+		--ds-border-focused: @accent;
+		--ds-border-input: @highlightHigh;
+		--ds-border-inverse: @base;
+		--ds-border-selected: @brand;
+		--ds-border-brand: @brand;
+		--ds-border-danger: @love;
+		--ds-border-warning: @gold;
+		--ds-border-success: @foam;
+		--ds-border-discovery: @iris;
+		--ds-border-information: @pine;
+		--ds-border-bold: @highlightHigh;
+
+		/* Background accents */
+		.accentBg(lime; @foam);
+		.accentBg(red; @love);
+		.accentBg(orange; @gold);
+		.accentBg(yellow; @gold);
+		.accentBg(green; @foam);
+		.accentBg(teal; @foam);
+		.accentBg(blue; @pine);
+		.accentBg(purple; @iris);
+		.accentBg(magenta; @rose);
+		.accentBg(gray; @muted);
+
+		/* Background - general */
+		--ds-background-disabled: fade(@muted, 15%);
+		--ds-background-input: @surface;
+		--ds-background-input-hovered: @highlightLow;
+		--ds-background-input-pressed: @surface;
+		--ds-background-inverse-subtle: rgba(255, 255, 255, 0.1);
+		--ds-background-inverse-subtle-hovered: rgba(255, 255, 255, 0.2);
+		--ds-background-inverse-subtle-pressed: rgba(255, 255, 255, 0.3);
+		--ds-background-neutral: fade(@subtle, 12%);
+		--ds-background-neutral-hovered: fade(@subtle, 20%);
+		--ds-background-neutral-pressed: fade(@subtle, 28%);
+		--ds-background-neutral-subtle: transparent;
+		--ds-background-neutral-subtle-hovered: fade(@subtle, 8%);
+		--ds-background-neutral-subtle-pressed: fade(@subtle, 14%);
+		--ds-background-neutral-bold: @subtle;
+		--ds-background-neutral-bold-hovered: @muted;
+		--ds-background-neutral-bold-pressed: @muted;
+
+		/* Background - selected */
+		--ds-background-selected: fade(@brand, 15%);
+		--ds-background-selected-hovered: fade(@brand, 24%);
+		--ds-background-selected-pressed: fade(@brand, 32%);
+		--ds-background-selected-bold: @brand;
+		--ds-background-selected-bold-hovered: @brand;
+		--ds-background-selected-bold-pressed: @brand;
+
+		/* Background - brand */
+		--ds-background-brand-subtlest: fade(@brand, 12%);
+		--ds-background-brand-subtlest-hovered: fade(@brand, 20%);
+		--ds-background-brand-subtlest-pressed: fade(@brand, 28%);
+		--ds-background-brand-bold: @brand;
+		--ds-background-brand-bold-hovered: @brand;
+		--ds-background-brand-bold-pressed: @brand;
+		--ds-background-brand-boldest: @base;
+		--ds-background-brand-boldest-hovered: @surface;
+		--ds-background-brand-boldest-pressed: @overlay;
+
+		/* Background - status */
+		--ds-background-danger: fade(@love, 15%);
+		--ds-background-danger-hovered: fade(@love, 25%);
+		--ds-background-danger-pressed: fade(@love, 35%);
+		--ds-background-danger-bold: @love;
+		--ds-background-danger-bold-hovered: @love;
+		--ds-background-danger-bold-pressed: @love;
+		--ds-background-warning: fade(@gold, 15%);
+		--ds-background-warning-hovered: fade(@gold, 25%);
+		--ds-background-warning-pressed: fade(@gold, 35%);
+		--ds-background-warning-bold: @gold;
+		--ds-background-warning-bold-hovered: @gold;
+		--ds-background-warning-bold-pressed: @gold;
+		--ds-background-success: fade(@foam, 15%);
+		--ds-background-success-hovered: fade(@foam, 25%);
+		--ds-background-success-pressed: fade(@foam, 35%);
+		--ds-background-success-bold: @foam;
+		--ds-background-success-bold-hovered: @foam;
+		--ds-background-success-bold-pressed: @foam;
+		--ds-background-discovery: fade(@iris, 15%);
+		--ds-background-discovery-hovered: fade(@iris, 25%);
+		--ds-background-discovery-pressed: fade(@iris, 35%);
+		--ds-background-discovery-bold: @iris;
+		--ds-background-discovery-bold-hovered: @iris;
+		--ds-background-discovery-bold-pressed: @iris;
+		--ds-background-information: fade(@pine, 15%);
+		--ds-background-information-hovered: fade(@pine, 25%);
+		--ds-background-information-pressed: fade(@pine, 35%);
+		--ds-background-information-bold: @pine;
+		--ds-background-information-bold-hovered: @pine;
+		--ds-background-information-bold-pressed: @pine;
+
+		/* Blanket & interaction */
+		--ds-blanket: fade(#191724, 45%);
+		--ds-blanket-selected: fade(@brand, 10%);
+		--ds-blanket-danger: fade(@love, 10%);
+		--ds-interaction-hovered: fade(@ink, 8%);
+		--ds-interaction-pressed: fade(@ink, 14%);
+
+		/* Skeleton */
+		--ds-skeleton: fade(@subtle, 12%);
+		--ds-skeleton-subtle: fade(@subtle, 6%);
+
+		/* Charts - categorical */
+		--ds-chart-categorical-1: @foam;
+		--ds-chart-categorical-1-hovered: @foam;
+		--ds-chart-categorical-2: @iris;
+		--ds-chart-categorical-2-hovered: @iris;
+		--ds-chart-categorical-3: @gold;
+		--ds-chart-categorical-3-hovered: @gold;
+		--ds-chart-categorical-4: @rose;
+		--ds-chart-categorical-4-hovered: @rose;
+		--ds-chart-categorical-5: @pine;
+		--ds-chart-categorical-5-hovered: @pine;
+		--ds-chart-categorical-6: @love;
+		--ds-chart-categorical-6-hovered: @love;
+		--ds-chart-categorical-7: @iris;
+		--ds-chart-categorical-7-hovered: @iris;
+		--ds-chart-categorical-8: @gold;
+		--ds-chart-categorical-8-hovered: @gold;
+		--ds-chart-neutral: @muted;
+		--ds-chart-neutral-hovered: @subtle;
+
+		/* Charts - families */
+		.chartFam(lime; @foam);
+		.chartFam(red; @love);
+		.chartFam(orange; @gold);
+		.chartFam(yellow; @gold);
+		.chartFam(green; @foam);
+		.chartFam(teal; @foam);
+		.chartFam(blue; @pine);
+		.chartFam(purple; @iris);
+		.chartFam(magenta; @rose);
+		.chartFam(gray; @muted);
+
+		/* Charts - status */
+		--ds-chart-brand: @brand;
+		--ds-chart-brand-hovered: @brand;
+		--ds-chart-danger: @love;
+		--ds-chart-danger-hovered: @love;
+		--ds-chart-danger-bold: @rose;
+		--ds-chart-danger-bold-hovered: @rose;
+		--ds-chart-warning: @gold;
+		--ds-chart-warning-hovered: @gold;
+		--ds-chart-warning-bold: @rose;
+		--ds-chart-warning-bold-hovered: @rose;
+		--ds-chart-success: @foam;
+		--ds-chart-success-hovered: @foam;
+		--ds-chart-success-bold: @pine;
+		--ds-chart-success-bold-hovered: @pine;
+		--ds-chart-discovery: @iris;
+		--ds-chart-discovery-hovered: @iris;
+		--ds-chart-discovery-bold: @iris;
+		--ds-chart-discovery-bold-hovered: @iris;
+		--ds-chart-information: @pine;
+		--ds-chart-information-hovered: @pine;
+		--ds-chart-information-bold: @pine;
+		--ds-chart-information-bold-hovered: @pine;
+
+		/* Surface & elevation */
+		--ds-surface: @base;
+		--ds-surface-hovered: @highlightLow;
+		--ds-surface-pressed: @highlightMed;
+		--ds-surface-overlay: @overlay;
+		--ds-surface-overlay-hovered: @highlightLow;
+		--ds-surface-overlay-pressed: @highlightMed;
+		--ds-surface-raised: @surface;
+		--ds-surface-raised-hovered: @highlightLow;
+		--ds-surface-raised-pressed: @highlightMed;
+		--ds-surface-sunken: @overlay;
+		--ds-elevation-surface-current: @base;
+
+		/* Shadows */
+		--ds-shadow-overflow: 0px 0px 8px rgba(0, 0, 0, 0.4), 0px 0px 1px rgba(0, 0, 0, 0.3);
+		--ds-shadow-overflow-perimeter: rgba(0, 0, 0, 0.3);
+		--ds-shadow-overflow-spread: rgba(0, 0, 0, 0.4);
+		--ds-shadow-overlay: 0px 8px 12px rgba(0, 0, 0, 0.4), 0px 0px 1px rgba(0, 0, 0, 0.3);
+		--ds-shadow-raised: 0px 1px 1px rgba(0, 0, 0, 0.4), 0px 0px 1px rgba(0, 0, 0, 0.3);
+
+		/* Opacity */
+		--ds-opacity-disabled: 0.4;
+		--ds-opacity-loading: 0.2;
+		--ds-UNSAFE-transparent: transparent;
+
+		/* Jira software boards paint columns / headers / card-lists with
+		   project-scoped tokens rather than --ds-*, so set them too. */
+		--project-color-elevation-surface-sunken: @overlay;
+		--project-elevation-surface-swimlane: @base;
+		--project-color-background-neutral-subtle-hovered-contrast: @highlightLow;
+	}
+}
+
+.accentBg(@n; @c) {
+	--ds-background-accent-@{n}-subtlest: fade(@c, 8%);
+	--ds-background-accent-@{n}-subtlest-hovered: fade(@c, 14%);
+	--ds-background-accent-@{n}-subtlest-pressed: fade(@c, 20%);
+	--ds-background-accent-@{n}-subtler: fade(@c, 14%);
+	--ds-background-accent-@{n}-subtler-hovered: fade(@c, 20%);
+	--ds-background-accent-@{n}-subtler-pressed: fade(@c, 26%);
+	--ds-background-accent-@{n}-subtle: fade(@c, 22%);
+	--ds-background-accent-@{n}-subtle-hovered: fade(@c, 30%);
+	--ds-background-accent-@{n}-subtle-pressed: fade(@c, 38%);
+	--ds-background-accent-@{n}-bolder: @c;
+	--ds-background-accent-@{n}-bolder-hovered: @c;
+	--ds-background-accent-@{n}-bolder-pressed: @c;
+}
+
+.chartFam(@n; @c) {
+	--ds-chart-@{n}-bold: @c;
+	--ds-chart-@{n}-bold-hovered: @c;
+	--ds-chart-@{n}-bolder: @c;
+	--ds-chart-@{n}-bolder-hovered: @c;
+	--ds-chart-@{n}-boldest: @c;
+	--ds-chart-@{n}-boldest-hovered: @c;
+}
+
+/* deno-fmt-ignore */
+@rose-pine: {
+  @main: { @base: #191724; @surface: #1f1d2e; @overlay: #26233a; @muted: #6e6a86; @subtle: #908caa; @text: #e0def4; @love: #eb6f92; @gold: #f6c177; @rose: #ebbcba; @pine: #31748f; @foam: #9ccfd8; @iris: #c4a7e7; @highlightLow: #21202e; @highlightMed: #403d52; @highlightHigh: #524f67; };
+  @moon: { @base: #232136; @surface: #2a273f; @overlay: #393552; @muted: #6e6a86; @subtle: #908caa; @text: #e0def4; @love: #eb6f92; @gold: #f6c177; @rose: #ea9a97; @pine: #3e8fb0; @foam: #9ccfd8; @iris: #c4a7e7; @highlightLow: #2a283e; @highlightMed: #44415a; @highlightHigh: #56526e; };
+  @dawn: { @base: #faf4ed; @surface: #fffaf3; @overlay: #f2e9e1; @muted: #9893a5; @subtle: #797593; @text: #464261; @love: #b4637a; @gold: #ea9d34; @rose: #d7827e; @pine: #286983; @foam: #56949f; @iris: #907aa9; @highlightLow: #f4ede8; @highlightMed: #dfdad9; @highlightHigh: #cecacd; };
+}

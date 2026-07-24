@@ -137,6 +137,7 @@ additional setup instructions or special requirements.
 
 **Productivity**
 
+- [Atlassian Cloud](https://github.com/rose-pine/userstyles/tree/main/styles/atlassian-cloud)
 - [Jira](https://github.com/rose-pine/userstyles/tree/main/styles/jira)
 - [Proton](https://github.com/rose-pine/userstyles/tree/main/styles/proton)
 - [Scribe](https://github.com/rose-pine/userstyles/tree/main/styles/scribe)
