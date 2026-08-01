@@ -122,6 +122,7 @@ additional setup instructions or special requirements.
 - [Docs.rs](https://github.com/rose-pine/userstyles/tree/main/styles/docs.rs)
 - [GitHub](https://github.com/rose-pine/userstyles/tree/main/styles/github)
 - [Hetzner Cloud](https://github.com/rose-pine/userstyles/tree/main/styles/hetzner-cloud)
+- [LeetCode](https://github.com/rose-pine/userstyles/tree/main/styles/leetcode)
 - [Octopus](https://github.com/rose-pine/userstyles/tree/main/styles/octopus)
 
 **Entertainment**
@@ -155,6 +156,7 @@ additional setup instructions or special requirements.
 - [Bluesky](https://github.com/rose-pine/userstyles/tree/main/styles/bluesky)
 - [Discord](https://github.com/rose-pine/userstyles/tree/main/styles/discord)
 - [status.cafe](https://github.com/rose-pine/userstyles/tree/main/styles/status.cafe)
+
 
 ## Contributing
 
