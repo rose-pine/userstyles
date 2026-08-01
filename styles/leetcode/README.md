@@ -18,11 +18,9 @@
 
 ## Gallery
 
-<img width="256" alt="Rosé Pine with App" src="https://github.com/user-attachments/assets/3d9df6a3-0ee3-43f2-b934-83cf8f2806c2" />
-
-<img width="256" alt="Rosé Pine Moon with App" src="https://github.com/user-attachments/assets/0acf279b-492c-4d75-acba-9de1d6cc8fcb" />
-
-<img width="256" alt="Rosé Pine Dawn with App" src="https://github.com/user-attachments/assets/fb1b1d16-55e8-45db-b388-7c25250b8022" />
+| Rosé Pine | Rosé Pine Moon | Rosé Pine Dawn |
+| :---: | :---: | :---: |
+| ![Rosé Pine with LeetCode](https://github.com/user-attachments/assets/02739b7b-47f0-43ba-b2ab-17559e2f0689) | ![Rosé Pine Moon with LeetCode](https://github.com/user-attachments/assets/237fcafe-bbb8-4e67-affd-25416a1a1301) | ![Rosé Pine Dawn with LeetCode](https://github.com/user-attachments/assets/8cc72ae0-6792-4c03-b330-471e3753de76) |
 
 ## Thanks to
 
