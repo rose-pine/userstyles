@@ -18,9 +18,11 @@
 
 ## Gallery
 
-| Rosé Pine | Rosé Pine Moon | Rosé Pine Dawn |
-| :---: | :---: | :---: |
-| ![Rosé Pine with LeetCode](https://github.com/user-attachments/assets/02739b7b-47f0-43ba-b2ab-17559e2f0689) | ![Rosé Pine Moon with LeetCode](https://github.com/user-attachments/assets/237fcafe-bbb8-4e67-affd-25416a1a1301) | ![Rosé Pine Dawn with LeetCode](https://github.com/user-attachments/assets/8cc72ae0-6792-4c03-b330-471e3753de76) |
+<img width="256" alt="Rosé Pine with LeetCode" src="https://github.com/user-attachments/assets/02739b7b-47f0-43ba-b2ab-17559e2f0689" />
+
+<img width="256" alt="Rosé Pine Moon with LeetCode" src="https://github.com/user-attachments/assets/237fcafe-bbb8-4e67-affd-25416a1a1301" />
+
+<img width="256" alt="Rosé Pine Dawn with LeetCode" src="https://github.com/user-attachments/assets/8cc72ae0-6792-4c03-b330-471e3753de76" />
 
 ## Thanks to
 

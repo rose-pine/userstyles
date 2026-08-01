@@ -157,7 +157,6 @@ additional setup instructions or special requirements.
 - [Discord](https://github.com/rose-pine/userstyles/tree/main/styles/discord)
 - [status.cafe](https://github.com/rose-pine/userstyles/tree/main/styles/status.cafe)
 
-
 ## Contributing
 
 We use [deno](https://docs.deno.com/runtime/getting_started/installation/) to
