@@ -19,7 +19,9 @@
 
 ## Options
 
-- **Code Typography:** Select preferred monospace font family (`Default`, `Cascadia Code`, `Fira Code`, `Geist Mono`, `IBM Plex Mono`, `Inconsolata`, `JetBrains Mono`, `Source Code Pro`, `Space Mono`, `Ubuntu Sans Mono`).
+- **Code Typography:** Select preferred monospace font family (`Default`,
+  `Cascadia Code`, `Fira Code`, `Geist Mono`, `IBM Plex Mono`, `Inconsolata`,
+  `JetBrains Mono`, `Source Code Pro`, `Space Mono`, `Ubuntu Sans Mono`).
 - **Code Sizing:** Adjust code font size (12px–20px) and line height (1.2–2.0).
 - **Code Block Theme:** Toggle Rosé Pine syntax highlighting.
 
