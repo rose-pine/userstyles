@@ -52,7 +52,7 @@ function generateList(groups: Map<string, Style[]>): string {
 		lines.push("");
 	}
 
-	return lines.join("\n");
+	return lines.join("\n").trim();
 }
 
 const groups = await readStyles();
