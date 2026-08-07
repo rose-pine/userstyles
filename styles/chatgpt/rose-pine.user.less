@@ -1,431 +1,506 @@
 /* ==UserStyle==
 @name           Rosé Pine for ChatGPT
 @description    Soho vibes for ChatGPT
-@version        1.0.0
+@version        1.1.0
 @license        MIT
-@author         Adrian Karlén (https://github.com/adriankarlen)
+@author         Jenish Boricha (https://github.com/jenishboricha)
 @namespace      https://github.com/rose-pine/
 @homepageURL    https://github.com/rose-pine/userstyles
 @updateURL      https://github.com/rose-pine/userstyles/raw/main/styles/chatgpt/rose-pine.user.less
 @preprocessor   less
 
-@var select variant "Variant" ["main:Rosé Pine*", "moon:Rosé Pine Moon", "dawn:Rosé Pine Dawn"]
+@var select lightFlavor "Light Palette" ["dawn:Rosé Pine Dawn*", "main:Rosé Pine", "moon:Rosé Pine Moon"]
+@var select darkFlavor "Dark Palette" ["main:Rosé Pine*", "moon:Rosé Pine Moon", "dawn:Rosé Pine Dawn"]
+@var select accentColor "Accent Color" ["rose:Rose*", "love:Love", "gold:Gold", "pine:Pine", "foam:Foam", "iris:Iris"]
+@var select codeFontFamily "Code Font Family" ["default:Default*", "cascadia:Cascadia Code", "firacode:Fira Code", "geist:Geist Mono", "ibm:IBM Plex Mono", "inconsolata:Inconsolata", "jetbrains:JetBrains Mono", "source:Source Code Pro", "space:Space Mono", "ubuntu:Ubuntu Sans Mono"]
+@var range codeFontSize "Code Font Size" [14, 12, 20, 1, "px"]
+@var range codeLineHeight "Code Line Height" [1.4, 1.2, 2.0, 0.05]
+@var checkbox enableCodeBlocks "Enable Code Block Theme" 1
 ==/UserStyle== */
 
+/* Google Web Font Imports */
+@import url('https://fonts.googleapis.com/css2?family=Cascadia+Code:wght@400;500;600&family=Fira+Code:wght@400;500;600&family=Geist+Mono:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&family=Inconsolata:wght@400;600&family=JetBrains+Mono:ital,wght@0,400;0,500;0,600;1,400&family=Source+Code+Pro:wght@400;500;600&family=Space+Mono:wght@400;700&family=Ubuntu+Sans+Mono:wght@400;500;700&display=swap');
+
 @-moz-document domain("chatgpt.com") {
-	.light body,
-	.light html {
-		#rose-pine(@variant);
+	.light {
+		#rose-pine(@lightFlavor, @accentColor);
 	}
 
-	:root,
-	.dark body,
-	.dark html {
-		#rose-pine(@variant);
+	.dark {
+		#rose-pine(@darkFlavor, @accentColor);
 	}
 
-	#rose-pine(@lookup) {
-		@base: @rose-pine[@@lookup][@base];
-		@surface: @rose-pine[@@lookup][@surface];
-		@overlay: @rose-pine[@@lookup][@overlay];
-		@muted: @rose-pine[@@lookup][@muted];
-		@subtle: @rose-pine[@@lookup][@subtle];
-		@text: @rose-pine[@@lookup][@text];
-		@love: @rose-pine[@@lookup][@love];
-		@gold: @rose-pine[@@lookup][@gold];
-		@rose: @rose-pine[@@lookup][@rose];
-		@pine: @rose-pine[@@lookup][@pine];
-		@foam: @rose-pine[@@lookup][@foam];
-		@iris: @rose-pine[@@lookup][@iris];
-		@highlightLow: @rose-pine[@@lookup][@highlightLow];
-		@highlightMed: @rose-pine[@@lookup][@highlightMed];
-		@highlightHigh: @rose-pine[@@lookup][@highlightHigh];
+	#rose-pine(@flavor, @accent) {
+		@raw-base: @rose-pine[@@flavor][@base];
+		@raw-surface: @rose-pine[@@flavor][@surface];
 
-		/* Main page */
-		div[class*="bg-gray-"]:not([class*="bg-gray-900"]):not([class*="bg-gray-700"]):not(.bg-black .bg-gray-800),
-		div[class*="bg-vert-dark-gradient"] {
-			background: @base !important;
+		@base: if(@flavor = dawn, @raw-surface, @raw-base);
+		@surface: if(@flavor = dawn, @raw-base, @raw-surface);
+
+		@overlay: @rose-pine[@@flavor][@overlay];
+		@muted: @rose-pine[@@flavor][@muted];
+		@subtle: @rose-pine[@@flavor][@subtle];
+		@text: @rose-pine[@@flavor][@text];
+		@love: @rose-pine[@@flavor][@love];
+		@gold: @rose-pine[@@flavor][@gold];
+		@rose: @rose-pine[@@flavor][@rose];
+		@pine: @rose-pine[@@flavor][@pine];
+		@foam: @rose-pine[@@flavor][@foam];
+		@iris: @rose-pine[@@flavor][@iris];
+		@highlightLow: @rose-pine[@@flavor][@highlightLow];
+		@highlightMed: @rose-pine[@@flavor][@highlightMed];
+		@highlightHigh: @rose-pine[@@flavor][@highlightHigh];
+
+		@accent-color: @rose-pine[@@flavor][@@accent];
+
+		/* Font Mapping */
+		@default-mono-stack: ~"ui-monospace, SFMono-Regular, 'Roboto Mono', Menlo, Monaco, 'Liberation Mono', 'DejaVu Sans Mono', 'Courier New', monospace";
+
+		@font-stack: if(@codeFontFamily = cascadia,
+			~"'Cascadia Code', 'Cascadia Mono', monospace",
+			if(@codeFontFamily = firacode,
+			~"'Fira Code', 'FiraCode Nerd Font', monospace",
+			if(@codeFontFamily = geist, ~"'Geist Mono', monospace",
+			if(@codeFontFamily = ibm, ~"'IBM Plex Mono', monospace",
+			if(@codeFontFamily = inconsolata, ~"'Inconsolata', monospace",
+			if(@codeFontFamily = jetbrains,
+			~"'JetBrains Mono', 'JetBrainsMono Nerd Font', monospace",
+			if(@codeFontFamily = source, ~"'Source Code Pro', monospace",
+			if(@codeFontFamily = space, ~"'Space Mono', monospace",
+			if(@codeFontFamily = ubuntu,
+			~"'Ubuntu Sans Mono', 'Ubuntu Mono', monospace",
+			@default-mono-stack)))))))));
+
+		* {
+			--text-primary: @text;
+			--text-secondary: @subtle;
+			--text-tertiary: @muted;
+			--text-quaternary: @highlightHigh;
+			--bg-primary: @base;
+			--bg-secondary: @surface;
+			--bg-tertiary: @overlay;
+
+			--bg-secondary-surface: @surface;
+
+			--bg-elevated-primary: @base;
+			--bg-elevated-secondary: @surface;
+
+			--bg-tooltip: @base;
+
+			--main-surface-primary: @base;
+			--main-surface-secondary: @surface;
+			--main-surface-tertiary: @overlay;
+			--interactive-bg-secondary-hover: @overlay;
+			--interactive-bg-secondary-press: @surface;
+
+			--interactive-label-accent-default: @accent-color;
+
+			--border-light: @highlightLow;
+			--border-default: @highlightMed;
+			--border-medium: @highlightHigh;
+			--interactive-border-focus: @subtle;
+
+			--theme-user-msg-bg: @surface;
+			--theme-user-msg-text: @text;
+			--theme-submit-btn-bg: @accent-color;
+			--theme-submit-btn-text: @base;
+
+			--theme-secondary-btn-bg: @overlay;
+			--theme-secondary-btn-text: @text;
+
+			--sidebar-surface: @surface;
+			--sidebar-surface-primary: @surface;
+
+			--surface-hover: @overlay;
+
+			--icon-tertiary: @subtle;
+
+			--text-status-error: @love;
+
+			--shadow-color-1: fade(@surface, 50%);
+			--shadow-color-2: fade(@text, 80%);
+
+			.__menu-item[data-sidebar-item] {
+				--menu-item-highlighted: @overlay;
+			}
+
+			.__menu-item[data-color="danger"] {
+				--menu-item-highlighted: fade(@love, 20%);
+				--menu-item-active: fade(@love, 30%);
+				--menu-item-open: fade(@love, 30%);
+			}
+
+			nav,
+			aside,
+			[data-sidebar],
+			div[class*="group/sidebar"],
+			div[class*="sidebar-container"],
+			div[class*="bg-token-sidebar-surface"] {
+				border-top-left-radius: 0 !important;
+				border-bottom-left-radius: 0 !important;
+			}
+
+			pre {
+				background-color: transparent !important;
+				--code-block-surface: transparent !important;
+				--main-surface-secondary: transparent !important;
+				--composer-surface-primary: transparent !important;
+				overflow: auto !important;
+			}
+
+			pre,
+			pre code,
+			.cm-editor,
+			.cm-scroller,
+			.cm-content,
+			.cm-line,
+			#code-block-viewer {
+				font-family: @font-stack !important;
+				font-size: @codeFontSize !important;
+				line-height: @codeLineHeight !important;
+			}
+
+			/* Rounding */
+			pre > div,
+			div.markdown-new-styling pre div[class*="code-block-surface"] {
+				--code-block-surface: @surface !important;
+				--main-surface-secondary: @surface !important;
+				--composer-surface-primary: @surface !important;
+				background-color: @surface !important;
+				border-radius: 1.5rem !important; // 24px / rounded-3xl
+				overflow-x: auto !important; /* horizontal scrolling */
+				overflow-y: hidden !important;
+			}
+
+			/* Tooltip Contrast */
+			[data-radix-popper-content-wrapper] {
+				background-color: transparent !important;
+				border: none !important;
+				box-shadow: none !important;
+			}
+
+			[role="tooltip"],
+			.radix-tooltip-content,
+			div[data-state][class*="tooltip"] {
+				color: @text !important;
+				background-color: @surface !important;
+				border: 1px solid @highlightMed !important;
+
+				span,
+				p,
+				div {
+					color: @text !important;
+				}
+
+				kbd,
+				.text-token-text-tertiary,
+				.text-token-text-secondary {
+					color: @subtle !important;
+				}
+
+				.bg-token-main-surface-primary,
+				.bg-black,
+				[class*="bg-"] {
+					background-color: @overlay !important;
+					color: @text !important;
+				}
+			}
+
+			code:not(pre > code) {
+				background-color: @overlay !important;
+				color: @text !important;
+				font-family: @font-stack !important;
+				font-size: 0.9em !important;
+			}
+
+			code[class*="language-"],
+			pre[class*="language-"] {
+				color: @text !important;
+			}
+
+			/* Code Block Theme (CodeMirror) */
+			& when (@enableCodeBlocks = 1) {
+				#code-block-viewer,
+				.cm-editor,
+				.cm-scroller,
+				.cm-content,
+				.cm-line {
+					border-radius: inherit !important;
+					background-color: @surface !important;
+					color: @text !important;
+				}
+
+				/* Code content and surface overrides */
+				pre code,
+				.cm-editor,
+				.light\:cm-light,
+				.dark\:cm-light {
+					background-color: @surface !important;
+					color: @text !important;
+					border-radius: inherit !important;
+				}
+
+				/* Header bar container CodeMirror */
+				pre .sticky,
+				pre .sticky > div,
+				pre div[class*="code-block-surface"] {
+					background-color: @surface !important;
+					color: @text !important;
+					border-top-left-radius: inherit !important;
+					border-top-right-radius: inherit !important;
+				}
+
+				pre .sticky button:hover {
+					background-color: fade(@highlightHigh, 30%) !important;
+				}
+
+				/* Syntax Highlighting */
+				pre code,
+				.cm-editor,
+				.cm-content,
+				.cm-line,
+				.light\:cm-light,
+				.dark\:cm-light {
+					/* 1. Comments (.ͼe, .ͼt) */
+					.ͼe,
+					.ͼt,
+					span.ͼe,
+					span.ͼt,
+					span[class*="comment"] {
+						color: @muted !important;
+					}
+
+					/* 2. Preprocessor Directives / Includes / Decorators (.ͼf, .ͼu, .ͼ13, .ͼd) */
+					.ͼf,
+					.ͼu,
+					.ͼ13,
+					.ͼd,
+					span.ͼf,
+					span.ͼu,
+					span.ͼ13,
+					span.ͼd,
+					span[class*="preprocessor"],
+					span[class*="tag"] {
+						color: @pine !important;
+					}
+
+					/* 3. Storage Types / Modifiers / Keywords (.ͼg, .ͼv, .ͼb) */
+					.ͼg,
+					.ͼv,
+					.ͼb,
+					span.ͼg,
+					span.ͼv,
+					span.ͼb,
+					span[class*="keyword"] {
+						color: if(@flavor = dawn, @pine, @foam) !important;
+					}
+
+					/* 4. Class Names / Types / Structs (.ͼl, .ͼ11, .ͼc) */
+					.ͼl,
+					.ͼ11,
+					.ͼc,
+					span.ͼl,
+					span.ͼ11,
+					span.ͼc,
+					span[class*="function"],
+					span[class*="type"],
+					span[class*="class-name"],
+					span[class*="primitive"] {
+						color: @iris !important;
+					}
+
+					/* 5. Strings / Template Literals (.ͼk, .ͼz, .ͼa) */
+					.ͼk,
+					.ͼz,
+					.ͼa,
+					span.ͼk,
+					span.ͼz,
+					span.ͼa,
+					span[class*="string"] {
+						color: @rose !important;
+					}
+
+					/* 6. Booleans / Numbers / Literals (.ͼj, .ͼy, .ͼ10, .ͼh) */
+					.ͼj,
+					.ͼy,
+					.ͼ10,
+					.ͼh,
+					span.ͼj,
+					span.ͼy,
+					span.ͼ10,
+					span.ͼh,
+					span[class*="number"],
+					span[class*="boolean"],
+					span[class*="literal"] {
+						color: @love !important;
+					}
+
+					/* 7. Identifiers / Struct Fields / Plain Text (.ͼm, .ͼ12) */
+					.ͼm,
+					.ͼ12,
+					span.ͼm,
+					span.ͼ12,
+					span[class*="attribute"],
+					span[class*="property"],
+					span[class*="variable"],
+					span[class*="operator"],
+					span[class*="punctuation"] {
+						color: @text !important;
+					}
+
+					/* 8. Escape Sequences / Regex Escapes (.ͼ15) */
+					.ͼ15,
+					span.ͼ15,
+					span[class*="escape"] {
+						color: @subtle !important;
+					}
+				}
+			}
+
+			/* Components */
+
+			.btn-primary {
+				background-color: @text;
+				color: @base;
+			}
+
+			.btn-purple {
+				color: @base;
+				background-color: @accent-color;
+
+				&:hover {
+					background-color: lighten(@accent-color, 5%);
+				}
+
+				&:focus,
+				&:active {
+					background-color: darken(@accent-color, 5%);
+				}
+			}
+
+			.btn-danger-outline {
+				color: @love;
+				border-color: @love;
+			}
+
+			.btn-ghost {
+				&:not(:disabled) {
+					&:hover {
+						background-color: @overlay;
+					}
+				}
+			}
+
+			/* Dark Overrides */
+			.bg-token-bg-primary {
+				background-color: var(--bg-primary);
+			}
+			.bg-token-main-surface-primary {
+				background-color: var(--main-surface-primary);
+			}
+			.bg-token-sidebar-surface {
+				background-color: var(--sidebar-surface);
+			}
+
+			/* Tailwind */
+			.__tailwind-utility(@color, @shade, @value) {
+				.text-@{color}-@{shade},
+				.dark\:text-@{color}-@{shade} {
+					color: @value;
+				}
+				.bg-@{color}-@{shade},
+				.dark\:bg-@{color}-@{shade} {
+					background-color: @value;
+				}
+				.border-@{color}-@{shade} {
+					border-color: @value;
+				}
+				.radix-state-checked\:bg-@{color}-@{shade}[data-state="checked"] {
+					background-color: @value;
+				}
+			}
+
+			.__tailwind-utility(green, 600, @pine);
+			.__tailwind-utility(red, 500, @love);
+			.__tailwind-utility(blue, 400, @accent-color);
+			.__tailwind-utility(gray, 600, @highlightMed);
+			.__tailwind-utility(gray, 500, @muted);
+
+			.text-white {
+				color: @base;
+			}
+
+			.bg-black {
+				background-color: @surface;
+			}
 		}
+	}
+}
 
-		.dark body,
-		.dark html,
-		body,
-		html {
-			background-color: @base;
+@-moz-document domain("auth.openai.com") {
+	:root {
+		@media (prefers-color-scheme: light) {
+			#rose-pine(@lightFlavor, @accentColor);
 		}
-
-		/* Sidebar */
-		[class*=" bg-gray-900"],
-		[class*=" dark:bg-gray-900"] {
-			background-color: @overlay !important;
+		@media (prefers-color-scheme: dark) {
+			#rose-pine(@darkFlavor, @accentColor);
 		}
+	}
 
-		[class*=" bg-gray-800"],
-		[class*=" dark:bg-gray-800"] {
-			background-color: @highlightMed !important;
-		}
+	#rose-pine(@flavor, @accent) {
+		@raw-base: @rose-pine[@@flavor][@base];
+		@raw-surface: @rose-pine[@@flavor][@surface];
 
-		.bg-gradient-to-l {
-			background: none;
-		}
+		@base: if(@flavor = dawn, @raw-surface, @raw-base);
+		@surface: if(@flavor = dawn, @raw-base, @raw-surface);
 
-		/* Upgrade Plan */
-		.shim-yellow {
-			display: none;
-		}
+		@overlay: @rose-pine[@@flavor][@overlay];
+		@muted: @rose-pine[@@flavor][@muted];
+		@subtle: @rose-pine[@@flavor][@subtle];
+		@text: @rose-pine[@@flavor][@text];
+		@love: @rose-pine[@@flavor][@love];
+		@gold: @rose-pine[@@flavor][@gold];
+		@rose: @rose-pine[@@flavor][@rose];
+		@pine: @rose-pine[@@flavor][@pine];
+		@foam: @rose-pine[@@flavor][@foam];
+		@iris: @rose-pine[@@flavor][@iris];
 
-		/* Search */
-		div[class*="bg-gray-700"] {
-			background-color: @highlightMed !important;
-		}
+		@accent-color: @rose-pine[@@flavor][@@accent];
 
-		[class*="text-gray-"],
-		[class*="text-white"]:not(.btn-primary .text-white) {
-			color: @text !important;
-		}
+		color: @text;
 
-		[class*=" border-"] {
-			border-color: @overlay !important;
-		}
+		background-color: @base;
+		--main-page-background: @base;
 
-		input::placeholder,
-		textarea::placeholder {
-			color: @muted;
-		}
+		--text-primary: @text;
+		--text-secondary: @subtle;
+		--text-tertiary: @muted;
+		--text-placeholder: @muted;
 
-		input,
-		textarea {
+		--accent-blue: @accent-color;
+		--link: @accent-color;
+
+		--border-medium: @overlay;
+
+		--button-primary-background: @text;
+		--button-primary-hover: @subtle;
+		--button-text-on-primary: @base;
+
+		--button-outline-hover: @surface;
+
+		--gray-100: @overlay;
+
+		input {
 			color: @text;
 		}
 
-		[class*="bg-white/5"] {
-			background-color: @highlightHigh !important;
+		[class*="_toggleVisibilityButton"]:where(:hover, :focus-visible)::before {
+			background-color: @surface;
 		}
 
-		.px-3.py-3,
-		.pt-3 {
-			background: @overlay !important;
-		}
-
-		.px-3.py-3:hover {
-			background: @base !important;
-		}
-		/* Bot messages */
-		.prose {
-			--tw-prose-body: @text !important;
-			--tw-prose-bold: @text !important;
-			--tw-prose-code: @text !important;
-			--tw-prose-links: @text !important;
-			--tw-prose-headings: @highlightHigh !important;
-		}
-
-		.bg-black {
-			background-color: @surface !important;
-		}
-
-		.bg-black .bg-gray-800 {
-			background-color: @highlightLow !important;
-		}
-
-		/* Buttons */
-		.btn-neutral {
-			background-color: @highlightMed !important;
-			color: @text !important;
-		}
-
-		.btn-primary {
-			background-color: @pine !important;
-			color: @surface !important;
-		}
-
-		.btn-primary .text-white {
-			color: @surface !important;
-		}
-
-		.btn-danger {
-			background-color: @love !important;
-			color: @surface !important;
-		}
-
-		.text-2xl {
-			color: @text !important;
-		}
-
-		.dark [class*="bg-yellow-"] {
-			color: @surface !important;
-		}
-
-		.light [class*="bg-yellow-"] {
-			color: @text !important;
-		}
-
-		[class*="text-green"] {
-			color: @pine !important;
-		}
-
-		/* Code blocks */
-		pre code.hljs {
-			display: block;
-			overflow-x: auto;
-			padding: 1em;
-		}
-
-		code.hljs {
-			padding: 3px 5px;
-		}
-
-		.hljs {
-			background: @overlay;
-		}
-
-		.hljs,
-		.hljs-subst {
-			color: @text;
-		}
-
-		.hljs-selector-tag {
-			color: @foam;
-		}
-
-		.hljs-selector-id {
-			color: @iris;
-			font-weight: 700;
-		}
-
-		.hljs-selector-attr,
-		.hljs-selector-class {
-			color: @iris;
-		}
-
-		.hljs-property,
-		.hljs-selector-pseudo {
-			color: @rose;
-		}
-
-		.hljs-addition {
-			background-color: rgba(156, 207, 216, 0.5);
-		}
-
-		.hljs-deletion {
-			background-color: rgba(235, 111, 146, 0.5);
-		}
-
-		.hljs-built_in,
-		.hljs-class,
-		.hljs-type {
-			color: @iris;
-		}
-
-		.hljs-function,
-		.hljs-function > .hljs-title,
-		.hljs-title.hljs-function {
-			color: @rose;
-		}
-
-		.hljs-keyword,
-		.hljs-literal,
-		.hljs-symbol {
-			color: @foam;
-		}
-
-		.hljs-number {
-			color: @gold;
-		}
-
-		.hljs-regexp {
-			color: @gold;
-		}
-
-		.hljs-string {
-			color: @foam;
-		}
-
-		.hljs-title {
-			color: @iris;
-		}
-
-		.hljs-params {
-			color: @text;
-		}
-
-		.hljs-bullet {
-			color: @foam;
-		}
-
-		.hljs-code {
-			color: @iris;
-		}
-
-		.hljs-emphasis {
-			font-style: italic;
-		}
-
-		.hljs-formula {
-			color: @iris;
-		}
-
-		.hljs-strong {
-			font-weight: 700;
-		}
-
-		.hljs-link:hover {
-			text-decoration: underline;
-		}
-
-		.hljs-comment,
-		.hljs-quote {
-			color: @muted;
-		}
-
-		.hljs-doctag {
-			color: @iris;
-		}
-
-		.hljs-meta,
-		.hljs-meta .hljs-keyword {
-			color: @pine;
-		}
-
-		.hljs-meta .hljs-string {
-			color: @foam;
-		}
-
-		.hljs-attr {
-			color: @iris;
-		}
-
-		.hljs-attribute {
-			color: @text;
-		}
-
-		.hljs-name {
-			color: @foam;
-		}
-
-		.hljs-section {
-			color: @rose;
-		}
-
-		.hljs-tag {
-			color: @foam;
-		}
-
-		.hljs-template-variable,
-		.hljs-variable {
-			color: @text;
-		}
-
-		.hljs-template-tag {
-			color: @pine;
-		}
-
-		.language-abnf .hljs-attribute {
-			color: @rose;
-		}
-
-		.language-abnf .hljs-symbol {
-			color: @gold;
-		}
-
-		.language-apache .hljs-attribute {
-			color: @rose;
-		}
-
-		.language-apache .hljs-section {
-			color: @foam;
-		}
-
-		.language-arduino .hljs-built_in {
-			color: @rose;
-		}
-
-		.language-aspectj .hljs-meta {
-			color: @love;
-		}
-
-		.language-aspectj > .hljs-title {
-			color: @rose;
-		}
-
-		.language-bnf .hljs-attribute {
-			color: @iris;
-		}
-
-		.language-clojure .hljs-name {
-			color: @rose;
-		}
-
-		.language-clojure .hljs-symbol {
-			color: @gold;
-		}
-
-		.language-coq .hljs-built_in {
-			color: @rose;
-		}
-
-		.language-cpp .hljs-meta .hljs-string {
-			color: @iris;
-		}
-
-		.language-css .hljs-built_in {
-			color: @rose;
-		}
-
-		.language-css .hljs-keyword {
-			color: @love;
-		}
-
-		.language-diff .hljs-meta,
-		.language-ebnf .hljs-attribute {
-			color: @iris;
-		}
-
-		.language-glsl .hljs-built_in {
-			color: @rose;
-		}
-
-		.language-groovy .hljs-meta:not(:first-child),
-		.language-haxe .hljs-meta,
-		.language-java .hljs-meta {
-			color: @love;
-		}
-
-		.language-ldif .hljs-attribute {
-			color: @iris;
-		}
-
-		.language-lisp .hljs-name,
-		.language-lua .hljs-built_in,
-		.language-moonscript .hljs-built_in,
-		.language-nginx .hljs-attribute {
-			color: @rose;
-		}
-
-		.language-nginx .hljs-section {
-			color: @pine;
-		}
-
-		.language-pf .hljs-built_in,
-		.language-processing .hljs-built_in {
-			color: @rose;
-		}
-
-		.language-scss .hljs-keyword,
-		.language-stylus .hljs-keyword {
-			color: @foam;
-		}
-
-		.language-swift .hljs-meta {
-			color: @love;
-		}
-
-		.language-vim .hljs-built_in {
-			color: @rose;
-			font-style: italic;
-		}
-
-		.language-yaml .hljs-meta {
-			color: @love;
+		[data-overlay-container] [class*="_tooltip"] {
+			--tooltip-background-color: @surface !important;
+			--tooltip-color: @text !important;
 		}
 	}
 }
