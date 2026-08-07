@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name           Rosé Pine for ChatGPT
 @description    Soho vibes for ChatGPT
-@version        1.1.0
+@version        1.1.1
 @license        MIT
 @author         Jenish Boricha (https://github.com/jenishboricha)
 @namespace      https://github.com/rose-pine/
@@ -9,8 +9,8 @@
 @updateURL      https://github.com/rose-pine/userstyles/raw/main/styles/chatgpt/rose-pine.user.less
 @preprocessor   less
 
-@var select lightFlavor "Light Palette" ["dawn:Rosé Pine Dawn*", "main:Rosé Pine", "moon:Rosé Pine Moon"]
-@var select darkFlavor "Dark Palette" ["main:Rosé Pine*", "moon:Rosé Pine Moon", "dawn:Rosé Pine Dawn"]
+@var select lightFlavor "Light Palette" ["dawn:Rosé Pine Dawn*"]
+@var select darkFlavor "Dark Palette" ["main:Rosé Pine*", "moon:Rosé Pine Moon"]
 @var select accentColor "Accent Color" ["rose:Rose*", "love:Love", "gold:Gold", "pine:Pine", "foam:Foam", "iris:Iris"]
 @var select codeFontFamily "Code Font Family" ["default:Default*", "cascadia:Cascadia Code", "firacode:Fira Code", "geist:Geist Mono", "ibm:IBM Plex Mono", "inconsolata:Inconsolata", "jetbrains:JetBrains Mono", "source:Source Code Pro", "space:Space Mono", "ubuntu:Ubuntu Sans Mono"]
 @var range codeFontSize "Code Font Size" [14, 12, 20, 1, "px"]
@@ -18,10 +18,18 @@
 @var checkbox enableCodeBlocks "Enable Code Block Theme" 1
 ==/UserStyle== */
 
-/* Google Web Font Imports */
-@import url('https://fonts.googleapis.com/css2?family=Cascadia+Code:wght@400;500;600&family=Fira+Code:wght@400;500;600&family=Geist+Mono:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&family=Inconsolata:wght@400;600&family=JetBrains+Mono:ital,wght@0,400;0,500;0,600;1,400&family=Source+Code+Pro:wght@400;500;600&family=Space+Mono:wght@400;700&family=Ubuntu+Sans+Mono:wght@400;500;700&display=swap');
+@-moz-document domain("chatgpt.com"), domain("auth.openai.com") {
+	/* Google Web Font Imports */
+	@import url('https://fonts.googleapis.com/css2?family=Cascadia+Code:wght@400;500;600&family=Fira+Code:wght@400;500;600&family=Geist+Mono:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&family=Inconsolata:wght@400;600&family=JetBrains+Mono:ital,wght@0,400;0,500;0,600;1,400&family=Source+Code+Pro:wght@400;500;600&family=Space+Mono:wght@400;700&family=Ubuntu+Sans+Mono:wght@400;500;700&display=swap');
 
-@-moz-document domain("chatgpt.com") {
+	/* deno-fmt-ignore */
+	@rose-pine: {
+        @main: { @base: #191724; @surface: #1f1d2e; @overlay: #26233a; @muted: #6e6a86; @subtle: #908caa; @text: #e0def4; @love: #eb6f92; @gold: #f6c177; @rose: #ebbcba; @pine: #31748f; @foam: #9ccfd8; @iris: #c4a7e7; @highlightLow: #21202e; @highlightMed: #403d52; @highlightHigh: #524f67; };
+        @moon: { @base: #232136; @surface: #2a273f; @overlay: #393552; @muted: #6e6a86; @subtle: #908caa; @text: #e0def4; @love: #eb6f92; @gold: #f6c177; @rose: #ea9a97; @pine: #3e8fb0; @foam: #9ccfd8; @iris: #c4a7e7; @highlightLow: #2a283e; @highlightMed: #44415a; @highlightHigh: #56526e; };
+        @dawn: { @base: #faf4ed; @surface: #fffaf3; @overlay: #f2e9e1; @muted: #9893a5; @subtle: #797593; @text: #464261; @love: #b4637a; @gold: #ea9d34; @rose: #d7827e; @pine: #286983; @foam: #56949f; @iris: #907aa9; @highlightLow: #f4ede8; @highlightMed: #dfdad9; @highlightHigh: #cecacd; };
+    }
+
+	/* ChatGPT Rules */
 	.light {
 		#rose-pine(@lightFlavor, @accentColor);
 	}
@@ -90,6 +98,11 @@
 			--main-surface-primary: @base;
 			--main-surface-secondary: @surface;
 			--main-surface-tertiary: @overlay;
+
+			/* Set Composer Token directly to Surface */
+			--composer-surface-primary: @surface !important;
+			--composer-surface-secondary: @overlay !important;
+
 			--interactive-bg-secondary-hover: @overlay;
 			--interactive-bg-secondary-press: @surface;
 
@@ -130,6 +143,12 @@
 				--menu-item-open: fade(@love, 30%);
 			}
 
+			/* Clear hardcoded background overrides on prompt */
+			#prompt-textarea {
+				background-color: transparent !important;
+				color: @text !important;
+			}
+
 			nav,
 			aside,
 			[data-sidebar],
@@ -144,7 +163,6 @@
 				background-color: transparent !important;
 				--code-block-surface: transparent !important;
 				--main-surface-secondary: transparent !important;
-				--composer-surface-primary: transparent !important;
 				overflow: auto !important;
 			}
 
@@ -160,19 +178,16 @@
 				line-height: @codeLineHeight !important;
 			}
 
-			/* Rounding */
 			pre > div,
 			div.markdown-new-styling pre div[class*="code-block-surface"] {
 				--code-block-surface: @surface !important;
 				--main-surface-secondary: @surface !important;
-				--composer-surface-primary: @surface !important;
 				background-color: @surface !important;
-				border-radius: 1.5rem !important; // 24px / rounded-3xl
-				overflow-x: auto !important; /* horizontal scrolling */
+				border-radius: 1.5rem !important;
+				overflow-x: auto !important;
 				overflow-y: hidden !important;
 			}
 
-			/* Tooltip Contrast */
 			[data-radix-popper-content-wrapper] {
 				background-color: transparent !important;
 				border: none !important;
@@ -218,7 +233,7 @@
 				color: @text !important;
 			}
 
-			/* Code Block Theme (CodeMirror) */
+			/* Code Output Theme */
 			& when (@enableCodeBlocks = 1) {
 				#code-block-viewer,
 				.cm-editor,
@@ -230,7 +245,6 @@
 					color: @text !important;
 				}
 
-				/* Code content and surface overrides */
 				pre code,
 				.cm-editor,
 				.light\:cm-light,
@@ -240,7 +254,6 @@
 					border-radius: inherit !important;
 				}
 
-				/* Header bar container CodeMirror */
 				pre .sticky,
 				pre .sticky > div,
 				pre div[class*="code-block-surface"] {
@@ -254,14 +267,12 @@
 					background-color: fade(@highlightHigh, 30%) !important;
 				}
 
-				/* Syntax Highlighting */
 				pre code,
 				.cm-editor,
 				.cm-content,
 				.cm-line,
 				.light\:cm-light,
 				.dark\:cm-light {
-					/* 1. Comments (.ͼe, .ͼt) */
 					.ͼe,
 					.ͼt,
 					span.ͼe,
@@ -270,7 +281,6 @@
 						color: @muted !important;
 					}
 
-					/* 2. Preprocessor Directives / Includes / Decorators (.ͼf, .ͼu, .ͼ13, .ͼd) */
 					.ͼf,
 					.ͼu,
 					.ͼ13,
@@ -284,7 +294,6 @@
 						color: @pine !important;
 					}
 
-					/* 3. Storage Types / Modifiers / Keywords (.ͼg, .ͼv, .ͼb) */
 					.ͼg,
 					.ͼv,
 					.ͼb,
@@ -295,7 +304,6 @@
 						color: if(@flavor = dawn, @pine, @foam) !important;
 					}
 
-					/* 4. Class Names / Types / Structs (.ͼl, .ͼ11, .ͼc) */
 					.ͼl,
 					.ͼ11,
 					.ͼc,
@@ -309,7 +317,6 @@
 						color: @iris !important;
 					}
 
-					/* 5. Strings / Template Literals (.ͼk, .ͼz, .ͼa) */
 					.ͼk,
 					.ͼz,
 					.ͼa,
@@ -320,7 +327,6 @@
 						color: @rose !important;
 					}
 
-					/* 6. Booleans / Numbers / Literals (.ͼj, .ͼy, .ͼ10, .ͼh) */
 					.ͼj,
 					.ͼy,
 					.ͼ10,
@@ -335,7 +341,6 @@
 						color: @love !important;
 					}
 
-					/* 7. Identifiers / Struct Fields / Plain Text (.ͼm, .ͼ12) */
 					.ͼm,
 					.ͼ12,
 					span.ͼm,
@@ -348,7 +353,6 @@
 						color: @text !important;
 					}
 
-					/* 8. Escape Sequences / Regex Escapes (.ͼ15) */
 					.ͼ15,
 					span.ͼ15,
 					span[class*="escape"] {
@@ -356,8 +360,6 @@
 					}
 				}
 			}
-
-			/* Components */
 
 			.btn-primary {
 				background-color: @text;
@@ -391,7 +393,6 @@
 				}
 			}
 
-			/* Dark Overrides */
 			.bg-token-bg-primary {
 				background-color: var(--bg-primary);
 			}
@@ -402,7 +403,6 @@
 				background-color: var(--sidebar-surface);
 			}
 
-			/* Tailwind */
 			.__tailwind-utility(@color, @shade, @value) {
 				.text-@{color}-@{shade},
 				.dark\:text-@{color}-@{shade} {
@@ -435,19 +435,18 @@
 			}
 		}
 	}
-}
 
-@-moz-document domain("auth.openai.com") {
+	/* Auth Rules */
 	:root {
 		@media (prefers-color-scheme: light) {
-			#rose-pine(@lightFlavor, @accentColor);
+			#rose-pine-auth(@lightFlavor, @accentColor);
 		}
 		@media (prefers-color-scheme: dark) {
-			#rose-pine(@darkFlavor, @accentColor);
+			#rose-pine-auth(@darkFlavor, @accentColor);
 		}
 	}
 
-	#rose-pine(@flavor, @accent) {
+	#rose-pine-auth(@flavor, @accent) {
 		@raw-base: @rose-pine[@@flavor][@base];
 		@raw-surface: @rose-pine[@@flavor][@surface];
 
@@ -503,11 +502,4 @@
 			--tooltip-color: @text !important;
 		}
 	}
-}
-
-/* deno-fmt-ignore */
-@rose-pine: {
-  @main: { @base: #191724; @surface: #1f1d2e; @overlay: #26233a; @muted: #6e6a86; @subtle: #908caa; @text: #e0def4; @love: #eb6f92; @gold: #f6c177; @rose: #ebbcba; @pine: #31748f; @foam: #9ccfd8; @iris: #c4a7e7; @highlightLow: #21202e; @highlightMed: #403d52; @highlightHigh: #524f67; };
-  @moon: { @base: #232136; @surface: #2a273f; @overlay: #393552; @muted: #6e6a86; @subtle: #908caa; @text: #e0def4; @love: #eb6f92; @gold: #f6c177; @rose: #ea9a97; @pine: #3e8fb0; @foam: #9ccfd8; @iris: #c4a7e7; @highlightLow: #2a283e; @highlightMed: #44415a; @highlightHigh: #56526e; };
-  @dawn: { @base: #faf4ed; @surface: #fffaf3; @overlay: #f2e9e1; @muted: #9893a5; @subtle: #797593; @text: #464261; @love: #b4637a; @gold: #ea9d34; @rose: #d7827e; @pine: #286983; @foam: #56949f; @iris: #907aa9; @highlightLow: #f4ede8; @highlightMed: #dfdad9; @highlightHigh: #cecacd; };
 }
