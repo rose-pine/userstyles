@@ -116,6 +116,7 @@ additional setup instructions or special requirements.
 
 - [ChatGPT](https://github.com/rose-pine/userstyles/tree/main/styles/chatgpt)
 - [Claude](https://github.com/rose-pine/userstyles/tree/main/styles/claude)
+- [Gemini](https://github.com/rose-pine/userstyles/tree/main/styles/gemini)
 
 **Development**
 
