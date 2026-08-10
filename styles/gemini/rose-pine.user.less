@@ -1,0 +1,269 @@
+/* ==UserStyle==
+@name           Rosé Pine for Gemini
+@description    Soho vibes for Gemini
+@version        1.0.0
+@license        MIT
+@author         Jenish Boricha (https://github.com/jenishboricha)
+@namespace      https://github.com/rose-pine/
+@homepageURL    https://github.com/rose-pine/userstyles
+@updateURL      https://github.com/rose-pine/userstyles/raw/main/styles/gemini/rose-pine.user.less
+@preprocessor   less
+
+@var select lightVariant "Light Variant" ["dawn:Rosé Pine Dawn*"]
+@var select darkVariant "Dark Variant" ["main:Rosé Pine*", "moon:Rosé Pine Moon"]
+@var select accentColor "Accent" ["love:Love*", "gold:Gold", "rose:Rose", "pine:Pine", "foam:Foam", "iris:Iris"]
+@var select chatWidth "Main Chat Width" ["val_default:Default*", "val_regular:Regular", "val_medium:Medium", "val_large:Large", "val_max:Max"]
+
+@var checkbox hideUpsell "Disable Gemini Advance Upsell" 0
+@var checkbox hideGlow "Disable Gemini Glow" 0
+@var checkbox hideFading "Disable Gradient Fading" 0
+@var checkbox hideDisclaimer "Disable Hallucination Disclaimer" 0
+@var checkbox hideWelcome "Disable Welcome Message" 0
+==/UserStyle== */
+
+@-moz-document url-prefix("https://gemini.google.com") {
+	:root .dark-theme {
+		#rose-pine(@darkVariant);
+	}
+
+	:root .light-theme {
+		#rose-pine(@lightVariant);
+	}
+
+	#rose-pine(@variant) {
+		@base: @rose-pine[@@variant][@base];
+		@surface: @rose-pine[@@variant][@surface];
+		@overlay: @rose-pine[@@variant][@overlay];
+		@muted: @rose-pine[@@variant][@muted];
+		@subtle: @rose-pine[@@variant][@subtle];
+		@text: @rose-pine[@@variant][@text];
+		@love: @rose-pine[@@variant][@love];
+		@gold: @rose-pine[@@variant][@gold];
+		@rose: @rose-pine[@@variant][@rose];
+		@pine: @rose-pine[@@variant][@pine];
+		@foam: @rose-pine[@@variant][@foam];
+		@iris: @rose-pine[@@variant][@iris];
+		@highlightLow: @rose-pine[@@variant][@highlightLow];
+		@highlightMed: @rose-pine[@@variant][@highlightMed];
+		@highlightHigh: @rose-pine[@@variant][@highlightHigh];
+		@accent-color: @rose-pine[@@variant][@@accentColor];
+		color-scheme: if(@variant = dawn, light, dark);
+
+		::selection {
+			background-color: fade(@accent-color, 30%);
+		}
+
+		input,
+		textarea {
+			&::placeholder {
+				color: @highlightLow !important;
+			}
+		}
+
+		/* Base theme color */
+		--lumi-sys-color--surface: @base;
+		--lumi-sys-color--surface-bright: @surface;
+		--lumi-sys-color--surface-dim: @surface;
+		--gem-sys-color--surface-bright: @overlay;
+		--gem-sys-color--on-surface: @text;
+		--gem-sys-color--surface-container: @overlay;
+		--gem-sys-color--surface-container-high: @highlightMed;
+		--gem-sys-color--on-secondary-container: @base;
+		--gem-sys-color--secondary-container: @accent-color;
+		--bard-color-lm-on-surface-variant: @muted;
+		--bard-color-lm-on-surface-low: @highlightLow;
+
+		--lumi-sys-color--code-background: @surface;
+		--lumi-sys-color--code-blue-text: @foam;
+		--lumi-sys-color--code-green-text: @pine;
+		--lumi-sys-color--code-grey-text: @muted;
+		--lumi-sys-color--code-pink-text: @rose;
+		--lumi-sys-color--code-primary-text: @text;
+		--lumi-sys-color--code-purple-text: @iris;
+		--lumi-sys-color--code-red-text: @love;
+		--lumi-sys-color--code-yellow-text: @gold;
+
+		--lumi-sys-color-acc-color--accent: @accent-color;
+		--lumi-sys-color-acc-color--accent-container: @accent-color;
+
+		bard-sidenav.collapsed {
+			background-color: @base !important;
+		}
+
+		bard-sidenav {
+			--lumi-sys-color--surface-dim: @base;
+		}
+
+		mat-icon[data-mat-icon-name="arrow_upward"],
+		mat-icon[fonticon="arrow_upward"] {
+			color: @base !important;
+		}
+
+		/* Inversion for Dawn(Light) Mode - @surface/@base */
+		& when (@variant = dawn) {
+			--lumi-sys-color--surface: @surface;
+			--lumi-sys-color--surface-bright: @base;
+			--lumi-sys-color--surface-dim: @base;
+			--gem-sys-color--on-secondary-container: @surface;
+			--lumi-sys-color--code-background: @base;
+
+			bard-sidenav.collapsed {
+				background-color: @surface !important;
+			}
+
+			bard-sidenav {
+				--lumi-sys-color--surface-dim: @surface;
+			}
+
+			mat-icon[data-mat-icon-name="arrow_upward"],
+			mat-icon[fonticon="arrow_upward"] {
+				color: @surface !important;
+			}
+		}
+	}
+
+	/* TOGGLES & VISIBILITY */
+
+	.chat-history-scroll-container.lm when (@hideFading = 1) {
+		-webkit-mask-image: none !important;
+		mask-image: none !important;
+		background: transparent !important;
+	}
+
+	.input-gradient:before when (@hideFading = 1) {
+		-webkit-mask-image: none !important;
+		mask-image: none !important;
+		background: transparent !important;
+	}
+
+	hallucination-disclaimer when (@hideDisclaimer = 1) {
+		> div p {
+			display: none;
+		}
+		margin-bottom: 0.75rem;
+	}
+
+	.lm-mobile-sparkle-and-text when (@hideWelcome = 1) {
+		display: none;
+	}
+
+	.buttons-container.adv-upsell.ng-star-inserted when (@hideUpsell = 1) {
+		display: none;
+	}
+
+	.show-lm-background:before when (@hideGlow = 1) {
+		display: none;
+	}
+
+	/* WIDE LAYOUT & TABLE CONTROLS */
+
+	.apply-custom-width(@widthValue) {
+		.main-content,
+		chat-window,
+		infinite-scroller {
+			width: 100% !important;
+			max-width: 100% !important;
+		}
+
+		.conversation-container,
+		.bottom-container,
+		.input-area-container,
+		div[class*="line-clamp-"] {
+			max-width: @widthValue !important;
+			width: 100% !important;
+			margin-left: auto !important;
+			margin-right: auto !important;
+		}
+
+		user-query,
+		user-query > div {
+			max-width: none !important;
+			width: 100% !important;
+			display: flex !important;
+			justify-content: flex-end !important;
+			margin: 0 !important;
+			padding: 0 !important;
+		}
+
+		.user-query-bubble-with-background,
+		div[class*="user-query"] {
+			width: auto !important;
+			max-width: 85% !important;
+			margin-right: 0 !important;
+			display: inline-block !important;
+			text-align: left !important;
+		}
+
+		.input-area-container form,
+		.input-field-container {
+			width: 100% !important;
+			box-sizing: border-box !important;
+		}
+
+		.input-area-container .right-actions,
+		.input-field-container div[class*="actions"] {
+			padding-right: 16px !important;
+			margin-right: 0 !important;
+		}
+
+		div[class*="message-content"],
+		div[class*="model-response"],
+		div[class*="answer"],
+		ms-message-author-reply,
+		.inner-container,
+		infinite-scroller > div {
+			max-width: none !important;
+			width: 100% !important;
+		}
+
+		div[class*="table-"],
+		div[class*="render-"],
+		div[id*="table-"],
+		.rendered-table,
+		ms-g-table {
+			display: block !important;
+			max-width: 100% !important;
+			width: 100% !important;
+			overflow-x: auto !important;
+		}
+
+		table {
+			display: table !important;
+			width: 100% !important;
+			min-width: 100% !important;
+			max-width: 100% !important;
+			table-layout: auto !important;
+		}
+
+		table th,
+		table td {
+			min-width: 120px !important;
+			white-space: normal !important;
+			word-break: keep-all !important;
+			padding: 12px 16px !important;
+		}
+	}
+
+	& when (@chatWidth = val_regular) {
+		.apply-custom-width(65%);
+	}
+
+	& when (@chatWidth = val_medium) {
+		.apply-custom-width(75%);
+	}
+
+	& when (@chatWidth = val_large) {
+		.apply-custom-width(85%);
+	}
+
+	& when (@chatWidth = val_max) {
+		.apply-custom-width(95%);
+	}
+}
+
+/* deno-fmt-ignore */
+@rose-pine: {
+  @main: { @base: #191724; @surface: #1f1d2e; @overlay: #26233a; @muted: #6e6a86; @subtle: #908caa; @text: #e0def4; @love: #eb6f92; @gold: #f6c177; @rose: #ebbcba; @pine: #31748f; @foam: #9ccfd8; @iris: #c4a7e7; @highlightLow: #21202e; @highlightMed: #403d52; @highlightHigh: #524f67; };
+  @moon: { @base: #232136; @surface: #2a273f; @overlay: #393552; @muted: #6e6a86; @subtle: #908caa; @text: #e0def4; @love: #eb6f92; @gold: #f6c177; @rose: #ea9a97; @pine: #3e8fb0; @foam: #9ccfd8; @iris: #c4a7e7; @highlightLow: #2a283e; @highlightMed: #44415a; @highlightHigh: #56526e; };
+  @dawn: { @base: #faf4ed; @surface: #fffaf3; @overlay: #f2e9e1; @muted: #9893a5; @subtle: #797593; @text: #464261; @love: #b4637a; @gold: #ea9d34; @rose: #d7827e; @pine: #286983; @foam: #56949f; @iris: #907aa9; @highlightLow: #f4ede8; @highlightMed: #dfdad9; @highlightHigh: #cecacd; };
+}
