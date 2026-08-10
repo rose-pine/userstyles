@@ -9,8 +9,8 @@
 @updateURL      https://github.com/rose-pine/userstyles/raw/main/styles/gemini/rose-pine.user.less
 @preprocessor   less
 
-@var select lightFlavor "Light Flavor" ["dawn:Rosé Pine Dawn*"]
-@var select darkFlavor "Dark Flavor" ["main:Rosé Pine*", "moon:Rosé Pine Moon"]
+@var select lightVariant "Light Variant" ["dawn:Rosé Pine Dawn*"]
+@var select darkVariant "Dark Variant" ["main:Rosé Pine*", "moon:Rosé Pine Moon"]
 @var select accentColor "Accent" ["love:Love*", "gold:Gold", "rose:Rose", "pine:Pine", "foam:Foam", "iris:Iris"]
 @var select chatWidth "Main Chat Width" ["val_default:Default*", "val_regular:Regular", "val_medium:Medium", "val_large:Large", "val_max:Max"]
 
@@ -21,117 +21,46 @@
 @var checkbox hideWelcome "Disable Welcome Message" 0
 ==/UserStyle== */
 
-/* Rosé Pine Palette */
-#rose-pine-vars(dawn) {
-	@base: #faf4ed;
-	@surface: #fffaf3;
-	@overlay: #f2e9e1;
-	@muted: #9893a5;
-	@subtle: #797593;
-	@text: #575279;
-	@love: #b4637a;
-	@gold: #ea9d34;
-	@rose: #d7827e;
-	@pine: #286983;
-	@foam: #56949f;
-	@iris: #907aa9;
-	@highlightLow: #f4ede8;
-	@highlightMed: #dfdad9;
-	@highlightHigh: #cecacd;
-}
-
-#rose-pine-vars(main) {
-	@base: #191724;
-	@surface: #1f1d2e;
-	@overlay: #26233a;
-	@muted: #6e6a86;
-	@subtle: #908caa;
-	@text: #e0def4;
-	@love: #eb6f92;
-	@gold: #f6c177;
-	@rose: #ebbcba;
-	@pine: #31748f;
-	@foam: #9ccfd8;
-	@iris: #c4a7e7;
-	@highlightLow: #21202e;
-	@highlightMed: #403c58;
-	@highlightHigh: #524f67;
-}
-
-#rose-pine-vars(moon) {
-	@base: #232136;
-	@surface: #2a273f;
-	@overlay: #393552;
-	@muted: #6e6a86;
-	@subtle: #908caa;
-	@text: #e0def4;
-	@love: #eb6f92;
-	@gold: #f6c177;
-	@rose: #ea9a97;
-	@pine: #3e8fb0;
-	@foam: #9ccfd8;
-	@iris: #c4a7e7;
-	@highlightLow: #2a283e;
-	@highlightMed: #44415a;
-	@highlightHigh: #56526e;
-}
-
-#rose-pine-defaults(@flavor) {
-	#rose-pine-vars(@flavor);
-	@accent: @@accentColor;
-}
-
 @-moz-document url-prefix("https://gemini.google.com") {
 	:root .dark-theme {
-		#rosePineTheme(@darkFlavor);
+		#rose-pine(@darkVariant);
 	}
 
 	:root .light-theme {
-		#rose-pine-defaults(@lightFlavor);
-
-		/* Base/Surface Inversion for Dawn(Light) Mode */
-		--lumi-sys-color--surface: @surface;
-		--lumi-sys-color--surface-bright: @base;
-		--lumi-sys-color--surface-dim: @base;
-		--gem-sys-color--surface-bright: @overlay;
-		--gem-sys-color--on-surface: @text;
-		--gem-sys-color--surface-container: @overlay;
-		--gem-sys-color--surface-container-high: @highlightMed;
-		--gem-sys-color--on-secondary-container: @surface;
-		--gem-sys-color--secondary-container: @accent;
-		--bard-color-lm-on-surface-variant: @muted;
-		--bard-color-lm-on-surface-low: @highlightLow;
-
-		--lumi-sys-color--code-background: @base;
-		--lumi-sys-color--code-blue-text: @foam;
-		--lumi-sys-color--code-green-text: @pine;
-		--lumi-sys-color--code-grey-text: @muted;
-		--lumi-sys-color--code-pink-text: @rose;
-		--lumi-sys-color--code-primary-text: @text;
-		--lumi-sys-color--code-purple-text: @iris;
-		--lumi-sys-color--code-red-text: @love;
-		--lumi-sys-color--code-yellow-text: @gold;
-
-		--lumi-sys-color-acc-color--accent: @accent;
-		--lumi-sys-color-acc-color--accent-container: @accent;
-
-		bard-sidenav.collapsed {
-			background-color: @surface !important;
-		}
-
-		bard-sidenav {
-			--lumi-sys-color--surface-dim: @surface;
-		}
-
-		mat-icon[data-mat-icon-name="arrow_upward"],
-		mat-icon[fonticon="arrow_upward"] {
-			color: @surface !important;
-		}
+		#rose-pine(@lightVariant);
 	}
 
-	#rosePineTheme(@themeName) {
-		#rose-pine-defaults(@themeName);
+	#rose-pine(@variant) {
+		@base: @rose-pine[@@variant][@base];
+		@surface: @rose-pine[@@variant][@surface];
+		@overlay: @rose-pine[@@variant][@overlay];
+		@muted: @rose-pine[@@variant][@muted];
+		@subtle: @rose-pine[@@variant][@subtle];
+		@text: @rose-pine[@@variant][@text];
+		@love: @rose-pine[@@variant][@love];
+		@gold: @rose-pine[@@variant][@gold];
+		@rose: @rose-pine[@@variant][@rose];
+		@pine: @rose-pine[@@variant][@pine];
+		@foam: @rose-pine[@@variant][@foam];
+		@iris: @rose-pine[@@variant][@iris];
+		@highlightLow: @rose-pine[@@variant][@highlightLow];
+		@highlightMed: @rose-pine[@@variant][@highlightMed];
+		@highlightHigh: @rose-pine[@@variant][@highlightHigh];
+		@accent-color: @rose-pine[@@variant][@@accentColor];
+		color-scheme: if(@variant = dawn, light, dark);
 
+		::selection {
+			background-color: fade(@accent-color, 30%);
+		}
+
+		input,
+		textarea {
+			&::placeholder {
+				color: @highlightLow !important;
+			}
+		}
+
+		/* Base theme color */
 		--lumi-sys-color--surface: @base;
 		--lumi-sys-color--surface-bright: @surface;
 		--lumi-sys-color--surface-dim: @surface;
@@ -140,7 +69,7 @@
 		--gem-sys-color--surface-container: @overlay;
 		--gem-sys-color--surface-container-high: @highlightMed;
 		--gem-sys-color--on-secondary-container: @base;
-		--gem-sys-color--secondary-container: @accent;
+		--gem-sys-color--secondary-container: @accent-color;
 		--bard-color-lm-on-surface-variant: @muted;
 		--bard-color-lm-on-surface-low: @highlightLow;
 
@@ -154,8 +83,8 @@
 		--lumi-sys-color--code-red-text: @love;
 		--lumi-sys-color--code-yellow-text: @gold;
 
-		--lumi-sys-color-acc-color--accent: @accent;
-		--lumi-sys-color-acc-color--accent-container: @accent;
+		--lumi-sys-color-acc-color--accent: @accent-color;
+		--lumi-sys-color-acc-color--accent-container: @accent-color;
 
 		bard-sidenav.collapsed {
 			background-color: @base !important;
@@ -168,6 +97,28 @@
 		mat-icon[data-mat-icon-name="arrow_upward"],
 		mat-icon[fonticon="arrow_upward"] {
 			color: @base !important;
+		}
+
+		/* Inversion for Dawn(Light) Mode - @surface/@base */
+		& when (@variant = dawn) {
+			--lumi-sys-color--surface: @surface;
+			--lumi-sys-color--surface-bright: @base;
+			--lumi-sys-color--surface-dim: @base;
+			--gem-sys-color--on-secondary-container: @surface;
+			--lumi-sys-color--code-background: @base;
+
+			bard-sidenav.collapsed {
+				background-color: @surface !important;
+			}
+
+			bard-sidenav {
+				--lumi-sys-color--surface-dim: @surface;
+			}
+
+			mat-icon[data-mat-icon-name="arrow_upward"],
+			mat-icon[fonticon="arrow_upward"] {
+				color: @surface !important;
+			}
 		}
 	}
 
@@ -308,4 +259,11 @@
 	& when (@chatWidth = val_max) {
 		.apply-custom-width(95%);
 	}
+}
+
+/* deno-fmt-ignore */
+@rose-pine: {
+  @main: { @base: #191724; @surface: #1f1d2e; @overlay: #26233a; @muted: #6e6a86; @subtle: #908caa; @text: #e0def4; @love: #eb6f92; @gold: #f6c177; @rose: #ebbcba; @pine: #31748f; @foam: #9ccfd8; @iris: #c4a7e7; @highlightLow: #21202e; @highlightMed: #403d52; @highlightHigh: #524f67; };
+  @moon: { @base: #232136; @surface: #2a273f; @overlay: #393552; @muted: #6e6a86; @subtle: #908caa; @text: #e0def4; @love: #eb6f92; @gold: #f6c177; @rose: #ea9a97; @pine: #3e8fb0; @foam: #9ccfd8; @iris: #c4a7e7; @highlightLow: #2a283e; @highlightMed: #44415a; @highlightHigh: #56526e; };
+  @dawn: { @base: #faf4ed; @surface: #fffaf3; @overlay: #f2e9e1; @muted: #9893a5; @subtle: #797593; @text: #464261; @love: #b4637a; @gold: #ea9d34; @rose: #d7827e; @pine: #286983; @foam: #56949f; @iris: #907aa9; @highlightLow: #f4ede8; @highlightMed: #dfdad9; @highlightHigh: #cecacd; };
 }
