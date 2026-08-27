@@ -9,9 +9,10 @@
 @updateURL      https://github.com/rose-pine/userstyles/raw/main/styles/leetcode/rose-pine.user.less
 @preprocessor   less
 
-@var select lightVariant "Light Variant" ["dawn:Rosé Pine Dawn*"]
-@var select darkVariant "Dark Variant" ["main:Rosé Pine*", "moon:Rosé Pine Moon"]
+@var select lightVariant "Light Variant" ["dawn:Rosé Pine Dawn*", "main:Rosé Pine", "moon:Rosé Pine Moon"]
+@var select darkVariant "Dark Variant" ["main:Rosé Pine*", "moon:Rosé Pine Moon", "dawn:Rosé Pine Dawn"]
 @var select accentColor "Accent" ["love:Love*", "gold:Gold", "rose:Rose", "pine:Pine", "foam:Foam", "iris:Iris"]
+@var checkbox hidePremium "Hide Premium Button" 0
 ==/UserStyle== */
 
 @-moz-document domain("leetcode.com"), domain("leetcode.cn") {
@@ -604,14 +605,16 @@
 		}
 
 		/* Premium Buttons */
-		a[href="/subscribe/?ref=lp_pl&source=qd"],
-		a[href="/subscribe/?ref=lp_pl&source=ot"],
-		a[href*="/subscribe/?ref=qd3_cs&slug="] {
-			display: none;
-		}
+		& when (@hidePremium = 1) {
+			a[href="/subscribe/?ref=lp_pl&source=qd"],
+			a[href="/subscribe/?ref=lp_pl&source=ot"],
+			a[href*="/subscribe/?ref=qd3_cs&slug="] {
+				display: none;
+			}
 
-		a[href="/subscribe?ref=nb_npl&source=nav-icon"] svg {
-			display: none;
+			a[href="/subscribe?ref=nb_npl&source=nav-icon"] svg {
+				display: none;
+			}
 		}
 
 		strong {
