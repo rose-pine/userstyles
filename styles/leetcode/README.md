@@ -26,4 +26,4 @@
 
 ## Thanks to
 
-- [Contributors](https://github.com/rose-pine/userstyles/graphs/contributors)
+- [jenishboricha](https://github.com/jenishboricha)
