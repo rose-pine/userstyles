@@ -98,17 +98,17 @@
 			}
 		}
 		/* generic blue inline (e.g. link text, etc) */
-		[style*="color: rgb(16, 131, 254)"],
+		a[style*="color: rgb(66, 145, 255)"],
 		// dark
-		[style*="color: rgb(32, 139, 254)"] // dim
+		a[style*="color: rgb(77, 151, 255)"] // dim
 
 		{
 			color: @accent-color !important;
 		}
 		/* generic blue inline underline (links) */
-		[style*="text-decoration-color: rgb(16, 131, 254)"],
+		[style*="text-decoration-color: rgb(66, 145, 255)"],
 		// dark
-		[style*="text-decoration-color: rgb(32, 139, 254)"] // dim
+		[style*="text-decoration-color: rgb(77, 151, 255)"] // dim
 
 		{
 			text-decoration-color: @accent-color !important;
@@ -132,12 +132,12 @@
 		}
 		/* blue svg inline */
 		[stroke="hsl(211, 99%, 53%)"],
-		[stroke="#0085ff"] {
+		[stroke="#006AFF"] {
 			stroke: @accent-color;
 		}
 		[fill="hsl(211, 99%, 53%)"],
 		[fill="hsl(211, 99%, 56%)"],
-		[fill="#0085ff"] {
+		[fill="#006AFF"] {
 			fill: @accent-color;
 		}
 		/* a lot of blue things (buttons etc) */
@@ -193,7 +193,8 @@
 		/* generic background color */
 		[style*="background-color: rgb(255, 255, 255)"],
 		[style*="background-color: rgb(0, 0, 0)"],
-		[style*="background-color: rgb(22, 30, 39)"] {
+		[style*="background-color: rgb(0, 0, 0)"],
+		[style*="background-color: rgb(21, 29, 40)"] {
 			background-color: @surface !important;
 			& when (@lookup = dawn) {
 				/* fix button colors in dawn */
@@ -209,15 +210,19 @@
 			background-color: @surface !important;
 		}
 		/* secondary background color when active (e.g. search bar, hovering some buttons like cancel) */
-		[style*="background-color: rgb(28, 39, 50)"],
+		[style*="background-color: rgb(25, 34, 46)"],
 		// dark
-		[style*="background-color: rgb(38, 53, 68)"] // dim
+		[style*="background-color: rgb(38, 53, 68)"],
+		// dim
+		[style*="background-color: rgb(239, 242, 246)"]// light
 
 		{
 			background-color: @base !important;
 		}
 		/* some sort of tertiary background color with a slight accent */
-		[style*="background-color: rgb(0, 25, 51)"] {
+		[style*="background-color: rgb(0, 40, 97)"],
+		[style*="background-color: rgb(0, 30, 71)"],
+		[style*="background-color: rgb(204, 225, 255)"] {
 			background-color: fadeout(@accent-color, 70%) !important;
 		}
 		/* loading circle */
@@ -225,15 +230,19 @@
 			stroke: @accent-color !important;
 		}
 		/* wide site: new post button (w text) */
+		button[style*="background-color: rgb(0, 106, 255)"],
+		// light
+		button[style*="background-color: rgb(0, 89, 214)"],
+		// light (hover)
 		button[style*="background-color: rgb(16, 131, 254)"],
 		// dark
-		button[style*="background-color: rgb(52, 150, 254)"],
+		button[style*="background-color: rgb(0, 106, 255)"],
 		// dark (hover)
-		button[style*="background-color: rgb(32, 139, 254)"],
+		button[style*="background-color: rgb(66, 145, 255)"],
 		// dim
-		button[style*="background-color: rgb(76, 162, 254)"] // dim (hover)
-
-		{
+		button[style*="background-color: rgb(15, 115, 255)"],
+		// dim (hover)
+		button[style*="background-color: rgb(77, 151, 255)"] {
 			background-color: @accent-color !important;
 			&:hover {
 				background-color: fade(@accent-color, 70%) !important;
@@ -278,6 +287,21 @@
 			color: @love !important;
 			border-color: @love !important;
 		}
+		/* radio select */
+		[role="radiogroup"] {
+			background-color: @overlay !important;
+			& > :first-child {
+				background-color: color-mix(in srgb, @accent-color, transparent 40%)
+					!important;
+				z-index: 2;
+			}
+			& > :nth-child(2) > div {
+				border-radius: 10px 0px 0px 10px;
+			}
+			& > :last-child > div {
+				border-radius: 0px 10px 10px 0px;
+			}
+		}
 		/* end of feed text */
 		.r-1521r3q {
 			color: @muted;
@@ -289,6 +313,12 @@
 		/* feedback */
 		.r-m7buhn {
 			background-color: @pine;
+		}
+		/* blue text only button (e.g. cancel post button) */
+		div[style*="color: rgb(66, 145, 255)"],
+		div[style*="color: rgb(0, 106, 255)"],
+		div[style*="color: rgb(0, 89, 214)"] {
+			color: @accent-color !important;
 		}
 		/* save, report, post modal button */
 		[data-testid="sendReportBtn"],
@@ -333,15 +363,26 @@
 				color: @base !important;
 			}
 		}
-		/* blue text only button (e.g. cancel post button) */
-		div[style*="color: rgb(52, 150, 254)"],
-		div[style*="color: rgb(76, 162, 254)"] {
-			color: @accent-color !important;
+		/* ^^ hover */
+		div[style*="color: rgb(0, 72, 173)"] {
+			color: fade(@accent-color, 70%) !important;
 		}
 		/* text color when writing a post */
 		.ProseMirror,
 		.ProseMirror-dark {
 			color: @text;
+		}
+		/* post buttons */
+		[data-testid="openMediaBtn"] {
+			& > svg > path {
+				fill: @foam !important; // Image Button
+			}
+			& + button > svg > path {
+				fill: @iris !important; // Gif Button
+			}
+			& + * + button > svg > path {
+				fill: @gold !important; // Emoji Button
+			}
 		}
 		/* some button background color (when hovering) */
 		[style*="background-color: rgb(0, 44, 91)"],
@@ -354,7 +395,7 @@
 		}
 		/* the white buttons text */
 		[style*="color: rgb(0, 0, 0)"] {
-			color: @base !important;
+			color: @text !important;
 		}
 		/* replace dark fill icons with crust ones */
 		path[fill="#000000"] {
@@ -368,14 +409,37 @@
 		button > div > div[style~="color: rgb(0, 0, 0)"] {
 			color: @surface !important;
 		}
+		/* search bar active */
+		[style*="background-color: rgb(0, 21, 51)"] {
+			background-color: @base !important;
+			border-color: @accent-color !important;
+		}
 		/* search bar text */
 		[role="search"],
 		[data-testid="confirmCodeInput"] {
 			--placeholderTextColor: @subtle !important;
 		}
 		/* search bar icon */
-		svg[style^="color: rgb(141, 142, 150)"] {
-			color: @subtle !important;
+		svg[style^="color: rgb(102, 123, 153)"] {
+			> path {
+				fill: @subtle !important;
+			}
+		}
+		svg[style^="color: rgb(0, 106, 255)"] {
+			> path {
+				fill: @accent-color !important;
+			}
+		}
+		/* tabs */
+		[data-testid="homeScreenFeedTabs"],
+		[data-testid="profilePager"] {
+			div[style*="background-color: rgb(0, 106, 255)"],
+			// dark
+			div[style*="background-color: rgb(15, 115, 255)"] //dim
+
+			{
+				background-color: @accent-color !important;
+			}
 		}
 		/* small icons */
 		path[fill="#ffffff"],
@@ -493,7 +557,7 @@
 
 /* deno-fmt-ignore */
 @rose-pine: {
-  @main: { @base: #191724; @surface: #1f1d2e; @overlay: #26233a; @muted: #6e6a86; @subtle: #908caa; @text: #e0def4; @love: #eb6f92; @gold: #f6c177; @rose: #ebbcba; @pine: #31748f; @foam: #9ccfd8; @iris: #c4a7e7; @highlightLow: #21202e; @highlightMed: #403d52; @highlightHigh: #524f67; };
-  @moon: { @base: #232136; @surface: #2a273f; @overlay: #393552; @muted: #6e6a86; @subtle: #908caa; @text: #e0def4; @love: #eb6f92; @gold: #f6c177; @rose: #ea9a97; @pine: #3e8fb0; @foam: #9ccfd8; @iris: #c4a7e7; @highlightLow: #2a283e; @highlightMed: #44415a; @highlightHigh: #56526e; };
-  @dawn: { @base: #faf4ed; @surface: #fffaf3; @overlay: #f2e9e1; @muted: #9893a5; @subtle: #797593; @text: #464261; @love: #b4637a; @gold: #ea9d34; @rose: #d7827e; @pine: #286983; @foam: #56949f; @iris: #907aa9; @highlightLow: #f4ede8; @highlightMed: #dfdad9; @highlightHigh: #cecacd; };
+	@main: { @base: #191724; @surface: #1f1d2e; @overlay: #26233a; @muted: #6e6a86; @subtle: #908caa; @text: #e0def4; @love: #eb6f92; @gold: #f6c177; @rose: #ebbcba; @pine: #31748f; @foam: #9ccfd8; @iris: #c4a7e7; @highlightLow: #21202e; @highlightMed: #403d52; @highlightHigh: #524f67; };
+	@moon: { @base: #232136; @surface: #2a273f; @overlay: #393552; @muted: #6e6a86; @subtle: #908caa; @text: #e0def4; @love: #eb6f92; @gold: #f6c177; @rose: #ea9a97; @pine: #3e8fb0; @foam: #9ccfd8; @iris: #c4a7e7; @highlightLow: #2a283e; @highlightMed: #44415a; @highlightHigh: #56526e; };
+	@dawn: { @base: #faf4ed; @surface: #fffaf3; @overlay: #f2e9e1; @muted: #9893a5; @subtle: #797593; @text: #464261; @love: #b4637a; @gold: #ea9d34; @rose: #d7827e; @pine: #286983; @foam: #56949f; @iris: #907aa9; @highlightLow: #f4ede8; @highlightMed: #dfdad9; @highlightHigh: #cecacd; };
 }
