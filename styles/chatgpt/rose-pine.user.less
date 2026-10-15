@@ -22,939 +22,945 @@
 ==/UserStyle== */
 
 @-moz-document domain("chatgpt.com"), domain("auth.openai.com") {
-    /* Google Web Font Imports */
-    @import url('https://fonts.googleapis.com/css2?family=Cascadia+Code:wght@400;500;600&family=Fira+Code:wght@400;500;600&family=Geist+Mono:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&family=Inconsolata:wght@400;600&family=JetBrains+Mono:ital,wght@0,400;0,500;0,600;1,400&family=Source+Code+Pro:wght@400;500;600&family=Space+Mono:wght@400;700&family=Ubuntu+Sans+Mono:wght@400;500;700&display=swap');
+	/* Google Web Font Imports */
+	@import url('https://fonts.googleapis.com/css2?family=Cascadia+Code:wght@400;500;600&family=Fira+Code:wght@400;500;600&family=Geist+Mono:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&family=Inconsolata:wght@400;600&family=JetBrains+Mono:ital,wght@0,400;0,500;0,600;1,400&family=Source+Code+Pro:wght@400;500;600&family=Space+Mono:wght@400;700&family=Ubuntu+Sans+Mono:wght@400;500;700&display=swap');
 
-    /* deno-fmt-ignore */
-    @rose-pine: {
+	/* deno-fmt-ignore */
+	@rose-pine: {
         @main: { @base: #191724; @surface: #1f1d2e; @overlay: #26233a; @muted: #6e6a86; @subtle: #908caa; @text: #e0def4; @love: #eb6f92; @gold: #f6c177; @rose: #ebbcba; @pine: #31748f; @foam: #9ccfd8; @iris: #c4a7e7; @highlightLow: #21202e; @highlightMed: #403d52; @highlightHigh: #524f67; };
         @moon: { @base: #232136; @surface: #2a273f; @overlay: #393552; @muted: #6e6a86; @subtle: #908caa; @text: #e0def4; @love: #eb6f92; @gold: #f6c177; @rose: #ea9a97; @pine: #3e8fb0; @foam: #9ccfd8; @iris: #c4a7e7; @highlightLow: #2a283e; @highlightMed: #44415a; @highlightHigh: #56526e; };
         @dawn: { @base: #faf4ed; @surface: #fffaf3; @overlay: #f2e9e1; @muted: #9893a5; @subtle: #797593; @text: #464261; @love: #b4637a; @gold: #ea9d34; @rose: #d7827e; @pine: #286983; @foam: #56949f; @iris: #907aa9; @highlightLow: #f4ede8; @highlightMed: #dfdad9; @highlightHigh: #cecacd; };
     }
 
-    /* ChatGPT Rules October 2026 Update */
-    .light,
-    :root[data-theme="light"] {
-        #rose-pine(@lightFlavor, @accentColor);
-    }
-
-    .dark,
-    :root[data-theme="dark"] {
-        #rose-pine(@darkFlavor, @accentColor);
-    }
-
-    #rose-pine(@flavor, @accent) {
-        @raw-base: @rose-pine[@@flavor][@base];
-        @raw-surface: @rose-pine[@@flavor][@surface];
-
-        @base: if(@flavor = dawn, @raw-surface, @raw-base);
-        @surface: if(@flavor = dawn, @raw-base, @raw-surface);
-
-        @overlay: @rose-pine[@@flavor][@overlay];
-        @muted: @rose-pine[@@flavor][@muted];
-        @subtle: @rose-pine[@@flavor][@subtle];
-        @text: @rose-pine[@@flavor][@text];
-        @love: @rose-pine[@@flavor][@love];
-        @gold: @rose-pine[@@flavor][@gold];
-        @rose: @rose-pine[@@flavor][@rose];
-        @pine: @rose-pine[@@flavor][@pine];
-        @foam: @rose-pine[@@flavor][@foam];
-        @iris: @rose-pine[@@flavor][@iris];
-        @highlightLow: @rose-pine[@@flavor][@highlightLow];
-        @highlightMed: @rose-pine[@@flavor][@highlightMed];
-        @highlightHigh: @rose-pine[@@flavor][@highlightHigh];
-
-        @accent-color: @rose-pine[@@flavor][@@accent];
-
-        /* Font Mapping */
-        @default-mono-stack: ~"ui-monospace, SFMono-Regular, 'Roboto Mono', Menlo, Monaco, 'Liberation Mono', 'DejaVu Sans Mono', 'Courier New', monospace";
-
-        @font-stack: if(@codeFontFamily = cascadia,
-            ~"'Cascadia Code', 'Cascadia Mono', monospace",
-            if(@codeFontFamily = firacode,
-            ~"'Fira Code', 'FiraCode Nerd Font', monospace",
-            if(@codeFontFamily = geist, ~"'Geist Mono', monospace",
-            if(@codeFontFamily = ibm, ~"'IBM Plex Mono', monospace",
-            if(@codeFontFamily = inconsolata, ~"'Inconsolata', monospace",
-            if(@codeFontFamily = jetbrains,
-            ~"'JetBrains Mono', 'JetBrainsMono Nerd Font', monospace",
-            if(@codeFontFamily = source, ~"'Source Code Pro', monospace",
-            if(@codeFontFamily = space, ~"'Space Mono', monospace",
-            if(@codeFontFamily = ubuntu,
-            ~"'Ubuntu Sans Mono', 'Ubuntu Mono', monospace",
-            @default-mono-stack)))))))));
-
-        &,
-        body {
-            background-color: @base !important;
-            color: @text !important;
-        }
-
-        & when (@useBrowserFont = 1) {
-            &,
-            * {
-                --font-sans: sans-serif !important;
-                --default-font-family: sans-serif !important;
-            }
-
-            body,
-            .font-sans,
-            .markdown,
-            .prose,
-            p,
-            h1, h2, h3, h4, h5, h6,
-            li,
-            a,
-            button,
-            input,
-            textarea,
-            select,
-            label,
-            #prompt-textarea,
-            div[class*="RichTextInput"],
-            div[data-message-author-role] *:not(pre):not(code):not(pre *):not(code *):not(.cm-editor *) {
-                font-family: sans-serif !important;
-            }
-        }
-
-        &,
-        * {
-            --text-primary: @text;
-            --text-secondary: @subtle;
-            --text-tertiary: @muted;
-            --text-quaternary: @highlightHigh;
-            --bg-primary: @base;
-            --bg-secondary: @surface;
-            --bg-tertiary: @overlay;
-
-            --token-bg-primary: @base !important;
-            --token-bg-secondary: @overlay !important;
-            --token-bg-tertiary: @overlay !important;
-            --token-border-heavy: @highlightHigh !important;
-            --token-text-primary: @text !important;
-            --token-text-secondary: @subtle !important;
-            --token-text-tertiary: @muted !important;
-
-            --bg-secondary-surface: @surface;
-
-            --bg-elevated-primary: @base;
-            --bg-elevated-secondary: @surface;
-
-            --bg-tooltip: @base;
-
-            --main-surface-primary: @base;
-            --main-surface-secondary: @surface;
-            --main-surface-tertiary: @overlay;
-
-            /* Surface & Background Tokens */
-            --surface: @surface !important;
-            --surface-card: @surface !important;
-            --surface-secondary: @overlay !important;
-            --color-surface: @surface !important;
-            --color-surface-card: @surface !important;
-            --wb-surface-primary: @base !important;
-            --wb-surface-secondary: @surface !important;
-            --color-background-primary: @base !important;
-            --color-background-secondary: @surface !important;
-            --color-background-tertiary: @overlay !important;
-            --color-background-primary-soft-alpha: @surface !important;
-            --color-background-page-search: @surface !important;
-            --color-background-execution-output: @surface !important;
-            --code-block-surface: @surface !important;
-            --color-text-codex-description: @muted !important;
-
-            --background-mode-toggle-track: @surface !important;
-            --color-background-mode-toggle-track: @surface !important;
-            --mode-toggle-primary: @text !important;
-            --color-mode-toggle-primary: @text !important;
-            --mode-toggle-inactive: @subtle !important;
-            --color-mode-toggle-inactive: @subtle !important;
-
-            --color-text-codex-syntax-comment: @muted !important;
-            --text-codex-syntax-comment: @muted !important;
-            --color-text-codex-syntax-keyword: if(@flavor = dawn, @pine, @foam) !important;
-            --text-codex-syntax-keyword: if(@flavor = dawn, @pine, @foam) !important;
-            --color-text-codex-syntax-name: @pine !important;
-            --text-codex-syntax-name: @pine !important;
-            --color-text-codex-syntax-variable: @iris !important;
-            --text-codex-syntax-variable: @iris !important;
-            --color-text-codex-syntax-function: @iris !important;
-            --text-codex-syntax-function: @iris !important;
-            --color-text-codex-syntax-title: @iris !important;
-            --text-codex-syntax-title: @iris !important;
-            --color-text-codex-syntax-type: @iris !important;
-            --text-codex-syntax-type: @iris !important;
-            --color-text-codex-syntax-string: @rose !important;
-            --text-codex-syntax-string: @rose !important;
-            --color-text-codex-syntax-literal: @love !important;
-            --text-codex-syntax-literal: @love !important;
-            --color-text-codex-syntax-number: @love !important;
-            --text-codex-syntax-number: @love !important;
-            --color-text-codex-syntax-tag: @pine !important;
-            --text-codex-syntax-tag: @pine !important;
-            --color-text-codex-syntax-preprocessor: @pine !important;
-            --text-codex-syntax-preprocessor: @pine !important;
-
-            --info-solid: @accent-color !important;
-            --color-info-solid: @accent-color !important;
-            --composer-primary: @accent-color !important;
-            --color-composer-primary: @accent-color !important;
-
-            --learning-block-accent: @accent-color !important;
-            --learning-block-color-primary: @accent-color !important;
-            --learning-block-accent-surface: fade(@accent-color, 18%) !important;
-
-            --menu-surface: @surface !important;
-            --popover-surface: @surface !important;
-            --color-background-elevated: @surface !important;
-            --color-primary-ghost-hover: @overlay !important;
-            --primary-ghost-hover: @overlay !important;
-
-            --composer-surface-primary: @surface !important;
-            --composer-surface-secondary: @surface !important;
-            --composer-surface: @surface !important;
-
-            --interactive-bg-secondary-hover: @overlay;
-            --interactive-bg-secondary-press: @surface;
-
-            --interactive-label-accent-default: @accent-color;
-
-            --border-light: @highlightLow;
-            --border-default: @highlightMed;
-            --border-medium: @highlightHigh;
-            --border-heavy: @highlightHigh;
-            --interactive-border-focus: @subtle;
-
-            --theme-user-msg-bg: @surface;
-            --theme-user-msg-text: @text;
-            --theme-submit-btn-bg: @accent-color;
-            --theme-submit-btn-text: @base;
-
-            --theme-secondary-btn-bg: @overlay;
-            --theme-secondary-btn-text: @text;
-
-            --sidebar-surface: @surface;
-            --sidebar-surface-primary: @surface;
-
-            --surface-hover: @overlay;
-
-            --icon-tertiary: @subtle;
-
-            --text-status-error: @love;
-
-            --shadow-color-1: fade(@surface, 50%);
-            --shadow-color-2: fade(@text, 80%);
-
-            .__menu-item[data-sidebar-item] {
-                --menu-item-highlighted: @overlay;
-            }
-
-            .__menu-item[data-color="danger"] {
-                --menu-item-highlighted: fade(@love, 20%);
-                --menu-item-active: fade(@love, 30%);
-                --menu-item-open: fade(@love, 30%);
-            }
-
-            .bg-info-solid,
-            .pulsing-dot,
-            span.bg-composer-primary {
-                background-color: @accent-color !important;
-            }
-
-            main,
-            div[class*="Layout-"],
-            div[class*="WorkspaceContent-"],
-            div[class*="MainContentViewport-"],
-            div[class*="MainContentFrame-"],
-            div[class*="MainContentSurface"],
-            div[class*="thread-scroll-container"],
-            div[class*="group/thread-scroll-layout"] {
-                background-color: @base !important;
-                background-image: none !important;
-            }
-
-            div.z-20.mt-auto.grid,
-            div.sticky.bottom-0.min-w-0.self-end,
-            div[class*="pb-(--thread-composer-bottom-inset)"],
-            div[class*="pointer-events-none"][class*="inset-x-0"][class*="bottom-0"] {
-                background-color: @base !important;
-                background-image: linear-gradient(to top, @base 80%, transparent 100%) !important;
-            }
-
-            div[class*="ComposerLayoutRoot"] {
-                --composer-surface-primary: @surface !important;
-                --composer-surface-secondary: @surface !important;
-                --composer-surface: @surface !important;
-                background-color: @surface !important;
-                background-image: none !important;
-                border: 1px solid fade(@highlightHigh, 45%) !important;
-                border-radius: 1.75rem !important;
-                box-shadow: none !important;
-                outline: none !important;
-                overflow: hidden !important;
-
-                &::before,
-                &::after {
-                    display: none !important;
-                }
-            }
-
-            div[class*="ComposerLayoutRoot"] div,
-            div[class*="ComposerLayoutRoot"] form,
-            div[class*="ComposerFooter"] {
-                background-color: transparent !important;
-                background-image: none !important;
-                border-color: transparent !important;
-                box-shadow: none !important;
-                outline: none !important;
-
-                &::before,
-                &::after {
-                    box-shadow: none !important;
-                    border-color: transparent !important;
-                }
-            }
-
-            #prompt-textarea,
-            div[class*="RichTextInput"] {
-                background-color: transparent !important;
-                color: @text !important;
-            }
-
-            div[class*="relative"][class*="mx-auto"]:has(> div[class*="ComposerLayoutRoot"]),
-            div[class*="max-w-"] > div[class*="ComposerLayoutRoot"] {
-                background-color: transparent !important;
-                box-shadow: none !important;
-            }
-
-            .bg-background-mode-toggle-track {
-                background-color: @surface !important;
-                border: 1px solid fade(@highlightHigh, 45%) !important;
-            }
-
-            div[class*="root-"][aria-label="Composer mode"],
-            div[class*="root-HUUPVC"] {
-                background-color: transparent !important;
-
-                span[class*="bg-background-mode-toggle-track"] {
-                    background-color: @surface !important;
-                    border: 1px solid fade(@highlightHigh, 45%) !important;
-                }
-
-                span[class*="indicator-"] {
-                    background-color: @overlay !important;
-                    box-shadow: none !important;
-                }
-
-                button {
-                    background-color: transparent !important;
-                    color: @subtle !important;
-
-                    &[aria-pressed="true"] {
-                        color: @text !important;
-                    }
-                }
-
-                .text-mode-toggle-primary {
-                    color: @text !important;
-                }
-
-                .text-mode-toggle-inactive {
-                    color: @subtle !important;
-                }
-            }
-
-            div[class*="ComposerLayoutRoot"] button.bg-composer-primary,
-            div[class*="ComposerLayoutRoot"] button[style*="background"],
-            div[class*="ComposerLayoutRoot"] button[class*="bg-blue"],
-            div[class*="ComposerLayoutRoot"] button[aria-label*="Voice"],
-            div[class*="ComposerLayoutRoot"] button[aria-label*="Send"],
-            div[class*="ComposerLayoutRoot"] button[aria-label*="Stop"],
-            div[class*="ComposerLayoutRoot"] button[data-testid*="send"],
-            div[class*="ComposerLayoutRoot"] button[data-testid*="stop"] {
-                background-color: @accent-color !important;
-                color: @base !important;
-
-                svg,
-                path,
-                rect,
-                .text-composer-primary {
-                    color: @base !important;
-                    fill: currentColor !important;
-                }
-            }
-
-            /* Codex Upsell Banner */
-            aside[class*="surface-NbxhOL"] {
-                background-color: @surface !important;
-                border-color: @highlightLow !important;
-                border-radius: 1.25rem !important;
-                color: @text !important;
-            }
-
-            div[data-user-message-bubble="true"],
-            .bg-user-message {
-                background-color: @surface !important;
-                color: @text !important;
-            }
-
-            nav,
-            aside:not([class*="surface-"]),
-            [data-sidebar],
-            .sidebar-navigation,
-            div:has(> .sidebar-navigation),
-            div[class*="group/sidebar"],
-            div[class*="sidebar-container"],
-            div[class*="bg-token-sidebar-surface"] {
-                background-color: @surface !important;
-                border-top-left-radius: 0 !important;
-                border-bottom-left-radius: 0 !important;
-            }
-
-            div[class*="gap-toolbar-action"],
-            .browser\:bg-surface:has(> button.button-toolbar),
-            button.button-toolbar {
-                background-color: transparent !important;
-            }
-
-            button.button-toolbar:hover {
-                background-color: @surface !important;
-            }
-
-            div:has(> .vertical-scroll-fade-mask),
-            div:has(> div > .vertical-scroll-fade-mask),
-            div:has(> div > div > .vertical-scroll-fade-mask),
-            [role="menu"],
-            [role="listbox"],
-            [data-radix-menu-content],
-            [data-radix-popper-content-wrapper] > div {
-                background-color: @surface !important;
-                background-image: none !important;
-                border-color: @highlightMed !important;
-                color: @text !important;
-            }
-
-            button.menu-row-opacity:hover,
-            button.menu-row-opacity:focus,
-            button.menu-row-opacity:focus-visible,
-            button.menu-row-opacity[data-highlighted],
-            button.menu-row-opacity[data-state="open"],
-            [role="menuitem"]:hover,
-            [role="menuitem"][data-highlighted] {
-                background-color: @overlay !important;
-                background-image: none !important;
-            }
-
-            div[class*="CodeBlock-"] {
-                background-color: transparent !important;
-            }
-
-            .bg-surface-card,
-            .bg-surface-secondary\/20,
-            div[class*="visualizationSurface-"],
-            div[class*="visualizationLayer-"] > div[aria-hidden="true"] {
-                background-color: @surface !important;
-                background-image: none !important;
-            }
-
-            div.rounded-4xl:has(div[class*="visualizationSurface-"]) {
-                background-color: @surface !important;
-                border: 1px solid fade(@highlightHigh, 40%) !important;
-            }
-
-            div[class*="visualizationLayer-"] {
-                --learning-block-accent: @accent-color !important;
-                --learning-block-color-primary: @accent-color !important;
-                --learning-block-accent-surface: fade(@accent-color, 18%) !important;
-
-                .bg-token-bg-secondary {
-                    background-color: @overlay !important;
-                }
-
-                .border-token-border-heavy {
-                    border-color: @highlightHigh !important;
-                }
-
-                .border-\[var\(--learning-block-accent\)\],
-                .border-\[var\(--learning-block-color-primary\)\] {
-                    border-color: @accent-color !important;
-                }
-
-                .bg-\[var\(--learning-block-accent-surface\)\] {
-                    background-color: fade(@accent-color, 18%) !important;
-                }
-            }
-
-            div[class*="CodeSurface-"] {
-                background-color: @surface !important;
-                background-image: none !important;
-                border-color: @highlightLow !important;
-                border-radius: 1.25rem !important;
-                overflow: hidden !important;
-
-                &,
-                * {
-                    --surface: @surface !important;
-                    --color-surface: @surface !important;
-                    --code-block-surface: @surface !important;
-                    --main-surface-secondary: @surface !important;
-                }
-
-                > div,
-                div[class*="InlineCodePane-"],
-                div[class*="Viewer-"],
-                div[class*="Scrollport-"],
-                div[class*="ViewerContent-"],
-                pre,
-                code {
-                    background-color: @surface !important;
-                    background-image: none !important;
-                    border: none !important;
-                }
-            }
-
-            /* Hide Upsells & Hide AI Disclaimer */
-            & when (@hideUpsells = 1) {
-                div[class*="container-C1xTCG"],
-                aside[class*="surface-NbxhOL"],
-                div:has(> aside[class*="surface-"]),
-                a[href*="#pricing"],
-                button[data-testid*="upgrade"],
-                div[data-testid*="upsell"] {
-                    display: none !important;
-                }
-            }
-
-            & when (@hideDisclaimer = 1) {
-                div.text-codex-description[data-markdown-copy="exclude"],
-                div[class*="text-codex-description"][data-markdown-copy="exclude"],
-                div.sticky.bottom-0 > div.text-center.text-xs {
-                    display: none !important;
-                }
-            }
-
-            /* Monospace Font for Code Blocks */
-            pre {
-                background-color: transparent !important;
-                --code-block-surface: transparent !important;
-                --main-surface-secondary: transparent !important;
-                overflow: auto !important;
-            }
-
-            pre,
-            pre *,
-            pre code,
-            pre code *,
-            .cm-editor,
-            .cm-editor *,
-            .cm-scroller,
-            .cm-content,
-            .cm-line,
-            #code-block-viewer {
-                font-family: @font-stack !important;
-                font-size: @codeFontSize !important;
-                line-height: @codeLineHeight !important;
-            }
-
-            pre > div,
-            div.markdown-new-styling pre div[class*="code-block-surface"] {
-                --code-block-surface: @surface !important;
-                --main-surface-secondary: @surface !important;
-                background-color: @surface !important;
-                border-radius: 1.5rem !important;
-                overflow-x: auto !important;
-                overflow-y: hidden !important;
-            }
-
-            [data-radix-popper-content-wrapper] {
-                background-color: transparent !important;
-                border: none !important;
-                box-shadow: none !important;
-            }
-
-            [role="tooltip"],
-            .radix-tooltip-content,
-            div[data-state][class*="tooltip"] {
-                color: @text !important;
-                background-color: @surface !important;
-                border: 1px solid @highlightMed !important;
-
-                span,
-                p,
-                div {
-                    color: @text !important;
-                }
-
-                kbd,
-                .text-token-text-tertiary,
-                .text-token-text-secondary {
-                    color: @subtle !important;
-                }
-
-                .bg-token-main-surface-primary,
-                .bg-black,
-                [class*="bg-"] {
-                    background-color: @overlay !important;
-                    color: @text !important;
-                }
-            }
-
-            code:not(pre > code) {
-                background-color: @overlay !important;
-                color: @text !important;
-                font-family: @font-stack !important;
-                font-size: 0.9em !important;
-                padding: 0.15em 0.35em !important;
-                border-radius: 0.3em !important;
-            }
-
-            code[class*="language-"],
-            pre[class*="language-"] {
-                color: @text !important;
-            }
-
-            /* Code Output Theme */
-            & when (@enableCodeBlocks = 1) {
-                #code-block-viewer,
-                .cm-editor,
-                .cm-scroller,
-                .cm-content,
-                .cm-line {
-                    border-radius: inherit !important;
-                    background-color: @surface !important;
-                    color: @text !important;
-                }
-
-                pre code,
-                .cm-editor,
-                .light\:cm-light,
-                .dark\:cm-light {
-                    background-color: @surface !important;
-                    color: @text !important;
-                    border-radius: inherit !important;
-                }
-
-                pre .sticky,
-                pre .sticky > div,
-                pre div[class*="code-block-surface"] {
-                    background-color: @surface !important;
-                    color: @text !important;
-                    border-top-left-radius: inherit !important;
-                    border-top-right-radius: inherit !important;
-                }
-
-                pre .sticky button:hover {
-                    background-color: fade(@highlightHigh, 30%) !important;
-                }
-
-                div[class*="CodeSurface-"],
-                pre,
-                pre code,
-                .cm-editor,
-                .cm-content,
-                .cm-line,
-                .light\:cm-light,
-                .dark\:cm-light {
-                    /* Comments */
-                    .ͼe,
-                    .ͼt,
-                    span.ͼe,
-                    span.ͼt,
-                    span[class*="comment"],
-                    span[class*="Comment-"],
-                    .text-codex-syntax-comment,
-                    span[class*="codex-syntax-comment"] {
-                        color: @muted !important;
-                    }
-
-                    /* Tags & Preprocessors */
-                    .ͼf,
-                    .ͼu,
-                    .ͼ13,
-                    .ͼd,
-                    span.ͼf,
-                    span.ͼu,
-                    span.ͼ13,
-                    span.ͼd,
-                    span[class*="preprocessor"],
-                    span[class*="Preprocessor-"],
-                    span[class*="tag"],
-                    span[class*="Tag-"],
-                    .text-codex-syntax-name,
-                    .text-codex-syntax-tag,
-                    .text-codex-syntax-meta,
-                    .text-codex-syntax-preprocessor,
-                    span[class*="codex-syntax-name"],
-                    span[class*="codex-syntax-tag"],
-                    span[class*="codex-syntax-meta"],
-                    span[class*="codex-syntax-preprocessor"] {
-                        color: @pine !important;
-                    }
-
-                    /* Keywords */
-                    .ͼg,
-                    .ͼv,
-                    .ͼb,
-                    span.ͼg,
-                    span.ͼv,
-                    span.ͼb,
-                    span[class*="keyword"],
-                    span[class*="Keyword-"],
-                    .text-codex-syntax-keyword,
-                    .text-codex-syntax-builtin,
-                    span[class*="codex-syntax-keyword"],
-                    span[class*="codex-syntax-builtin"] {
-                        color: if(@flavor = dawn, @pine, @foam) !important;
-                    }
-
-                    /* Functions, Identifiers, Types, Classes, Primitives */
-                    .ͼl,
-                    .ͼ11,
-                    .ͼc,
-                    span.ͼl,
-                    span.ͼ11,
-                    span.ͼc,
-                    span[class*="function"],
-                    span[class*="Function-"],
-                    span[class*="type"],
-                    span[class*="Type-"],
-                    span[class*="class-name"],
-                    span[class*="primitive"],
-                    .text-codex-syntax-variable,
-                    .text-codex-syntax-function,
-                    .text-codex-syntax-title,
-                    .text-codex-syntax-type,
-                    .text-codex-syntax-class,
-                    .text-codex-syntax-entity,
-                    span[class*="codex-syntax-variable"],
-                    span[class*="codex-syntax-function"],
-                    span[class*="codex-syntax-title"],
-                    span[class*="codex-syntax-type"],
-                    span[class*="codex-syntax-class"],
-                    span[class*="codex-syntax-entity"] {
-                        color: @iris !important;
-                    }
-
-                    /* Strings & Regex */
-                    .ͼk,
-                    .ͼz,
-                    .ͼa,
-                    span.ͼk,
-                    span.ͼz,
-                    span.ͼa,
-                    span[class*="string"],
-                    span[class*="String-"],
-                    .text-codex-syntax-string,
-                    .text-codex-syntax-regexp,
-                    span[class*="codex-syntax-string"],
-                    span[class*="codex-syntax-regexp"] {
-                        color: @rose !important;
-                    }
-
-                    /* Numbers, Booleans, Literals, Constants */
-                    .ͼj,
-                    .ͼy,
-                    .ͼ10,
-                    .ͼh,
-                    span.ͼj,
-                    span.ͼy,
-                    span.ͼ10,
-                    span.ͼh,
-                    span[class*="number"],
-                    span[class*="Number-"],
-                    span[class*="boolean"],
-                    span[class*="Boolean-"],
-                    span[class*="literal"],
-                    span[class*="Literal-"],
-                    .text-codex-syntax-number,
-                    .text-codex-syntax-literal,
-                    .text-codex-syntax-boolean,
-                    .text-codex-syntax-constant,
-                    span[class*="codex-syntax-number"],
-                    span[class*="codex-syntax-literal"],
-                    span[class*="codex-syntax-boolean"],
-                    span[class*="codex-syntax-constant"] {
-                        color: @love !important;
-                    }
-
-                    /* Properties, Attributes, Operators, Punctuation */
-                    .ͼm,
-                    .ͼ12,
-                    span.ͼm,
-                    span.ͼ12,
-                    span[class*="attribute"],
-                    span[class*="property"],
-                    span[class*="operator"],
-                    span[class*="Operator-"],
-                    span[class*="punctuation"],
-                    span[class*="Punctuation-"],
-                    .text-codex-syntax-property,
-                    .text-codex-syntax-attribute,
-                    .text-codex-syntax-operator,
-                    .text-codex-syntax-punctuation,
-                    span[class*="codex-syntax-property"],
-                    span[class*="codex-syntax-attribute"],
-                    span[class*="codex-syntax-operator"],
-                    span[class*="codex-syntax-punctuation"] {
-                        color: @text !important;
-                    }
-
-                    /* Escape Characters */
-                    .ͼ15,
-                    span.ͼ15,
-                    span[class*="escape"],
-                    .text-codex-syntax-escape,
-                    span[class*="codex-syntax-escape"] {
-                        color: @subtle !important;
-                    }
-                }
-            }
-
-            .btn-primary {
-                background-color: @text;
-                color: @base;
-            }
-
-            .btn-purple {
-                color: @base;
-                background-color: @accent-color;
-
-                &:hover {
-                    background-color: lighten(@accent-color, 5%);
-                }
-
-                &:focus,
-                &:active {
-                    background-color: darken(@accent-color, 5%);
-                }
-            }
-
-            .btn-danger-outline {
-                color: @love;
-                border-color: @love;
-            }
-
-            .btn-ghost {
-                &:not(:disabled) {
-                    &:hover {
-                        background-color: @overlay;
-                    }
-                }
-            }
-
-            .bg-token-bg-primary {
-                background-color: var(--bg-primary);
-            }
-            .bg-token-bg-secondary {
-                background-color: @overlay !important;
-            }
-            .bg-token-main-surface-primary {
-                background-color: var(--main-surface-primary);
-            }
-            .bg-token-sidebar-surface {
-                background-color: var(--sidebar-surface);
-            }
-
-            .__tailwind-utility(@color, @shade, @value) {
-                .text-@{color}-@{shade},
-                .dark\:text-@{color}-@{shade} {
-                    color: @value;
-                }
-                .bg-@{color}-@{shade},
-                .dark\:bg-@{color}-@{shade} {
-                    background-color: @value;
-                }
-                .border-@{color}-@{shade} {
-                    border-color: @value;
-                }
-                .radix-state-checked\:bg-@{color}-@{shade}[data-state="checked"] {
-                    background-color: @value;
-                }
-            }
-
-            .__tailwind-utility(green, 600, @pine);
-            .__tailwind-utility(red, 500, @love);
-            .__tailwind-utility(blue, 300, @accent-color);
-            .__tailwind-utility(blue, 400, @accent-color);
-            .__tailwind-utility(blue, 500, @accent-color);
-            .__tailwind-utility(blue, 600, @accent-color);
-            .__tailwind-utility(gray, 600, @highlightMed);
-            .__tailwind-utility(gray, 500, @muted);
-
-            .text-white {
-                color: @base;
-            }
-
-            .bg-black {
-                background-color: @surface;
-            }
-        }
-    }
-
-    /* Auth Rules */
-    :root {
-        @media (prefers-color-scheme: light) {
-            #rose-pine-auth(@lightFlavor, @accentColor);
-        }
-        @media (prefers-color-scheme: dark) {
-            #rose-pine-auth(@darkFlavor, @accentColor);
-        }
-    }
-
-    #rose-pine-auth(@flavor, @accent) {
-        @raw-base: @rose-pine[@@flavor][@base];
-        @raw-surface: @rose-pine[@@flavor][@surface];
-
-        @base: if(@flavor = dawn, @raw-surface, @raw-base);
-        @surface: if(@flavor = dawn, @raw-base, @raw-surface);
-
-        @overlay: @rose-pine[@@flavor][@overlay];
-        @muted: @rose-pine[@@flavor][@muted];
-        @subtle: @rose-pine[@@flavor][@subtle];
-        @text: @rose-pine[@@flavor][@text];
-        @love: @rose-pine[@@flavor][@love];
-        @gold: @rose-pine[@@flavor][@gold];
-        @rose: @rose-pine[@@flavor][@rose];
-        @pine: @rose-pine[@@flavor][@pine];
-        @foam: @rose-pine[@@flavor][@foam];
-        @iris: @rose-pine[@@flavor][@iris];
-
-        @accent-color: @rose-pine[@@flavor][@@accent];
-
-        color: @text;
-
-        background-color: @base;
-        --main-page-background: @base;
-
-        --text-primary: @text;
-        --text-secondary: @subtle;
-        --text-tertiary: @muted;
-        --text-placeholder: @muted;
-
-        --accent-blue: @accent-color;
-        --link: @accent-color;
-
-        --border-medium: @overlay;
-
-        --button-primary-background: @text;
-        --button-primary-hover: @subtle;
-        --button-text-on-primary: @base;
-
-        --button-outline-hover: @surface;
-
-        --gray-100: @overlay;
-
-        input {
-            color: @text;
-        }
-
-        [class*="_toggleVisibilityButton"]:where(:hover, :focus-visible)::before {
-            background-color: @surface;
-        }
-
-        [data-overlay-container] [class*="_tooltip"] {
-            --tooltip-background-color: @surface !important;
-            --tooltip-color: @text !important;
-        }
-    }
+	/* ChatGPT Rules October 2026 Update */
+	.light,
+	:root[data-theme="light"] {
+		#rose-pine(@lightFlavor, @accentColor);
+	}
+
+	.dark,
+	:root[data-theme="dark"] {
+		#rose-pine(@darkFlavor, @accentColor);
+	}
+
+	#rose-pine(@flavor, @accent) {
+		@raw-base: @rose-pine[@@flavor][@base];
+		@raw-surface: @rose-pine[@@flavor][@surface];
+
+		@base: if(@flavor = dawn, @raw-surface, @raw-base);
+		@surface: if(@flavor = dawn, @raw-base, @raw-surface);
+
+		@overlay: @rose-pine[@@flavor][@overlay];
+		@muted: @rose-pine[@@flavor][@muted];
+		@subtle: @rose-pine[@@flavor][@subtle];
+		@text: @rose-pine[@@flavor][@text];
+		@love: @rose-pine[@@flavor][@love];
+		@gold: @rose-pine[@@flavor][@gold];
+		@rose: @rose-pine[@@flavor][@rose];
+		@pine: @rose-pine[@@flavor][@pine];
+		@foam: @rose-pine[@@flavor][@foam];
+		@iris: @rose-pine[@@flavor][@iris];
+		@highlightLow: @rose-pine[@@flavor][@highlightLow];
+		@highlightMed: @rose-pine[@@flavor][@highlightMed];
+		@highlightHigh: @rose-pine[@@flavor][@highlightHigh];
+
+		@accent-color: @rose-pine[@@flavor][@@accent];
+
+		/* Font Mapping */
+		@default-mono-stack: ~"ui-monospace, SFMono-Regular, 'Roboto Mono', Menlo, Monaco, 'Liberation Mono', 'DejaVu Sans Mono', 'Courier New', monospace";
+
+		@font-stack: if(@codeFontFamily = cascadia,
+			~"'Cascadia Code', 'Cascadia Mono', monospace",
+			if(@codeFontFamily = firacode,
+			~"'Fira Code', 'FiraCode Nerd Font', monospace",
+			if(@codeFontFamily = geist, ~"'Geist Mono', monospace",
+			if(@codeFontFamily = ibm, ~"'IBM Plex Mono', monospace",
+			if(@codeFontFamily = inconsolata, ~"'Inconsolata', monospace",
+			if(@codeFontFamily = jetbrains,
+			~"'JetBrains Mono', 'JetBrainsMono Nerd Font', monospace",
+			if(@codeFontFamily = source, ~"'Source Code Pro', monospace",
+			if(@codeFontFamily = space, ~"'Space Mono', monospace",
+			if(@codeFontFamily = ubuntu,
+			~"'Ubuntu Sans Mono', 'Ubuntu Mono', monospace",
+			@default-mono-stack)))))))));
+
+		&,
+		body {
+			background-color: @base !important;
+			color: @text !important;
+		}
+
+		& when (@useBrowserFont = 1) {
+			&,
+			* {
+				--font-sans: sans-serif !important;
+				--default-font-family: sans-serif !important;
+			}
+
+			body,
+			.font-sans,
+			.markdown,
+			.prose,
+			p,
+			h1,
+			h2,
+			h3,
+			h4,
+			h5,
+			h6,
+			li,
+			a,
+			button,
+			input,
+			textarea,
+			select,
+			label,
+			#prompt-textarea,
+			div[class*="RichTextInput"],
+			div[data-message-author-role] *:not(pre):not(code):not(pre *):not(code *):not(.cm-editor *) {
+				font-family: sans-serif !important;
+			}
+		}
+
+		&,
+		* {
+			--text-primary: @text;
+			--text-secondary: @subtle;
+			--text-tertiary: @muted;
+			--text-quaternary: @highlightHigh;
+			--bg-primary: @base;
+			--bg-secondary: @surface;
+			--bg-tertiary: @overlay;
+
+			--token-bg-primary: @base !important;
+			--token-bg-secondary: @overlay !important;
+			--token-bg-tertiary: @overlay !important;
+			--token-border-heavy: @highlightHigh !important;
+			--token-text-primary: @text !important;
+			--token-text-secondary: @subtle !important;
+			--token-text-tertiary: @muted !important;
+
+			--bg-secondary-surface: @surface;
+
+			--bg-elevated-primary: @base;
+			--bg-elevated-secondary: @surface;
+
+			--bg-tooltip: @base;
+
+			--main-surface-primary: @base;
+			--main-surface-secondary: @surface;
+			--main-surface-tertiary: @overlay;
+
+			/* Surface & Background Tokens */
+			--surface: @surface !important;
+			--surface-card: @surface !important;
+			--surface-secondary: @overlay !important;
+			--color-surface: @surface !important;
+			--color-surface-card: @surface !important;
+			--wb-surface-primary: @base !important;
+			--wb-surface-secondary: @surface !important;
+			--color-background-primary: @base !important;
+			--color-background-secondary: @surface !important;
+			--color-background-tertiary: @overlay !important;
+			--color-background-primary-soft-alpha: @surface !important;
+			--color-background-page-search: @surface !important;
+			--color-background-execution-output: @surface !important;
+			--code-block-surface: @surface !important;
+			--color-text-codex-description: @muted !important;
+
+			--background-mode-toggle-track: @surface !important;
+			--color-background-mode-toggle-track: @surface !important;
+			--mode-toggle-primary: @text !important;
+			--color-mode-toggle-primary: @text !important;
+			--mode-toggle-inactive: @subtle !important;
+			--color-mode-toggle-inactive: @subtle !important;
+
+			--color-text-codex-syntax-comment: @muted !important;
+			--text-codex-syntax-comment: @muted !important;
+			--color-text-codex-syntax-keyword: if(@flavor = dawn, @pine, @foam) !important;
+			--text-codex-syntax-keyword: if(@flavor = dawn, @pine, @foam) !important;
+			--color-text-codex-syntax-name: @pine !important;
+			--text-codex-syntax-name: @pine !important;
+			--color-text-codex-syntax-variable: @iris !important;
+			--text-codex-syntax-variable: @iris !important;
+			--color-text-codex-syntax-function: @iris !important;
+			--text-codex-syntax-function: @iris !important;
+			--color-text-codex-syntax-title: @iris !important;
+			--text-codex-syntax-title: @iris !important;
+			--color-text-codex-syntax-type: @iris !important;
+			--text-codex-syntax-type: @iris !important;
+			--color-text-codex-syntax-string: @rose !important;
+			--text-codex-syntax-string: @rose !important;
+			--color-text-codex-syntax-literal: @love !important;
+			--text-codex-syntax-literal: @love !important;
+			--color-text-codex-syntax-number: @love !important;
+			--text-codex-syntax-number: @love !important;
+			--color-text-codex-syntax-tag: @pine !important;
+			--text-codex-syntax-tag: @pine !important;
+			--color-text-codex-syntax-preprocessor: @pine !important;
+			--text-codex-syntax-preprocessor: @pine !important;
+
+			--info-solid: @accent-color !important;
+			--color-info-solid: @accent-color !important;
+			--composer-primary: @accent-color !important;
+			--color-composer-primary: @accent-color !important;
+
+			--learning-block-accent: @accent-color !important;
+			--learning-block-color-primary: @accent-color !important;
+			--learning-block-accent-surface: fade(@accent-color, 18%) !important;
+
+			--menu-surface: @surface !important;
+			--popover-surface: @surface !important;
+			--color-background-elevated: @surface !important;
+			--color-primary-ghost-hover: @overlay !important;
+			--primary-ghost-hover: @overlay !important;
+
+			--composer-surface-primary: @surface !important;
+			--composer-surface-secondary: @surface !important;
+			--composer-surface: @surface !important;
+
+			--interactive-bg-secondary-hover: @overlay;
+			--interactive-bg-secondary-press: @surface;
+
+			--interactive-label-accent-default: @accent-color;
+
+			--border-light: @highlightLow;
+			--border-default: @highlightMed;
+			--border-medium: @highlightHigh;
+			--border-heavy: @highlightHigh;
+			--interactive-border-focus: @subtle;
+
+			--theme-user-msg-bg: @surface;
+			--theme-user-msg-text: @text;
+			--theme-submit-btn-bg: @accent-color;
+			--theme-submit-btn-text: @base;
+
+			--theme-secondary-btn-bg: @overlay;
+			--theme-secondary-btn-text: @text;
+
+			--sidebar-surface: @surface;
+			--sidebar-surface-primary: @surface;
+
+			--surface-hover: @overlay;
+
+			--icon-tertiary: @subtle;
+
+			--text-status-error: @love;
+
+			--shadow-color-1: fade(@surface, 50%);
+			--shadow-color-2: fade(@text, 80%);
+
+			.__menu-item[data-sidebar-item] {
+				--menu-item-highlighted: @overlay;
+			}
+
+			.__menu-item[data-color="danger"] {
+				--menu-item-highlighted: fade(@love, 20%);
+				--menu-item-active: fade(@love, 30%);
+				--menu-item-open: fade(@love, 30%);
+			}
+
+			.bg-info-solid,
+			.pulsing-dot,
+			span.bg-composer-primary {
+				background-color: @accent-color !important;
+			}
+
+			main,
+			div[class*="Layout-"],
+			div[class*="WorkspaceContent-"],
+			div[class*="MainContentViewport-"],
+			div[class*="MainContentFrame-"],
+			div[class*="MainContentSurface"],
+			div[class*="thread-scroll-container"],
+			div[class*="group/thread-scroll-layout"] {
+				background-color: @base !important;
+				background-image: none !important;
+			}
+
+			div.z-20.mt-auto.grid,
+			div.sticky.bottom-0.min-w-0.self-end,
+			div[class*="pb-(--thread-composer-bottom-inset)"],
+			div[class*="pointer-events-none"][class*="inset-x-0"][class*="bottom-0"] {
+				background-color: @base !important;
+				background-image: linear-gradient(to top, @base 80%, transparent 100%)
+					!important;
+			}
+
+			div[class*="ComposerLayoutRoot"] {
+				--composer-surface-primary: @surface !important;
+				--composer-surface-secondary: @surface !important;
+				--composer-surface: @surface !important;
+				background-color: @surface !important;
+				background-image: none !important;
+				border: 1px solid fade(@highlightHigh, 45%) !important;
+				border-radius: 1.75rem !important;
+				box-shadow: none !important;
+				outline: none !important;
+				overflow: hidden !important;
+
+				&::before,
+				&::after {
+					display: none !important;
+				}
+			}
+
+			div[class*="ComposerLayoutRoot"] div,
+			div[class*="ComposerLayoutRoot"] form,
+			div[class*="ComposerFooter"] {
+				background-color: transparent !important;
+				background-image: none !important;
+				border-color: transparent !important;
+				box-shadow: none !important;
+				outline: none !important;
+
+				&::before,
+				&::after {
+					box-shadow: none !important;
+					border-color: transparent !important;
+				}
+			}
+
+			#prompt-textarea,
+			div[class*="RichTextInput"] {
+				background-color: transparent !important;
+				color: @text !important;
+			}
+
+			div[class*="relative"][class*="mx-auto"]:has(> div[class*="ComposerLayoutRoot"]),
+			div[class*="max-w-"] > div[class*="ComposerLayoutRoot"] {
+				background-color: transparent !important;
+				box-shadow: none !important;
+			}
+
+			.bg-background-mode-toggle-track {
+				background-color: @surface !important;
+				border: 1px solid fade(@highlightHigh, 45%) !important;
+			}
+
+			div[class*="root-"][aria-label="Composer mode"],
+			div[class*="root-HUUPVC"] {
+				background-color: transparent !important;
+
+				span[class*="bg-background-mode-toggle-track"] {
+					background-color: @surface !important;
+					border: 1px solid fade(@highlightHigh, 45%) !important;
+				}
+
+				span[class*="indicator-"] {
+					background-color: @overlay !important;
+					box-shadow: none !important;
+				}
+
+				button {
+					background-color: transparent !important;
+					color: @subtle !important;
+
+					&[aria-pressed="true"] {
+						color: @text !important;
+					}
+				}
+
+				.text-mode-toggle-primary {
+					color: @text !important;
+				}
+
+				.text-mode-toggle-inactive {
+					color: @subtle !important;
+				}
+			}
+
+			div[class*="ComposerLayoutRoot"] button.bg-composer-primary,
+			div[class*="ComposerLayoutRoot"] button[style*="background"],
+			div[class*="ComposerLayoutRoot"] button[class*="bg-blue"],
+			div[class*="ComposerLayoutRoot"] button[aria-label*="Voice"],
+			div[class*="ComposerLayoutRoot"] button[aria-label*="Send"],
+			div[class*="ComposerLayoutRoot"] button[aria-label*="Stop"],
+			div[class*="ComposerLayoutRoot"] button[data-testid*="send"],
+			div[class*="ComposerLayoutRoot"] button[data-testid*="stop"] {
+				background-color: @accent-color !important;
+				color: @base !important;
+
+				svg,
+				path,
+				rect,
+				.text-composer-primary {
+					color: @base !important;
+					fill: currentColor !important;
+				}
+			}
+
+			/* Codex Upsell Banner */
+			aside[class*="surface-NbxhOL"] {
+				background-color: @surface !important;
+				border-color: @highlightLow !important;
+				border-radius: 1.25rem !important;
+				color: @text !important;
+			}
+
+			div[data-user-message-bubble="true"],
+			.bg-user-message {
+				background-color: @surface !important;
+				color: @text !important;
+			}
+
+			nav,
+			aside:not([class*="surface-"]),
+			[data-sidebar],
+			.sidebar-navigation,
+			div:has(> .sidebar-navigation),
+			div[class*="group/sidebar"],
+			div[class*="sidebar-container"],
+			div[class*="bg-token-sidebar-surface"] {
+				background-color: @surface !important;
+				border-top-left-radius: 0 !important;
+				border-bottom-left-radius: 0 !important;
+			}
+
+			div[class*="gap-toolbar-action"],
+			.browser\:bg-surface:has(> button.button-toolbar),
+			button.button-toolbar {
+				background-color: transparent !important;
+			}
+
+			button.button-toolbar:hover {
+				background-color: @surface !important;
+			}
+
+			div:has(> .vertical-scroll-fade-mask),
+			div:has(> div > .vertical-scroll-fade-mask),
+			div:has(> div > div > .vertical-scroll-fade-mask),
+			[role="menu"],
+			[role="listbox"],
+			[data-radix-menu-content],
+			[data-radix-popper-content-wrapper] > div {
+				background-color: @surface !important;
+				background-image: none !important;
+				border-color: @highlightMed !important;
+				color: @text !important;
+			}
+
+			button.menu-row-opacity:hover,
+			button.menu-row-opacity:focus,
+			button.menu-row-opacity:focus-visible,
+			button.menu-row-opacity[data-highlighted],
+			button.menu-row-opacity[data-state="open"],
+			[role="menuitem"]:hover,
+			[role="menuitem"][data-highlighted] {
+				background-color: @overlay !important;
+				background-image: none !important;
+			}
+
+			div[class*="CodeBlock-"] {
+				background-color: transparent !important;
+			}
+
+			.bg-surface-card,
+			.bg-surface-secondary\/20,
+			div[class*="visualizationSurface-"],
+			div[class*="visualizationLayer-"] > div[aria-hidden="true"] {
+				background-color: @surface !important;
+				background-image: none !important;
+			}
+
+			div.rounded-4xl:has(div[class*="visualizationSurface-"]) {
+				background-color: @surface !important;
+				border: 1px solid fade(@highlightHigh, 40%) !important;
+			}
+
+			div[class*="visualizationLayer-"] {
+				--learning-block-accent: @accent-color !important;
+				--learning-block-color-primary: @accent-color !important;
+				--learning-block-accent-surface: fade(@accent-color, 18%) !important;
+
+				.bg-token-bg-secondary {
+					background-color: @overlay !important;
+				}
+
+				.border-token-border-heavy {
+					border-color: @highlightHigh !important;
+				}
+
+				.border-\[var\(--learning-block-accent\)\],
+				.border-\[var\(--learning-block-color-primary\)\] {
+					border-color: @accent-color !important;
+				}
+
+				.bg-\[var\(--learning-block-accent-surface\)\] {
+					background-color: fade(@accent-color, 18%) !important;
+				}
+			}
+
+			div[class*="CodeSurface-"] {
+				background-color: @surface !important;
+				background-image: none !important;
+				border-color: @highlightLow !important;
+				border-radius: 1.25rem !important;
+				overflow: hidden !important;
+
+				&,
+				* {
+					--surface: @surface !important;
+					--color-surface: @surface !important;
+					--code-block-surface: @surface !important;
+					--main-surface-secondary: @surface !important;
+				}
+
+				> div,
+				div[class*="InlineCodePane-"],
+				div[class*="Viewer-"],
+				div[class*="Scrollport-"],
+				div[class*="ViewerContent-"],
+				pre,
+				code {
+					background-color: @surface !important;
+					background-image: none !important;
+					border: none !important;
+				}
+			}
+
+			/* Hide Upsells & Hide AI Disclaimer */
+			& when (@hideUpsells = 1) {
+				div[class*="container-C1xTCG"],
+				aside[class*="surface-NbxhOL"],
+				div:has(> aside[class*="surface-"]),
+				a[href*="#pricing"],
+				button[data-testid*="upgrade"],
+				div[data-testid*="upsell"] {
+					display: none !important;
+				}
+			}
+
+			& when (@hideDisclaimer = 1) {
+				div.text-codex-description[data-markdown-copy="exclude"],
+				div[class*="text-codex-description"][data-markdown-copy="exclude"],
+				div.sticky.bottom-0 > div.text-center.text-xs {
+					display: none !important;
+				}
+			}
+
+			/* Monospace Font for Code Blocks */
+			pre {
+				background-color: transparent !important;
+				--code-block-surface: transparent !important;
+				--main-surface-secondary: transparent !important;
+				overflow: auto !important;
+			}
+
+			pre,
+			pre *,
+			pre code,
+			pre code *,
+			.cm-editor,
+			.cm-editor *,
+			.cm-scroller,
+			.cm-content,
+			.cm-line,
+			#code-block-viewer {
+				font-family: @font-stack !important;
+				font-size: @codeFontSize !important;
+				line-height: @codeLineHeight !important;
+			}
+
+			pre > div,
+			div.markdown-new-styling pre div[class*="code-block-surface"] {
+				--code-block-surface: @surface !important;
+				--main-surface-secondary: @surface !important;
+				background-color: @surface !important;
+				border-radius: 1.5rem !important;
+				overflow-x: auto !important;
+				overflow-y: hidden !important;
+			}
+
+			[data-radix-popper-content-wrapper] {
+				background-color: transparent !important;
+				border: none !important;
+				box-shadow: none !important;
+			}
+
+			[role="tooltip"],
+			.radix-tooltip-content,
+			div[data-state][class*="tooltip"] {
+				color: @text !important;
+				background-color: @surface !important;
+				border: 1px solid @highlightMed !important;
+
+				span,
+				p,
+				div {
+					color: @text !important;
+				}
+
+				kbd,
+				.text-token-text-tertiary,
+				.text-token-text-secondary {
+					color: @subtle !important;
+				}
+
+				.bg-token-main-surface-primary,
+				.bg-black,
+				[class*="bg-"] {
+					background-color: @overlay !important;
+					color: @text !important;
+				}
+			}
+
+			code:not(pre > code) {
+				background-color: @overlay !important;
+				color: @text !important;
+				font-family: @font-stack !important;
+				font-size: 0.9em !important;
+				padding: 0.15em 0.35em !important;
+				border-radius: 0.3em !important;
+			}
+
+			code[class*="language-"],
+			pre[class*="language-"] {
+				color: @text !important;
+			}
+
+			/* Code Output Theme */
+			& when (@enableCodeBlocks = 1) {
+				#code-block-viewer,
+				.cm-editor,
+				.cm-scroller,
+				.cm-content,
+				.cm-line {
+					border-radius: inherit !important;
+					background-color: @surface !important;
+					color: @text !important;
+				}
+
+				pre code,
+				.cm-editor,
+				.light\:cm-light,
+				.dark\:cm-light {
+					background-color: @surface !important;
+					color: @text !important;
+					border-radius: inherit !important;
+				}
+
+				pre .sticky,
+				pre .sticky > div,
+				pre div[class*="code-block-surface"] {
+					background-color: @surface !important;
+					color: @text !important;
+					border-top-left-radius: inherit !important;
+					border-top-right-radius: inherit !important;
+				}
+
+				pre .sticky button:hover {
+					background-color: fade(@highlightHigh, 30%) !important;
+				}
+
+				div[class*="CodeSurface-"],
+				pre,
+				pre code,
+				.cm-editor,
+				.cm-content,
+				.cm-line,
+				.light\:cm-light,
+				.dark\:cm-light {
+					/* Comments */
+					.ͼe,
+					.ͼt,
+					span.ͼe,
+					span.ͼt,
+					span[class*="comment"],
+					span[class*="Comment-"],
+					.text-codex-syntax-comment,
+					span[class*="codex-syntax-comment"] {
+						color: @muted !important;
+					}
+
+					/* Tags & Preprocessors */
+					.ͼf,
+					.ͼu,
+					.ͼ13,
+					.ͼd,
+					span.ͼf,
+					span.ͼu,
+					span.ͼ13,
+					span.ͼd,
+					span[class*="preprocessor"],
+					span[class*="Preprocessor-"],
+					span[class*="tag"],
+					span[class*="Tag-"],
+					.text-codex-syntax-name,
+					.text-codex-syntax-tag,
+					.text-codex-syntax-meta,
+					.text-codex-syntax-preprocessor,
+					span[class*="codex-syntax-name"],
+					span[class*="codex-syntax-tag"],
+					span[class*="codex-syntax-meta"],
+					span[class*="codex-syntax-preprocessor"] {
+						color: @pine !important;
+					}
+
+					/* Keywords */
+					.ͼg,
+					.ͼv,
+					.ͼb,
+					span.ͼg,
+					span.ͼv,
+					span.ͼb,
+					span[class*="keyword"],
+					span[class*="Keyword-"],
+					.text-codex-syntax-keyword,
+					.text-codex-syntax-builtin,
+					span[class*="codex-syntax-keyword"],
+					span[class*="codex-syntax-builtin"] {
+						color: if(@flavor = dawn, @pine, @foam) !important;
+					}
+
+					/* Functions, Identifiers, Types, Classes, Primitives */
+					.ͼl,
+					.ͼ11,
+					.ͼc,
+					span.ͼl,
+					span.ͼ11,
+					span.ͼc,
+					span[class*="function"],
+					span[class*="Function-"],
+					span[class*="type"],
+					span[class*="Type-"],
+					span[class*="class-name"],
+					span[class*="primitive"],
+					.text-codex-syntax-variable,
+					.text-codex-syntax-function,
+					.text-codex-syntax-title,
+					.text-codex-syntax-type,
+					.text-codex-syntax-class,
+					.text-codex-syntax-entity,
+					span[class*="codex-syntax-variable"],
+					span[class*="codex-syntax-function"],
+					span[class*="codex-syntax-title"],
+					span[class*="codex-syntax-type"],
+					span[class*="codex-syntax-class"],
+					span[class*="codex-syntax-entity"] {
+						color: @iris !important;
+					}
+
+					/* Strings & Regex */
+					.ͼk,
+					.ͼz,
+					.ͼa,
+					span.ͼk,
+					span.ͼz,
+					span.ͼa,
+					span[class*="string"],
+					span[class*="String-"],
+					.text-codex-syntax-string,
+					.text-codex-syntax-regexp,
+					span[class*="codex-syntax-string"],
+					span[class*="codex-syntax-regexp"] {
+						color: @rose !important;
+					}
+
+					/* Numbers, Booleans, Literals, Constants */
+					.ͼj,
+					.ͼy,
+					.ͼ10,
+					.ͼh,
+					span.ͼj,
+					span.ͼy,
+					span.ͼ10,
+					span.ͼh,
+					span[class*="number"],
+					span[class*="Number-"],
+					span[class*="boolean"],
+					span[class*="Boolean-"],
+					span[class*="literal"],
+					span[class*="Literal-"],
+					.text-codex-syntax-number,
+					.text-codex-syntax-literal,
+					.text-codex-syntax-boolean,
+					.text-codex-syntax-constant,
+					span[class*="codex-syntax-number"],
+					span[class*="codex-syntax-literal"],
+					span[class*="codex-syntax-boolean"],
+					span[class*="codex-syntax-constant"] {
+						color: @love !important;
+					}
+
+					/* Properties, Attributes, Operators, Punctuation */
+					.ͼm,
+					.ͼ12,
+					span.ͼm,
+					span.ͼ12,
+					span[class*="attribute"],
+					span[class*="property"],
+					span[class*="operator"],
+					span[class*="Operator-"],
+					span[class*="punctuation"],
+					span[class*="Punctuation-"],
+					.text-codex-syntax-property,
+					.text-codex-syntax-attribute,
+					.text-codex-syntax-operator,
+					.text-codex-syntax-punctuation,
+					span[class*="codex-syntax-property"],
+					span[class*="codex-syntax-attribute"],
+					span[class*="codex-syntax-operator"],
+					span[class*="codex-syntax-punctuation"] {
+						color: @text !important;
+					}
+
+					/* Escape Characters */
+					.ͼ15,
+					span.ͼ15,
+					span[class*="escape"],
+					.text-codex-syntax-escape,
+					span[class*="codex-syntax-escape"] {
+						color: @subtle !important;
+					}
+				}
+			}
+
+			.btn-primary {
+				background-color: @text;
+				color: @base;
+			}
+
+			.btn-purple {
+				color: @base;
+				background-color: @accent-color;
+
+				&:hover {
+					background-color: lighten(@accent-color, 5%);
+				}
+
+				&:focus,
+				&:active {
+					background-color: darken(@accent-color, 5%);
+				}
+			}
+
+			.btn-danger-outline {
+				color: @love;
+				border-color: @love;
+			}
+
+			.btn-ghost {
+				&:not(:disabled) {
+					&:hover {
+						background-color: @overlay;
+					}
+				}
+			}
+
+			.bg-token-bg-primary {
+				background-color: var(--bg-primary);
+			}
+			.bg-token-bg-secondary {
+				background-color: @overlay !important;
+			}
+			.bg-token-main-surface-primary {
+				background-color: var(--main-surface-primary);
+			}
+			.bg-token-sidebar-surface {
+				background-color: var(--sidebar-surface);
+			}
+
+			.__tailwind-utility(@color, @shade, @value) {
+				.text-@{color}-@{shade},
+				.dark\:text-@{color}-@{shade} {
+					color: @value;
+				}
+				.bg-@{color}-@{shade},
+				.dark\:bg-@{color}-@{shade} {
+					background-color: @value;
+				}
+				.border-@{color}-@{shade} {
+					border-color: @value;
+				}
+				.radix-state-checked\:bg-@{color}-@{shade}[data-state="checked"] {
+					background-color: @value;
+				}
+			}
+
+			.__tailwind-utility(green, 600, @pine);
+			.__tailwind-utility(red, 500, @love);
+			.__tailwind-utility(blue, 300, @accent-color);
+			.__tailwind-utility(blue, 400, @accent-color);
+			.__tailwind-utility(blue, 500, @accent-color);
+			.__tailwind-utility(blue, 600, @accent-color);
+			.__tailwind-utility(gray, 600, @highlightMed);
+			.__tailwind-utility(gray, 500, @muted);
+
+			.text-white {
+				color: @base;
+			}
+
+			.bg-black {
+				background-color: @surface;
+			}
+		}
+	}
+
+	/* Auth Rules */
+	:root {
+		@media (prefers-color-scheme: light) {
+			#rose-pine-auth(@lightFlavor, @accentColor);
+		}
+		@media (prefers-color-scheme: dark) {
+			#rose-pine-auth(@darkFlavor, @accentColor);
+		}
+	}
+
+	#rose-pine-auth(@flavor, @accent) {
+		@raw-base: @rose-pine[@@flavor][@base];
+		@raw-surface: @rose-pine[@@flavor][@surface];
+
+		@base: if(@flavor = dawn, @raw-surface, @raw-base);
+		@surface: if(@flavor = dawn, @raw-base, @raw-surface);
+
+		@overlay: @rose-pine[@@flavor][@overlay];
+		@muted: @rose-pine[@@flavor][@muted];
+		@subtle: @rose-pine[@@flavor][@subtle];
+		@text: @rose-pine[@@flavor][@text];
+		@love: @rose-pine[@@flavor][@love];
+		@gold: @rose-pine[@@flavor][@gold];
+		@rose: @rose-pine[@@flavor][@rose];
+		@pine: @rose-pine[@@flavor][@pine];
+		@foam: @rose-pine[@@flavor][@foam];
+		@iris: @rose-pine[@@flavor][@iris];
+
+		@accent-color: @rose-pine[@@flavor][@@accent];
+
+		color: @text;
+
+		background-color: @base;
+		--main-page-background: @base;
+
+		--text-primary: @text;
+		--text-secondary: @subtle;
+		--text-tertiary: @muted;
+		--text-placeholder: @muted;
+
+		--accent-blue: @accent-color;
+		--link: @accent-color;
+
+		--border-medium: @overlay;
+
+		--button-primary-background: @text;
+		--button-primary-hover: @subtle;
+		--button-text-on-primary: @base;
+
+		--button-outline-hover: @surface;
+
+		--gray-100: @overlay;
+
+		input {
+			color: @text;
+		}
+
+		[class*="_toggleVisibilityButton"]:where(:hover, :focus-visible)::before {
+			background-color: @surface;
+		}
+
+		[data-overlay-container] [class*="_tooltip"] {
+			--tooltip-background-color: @surface !important;
+			--tooltip-color: @text !important;
+		}
+	}
 }
